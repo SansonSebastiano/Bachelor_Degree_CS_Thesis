@@ -13,18 +13,31 @@
     description={in informatica con il termine \emph{Application Programming Interface API} (ing. interfaccia di programmazione di un'applicazione) si indica ogni insieme di procedure disponibili al programmatore, di solito raggruppate a formare un set di strumenti specifici per l'espletamento di un determinato compito all'interno di un certo programma. La finalità è ottenere un'astrazione, di solito tra l'hardware e il programmatore o tra software a basso e quello ad alto livello semplificando così il lavoro di programmazione}
 }
 
-\newglossaryentry{meetingnote}{
-    name=Meeting Note,
-    description={
-        DA DEFINIRE
+\newglossaryentry{cliente}{
+    name=Cliente,
+    description={i clienti del contesto applicativo possono essere di tre tipologie:
+    \begin{itemize}
+        \item \textbf{Broker}: è un intermediario tra il cliente finale (in questo caso sempre aziende) e l'assicurazione;
+        \item \textbf{Contraenti}: sono le aziende che stipulano un contratto della polizza assicurativa;
+        \item \textbf{Compagnie assicurative}
+    \end{itemize}
     }
 }
 
+\newglossaryentry{meetingnote}{
+    name=Meeting Note,
+    description={nota compilabile dall'utente per monitorare gli incontri con i clienti. Le informazioni che contiene sono:
+    \begin{itemize}
+        \item \textbf{\gls{cliente}}: nome del cliente;
+        \item \textbf{Data}: data dell'incontro;
+        \item \textbf{Contenuto}: contenuto dell'incontro;
+        \item \textbf{Autore}: nome dell'utente che ha creato la nota;
+    \end{itemize}}
+}
+
 \newglossaryentry{openai}{
-    name=OpenAI,
-    description={
-        DA DEFINIRE
-    }
+    name=OpenAI \glslink{api}{API},
+    description={insieme di servizi e risorse messi a disposizione da \emph{OpenAI}, che permettono agli sviluppatori di integrare modelli di intelligenza artificiale nei loro prodotti software}
 }
 
 \newglossaryentry{umlg} {
