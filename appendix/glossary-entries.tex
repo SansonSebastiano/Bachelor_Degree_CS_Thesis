@@ -15,23 +15,32 @@
 
 \newglossaryentry{cliente}{
     name=Cliente,
-    description={i clienti del contesto applicativo possono essere di tre tipologie:
+    text=cliente,
+    plural=clienti,
+    description={nel contesto applicativo costituisce l'oggetto di una \emph{Meeting Note} e può essere di tre tipologie:
     \begin{itemize}
-        \item \textbf{Broker}: è un intermediario tra il cliente finale (in questo caso sempre aziende) e l'assicurazione;
-        \item \textbf{Contraenti}: sono le aziende che stipulano un contratto della polizza assicurativa;
-        \item \textbf{Compagnie assicurative}
+        \item \textbf{Broker}: intermediario tra il cliente finale (in questo caso sempre aziende) e la compagnia assicurativa;
+        \item \textbf{Contraenti}: aziende che sottoscrivono un contratto della polizza assicurativa;
+        \item \textbf{Compagnie assicurative}.
     \end{itemize}
     }
 }
 
+\newglossaryentry{funnel}{
+    name=Funnel commerciale,
+    text=funnel commerciale,
+    description={modello di marketing che consiste in un processo suddiviso in più fasi, attraverso le quali si cerca di convertire un utente generico in un cliente effettivo}
+}
+
 \newglossaryentry{meetingnote}{
     name=Meeting Note,
+    text=Meeting Note,
     description={nota compilabile dall'utente per monitorare gli incontri con i clienti. Le informazioni che contiene sono:
     \begin{itemize}
-        \item \textbf{\gls{cliente}}: nome del cliente;
+        \item \textbf{\Gls{cliente}}: nome identificativo del cliente;
         \item \textbf{Data}: data dell'incontro;
         \item \textbf{Contenuto}: contenuto dell'incontro;
-        \item \textbf{Autore}: nome dell'utente che ha creato la nota;
+        \item \textbf{Autore}: nome dell'utente che ha creato la nota.
     \end{itemize}}
 }
 
