@@ -2,13 +2,22 @@
 \newacronym[description={\glslink{apig}{Application Program Interface\glsoccur}}]
     {api}{API}{Application Program Interface}
 
+\newacronym[description={\glslink{httpg}{HyperText Transfer Protocol\glsoccur}}]
+    {http}{HTTP}{HyperText Transfer Protocol}
+
+\newacronym[description={\glslink{uig}{User Interface\glsoccur}}]
+    {ui}{UI}{User Interface}
+
 \newacronym[description={\glslink{umlg}{Unified Modeling Language\glsoccur}}]
     {uml}{UML}{Unified Modeling Language}
+
+\newacronym[description={\glslink{urig}{Uniform Resource Identifier\glsoccur}}]
+    {uri}{URI}{Uniform Resource Identifier}
 
 % Glossary entries
 \newglossaryentry{apig} {
     name=\glslink{api}{API},
-    text=Application Program Interface,
+    text=API,
     sort=api,
     description={in informatica con il termine \emph{Application Programming Interface API} (ing. interfaccia di programmazione di un'applicazione) si indica ogni insieme di procedure disponibili al programmatore, di solito raggruppate a formare un set di strumenti specifici per l'espletamento di un determinato compito all'interno di un certo programma. La finalità è ottenere un'astrazione, di solito tra l'hardware e il programmatore o tra software a basso e quello ad alto livello semplificando così il lavoro di programmazione}
 }
@@ -26,16 +35,45 @@
     }
 }
 
+\newglossaryentry{crossplatform}{
+    name=Cross-platform,
+    text=cross-platform,
+    description={in informatica, con il termine \emph{cross-platform} (ing. multi-piattaforma) si indica un software che può essere eseguito su più di un sistema hardware o software. Il termine si riferisce in particolare a sistemi operativi, ma anche a software applicativi, linguaggi di programmazione e strumenti di sviluppo}
+}
+
+\newglossaryentry{dart}{
+    name=Dart,
+    description={linguaggio di programmazione open source e multi-platform sviluppato da Google, ovvero può essere utilizzato per lo sviluppo di applicazioni web, server e mobile}
+}
+
+\newglossaryentry{figma}{
+    name=Figma,
+    description={strumento di editor di grafica vettoriale che consente la progettazione di interfacce utente e prototipazione di applicazioni web e mobile.}
+}
+
+\newglossaryentry{flutter}{
+    name=Flutter,
+    description={framework open source sviluppato da Google che offre la possibilità di creare interfacce utente native per applicazioni mobile, desktop e web, con un unico codice sorgente}
+}
+
 \newglossaryentry{funnel}{
     name=Funnel commerciale,
     text=funnel commerciale,
     description={modello di marketing che consiste in un processo suddiviso in più fasi, attraverso le quali si cerca di convertire un utente generico in un cliente effettivo}
 }
 
+\newglossaryentry{httpg}{
+    name=\glslink{http}{HTTP},
+    text=HTTP,
+    sort=http,
+    description={con il termine \emph{HTTP, HyperText Transfer Protocol} (ing. protocollo di trasferimento ipertesto) si indica un protocollo a livello applicativo usato come principale sistema per la trasmissione d'informazioni sul web, ovvero in un'architettura tipica client-server.\\
+    Le richieste sono composte da un \glslink{uri}{URI}, versione del protocollo e il metodo, che indica l'azione da compiere. Le risposte contengono un codice di stato, informazioni sul server e sulla risorsa richiesta e il contenuto della risorsa stessa}
+}
+
 \newglossaryentry{meetingnote}{
     name=Meeting Note,
     text=Meeting Note,
-    description={nota compilabile dall'utente per monitorare gli incontri con i clienti. Le informazioni che contiene sono:
+    description={nel contesto applicativo, si tratta di una nota compilabile dall'utente per monitorare gli incontri con i clienti. Le informazioni che contiene sono:
     \begin{itemize}
         \item \textbf{\Gls{cliente}}: nome identificativo del cliente;
         \item \textbf{Data}: data dell'incontro;
@@ -44,9 +82,25 @@
     \end{itemize}}
 }
 
+\newglossaryentry{mockup}{
+    name=Mockup,
+    text=mockup,
+    description={indica una realizzazione a scopo illustrativo di un prodotto, con il fine di fornire in anteprima una rappresentazione del prodotto stesso, mancante dell'implementazione effettiva delle sue funzionalità, ma che ne mostri ugualmente le caratteristiche salienti}
+}
+
 \newglossaryentry{openai}{
     name=OpenAI \glslink{api}{API},
     description={insieme di servizi e risorse messi a disposizione da \emph{OpenAI}, che permettono agli sviluppatori di integrare modelli di intelligenza artificiale nei loro prodotti software}
+}
+
+\newglossaryentry{uig}{
+    name=\glslink{ui}{UI},
+    text=UI,
+    sort=ui,
+    description={in informatica, con il termine \emph{UI, User Interface} (ing. interfaccia utente) si indica la parte del software che permette l'interazione con l'utente, attraverso l'uso di dispositivi hardware e software.\\ 
+    L'interfaccia utente può essere grafica (GUI) o testuale (CLI).\\
+    La UI grafica è composta da elementi grafici, come finestre, icone, menu, ecc. che permettono l'interazione con l'utente attraverso dispositivi di input, come mouse e tastiera.\\
+    La UI testuale è composta da elementi testuali, come comandi e messaggi, che permettono l'interazione con l'utente attraverso dispositivi di input, come tastiera e joystick}
 }
 
 \newglossaryentry{umlg} {
@@ -54,4 +108,23 @@
     text=UML,
     sort=uml,
     description={in ingegneria del software \emph{UML, Unified Modeling Language} (ing. linguaggio di modellazione unificato) è un linguaggio di modellazione e specifica basato sul paradigma object-oriented. L'\emph{UML} svolge un'importantissima funzione di ``lingua franca'' nella comunità della progettazione e programmazione a oggetti. Gran parte della letteratura di settore usa tale linguaggio per descrivere soluzioni analitiche e progettuali in modo sintetico e comprensibile a un vasto pubblico}
+}
+
+\newglossaryentry{urig}{
+    name=\glslink{uri}{URI},
+    text=URI,
+    sort=uri,
+    description={in informatica, con il termine \emph{URI, Uniform Resource Identifier} (ing. identificatore uniforme di risorsa) si indica una sequenza di caratteri che identifica univocamente una risorsa generica che può essere un indirizzo Web, un documento, un'immagine, un file, un servizio, ecc.}
+}
+
+\newglossaryentry{riconoscimentobiometrico}{
+    name=Riconoscimento biometrico,
+    text=riconoscimento biometrico,
+    description={si intende una particolare forma di autenticazione attraverso caratteristiche fisiologiche e/o comportamentali dell'utente, come ad esempio, tra quelle fisiologiche più comuni, l'impronta digitale e il riconoscimento facciale}
+}
+
+\newglossaryentry{wizard}{
+    name=Wizard,
+    text=wizard,
+    description={in informatica, con il termine \emph{wizard} si indica un programma, solitamente contenuto in un'applicazione più complessa, che permette all'utente, attraverso una procedura passo-passo, di essere guidato per l'esecuzione di un compito, con lo scopo di semplificare l'interazione con il software}
 }
