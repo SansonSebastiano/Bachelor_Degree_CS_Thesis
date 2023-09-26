@@ -5,6 +5,9 @@
 \newacronym[description={\glslink{httpg}{HyperText Transfer Protocol\glsoccur}}]
     {http}{HTTP}{HyperText Transfer Protocol}
 
+\newacronym[description={\glslink{mvcg}{Modern View Controller\glsoccur}}]
+    {mvc}{MVC}{Modern View Controller}
+
 \newacronym[description={\glslink{uig}{User Interface\glsoccur}}]
     {ui}{UI}{User Interface}
 
@@ -46,6 +49,19 @@
     description={linguaggio di programmazione open source e multi-platform sviluppato da Google, ovvero può essere utilizzato per lo sviluppo di applicazioni web, server e mobile}
 }
 
+\newglossaryentry{designpattern}{
+    name=Design pattern,
+    text=design pattern,
+    description={in informatica, con il termine \emph{design pattern} (ing. schema progettuale) si indica una soluzione che può essere applicata in più contesti, per risolvere un problema ricorrente.\\
+    I \emph{design pattern} si differenziano per il loro scopo: 
+    \begin{itemize}
+        \item \textbf{\emph{creazionali}}: si occupano dei meccanismi di creazione di oggetti;
+        \item \textbf{\emph{strutturali}}: si occupano della composizione di classi e oggetti;
+        \item \textbf{\emph{comportamentali}}: si occupano della comunicazione e assegnazione di responsabilità tra oggetti.
+    \end{itemize}
+    }
+}
+
 \newglossaryentry{figma}{
     name=Figma,
     description={strumento di editor di grafica vettoriale che consente la progettazione di interfacce utente e prototipazione di applicazioni web e mobile.}
@@ -70,6 +86,12 @@
     Le richieste sono composte da un \glslink{uri}{URI}, versione del protocollo e il metodo, che indica l'azione da compiere. Le risposte contengono un codice di stato, informazioni sul server e sulla risorsa richiesta e il contenuto della risorsa stessa}
 }
 
+\newglossaryentry{ingsw}{
+    name=Ingegneria del software,
+    text=ingegneria del software,
+    description={disciplina che si occupa di tutti gli aspetti della produzione del software, dalla fase di progettazione a quella di manutenzione, passando per la codifica, la verifica e la validazione, fornendo principi e metodologie da applicare con lo scopo di garantire efficacia ed efficienza nel processo di sviluppo}
+}
+
 \newglossaryentry{meetingnote}{
     name=Meeting Note,
     text=Meeting Note,
@@ -88,9 +110,26 @@
     description={indica una realizzazione a scopo illustrativo di un prodotto, con il fine di fornire in anteprima una rappresentazione del prodotto stesso, mancante dell'implementazione effettiva delle sue funzionalità, ma che ne mostri ugualmente le caratteristiche salienti}
 }
 
+\newglossaryentry{mvcg}{
+    name=\glslink{mvc}{MVC},
+    text=MVC,
+    sort=mvc,
+    description={indica un \glslink{patternarchitetturale}{pattern architetturale}\glsoccur che separa la logica di presentazione dei dati dalla logica di business.\\
+    Il \emph{modello} rappresenta la struttura dei dati dell'applicazione e le regole che governano la loro manipolazione.\\
+    La \emph{vista} è la rappresentazione visuale del modello.\\
+    Il \emph{controllore} è il componente che gestisce gli eventi, che possono essere generati sia dalla vista che dal modello, e aggiorna il modello e la vista}
+}
+
 \newglossaryentry{openai}{
     name=OpenAI \glslink{api}{API},
     description={insieme di servizi e risorse messi a disposizione da \emph{OpenAI}, che permettono agli sviluppatori di integrare modelli di intelligenza artificiale nei loro prodotti software}
+}
+
+\newglossaryentry{patternarchitetturale}{
+    name=Pattern architetturale,
+    text=pattern architetturale,
+    description={in informatica, con il termine \emph{pattern architetturale} si intende una soluzione, riutilizzabile, a un problema di progettazione architetturale, in un contesto definito.\\
+    Delinea una struttura di base per un sistema software, specificando le sue parti, le loro responsabilità e le relazioni tra di esse}
 }
 
 \newglossaryentry{uig}{
