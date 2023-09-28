@@ -1,26 +1,112 @@
 \chapter{Analisi dei requisiti}
 \label{cap:analisi-requisiti}
 
-\intro{Breve introduzione al capitolo}\\
+\intro{In questo capitolo verranno illustrati e descritti i casi d'uso del sistema applicativo e classificati i requisiti analizzati.}\\
 
 \section{Casi d'uso}
+\label{sec:usecase}
 
-Per lo studio dei casi di utilizzo del prodotto sono stati creati dei diagrammi.
-I diagrammi dei casi d'uso (in inglese \emph{Use Case Diagram}) sono diagrammi di tipo \gls{uml} dedicati alla descrizione delle funzioni o servizi offerti da un sistema, così come sono percepiti e utilizzati dagli attori che interagiscono col sistema stesso.
-Essendo il progetto finalizzato alla creazione di un tool per l'automazione di un processo, le interazioni da parte dell'utilizzatore devono essere ovviamente ridotte allo stretto necessario. Per questo motivo i diagrammi d'uso risultano semplici e in numero ridotto.
+Per lo studio dei \gls{usecase}\glsoccur del prodotto sono stati creati degli appositi diagrammi che illustrano le interazioni tra gli attori e il sistema.\\
+Ciascun caso d'uso viene fornito con una descrizione che ne riporta le informazioni principali, come attori coinvolti, pre e post condizioni, scenario principale ed eventuali scenari secondari.\\
+Per questioni di leggibilità, i diagrammi sono stati suddivisi in più parti, raggrupando i casi d'uso che costituiscono una macro-funzionalità (?) del sistema.
+
+\subsection{Attori}
+\label{subsec:attori}
+
+In questa sezione vengono definiti gli attori che interagiscono con il sistema.
+
+\subsubsection{Attori primari}
+\label{subsubsec:attori-primari}
+
+\begin{itemize}
+    \item \textbf{Utente non autenticato}: utente che possiede le credenziali per accedere al sistema, ma non ha ancora effettuato l'autenticazione;
+    \item \textbf{Utente autenticato}: utente che ha effettuato l'autenticazione al sistema.
+\end{itemize}
+
+\subsubsection{Attori secondari}
+\label{subsubsec:attori-secondari}
+
+\begin{itemize}
+    \item \textbf{\emph{RiskAPP API}}: sistema che fornisce le \gls{apig}\glsoccur del \emph{Tool Trattative} per l'interazione con il \gls{backend}\glsoccur dell'applicazione.
+\end{itemize}
+
+\clearpage
 
 \begin{figure}[!h] 
     \centering 
-    \includegraphics[width=0.9\columnwidth]{usecase/scenario-principale} 
-    \caption{Use Case - UC0: Scenario principale}
+    \includegraphics[width=1.0\columnwidth]{usecase/1-uc} 
+    \caption{Use Case - Login}
 \end{figure}
 
-\begin{usecase}{0}{Scenario principale}
-\usecaseactors{Sviluppatore applicativi}
-\usecasepre{Lo sviluppatore è entrato nel plug-in di simulazione all'interno dell'IDE}
-\usecasedesc{La finestra di simulazione mette a disposizione i comandi per configurare, registrare o eseguire un test}
-\usecasepost{Il sistema è pronto per permettere una nuova interazione}
-\label{uc:scenario-principale}
+\begin{usecase}{01}{Autenticazione}
+    \usecasemainactors{Utente non autenticato}
+    \usecasesecondaryactors{\emph{RiskAPP API}}
+    \usecasepre{L'utente non è ancora autenticato nel sistema}
+    \usecasedesc{L'utente effettua l'autenticazione al sistema, scegliendo se farlo, inserendo manualmente le credenziali, oppure tramite \gls{riconoscimentobiometrico}\glsoccur.}
+    \usecasepost{L'utente è autenticato nel sistema}
+    \usecasealt{Se l'autenticazione fallisce, si verifica \hyperref[UC04]{UC04}}
+    \label{UC01}
+\end{usecase}
+
+\begin{usecase}{02}{Inserimento credenziali}
+    \usecasemainactors{Utente non autenticato}
+    \usecasesecondaryactors{\emph{RiskAPP API}}
+    \usecasepre{L'utente non è ancora autenticato nel sistema}
+    \usecasedesc{L'utente inserisce manualmente le proprie credenziali per effettuare l'autenticazione al sistema.}
+    \usecasepost{L'utente è autenticato nel sistema}
+    \label{UC02}
+\end{usecase}
+
+\begin{usecase}{03}{Riconoscimento biometrico}
+    \usecasemainactors{Utente non autenticato}
+    \usecasesecondaryactors{\emph{RiskAPP API}}
+    \usecasepre{L'utente non è ancora autenticato nel sistema}
+    \usecasedesc{L'utente effettua il \gls{riconoscimentobiometrico}\glsoccur per effettuare l'autenticazione al sistema.}
+    \usecasepost{L'utente è autenticato nel sistema}
+    \label{UC03}
+\end{usecase}
+
+\begin{usecase}{04}{Errore autenticazione}
+    \usecasemainactors{Utente non autenticato}
+    \usecasepre{L'utente non è ancora autenticato nel sistema}
+    \usecasedesc{L'autenticazione fallisce e l'utente viene informato dell'errore; le motivazioni possono essere le seguenti:
+        \begin{itemize}
+            \item le credenziali inserite non sono corrette;
+            \item il sistema non è raggiungibile;
+            \item connessione ad internet assente.
+        \end{itemize}}
+    \usecasepost{L'utente non è autenticato nel sistema}
+    \label{UC04}
+\end{usecase}
+
+\begin{figure}[!h] 
+    \centering 
+    \includegraphics[width=1.0\columnwidth]{usecase/2-uc} 
+    \caption{Use Case - Visualizzazione Meeting Note}
+\end{figure}
+
+\begin{usecase}{05}{Visualizzazione Meeting Note}
+    \usecasemainactors{Utente autenticato}
+    \usecasesecondaryactors{\emph{RiskAPP API}}
+    \usecasepre{L'utente è autenticato nel sistema}
+    \usecasedesc{Viene visualizzata la lista di tutte le \gls{meetingnote}\glsoccur associate all'utente autenticato.}
+    \usecasepost{L'utente visualizza la lista delle \gls{meetingnote}\glsoccur}
+    \usecasealt{Se la visualizzazione fallisce, si verifica \hyperref[UC06]{UC06}}
+    \label{UC05}
+\end{usecase}
+
+\begin{usecase}{06}{Errore visualizzazione lista Meeting Note}
+    \usecasemainactors{Utente autenticato}
+    \usecasepre{L'utente è autenticato nel sistema}
+    \usecasedesc{La visualizzazione della lista delle \gls{meetingnote}\glsoccur fallisce e l'utente viene informato dell'errore; le motivazioni possono essere le seguenti:
+        \begin{itemize}
+            \item la lista è vuota;
+            \item il sistema non è raggiungibile;
+            \item token di autenticazione scaduto;
+            \item connessione ad internet assente.
+        \end{itemize}}
+    \usecasepost{L'utente non visualizza la lista delle \gls{meetingnote}\glsoccur}
+    \label{UC06}
 \end{usecase}
 
 \section{Tracciamento dei requisiti}
