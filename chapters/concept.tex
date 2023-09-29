@@ -104,8 +104,8 @@ In questa sezione vengono definiti gli attori che interagiscono con il sistema.
 \begin{usecase}{05.1}{Visualizzazione cliente delle Meeting Note}
     \usecasemainactors{Utente autenticato}
     \usecasepre{L'utente visualizza la lista delle \gls{meetingnote}\glsoccur}
-    \usecasedesc{Vengono visualizzati gli identificativi dei clienti associati alle \gls{meetingnote}\glsoccur.}
-    \usecasepost{L'utente visualizza i clienti associati alle \gls{meetingnote}\glsoccur}
+    \usecasedesc{Vengono visualizzati gli identificativi dei \glspl{cliente}\glsoccur associati alle \gls{meetingnote}\glsoccur.}
+    \usecasepost{L'utente visualizza i \glspl{cliente}\glsoccur associati alle \gls{meetingnote}\glsoccur}
 \end{usecase}
 
 \begin{usecase}{05.2}{Visualizzazione data della Meeting Note}
@@ -156,9 +156,9 @@ In questa sezione vengono definiti gli attori che interagiscono con il sistema.
 \begin{usecase}{07.1}{Ricerca per identificativo del cliente}
     \usecasemainactors{Utente autenticato}
     \usecasesecondaryactors{\emph{RiskAPP API}}
-    \usecasepre{L'utente ha selezionato la categoria del cliente}
-    \usecasedesc{L'utente effettua una ricerca per identificativo del cliente all'interno della lista delle \gls{meetingnote}\glsoccur.}
-    \usecasepost{L'utente visualizza la lista delle \gls{meetingnote}\glsoccur filtrata per identificativo del cliente}
+    \usecasepre{L'utente ha selezionato la categoria del \gls{cliente}\glsoccur}
+    \usecasedesc{L'utente effettua una ricerca per identificativo del \gls{cliente}\glsoccur all'interno della lista delle \gls{meetingnote}\glsoccur.}
+    \usecasepost{L'utente visualizza la lista delle \gls{meetingnote}\glsoccur filtrata per identificativo del \gls{cliente}\glsoccur}
     \usecasealt{Se la ricerca fallisce, si verifica \hyperref[UC07.6]{UC07.6}}
     \label{UC07.1}
 \end{usecase}
@@ -166,8 +166,8 @@ In questa sezione vengono definiti gli attori che interagiscono con il sistema.
 \begin{usecase}{07.2}{Selezione della categoria del cliente}
     \usecasemainactors{Utente autenticato}
     \usecasepre{L'utente visualizza la lista delle \gls{meetingnote}\glsoccur a lui associate}
-    \usecasedesc{L'utente seleziona la categoria del cliente per effettuare la ricerca per identificativo all'interno della lista delle \gls{meetingnote}\glsoccur.}
-    \usecasepost{L'utente ha selezionato la categoria del cliente}
+    \usecasedesc{L'utente seleziona la categoria del \gls{cliente}\glsoccur per effettuare la ricerca per identificativo all'interno della lista delle \gls{meetingnote}\glsoccur.}
+    \usecasepost{L'utente ha selezionato la categoria del \gls{cliente}\glsoccur}
     \label{UC07.2}
 \end{usecase}
 
@@ -345,7 +345,7 @@ In questa sezione vengono definiti gli attori che interagiscono con il sistema.
     \usecasedesc{L'utente vuole ordinare la lista delle \gls{meetingnote}\glsoccur dalla più recente.}
     \usecasepost{L'utente visualizza la lista delle \gls{meetingnote}\glsoccur ordinata dalla più recente}
     \usecasealt{Se l'ordinamento fallisce, si verifica \hyperref[UC13]{UC13}}
-    \label{UC11}
+    \label{UC12}
 \end{usecase}
 
 \begin{usecase}{13}{Errore nell'ordinamento}
@@ -381,8 +381,8 @@ In questa sezione vengono definiti gli attori che interagiscono con il sistema.
 \begin{usecase}{14.1}{Visualizzazione cliente Meeting Note}
     \usecasemainactors{Utente autenticato}
     \usecasepre{L'utente visualizza i dettagli di una singola \gls{meetingnote}\glsoccur}
-    \usecasedesc{L'utente vuole visualizzare il cliente di una \gls{meetingnote}\glsoccur.}
-    \usecasepost{L'utente visualizza il cliente di una \gls{meetingnote}\glsoccur}
+    \usecasedesc{L'utente vuole visualizzare il \gls{cliente}\glsoccur di una \gls{meetingnote}\glsoccur.}
+    \usecasepost{L'utente visualizza il \gls{cliente}\glsoccur di una \gls{meetingnote}\glsoccur}
     \label{UC14.1}
 \end{usecase}
 
@@ -439,6 +439,7 @@ In questa sezione vengono definiti gli attori che interagiscono con il sistema.
     \usecasepre{L'utente visualizza i dettagli di una singola \gls{meetingnote}\glsoccur}
     \usecasedesc{L'utente vuole modificare la \gls{meetingnote}\glsoccur selezionata.}
     \usecasepost{L'utente ha modificato la \gls{meetingnote}\glsoccur selezionata}
+    \label{UC14.7}
 \end{usecase}
 
 \newpage
@@ -471,6 +472,241 @@ In questa sezione vengono definiti gli attori che interagiscono con il sistema.
     \usecasedesc{L'utente vuole creare automaticamente una nuova \gls{meetingnote}\glsoccur.}
     \usecasepost{L'utente ha creato automaticamente una nuova \gls{meetingnote}\glsoccur}
     \label{UC17}
+\end{usecase}
+
+\newpage
+
+\begin{figure}[!h] 
+    \centering 
+    \includegraphics[width=1.0\columnwidth]{usecase/9-uc} 
+    \caption{Use Case - Creazione automatica}
+\end{figure}
+
+\begin{usecase}{17.1}{Compilazione dati Meeting Note}
+    \usecasemainactors{Utente autenticato}
+    \usecasepre{L'utente vuole creare automaticamente una \gls{meetingnote}\glsoccur}
+    \usecasedesc{L'utente compila i dati necessari per la creazione automatica di una \gls{meetingnote}\glsoccur.}
+    \usecasepost{L'utente ha compilato i dati necessari per la creazione automatica di una \gls{meetingnote}\glsoccur}
+\end{usecase}
+
+\begin{usecase}{17.2}{Elaborazione dati}
+    \usecasemainactors{Utente autenticato}
+    \usecasesecondaryactors{\emph{RiskAPP API}}
+    \usecasepre{L'utente ha compilato i dati necessari per la creazione automatica di una \gls{meetingnote}\glsoccur}
+    \usecasedesc{I dati vengono elaborati da una algoritmo di Intelligenza Artificiale [TERMINA DA AGGIUNGERE AL GLOSSARIO] per estrapolare i dati (cliente, data e contenuto) per la creazione di una \gls{meetingnote}\glsoccur.}
+    \usecasepost{I dati (cliente, data e contenuto) per la creazione di una \gls{meetingnote}\glsoccur sono stati estrapolati}
+    \usecasealt{Se l'elaborazione fallisce, si verifica \hyperref[UC17.3]{UC17.3}}
+    \label{UC17.2}
+\end{usecase}
+
+\begin{usecase}{17.3}{Errore elaborazione dati}
+    \usecasemainactors{Utente autenticato}
+    \usecasesecondaryactors{\emph{RiskAPP API}}
+    \usecasepre{L'utente ha compilato i dati necessari per la creazione automatica di una \gls{meetingnote}\glsoccur}
+    \usecasedesc{L'elaborazione dei dati per la creazione di una \gls{meetingnote}\glsoccur fallisce e l'utente viene informato dell'errore; le motivazioni possono essere le seguenti:
+        \begin{itemize}
+            \item i dati inseriti non sono sufficienti per l'elaborazione;
+            \item l'algoritmo non è stato in grado di estrapolare i dati;
+            \item il sistema non è raggiungibile;
+            \item token di autenticazione scaduto;
+            \item connessione ad internet assente.
+        \end{itemize}}
+    \usecasepost{I dati per la creazione di una \gls{meetingnote}\glsoccur non sono stati estrapolati}
+    \label{UC17.3}
+\end{usecase}
+
+\begin{usecase}{17.4}{Visualizzazione risultato elaborazione}
+    \usecasemainactors{Utente autenticato}
+    \usecasepre{L'algoritmo ha estrapolato i dati per la creazione di una \gls{meetingnote}\glsoccur}
+    \usecasedesc{Vengogno visualizzati i dati estrapolati dall'algoritmo per la creazione di una \gls{meetingnote}\glsoccur.}
+    \usecasepost{L'utente visualizza i dati estrapolati dall'algoritmo per la creazione di una \gls{meetingnote}\glsoccur per accertarsi della loro correttezza}
+    \label{UC17.4}
+\end{usecase}
+
+\begin{usecase}{17.5}{Annulla creazione automatica}
+    \usecasemainactors{Utente autenticato}
+    \usecasepre{L'utente vuole creare automaticamente una \gls{meetingnote}\glsoccur}
+    \usecasedesc{L'utente annulla la creazione automatica di una \gls{meetingnote}\glsoccur.}
+    \usecasepost{L'utente ha annullato la creazione automatica di una \gls{meetingnote}\glsoccur}
+    \label{UC17.5}
+\end{usecase}
+
+\newpage
+
+\begin{figure}[!h] 
+    \centering 
+    \includegraphics[width=1.0\columnwidth]{usecase/10-uc} 
+    \caption{Use Case - Visualizzazione risultato elaborazione}
+\end{figure}
+
+\newpage
+
+\begin{figure}[!h] 
+    \centering 
+    \includegraphics[width=1.0\columnwidth]{usecase/8-uc} 
+    \caption{Use Case - Creazione manuale (\hyperref[UC16]{UC16}) e Modifica (\hyperref[UC14.7]{UC14.7}) di una Meeting Note}
+\end{figure}
+
+SCRIVERE LA SPIEGAZIONE DELLO SVILUPPO DEGLI USE CASE \hyperref[UC16]{UC16} e \hyperref[UC14.7]{UC14.7}
+
+\begin{usecase}{18}{Selezione del cliente}
+    \usecasemainactors{Utente autenticato}
+    \usecasepre{L'utente vuole creare manualmente o modificare una \gls{meetingnote}\glsoccur}
+    \usecasedesc{L'utente deve selezionare un \gls{cliente}\glsoccur per la creazione o la modifica di una \gls{meetingnote}\glsoccur.}
+    \usecasepost{L'utente ha selezionato un \gls{cliente}\glsoccur}
+\end{usecase}
+
+\begin{usecase}{19}{Visualizzazione lista clienti}
+    \usecasemainactors{Utente autenticato}
+    \usecasesecondaryactors{\emph{RiskAPP API}}
+    \usecasepre{L'utente ha selezionato la categoria del \gls{cliente}\glsoccur}
+    \usecasedesc{Viene visualizzata la lista di tutti i \glspl{cliente}\glsoccur della categoria selezionata.}
+    \usecasepost{L'utente visualizza la lista dei \glspl{cliente}\glsoccur filtrata per categoria}
+    \usecasealt{Se la visualizzazione fallisce, si verifica \hyperref[UC20]{UC20}}
+    \label{UC19}
+\end{usecase}
+
+\begin{usecase}{20}{Errore visualizzazione lista clienti}
+    \usecasemainactors{Utente autenticato}
+    \usecasesecondaryactors{\emph{RiskAPP API}}
+    \usecasepre{L'utente ha selezionato la categoria del \gls{cliente}\glsoccur}
+    \usecasedesc{La visualizzazione della lista dei \glspl{cliente}\glsoccur fallisce e l'utente viene informato dell'errore; le motivazioni possono essere le seguenti:
+        \begin{itemize}
+            \item la lista è vuota;
+            \item il sistema non è raggiungibile;
+            \item token di autenticazione scaduto;
+            \item connessione ad internet assente.
+        \end{itemize}}
+    \usecasepost{L'utente non visualizza la lista dei \glspl{cliente}\glsoccur filtrata per categoria}
+    \label{UC20}
+\end{usecase}
+
+\begin{usecase}{21}{Ricerca cliente per identificativo}
+    \usecasemainactors{Utente autenticato}
+    \usecasesecondaryactors{\emph{RiskAPP API}}
+    \usecasepre{L'utente ha selezionato la categoria del \gls{cliente}\glsoccur}
+    \usecasedesc{L'utente effettua una ricerca per identificativo del \gls{cliente}\glsoccur all'interno della lista dei \glspl{cliente}\glsoccur.}
+    \usecasepost{L'utente visualizza la lista dei \glspl{cliente}\glsoccur filtrata per identificativo del \gls{cliente}\glsoccur}
+    \usecasealt{Se la ricerca fallisce, si verifica \hyperref[UC22]{UC22}}
+    \label{UC21}
+\end{usecase}
+
+\begin{usecase}{22}{Errore ricerca dell'identificativo}
+    \usecasemainactors{Utente autenticato}
+    \usecasesecondaryactors{\emph{RiskAPP API}}
+    \usecasepre{L'utente ha effettuato una ricerca all'interno della lista dei \glspl{cliente}\glsoccur}
+    \usecasedesc{La ricerca dell'identificativo del \gls{cliente}\glsoccur fallisce e l'utente viene informato dell'errore; le motivazioni possono essere le seguenti:
+        \begin{itemize}
+            \item la lista risultante è vuota;
+            \item il sistema non è raggiungibile;
+            \item token di autenticazione scaduto;
+            \item connessione ad internet assente.
+        \end{itemize}}
+    \usecasepost{L'utente non visualizza la lista dei \glspl{cliente}\glsoccur filtrata per identificativo del \gls{cliente}\glsoccur}
+    \label{UC22}
+\end{usecase}
+
+\begin{usecase}{23}{Selezione della categoria del cliente}
+    \usecasemainactors{Utente autenticato}
+    \usecasepre{L'utente deve selezionare un \gls{cliente}\glsoccur}
+    \usecasedesc{L'utente seleziona la categoria del \gls{cliente}\glsoccur per filtrare la lista dei \glspl{cliente}\glsoccur e/o la ricerca dell'identificativo.}
+    \usecasepost{L'utente ha selezionato la categoria del \gls{cliente}\glsoccur}
+    \label{UC23}
+\end{usecase}
+
+\begin{usecase}{24}{Selezione della data}
+    \usecasemainactors{Utente autenticato}
+    \usecasepre{L'utente vuole creare manualmente o modificare una \gls{meetingnote}\glsoccur}
+    \usecasedesc{L'utente deve selezionare una data per la creazione o la modifica di una \gls{meetingnote}\glsoccur.}
+    \usecasepost{L'utente ha selezionato una data}
+    \label{UC24}
+\end{usecase}
+
+\begin{usecase}{25}{Visualizzazione riepilogo}
+    \usecasemainactors{Utente autenticato}
+    \usecasepre{L'utente ha selezionato un \gls{cliente}\glsoccur e una data}
+    \usecasedesc{Viene visualizzato il riepilogo dei dati selezionati.}
+    \usecasepost{L'utente visualizza il riepilogo dei dati selezionati}
+    \label{UC25}
+\end{usecase}
+
+\newpage
+
+\begin{figure}[!h] 
+    \centering 
+    \includegraphics[width=1.0\columnwidth]{usecase/11-uc} 
+    \caption{Use Case - Visualizzazione riepilogo}
+\end{figure}
+
+\begin{usecase}{25.1}{Visualizzazione identificativo cliente}
+    \usecasemainactors{Utente autenticato}
+    \usecasepre{L'utente visualizza il riepilogo}
+    \usecasedesc{Viene visualizzato l'identificativo del \gls{cliente}\glsoccur selezionato.}
+    \usecasepost{L'utente visualizza l'identificativo del \gls{cliente}\glsoccur selezionato}
+    \label{UC25.1}
+\end{usecase}
+
+\begin{usecase}{25.2}{Visualizzazione data}
+    \usecasemainactors{Utente autenticato}
+    \usecasepre{L'utente visualizza il riepilogo}
+    \usecasedesc{Viene visualizzata la data selezionata.}
+    \usecasepost{L'utente visualizza la data selezionata}
+    \label{UC25.2}
+\end{usecase}
+
+\begin{usecase}{26}{Compilazione contenuto Meeting Note}
+    \usecasemainactors{Utente autenticato}
+    \usecasepre{L'utente vuole creare manualmente o modificare una \gls{meetingnote}\glsoccur}
+    \usecasedesc{L'utente deve compilare il contenuto della \gls{meetingnote}\glsoccur.}
+    \usecasepost{L'utente ha compilato il contenuto della \gls{meetingnote}\glsoccur}
+\end{usecase}
+
+\begin{usecase}{27}{Compilazione testuale}
+    \usecasemainactors{Utente autenticato}
+    \usecasepre{L'utente deve compilare il contenuto della \gls{meetingnote}\glsoccur}
+    \usecasedesc{L'utente deve compilare il contenuto della \gls{meetingnote}\glsoccur con l'ausilio della tastiera.}
+    \usecasepost{L'utente ha compilato il contenuto della \gls{meetingnote}\glsoccur con l'ausilio della tastiera}
+    \label{UC27}
+\end{usecase}
+
+\begin{usecase}{28}{Compilazione vocale}
+    \usecasemainactors{Utente autenticato}
+    \usecasepre{L'utente deve compilare il contenuto della \gls{meetingnote}\glsoccur}
+    \usecasedesc{L'utente deve compilare il contenuto della \gls{meetingnote}\glsoccur attraverso la dettatura vocale.}
+    \usecasepost{L'utente ha compilato il contenuto della \gls{meetingnote}\glsoccur attraverso la dettatura vocale}
+    \label{UC28}
+\end{usecase}
+
+\begin{usecase}{29}{Annulla operazione di Creazione-Modifica di una Meeting Note}
+    \usecasemainactors{Utente autenticato}
+    \usecasepre{L'utente ha selezionato: \gls{cliente}\glsoccur, data e compilato il contenuto della \gls{meetingnote}\glsoccur}
+    \usecasedesc{L'utente vuole annullare l'operazione di creazione o modifica di una \gls{meetingnote}\glsoccur.}
+    \usecasepost{L'utente ha annullato l'operazione di creazione o modifica di una \gls{meetingnote}\glsoccur}
+    \label{UC29}
+\end{usecase}
+
+\begin{usecase}{30}{Conferma operazione di Creazione-Modifica di una Meeting Note}
+    \usecasemainactors{Utente autenticato}
+    \usecasesecondaryactors{\emph{RiskAPP API}}
+    \usecasepre{L'utente ha selezionato: \gls{cliente}\glsoccur, data e compilato il contenuto della \gls{meetingnote}\glsoccur}
+    \usecasedesc{L'utente vuole confermare l'operazione di creazione o modifica di una \gls{meetingnote}\glsoccur.}
+    \usecasepost{L'utente ha confermato l'operazione di creazione o modifica di una \gls{meetingnote}\glsoccur}
+    \usecasealt{Se la conferma fallisce, si verifica \hyperref[UC31]{UC31}}
+    \label{UC30}
+\end{usecase}
+
+\begin{usecase}{31}{Errore nell'operazione di conferma}
+    \usecasemainactors{Utente autenticato}
+    \usecasesecondaryactors{\emph{RiskAPP API}}
+    \usecasepre{L'utente ha confermato l'operazione di creazione o modifica di una \gls{meetingnote}\glsoccur}
+    \usecasedesc{La conferma dell'operazione di creazione o modifica della \gls{meetingnote}\glsoccur fallisce e l'utente viene informato dell'errore; le motivazioni possono essere le seguenti:
+        \begin{itemize}
+            \item il sistema non è raggiungibile;
+            \item token di autenticazione scaduto;
+            \item connessione ad internet assente.
+        \end{itemize}}
+    \usecasepost{La conferm dell'operazione di creazione o modifica di una \gls{meetingnote}\glsoccur è fallita}
+    \label{UC31}
 \end{usecase}
 
 \section{Tracciamento dei requisiti}
