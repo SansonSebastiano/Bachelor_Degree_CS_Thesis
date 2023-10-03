@@ -505,7 +505,6 @@ In questa sezione vengono definiti gli \glspl{attore}\glsoccur che interagiscono
     \usecasepre{L'utente ha compilato i dati necessari per la creazione automatica di una \gls{meetingnote}\glsoccur}
     \usecasedesc{L'elaborazione dei dati per la creazione di una \gls{meetingnote}\glsoccur fallisce e l'utente viene informato dell'errore; le motivazioni possono essere le seguenti:
         \begin{itemize}
-            \item i dati inseriti non sono sufficienti per l'elaborazione;
             \item l'algoritmo non è stato in grado di estrapolare i dati;
             \item il sistema non è raggiungibile;
             \item token di autenticazione scaduto;
@@ -807,37 +806,132 @@ Nelle tabelle \ref{tab:requisiti-funzionali}, \ref{tab:requisiti-qualitativi} e 
 \hline\hline
 \textbf{Requisito} & \textbf{Descrizione} & \textbf{Use Case}\\
 \hline
-RFN-1 & Il sistema permette di effettuare l'autenticazione & \hyperref[UC01]{UC01} \\
+RFN-1 \label{RFN-1} & Il sistema permette di effettuare l'autenticazione & \hyperref[UC01]{UC01} \\
 \hline
-RFN-2 & Il sistema permette di inserire le credenziali (username e password) per effettuare l'autenticazione & \hyperref[UC02]{UC02} \\
+RFN-2 \label{RFN-2} & Il sistema permette di inserire le credenziali (\emph{username} e \emph{password}) per effettuare l'autenticazione & \hyperref[UC02]{UC02} \\
 \hline
-RFN-3 & Il sistema permette il riconoscimento biometrico per effettuare l'autenticazione & \hyperref[UC03]{UC03} \\
+RFN-3 \label{RFN-3} & Il sistema permette il riconoscimento biometrico per effettuare l'autenticazione & \hyperref[UC03]{UC03} \\
 \hline
-RFN-3 & Il sistema deve notificare l'utente in caso di inserimento di credenziali errate & \hyperref[UC04]{UC04} \\
+RFN-4 \label{RFN-4} & Il sistema deve notificare l'utente in caso di inserimento di credenziali errate & \hyperref[UC04]{UC04} \\ % \hyperref[UC08.8]{UC08.8}
 \hline
-RFN-4 & Il sistema deve notificare l'utente in caso in cui il sistema, ovvero \emph{RiskAPP API} non sia raggiungibile & \hyperref[UC04]{UC04} \\ %, \hyperref[UC06]{UC06}, \hyperref[UC07.6]{UC07.6}, \hyperref[UC08.8]{UC08.8}, \hyperref[UC09]{UC09}, \hyperref[UC13]{UC13}, \hyperref[UC14.6]{UC14.6}, \hyperref[UC17.3]{UC17.3}, \hyperref[UC20]{UC20}, \hyperref[UC22]{UC22}, \hyperref[UC31]{UC31} 
+RFN-5 \label{RFN-5} & Il sistema deve notificare l'utente in caso in cui il sistema, ovvero \emph{RiskAPP API} non sia raggiungibile & \hyperref[UC04]{UC04} \\ %, \hyperref[UC06]{UC06}, \hyperref[UC07.6]{UC07.6}, \hyperref[UC08.8]{UC08.8}, \hyperref[UC09]{UC09}, \hyperref[UC13]{UC13}, \hyperref[UC14.6]{UC14.6}, \hyperref[UC17.3]{UC17.3}, \hyperref[UC20]{UC20}, \hyperref[UC22]{UC22}, \hyperref[UC31]{UC31} 
 \hline
-RFN-5 & Il sistema deve permettere all'utente, in caso in cui il riconoscimento biometrico fallisce, di poter inserire le credenziali manualmente & \hyperref[UC04]{UC04} \\
+RFN-6 \label{RFN-6} & Il sistema deve permettere all'utente, in caso in cui il riconoscimento biometrico fallisce, di poter inserire le credenziali manualmente & \hyperref[UC04]{UC04} \\
 \hline
-RFN-6 & Il sistema deve notificare l'utente in caso di connessione internet assente & \hyperref[UC04]{UC04} \\ %, \hyperref[UC06]{UC06}, \hyperref[UC07.6]{UC07.6}, \hyperref[UC08.8]{UC08.8}, \hyperref[UC09]{UC09}, \hyperref[UC13]{UC13}, \hyperref[UC14.6]{UC14.6}, \hyperref[UC17.3]{UC17.3}, \hyperref[UC20]{UC20}, \hyperref[UC22]{UC22}, \hyperref[UC31]{UC31} 
+RFN-7 \label{RFN-7} & Il sistema deve notificare l'utente in caso di connessione internet assente & \hyperref[UC04]{UC04} \\ %, \hyperref[UC06]{UC06}, \hyperref[UC07.6]{UC07.6}, \hyperref[UC08.8]{UC08.8}, \hyperref[UC09]{UC09}, \hyperref[UC13]{UC13}, \hyperref[UC14.6]{UC14.6}, \hyperref[UC17.3]{UC17.3}, \hyperref[UC20]{UC20}, \hyperref[UC22]{UC22}, \hyperref[UC31]{UC31} 
 \hline
-RFN-7 & Il sistema permette di visualizzare la lista di \emph{Meeting Note} & \hyperref[UC05]{UC05} \\
+RFN-8 \label{RFN-8} & Il sistema permette di visualizzare la lista di \emph{Meeting Note} & \hyperref[UC05]{UC05} \\
 \hline
-RFN-8 & Il sistema permette di visualizzare i clienti di ciascuna \emph{Meeting Note} nella lista & \hyperref[UC05.1]{UC05.1} \\
+RFN-9 \label{RFN-9} & Il sistema permette di visualizzare i clienti di ciascuna \emph{Meeting Note} nella lista & \hyperref[UC05.1]{UC05.1} \\
 \hline
-RFN-9 & Il sistema permette di visualizzare la data dell'incontro di ciascuna \emph{Meeting Note} nella lista & \hyperref[UC05.2]{UC05.2} \\
+RFN-10 \label{RFN-10} & Il sistema permette di visualizzare la data dell'incontro di ciascuna \emph{Meeting Note} nella lista & \hyperref[UC05.2]{UC05.2} \\
 \hline
-RFN-10 & Il sistema permette di visualizzare parzialmente il contenuto di ciascuna \emph{Meeting Note} nella lista & \hyperref[UC05.3]{UC05.3} \\
+RFN-11 \label{RFN-11} & Il sistema permette di visualizzare parzialmente il contenuto di ciascuna \emph{Meeting Note} nella lista & \hyperref[UC05.3]{UC05.3} \\
 \hline
-RFN-11 & Il sistema deve notificare l'utente in caso la lista di \emph{Meeting Note} sia vuota & \hyperref[UC06]{UC06} \\
+RFN-12 \label{RFN-12} & Il sistema deve notificare l'utente in caso la lista di \emph{Meeting Note} sia vuota & \hyperref[UC06]{UC06} \\
 \hline
-RFN-12 & Il sistema deve notificare l'utente in caso sia scaduto il token di autenticazione & \hyperref[UC06]{UC06} \\ % \hyperref[UC07.6]{UC07.6}, \hyperref[UC08.8]{UC08.8}, \hyperref[UC09]{UC09}, \hyperref[UC13]{UC13}, \hyperref[UC14.6]{UC14.6}, \hyperref[UC17.3]{UC17.3}, \hyperref[UC20]{UC20}, \hyperref[UC22]{UC22}, \hyperref[UC31]{UC31}
+RFN-13 \label{RFN-13} & Il sistema deve notificare l'utente in caso sia scaduto il token di autenticazione & \hyperref[UC06]{UC06} \\ % \hyperref[UC07.6]{UC07.6}, \hyperref[UC08.8]{UC08.8}, \hyperref[UC09]{UC09}, \hyperref[UC13]{UC13}, \hyperref[UC14.6]{UC14.6}, \hyperref[UC17.3]{UC17.3}, \hyperref[UC20]{UC20}, \hyperref[UC22]{UC22}, \hyperref[UC31]{UC31}
 \hline
-RFN-13 & Il sistema permette di effettuare una ricerca nella lista di \emph{Meeting Note} & \hyperref[UC07]{UC07} \\
+RFN-14 \label{RFN-14} & Il sistema permette di effettuare una ricerca nella lista di \emph{Meeting Note} & \hyperref[UC07]{UC07} \\
 \hline
-% CONTINUA DA UC07.1
+RFN-15 \label{RFN-15} & Il sistema permette di effettuare una ricerca nella lista di \emph{Meeting Note} per identificativo del cliente & \hyperref[UC07.1]{UC07.1} \\
+\hline
+RFN-16 \label{RFN-16} & Il sistema permette di selezionare la categoria del cliente in modo da effettuare una ricerca nella lista di \emph{Meeting Note} per identificativo del cliente & \hyperref[UC07.2]{UC07.2} \\
+\hline
+RFN-17 \label{RFN-17} & Il sistema permette di effettuare una ricerca nella lista di \emph{Meeting Note} per data & \hyperref[UC07.3]{UC07.3} \\
+\hline
+RFN-18 \label{RFN-18} & Il sistema permette di effettuare una ricerca nella lista di \emph{Meeting Note} per data singola & \hyperref[UC07.4]{UC07.4} \\
+\hline
+RFN-17 \label{RFN-19} & Il sistema permette di effettuare una ricerca nella lista di \emph{Meeting Note} per intervallo di date & \hyperref[UC07.5]{UC07.5} \\
+\hline
+RFN-18 \label{RFN-19} & Il sistema permette di notificare l'utente in caso la lista filtrata sia vuota & \hyperref[UC07.6]{UC07.6} \\
+\hline
+RFN-19 \label{RFN-19} & Il sistema permette di visualizzare i dati personali dell'utente & \hyperref[UC08]{UC08} \\
+\hline
 \end{tabularx}
-\end{table}%
+\end{table}
+
+\newpage
+
+\begin{table}%
+\caption{Tabella del tracciamento dei requisti funzionali}
+\label{tab:requisiti-funzionali}
+\begin{tabularx}{\textwidth}{lXl}
+\hline\hline
+\textbf{Requisito} & \textbf{Descrizione} & \textbf{Use Case}\\
+\hline
+RFN-20 \label{RFN-20} & Il sistema permette di visualizzare il nome dell'utente & \hyperref[UC08.1]{UC08.1} \\
+\hline
+RFN-21 \label{RFN-21} & Il sistema permette di visualizzare il cognome dell'utente & \hyperref[UC08.2]{UC08.2} \\
+\hline
+RFN-22 \label{RFN-22} & Il sistema permette di visualizzare la email dell'utente & \hyperref[UC08.3]{UC08.3} \\
+\hline
+RFN-23 \label{RFN-23} & Il sistema permette di visualizzare l'avatar dell'utente & \hyperref[UC08.4]{UC08.4} \\
+\hline
+RFN-24 \label{RFN-24} & Il sistema permette di effettuare il logout & \hyperref[UC08.5]{UC08.5} \\
+\hline
+RFN-25 \label{RFN-25} & Il sistema permette di abilitare il riconoscimento biometrico & \hyperref[UC08.6]{UC08.6} \\
+\hline
+RFN-26 \label{RFN-26} & Il sistema permette di confermare l'abilitazione del riconoscimento biometrico, inserendo le credenziali (\emph{username} e \emph{password}) & \hyperref[UC08.7]{UC08.7} \\
+\hline
+RFN-27 \label{RFN-27} & Il sistema permette di notificare l'utente in caso in cui la conferma per l'abilitazione del riconoscimento biometrico non vada a buon fine & \hyperref[UC08.8]{UC08.8} \\
+\hline
+RFN-28 \label{RFN-28} & Il sistema permette di notificare l'utente se la visualizzazione dei dati personali fallisce & \hyperref[UC09]{UC09} \\
+\hline
+RFN-29 \label{RFN-29} & Il sistema permette di ordinare la lista di \emph{Meeting Note} & \hyperref[UC10]{UC10} \\
+\hline
+RFN-30 \label{RFN-30} & Il sistema permette di ordinare la lista di \emph{Meeting Note} per data meno recente & \hyperref[UC11]{UC11} \\
+\hline
+RFN-31 \label{RFN-31} & Il sistema permette di ordinare la lista di \emph{Meeting Note} per data più recente & \hyperref[UC12]{UC12} \\
+\hline
+RFN-32 \label{RFN-32} & Il sistema permette di notificare l'utente se l'ordinamento della lista di \emph{Meeting Note} fallisce & \hyperref[UC13]{UC13} \\
+\hline
+RFN-33 \label{RFN-33} & Il sistema permette di visualizzare i dettagli (cliente, data, contenuto e autore) di una \emph{Meeting Note} selezionata & \hyperref[UC14]{UC14} \\
+\hline
+RFN-34 \label{RFN-34} & Il sistema permette di visualizzare l'identificativo del cliente di una \emph{Meeting Note} selezionata & \hyperref[UC14.1]{UC14.1} \\
+\hline
+RFN-35 \label{RFN-35} & Il sistema permette di visualizzare la data dell'incontro di una \emph{Meeting Note} selezionata & \hyperref[UC14.2]{UC14.2} \\
+\hline
+RFN-36 \label{RFN-36} & Il sistema permette di visualizzare il contenuto dell'incontro di una \emph{Meeting Note} selezionata & \hyperref[UC14.3]{UC14.3} \\
+\hline
+RFN-37 \label{RFN-37} & Il sistema permette di visualizzare l'autore di una \emph{Meeting Note} selezionata & \hyperref[UC14.4]{UC14.4} \\
+\hline
+RFN-38 \label{RFN-38} & Il sistema permette di eliminare una \emph{Meeting Note} selezionata & \hyperref[UC14.5]{UC14.5} \\
+\hline
+RFN-39 \label{RFN-39} & Il sistema permette di notificare l'utente in caso in cui l'eliminazione di una \emph{Meeting Note} selezionata fallisca & \hyperref[UC14.6]{UC14.6} \\
+\hline
+RFN-40 \label{RFN-40} & Il sistema permette di modificare una \emph{Meeting Note} selezionata & \hyperref[UC14.7]{UC14.7} \\
+\hline
+\end{tabularx}
+\end{table}
+
+\newpage
+
+\begin{table}%
+    \caption{Tabella del tracciamento dei requisti funzionali}
+    \label{tab:requisiti-funzionali}
+    \begin{tabularx}{\textwidth}{lXl}
+    \hline\hline
+    \textbf{Requisito} & \textbf{Descrizione} & \textbf{Use Case}\\
+    \hline
+    RFN-41 \label{RFN-41} & Il sistema permette di effettuare la creazione di una \emph{Meeting Note} & \hyperref[UC15]{UC15} \\
+    \hline
+    RFN-42 \label{RFN-42} & Il sistema permette di effettuare la creazione manuale di una \emph{Meeting Note} & \hyperref[UC16]{UC16} \\
+    \hline
+    RFN-43 \label{RFN-43} & Il sistema permette di effettuare la creazione automatica di una \emph{Meeting Note} & \hyperref[UC17]{UC17} \\
+    \hline
+    RFN-44 \label{RFN-44} & Il sistema permette di compilare i dati (cliente, data e contenuto), sottoforma di una descrizione testuale, di una \emph{Meeting Note} per la creazione automatica & \hyperref[UC17.1]{UC17.1} \\
+    \hline
+    RFN-45 \label{RFN-45} & Il sistema permette di effettuare l'elaborazione del testo da parte di un algoritmo di \emph{Intelligenza Artificiale (ACRONIMO??)} per l'estrapolazione dei dati (cliente, data e contenuto) & \hyperref[UC17.2]{UC17.2} \\
+    \hline
+    RFN-46 \label{RFN-46} & Il sistema permette di notificare l'utente in caso in cui l'elaborazione del testo non vada a buon fine & \hyperref[UC17.3]{UC17.3} \\
+    \hline
+    RFN-47 \label{RFN-47} & Il sistema permette di notificare l'utente in caso in cui l'algoritmo di elaborazione non è in grado di estrapolare, dal testo, i dati (cliente, data e contenuto) & \hyperref[UC17.3]{UC17.3} \\
+    \hline
+    RFN-48 \label{RFN-48} & Il sistema permette di visualizzare il risultato dell'elaborazione dei dati & \hyperref[UC17.4]{UC17.4} \\
+    \hline
+    \end{tabularx}
+    \end{table}
 
 \begin{table}%
 \caption{Tabella del tracciamento dei requisiti qualitativi}
