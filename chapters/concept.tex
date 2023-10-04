@@ -485,15 +485,15 @@ In questa sezione vengono definiti gli \glspl{attore}\glsoccur che interagiscono
 \begin{usecase}{17.1}{Compilazione dati Meeting Note}
     \usecasemainactors{Utente autenticato}
     \usecasepre{L'utente vuole creare automaticamente una \gls{meetingnote}\glsoccur}
-    \usecasedesc{L'utente compila i dati necessari per la creazione automatica di una \gls{meetingnote}\glsoccur.}
-    \usecasepost{I dati necessari per la creazione automatica di una \gls{meetingnote}\glsoccur sono stati compilati}
+    \usecasedesc{L'utente compila i dati necessari per la creazione automatica di una \gls{meetingnote}\glsoccur sotto forma di una descrizione testuale.}
+    \usecasepost{È stato scritto una breve descrizione testuale con i dati necessari per la creazione automatica di una \gls{meetingnote}\glsoccur}
 \end{usecase}
 
 \begin{usecase}{17.2}{Elaborazione dati}
     \usecasemainactors{Utente autenticato}
     \usecasesecondaryactors{\emph{RiskAPP API}}
     \usecasepre{L'utente ha compilato i dati necessari per la creazione automatica di una \gls{meetingnote}\glsoccur}
-    \usecasedesc{I dati vengono elaborati da una algoritmo di \emph{Intelligenza Artificiale} per estrapolare i dati (cliente, data e contenuto) per la creazione automatica di una \gls{meetingnote}\glsoccur.}
+    \usecasedesc{Il testo viene elaborato da una algoritmo di \gls{iag}\glsoccur per estrapolare i dati (cliente, data e contenuto) per la creazione automatica di una \gls{meetingnote}\glsoccur.}
     \usecasepost{I dati (cliente, data e contenuto) per la creazione automatica di una \gls{meetingnote}\glsoccur sono stati estrapolati}
     \usecasealt{Se l'elaborazione fallisce, si verifica \hyperref[UC17.3]{UC17.3}}
     \label{UC17.2}
@@ -517,7 +517,7 @@ In questa sezione vengono definiti gli \glspl{attore}\glsoccur che interagiscono
 \begin{usecase}{17.4}{Visualizzazione risultato elaborazione}
     \usecasemainactors{Utente autenticato}
     \usecasepre{L'algoritmo ha estrapolato i dati per la creazione di una \gls{meetingnote}\glsoccur}
-    \usecasedesc{L'utente vuole visualizzare i dati estrapolati dall'algoritmo per la creazione automatica di una \gls{meetingnote}\glsoccur per accertarsi della loro correttezza.}
+    \usecasedesc{L'utente vuole visualizzare i dati estrapolati dall'algoritmo per la creazione automatica di una \gls{meetingnote}\glsoccur, per accertarsi della loro correttezza.}
     \usecasepost{Sono visualizzabili i dati estrapolati dall'algoritmo per la creazione di una \gls{meetingnote}\glsoccur}
     \label{UC17.4}
 \end{usecase}
@@ -619,7 +619,7 @@ In questa sezione vengono definiti gli \glspl{attore}\glsoccur che interagiscono
     \caption{Use Case - Creazione manuale (\hyperref[UC16]{UC16}) e Modifica (\hyperref[UC14.7]{UC14.7}) di una Meeting Note}
 \end{figure}
 
-\noindent Per la creazione manuale (\hyperref[UC16]{UC16}) e modifica (\hyperref[UC14.7]{UC14.7}) di una \gls{meetingnote}\glsoccur sono stati individuati i seguenti \glspl{usecase}\glsoccur, che sono in comune, tra le due funzionalità sopra citate, in quanto condividono la stessa sequenza di azioni, e dunque di attori principali e secondari, precondizioni e postcondizioni.
+\noindent Per la creazione manuale (\hyperref[UC16]{UC16}) e modifica (\hyperref[UC14.7]{UC14.7}) di una \gls{meetingnote}\glsoccur sono stati individuati i seguenti \glspl{usecase}\glsoccur, che sono in comune tra le due funzionalità sopra citate, in quanto condividono la stessa sequenza di azioni, e dunque di attori principali, secondari, precondizioni e postcondizioni.
 
 \begin{usecase}{18}{Selezione del cliente}
     \usecasemainactors{Utente autenticato}
@@ -812,6 +812,7 @@ RFN-2 \label{RFN-2} & Il sistema permette di inserire le credenziali (\emph{user
 \hline
 RFN-3 \label{RFN-3} & Il sistema permette il riconoscimento biometrico per effettuare l'autenticazione & \hyperref[UC03]{UC03} \\
 \hline
+% INSERIRE RFN CHE SPECIFICA IL FALLIMENTO DELL'AUTENTICAZIONE (IN TEORIA CI SONO ALTRI CASI SIMILI, DA SPECIFICARE ANALOGAMENTE)
 RFN-4 \label{RFN-4} & Il sistema deve notificare l'utente in caso di inserimento di credenziali errate & \hyperref[UC04]{UC04} \\ % \hyperref[UC08.8]{UC08.8}
 \hline
 RFN-5 \label{RFN-5} & Il sistema deve notificare l'utente in caso in cui il sistema, ovvero \emph{RiskAPP API} non sia raggiungibile & \hyperref[UC04]{UC04} \\ %, \hyperref[UC06]{UC06}, \hyperref[UC07.6]{UC07.6}, \hyperref[UC08.8]{UC08.8}, \hyperref[UC09]{UC09}, \hyperref[UC13]{UC13}, \hyperref[UC14.6]{UC14.6}, \hyperref[UC17.3]{UC17.3}, \hyperref[UC20]{UC20}, \hyperref[UC22]{UC22}, \hyperref[UC31]{UC31} 
@@ -890,6 +891,7 @@ RFN-35 \label{RFN-35} & Il sistema permette di visualizzare i dettagli (cliente,
 \hline
 RFN-36 \label{RFN-36} & Il sistema permette di visualizzare l'identificativo del cliente di una \emph{Meeting Note} selezionata & \hyperref[UC14.1]{UC14.1} \\
 \hline
+% SCORDATO LA PARTITA IVA PER I CONTRAENTI (CLIENTI)
 RFN-37 \label{RFN-37} & Il sistema permette di visualizzare la data dell'incontro di una \emph{Meeting Note} selezionata & \hyperref[UC14.2]{UC14.2} \\
 \hline
 RFN-38 \label{RFN-38} & Il sistema permette di visualizzare il contenuto dell'incontro di una \emph{Meeting Note} selezionata & \hyperref[UC14.3]{UC14.3} \\
@@ -918,37 +920,37 @@ RFN-42 \label{RFN-42} & Il sistema permette di modificare una \emph{Meeting Note
     \hline
     RFN-44 \label{RFN-44} & Il sistema permette di effettuare la creazione manuale di una \emph{Meeting Note} & \hyperref[UC16]{UC16} \\
     \hline
-    RFN-45 \label{RFN-45} & Il sistema permette di effettuare la creazione automatica di una \emph{Meeting Note} & \hyperref[UC17]{UC17} \\
+    RFD-45 \label{RFN-45} & Il sistema permette di effettuare la creazione automatica di una \emph{Meeting Note} & \hyperref[UC17]{UC17} \\
     \hline
-    RFN-46 \label{RFN-46} & Il sistema permette di compilare i dati (cliente, data e contenuto), sottoforma di una descrizione testuale, di una \emph{Meeting Note} per la creazione automatica & \hyperref[UC17.1]{UC17.1} \\
+    RFD-46 \label{RFN-46} & Il sistema permette di compilare i dati (cliente, data e contenuto), sotto forma di una descrizione testuale, di una \emph{Meeting Note} per la creazione automatica & \hyperref[UC17.1]{UC17.1} \\
     \hline
-    RFN-47 \label{RFN-47} & Il sistema permette di effettuare l'elaborazione del testo da parte di un algoritmo di \emph{Intelligenza Artificiale (ACRONIMO??)} per l'estrapolazione dei dati (cliente, data e contenuto) & \hyperref[UC17.2]{UC17.2} \\
+    RFD-47 \label{RFN-47} & Il sistema permette di effettuare l'elaborazione del testo da parte di un algoritmo di \gls{iag}\glsoccur per l'estrapolazione dei dati (cliente, data e contenuto) & \hyperref[UC17.2]{UC17.2} \\
     \hline
-    RFN-48 \label{RFN-48} & Il sistema permette di notificare l'utente in caso in cui l'elaborazione del testo non vada a buon fine & \hyperref[UC17.3]{UC17.3} \\
+    RFD-48 \label{RFN-48} & Il sistema permette di notificare l'utente in caso in cui l'elaborazione del testo non vada a buon fine & \hyperref[UC17.3]{UC17.3} \\
     \hline
-    RFN-49 \label{RFN-49} & Il sistema permette di notificare l'utente in caso in cui l'algoritmo di elaborazione non è in grado di estrapolare, dal testo, i dati (cliente, data e contenuto) & \hyperref[UC17.3]{UC17.3} \\
+    RFD-49 \label{RFN-49} & Il sistema permette di notificare l'utente in caso in cui l'algoritmo di elaborazione non è in grado di estrapolare, dal testo, i dati (cliente, data e contenuto) & \hyperref[UC17.3]{UC17.3} \\
     \hline
-    RFN-50 \label{RFN-50} & Il sistema permette di visualizzare il risultato dell'elaborazione dei dati & \hyperref[UC17.4]{UC17.4} \\
+    RFD-50 \label{RFN-50} & Il sistema permette di visualizzare il risultato dell'elaborazione dei dati & \hyperref[UC17.4]{UC17.4} \\
     \hline
-    RFN-51 \label{RFN-51} & Il sistema permette di visualizzare la categoria del cliente estrapolato & \hyperref[UC17.4.1]{UC17.4.1} \\
+    RFD-51 \label{RFN-51} & Il sistema permette di visualizzare la categoria del cliente estrapolato & \hyperref[UC17.4.1]{UC17.4.1} \\
     \hline
-    RFN-52 \label{RFN-52} & Il sistema permette di visualizzare l'identificativo del cliente estrapolato & \hyperref[UC17.4.2]{UC17.4.2} \\
+    RFD-52 \label{RFN-52} & Il sistema permette di visualizzare l'identificativo del cliente estrapolato & \hyperref[UC17.4.2]{UC17.4.2} \\
     \hline
-    RFN-53 \label{RFN-53} & Il sistema permette di visualizzare la data dell'incontro estrapolata & \hyperref[UC17.4.3]{UC17.4.3} \\
+    RFD-53 \label{RFN-53} & Il sistema permette di visualizzare la data dell'incontro estrapolata & \hyperref[UC17.4.3]{UC17.4.3} \\
     \hline
-    RFN-54 \label{RFN-54} & Il sistema permette di visualizzare il contenuto dell'incontro estrapolato & \hyperref[UC17.4.4]{UC17.4.4} \\
+    RFD-54 \label{RFN-54} & Il sistema permette di visualizzare il contenuto dell'incontro estrapolato & \hyperref[UC17.4.4]{UC17.4.4} \\
     \hline
-    RFN-55 \label{RFN-55} & Il sistema permette di modificare la categoria del cliente estrapolato & \hyperref[UC17.4.5]{UC17.4.5} \\
+    RFD-55 \label{RFN-55} & Il sistema permette di modificare la categoria del cliente estrapolato & \hyperref[UC17.4.5]{UC17.4.5} \\
     \hline
-    RFN-56 \label{RFN-56} & Il sistema permette di modificare l'identificativo del cliente estrapolato & \hyperref[UC17.4.6]{UC17.4.6} \\
+    RFD-56 \label{RFN-56} & Il sistema permette di modificare l'identificativo del cliente estrapolato & \hyperref[UC17.4.6]{UC17.4.6} \\
     \hline
-    RFN-57 \label{RFN-57} & Il sistema permette di modificare la data dell'incontro estrapolata & \hyperref[UC17.4.7]{UC17.4.7} \\
+    RFD-57 \label{RFN-57} & Il sistema permette di modificare la data dell'incontro estrapolata & \hyperref[UC17.4.7]{UC17.4.7} \\
     \hline
-    RFN-58 \label{RFN-58} & Il sistema permette di modificare il contenuto dell'incontro estrapolato & \hyperref[UC17.4.8]{UC17.4.8} \\
+    RFD-58 \label{RFN-58} & Il sistema permette di modificare il contenuto dell'incontro estrapolato & \hyperref[UC17.4.8]{UC17.4.8} \\
     \hline
-    RFN-59 \label{RFN-59} & Il sistema permette di confermare la creazione automatica & \hyperref[UC17.4.9]{UC17.4.9} \\
+    RFD-59 \label{RFN-59} & Il sistema permette di confermare la creazione automatica & \hyperref[UC17.4.9]{UC17.4.9} \\
     \hline
-    RFN-60 \label{RFN-60} & Il sistema permette di notificare l'utente in caso in cui la conferma della creazione automatica non vada a buon fine & \hyperref[UC17.5]{UC17.5} \\
+    RFD-60 \label{RFN-60} & Il sistema permette di annullare l'operazione di creazione automatica & \hyperref[UC17.5]{UC17.5} \\
     \hline
 \end{tabularx}
 \end{table}
@@ -993,13 +995,14 @@ RFN-42 \label{RFN-42} & Il sistema permette di modificare una \emph{Meeting Note
     RFN-75 \label{RFN-75} & Il sistema permette di confermare l'operazione di creazione o modifica di una \emph{Meeting Note} & \hyperref[UC30]{UC30} \\
     \hline
     RFN-76 \label{RFN-76} & Il sistema permette di notificare l'utente in caso in cui la conferma dell'operazione di creazione o modifica di una \emph{Meeting Note} non vada a buon fine & \hyperref[UC31]{UC31} \\
+    \hline
 \end{tabularx}
 \end{table}
 
 \clearpage
 
-Nelle precedenti tabelle, sono presenti alcuni requisiti che coinvolgono più \glspl{usecase}\glsoccur, la motivazione risiede nel fatto che tali requisiti modellano un comportamento comune a più \glspl{usecase}\glsoccur, nello specifico per la gestione di eccezioni.\\
-Di seguito, per questioni di leggibilità, verranno elencati tali requisiti:
+\noindent Nelle precedenti tabelle, sono presenti alcuni requisiti che coinvolgono più \glspl{usecase}\glsoccur, la motivazione risiede nel fatto che tali requisiti modellano un comportamento comune a più \glspl{usecase}\glsoccur, nello specifico si trattano di casi che descrivono scenari alternativi per la gestione di eccezioni.\\
+Di seguito, che per questioni di leggibilità non stati inseriti nella tabella, verranno elencati tali \gls{usecase}\glsoccur e i corrispettivi requisiti:
 \begin{itemize}
     \item \textbf{\hyperref[RFN-4]{RFN-4 }}: \hyperref[UC08.8]{UC08.8};
     \item \textbf{\hyperref[RFN-5]{RFN-5 }}: \hyperref[UC06]{UC06}, \hyperref[UC07.6]{UC07.6}, \hyperref[UC08.8]{UC08.8}, \hyperref[UC09]{UC09}, \hyperref[UC13]{UC13}, \hyperref[UC14.6]{UC14.6}, \hyperref[UC17.3]{UC17.3}, \hyperref[UC20]{UC20}, \hyperref[UC22]{UC22}, \hyperref[UC31]{UC31};
@@ -1015,10 +1018,15 @@ Di seguito, per questioni di leggibilità, verranno elencati tali requisiti:
 \label{tab:requisiti-qualitativi}
 \begin{tabularx}{\textwidth}{lXl}
 \hline\hline
-\textbf{Requisito} & \textbf{Descrizione} & \textbf{Use Case}\\
+\textbf{Requisito} & \textbf{Descrizione} & \textbf{Fonte}\\
 \hline
-RQD-1    & Le prestazioni del simulatore hardware deve garantire la giusta esecuzione dei test e non la generazione di falsi negativi & - \\
-% INSERIRE IL DEPLOY E I TEST
+RQD-1 & Il sistema deve garantire il corretto funzionamento attraverso l'implementazione ed esecuzione di test & - \\
+\hline
+RQN-2 & Il codice prodotto deve essere disponibile su \gls{github}\glsoccur, nella repository aziendale  & - \\
+\hline
+RQN-3 & Il codice prodotto deve essere documentato & - \\
+\hline
+RQN-4 & L'applicazione deve soddisfare la proprietà di \gls{responsivita}\glsoccur del \emph{layout} & - \\
 \hline
 \end{tabularx}
 \end{table}%
@@ -1028,9 +1036,38 @@ RQD-1    & Le prestazioni del simulatore hardware deve garantire la giusta esecu
 \label{tab:requisiti-vincolo}
 \begin{tabularx}{\textwidth}{lXl}
 \hline\hline
-\textbf{Requisito} & \textbf{Descrizione} & \textbf{Use Case}\\
+\textbf{Requisito} & \textbf{Descrizione} & \textbf{Fonte}\\
 \hline
-RVO-1    & La libreria per l'esecuzione dei test automatici deve essere riutilizzabile & - \\
+RVN-1 & Utilizzo del linguaggio \gls{dart}\glsoccur per lo sviluppo dell'applicazione & - \\
 \hline
+RVN-2 & Utilizzo di \gls{flutter}\glsoccur per lo sviluppo dell'applicazione & - \\
+\hline
+RVN-3 & Utilizzo delle \gls{apig}\glsoccur della piattaforma \emph{RiskAPP} per la comunicazione con il \gls{backend}\glsoccur & - \\
+\hline
+RVN-4 & Assicurare la compatibilità con i dispositivi \emph{smartphone} & - \\
+\hline
+RVN-5 & Assicurare la compatibilità con la versione del sistema operativo \emph{Android} $\geq$ 5 & - \\
+\hline
+RVN-6 & Assicurare la compatibilità con la versione del sistema operativo \emph{iOS} $\geq$ 11 & - \\
+\hline
+RVZ-7 & Eseguire il deploy dell'applicazione sui sistemi operativi \emph{Android} e \emph{iOS} & - \\
+\hline
+RVN-8 & Per l'implementazione della dettatura vocale, utilizzare una librearia di terze parti opportuna & \hyperref[RFN-73]{RFN-73} \\
+\hline
+RVN-9 & Per l'implementazione del riconoscimento biometrico, utilizzare una librearia di terze parti opportuna & \hyperref[RFN-3]{RFN-3} \\
+\hline
+RVN-10 & Assicurare il salvataggio del token di autenticazione nella memoria locale del dispositivo & \hyperref[RFN-1]{RFN-1} \\
+\hline
+RVN-11 & Implementare una libreria di terze parti per il salvataggio in locale del token di autenticazione & \hyperref[RVN-10]{RVN-10} \\
+\hline
+RVN-12 & Assicurare il salvataggio e la cifratura delle credenziali di accesso nella memoria locale del dispositivo & \hyperref[RFN-2]{RFN-2} \\
+\hline
+RVN-13 & Implementare una libreria di terze parti per la cifratura delle credenziali di accesso & \hyperref[RVN-12]{RVN-12} \\
+\hline
+RVN-14 & Assicurare la presenza di connessione ad internet per la comunicazione con le \gls{apig}\glsoccur della piattaforma \emph{RiskAPP} & \hyperref[RVN-3]{RVN-3} \\
+\hline
+RVN-15 & Implementare un'opportuna di terze parti per effettuare le chiamate \gls{httpg}\glsoccur & \hyperref[RVN-3]{RVN-3} \\
+\hline
+% descrivere che anche l'integrazione delle api di openai avviene attraverso le api di riskapp ??
 \end{tabularx}
 \end{table}%
