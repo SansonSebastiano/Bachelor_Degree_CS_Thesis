@@ -30,7 +30,11 @@ In questa sezione vengono definiti gli \glspl{attore}\glsoccur che interagiscono
     \item \textbf{\emph{RiskAPP API}}: sistema che fornisce le \gls{apig}\glsoccur del \emph{Tool Trattative} per l'interazione con il \gls{backend}\glsoccur dell'applicazione.
 \end{itemize}
 
-\newpage
+\subsection{Token di autenticazione}
+\label{subsec:token-autenticazione}
+
+È doveroso spiegare di cosa si tratta e del'utilizzo del \emph{token} di autenticazione: esso è una stringa che, una volta inserite e validate le credenziali, viene generata dal \gls{backend}\glsoccur e inviata all'applicazione, il cui scopo è quello, oltre a mantenere l'accesso al proprio account, di effettuare le richieste dei dati al \gls{backend}\glsoccur.\\
+Il \emph{token} ha una durata di 4 ore, dopo le quali l'utente dovrà effettuare nuovamente l'autenticazione per ottenerne uno nuovo.
 
 \begin{figure}[!h] 
     \centering 
@@ -573,7 +577,7 @@ In questa sezione vengono definiti gli \glspl{attore}\glsoccur che interagiscono
 \begin{usecase}{17.4.6}{Modifica identificativo cliente}
     \usecasemainactors{Utente autenticato}
     \usecasepre{L'utente visualizza l'identificativo del \gls{cliente}\glsoccur estrapolato}
-    \usecasedesc{L'utente modifica l'identificativo' del \gls{cliente}\glsoccur}
+    \usecasedesc{L'utente modifica l'identificativo del \gls{cliente}\glsoccur}
     \usecasepost{L'identificativo del \gls{cliente}\glsoccur è stato modificato}
     \label{15.4.6}
 \end{usecase}
@@ -1044,7 +1048,7 @@ RVN-2 & Utilizzo di \gls{flutter}\glsoccur per lo sviluppo dell'applicazione & -
 \hline
 RVN-3 & Utilizzo delle \gls{apig}\glsoccur della piattaforma \emph{RiskAPP} per la comunicazione con il \gls{backend}\glsoccur & - \\
 \hline
-RVN-4 & Assicurare la compatibilità con i dispositivi \emph{smartphone} & - \\
+RVN-4 & Assicurare la compatibilità con gli \emph{smartphone} & - \\
 \hline
 RVN-5 & Assicurare la compatibilità con la versione del sistema operativo \emph{Android} $\geq$ 5 & - \\
 \hline
@@ -1066,8 +1070,7 @@ RVN-13 & Implementare una libreria di terze parti per la cifratura delle credenz
 \hline
 RVN-14 & Assicurare la presenza di connessione ad internet per la comunicazione con le \gls{apig}\glsoccur della piattaforma \emph{RiskAPP} & \hyperref[RVN-3]{RVN-3} \\
 \hline
-RVN-15 & Implementare un'opportuna di terze parti per effettuare le chiamate \gls{httpg}\glsoccur & \hyperref[RVN-3]{RVN-3} \\
+RVN-15 & Implementare una libreria di terze parti per effettuare le chiamate \gls{httpg}\glsoccur & \hyperref[RVN-3]{RVN-3} \\
 \hline
-% descrivere che anche l'integrazione delle api di openai avviene attraverso le api di riskapp ??
 \end{tabularx}
 \end{table}%
