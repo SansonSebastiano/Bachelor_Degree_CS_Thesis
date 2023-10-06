@@ -33,8 +33,8 @@ In questa sezione vengono definiti gli \glspl{attore}\glsoccur che interagiscono
 \subsection{Token di autenticazione}
 \label{subsec:token-autenticazione}
 
-È doveroso spiegare di cosa si tratta e del'utilizzo del \emph{token} di autenticazione: esso è una stringa che, una volta inserite e validate le credenziali, viene generata dal \gls{backend}\glsoccur e inviata all'applicazione, il cui scopo è quello, oltre a mantenere l'accesso al proprio account, di effettuare le richieste dei dati al \gls{backend}\glsoccur.\\
-Il \emph{token} ha una durata di 4 ore, dopo le quali l'utente dovrà effettuare nuovamente l'autenticazione per ottenerne uno nuovo.
+Il \emph{token} di autenticazione, in questo contesto applicativo, si tratta di una stringa che, una volta inserite e validate le credenziali, viene generata dal \gls{backend}\glsoccur e memorizzata dall'applicazione, il cui scopo è quello, oltre al mantenimento dell'accesso al proprio account, di effettuare le richieste \gls{httpg}\glsoccur al \gls{backend}\glsoccur.\\
+Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà effettuare nuovamente l'autenticazione per ottenerne uno nuovo.
 
 \begin{figure}[!h] 
     \centering 
@@ -1005,7 +1005,7 @@ RFN-42 \label{RFN-42} & Il sistema permette di modificare una \emph{Meeting Note
 
 \clearpage
 
-\noindent Nelle precedenti tabelle, sono presenti alcuni requisiti che coinvolgono più \glspl{usecase}\glsoccur, la motivazione risiede nel fatto che tali requisiti modellano un comportamento comune a più \glspl{usecase}\glsoccur, nello specifico si trattano di casi che descrivono scenari alternativi per la gestione di eccezioni.\\
+\noindent Nelle precedenti tabelle, sono presenti alcuni requisiti funzionali che coinvolgono più \glspl{usecase}\glsoccur, la motivazione risiede nel fatto che essi ne modellano un comportamento comune, nello specifico si trattano di casi in cui vengono descritti scenari alternativi per la gestione di eccezioni.\\
 Di seguito, che per questioni di leggibilità non stati inseriti nella tabella, verranno elencati tali \gls{usecase}\glsoccur e i corrispettivi requisiti:
 \begin{itemize}
     \item \textbf{\hyperref[RFN-4]{RFN-4 }}: \hyperref[UC08.8]{UC08.8};
@@ -1071,6 +1071,8 @@ RVN-13 & Implementare una libreria di terze parti per la cifratura delle credenz
 RVN-14 & Assicurare la presenza di connessione ad internet per la comunicazione con le \gls{apig}\glsoccur della piattaforma \emph{RiskAPP} & \hyperref[RVN-3]{RVN-3} \\
 \hline
 RVN-15 & Implementare una libreria di terze parti per effettuare le chiamate \gls{httpg}\glsoccur & \hyperref[RVN-3]{RVN-3} \\
+\hline
+RVN-16 & Tutte le \emph{Meeting Note} create devono essere salvate nel \emph{backend} & - \\
 \hline
 \end{tabularx}
 \end{table}%
