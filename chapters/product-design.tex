@@ -21,6 +21,7 @@ Di seguito dunque vengono presentate le schermate che compongono il mockup dell'
 % State Management -> RIVERPOD + Diagramma illustrativo
 % https://codewithandrea.com/articles/flutter-app-architecture-riverpod-introduction/
 
+% DA CITARE IN BIBLIOGRAFIA E FARNE RIFERIMENTO
 La peculiarità di \gls{flutter}\glsoccur è quella di essere un \gls{framework}\glsoccur che permette di sviluppare applicazioni native per diverse piattaforme, come Android, iOS, web e desktop, utilizzando un unico linguaggio di programmazione, riducendo i tempi e i costi di produzione, senza compromettere le prestazioni dell'applicazione.\\
 Per comprendere al meglio questa caratteristica è necessario analizzare l'architettura delle applicazioni realizzate in \gls{flutter}\glsoccur, che sono composte dagli elementi illustrati nella figura \ref{fig:architettura-flutter}, tra le quali i principali sono descritti di seguito:
 \begin{itemize}
@@ -33,7 +34,7 @@ Per comprendere al meglio questa caratteristica è necessario analizzare l'archi
         \item \textbf{widget}: ogni oggetto renderizzabile ha una classe corrispondente in questa libreria, definiti appunto \emph{widget}, l'unità fondamentale in \gls{flutter}\glsoccur, che permettono la realizzazione dell'interfaccia grafica;
         \item \textbf{Material e Cupertino}: forniscono un'implementazione di alto livello dei \emph{widget} per la realizzazione di interfacce grafiche seguendo le linee guida di \emph{Material Design} e \emph{Cupertino}, rispettivamente per le piattaforme \emph{Android} e \emph{iOS}.
     \end{itemize}
-    \item \textbf{Dart App}: codice sorgente sviluppato dall'utente, contente i \emph{widget} per l'implementazione della \gls{ui}\glsoccur e la logica dell'applicazione.
+    \item \textbf{Dart App}: codice sorgente sviluppato dall'utente, contenente i \emph{widget} per l'implementazione della \gls{ui}\glsoccur e la logica dell'applicazione.
 \end{itemize}
 
 Inoltre, essendo un \gls{framework}\glsoccur \gls{open-source}\glsoccur, è possibile utilizzare librerie di terze parti, sviluppate dalla community, per aggiungere funzionalità all'applicazione, come ad esempio librerie per la gestione dello stato dell'applicazione, librerie per la gestione delle richieste HTTP, ecc. \\
@@ -45,17 +46,31 @@ Inoltre, essendo un \gls{framework}\glsoccur \gls{open-source}\glsoccur, è poss
     \label{fig:architettura-flutter}
 \end{figure}
 
-Il concetto centrale di \gls{flutter}\glsoccur è quello di \emph{widget}, che sono oggetti immutabili che descrivono come deve essere visualizzata una parte dell'interfaccia grafica. Questi possono essere di due tipi:
+Il concetto centrale di \gls{flutter}\glsoccur è quello dei \emph{widget}, oggetti immutabili che descrivono come deve essere visualizzata una parte dell'interfaccia grafica. Questi possono essere di due tipi:
 \begin{itemize}
-    \item \textbf{StatelessWidget}: sono \emph{widget} che non hanno uno stato interno, ovvero non cambiano nel tempo, e sono definiti da un insieme di proprietà, chiamate \emph{proprietà immutabili}, che vengono passate al costruttore del \emph{widget};
-    \item \textbf{StatefulWidget}: al contrario, possiedono uno stato interno, e sono definiti da due classi: una che estende \emph{StatefulWidget} e una che estende \emph{State}, che rappresenta lo stato interno del \emph{widget}. Quest'ultimo è un oggetto mutabile, che viene creato quando il \emph{widget} viene inserito nell'albero dei \emph{widget}, e viene distrutto quando viene rimosso dall'albero.
+    \item \textbf{StatelessWidget}: non hanno uno stato interno, ovvero non cambiano nel tempo, e sono definiti da un insieme di proprietà, chiamate \emph{proprietà immutabili}, che vengono passate al costruttore del \emph{widget};
+    \item \textbf{StatefulWidget}: al contrario, possiedono uno stato interno, e sono definiti da due classi: una che estende \emph{StatefulWidget} e una che estende \emph{State}, quest'ultima rappresenta lo stato interno del \emph{widget}. È un oggetto mutabile, che viene creato quando il \emph{widget} viene inserito nell'albero dei \emph{widget}, e viene distrutto quando viene rimosso dall'albero.
 \end{itemize}
 
-Lo stato di un \emph{StatefulWidget} può essere considerato come \emph{ephemeral} (ing. effimero) o \emph{app state} (ing. stato dell'applicazione). \\
+Lo stato può essere considerato come \emph{ephemeral} (ing. effimero) o \emph{app state} (ing. stato dell'applicazione). \\
 Lo stato \emph{ephemeral} è uno stato che può essere opportunamente confinato all'interno di un singolo \emph{widget} e può essere gestito attraverso la primitiva \lstinline{setState()}, che permette di definire come aggiornarlo.\\
 Mentre \emph{app state} è uno stato che viene condiviso tra più \emph{widget} e per la sua gestione, più complessa utilizzando solamente la primitiva sopra citata, esistono diverse librerie di terze parti, ciascuna con le proprie peculiarità a seconda del caso d'uso.\\
 \indent La problematica di come gestire lo stato dell'applicazione è definito in gergo \emph{state management}, e dopo un'attenta analisi delle librerie disponibili, si è scelto di utilizzare \href{https://riverpod.dev/}{Riverpod}.\\
 
+\subsection{Riverpod}
+\label{subsec:riverpod}
+% DA CITARE IN BIBLIOGRAFIA E FARNE RIFERIMENTO
+
+% cos'è
+% come funziona
+% vantaggi
+% svantaggi
+% motivazione della scelta
+Libreria che semplifica notevolmente lo \emph{state management} e si basa sul concetto di \emph{provider}, evoluto dalla \href{https://pub.dev/packages/provider}{libreria} da cui deriva.\\
+A differenza di \emph{InheritedWidget} che permette di condividere lo stato tra più widget, il concetto fondamentale su cui si sono basate queste librerie, \emph{provider}, che ne è una reimplementazione, è indipendente dai \emph{widget}, in quanto è dichiarato a livello globale e può essere richiamato ovunque.\\
+Inoltre evita di aggiornare l'interfaccia grafica, ovvero di richiamare il metodo \lstinline{build()} di un \emph{widget} quando non è necessario, poichè è un'operazione costosa.
+
+Un \emph{provider} è un oggetto che può essere letto da un \emph{widget} e che può essere utilizzato per ottenere un valore, che può essere un oggetto o una funzione.\\
 
 \section{Struttura del progetto}
 \label{sec:struttura-progetto}
