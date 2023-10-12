@@ -21,20 +21,22 @@ Di seguito dunque vengono presentate le schermate che compongono il mockup dell'
 % State Management -> RIVERPOD + Diagramma illustrativo
 % https://codewithandrea.com/articles/flutter-app-architecture-riverpod-introduction/
 
-% DA CITARE IN BIBLIOGRAFIA E FARNE RIFERIMENTO
-La peculiarità di \gls{flutter}\glsoccur è quella di essere un \gls{framework}\glsoccur che permette di sviluppare applicazioni native per diverse piattaforme, come Android, iOS, web e desktop, utilizzando un unico linguaggio di programmazione, riducendo i tempi e i costi di produzione, senza compromettere le prestazioni dell'applicazione.\\
-Per comprendere al meglio questa caratteristica è necessario analizzare l'architettura delle applicazioni realizzate in \gls{flutter}\glsoccur, che sono composte dagli elementi illustrati nella figura \ref{fig:architettura-flutter}, tra le quali i principali sono descritti di seguito:
+\subsection{Architettura Flutter}
+\label{subsec:architettura-flutter}
+
+La peculiarità di \emph{Flutter}\cite{site:flutter} è quella di essere un \gls{framework}\glsoccur che permette di sviluppare applicazioni native per diverse piattaforme, come Android, iOS, web e desktop, utilizzando un unico linguaggio di programmazione, riducendo i tempi e i costi di produzione, senza compromettere le prestazioni dell'applicazione.\\
+Per comprendere al meglio questa caratteristica è necessario analizzare l'architettura\cite{site:flutter-architecture} delle applicazioni realizzate in \emph{Flutter}\cite{site:flutter}, che sono composte dagli elementi illustrati nella figura \ref{fig:architettura-flutter}, tra le quali i principali sono descritti di seguito:
 \begin{itemize}
-    \item \textbf{Embedder}: fornisce un punto d'ingresso con il sistema operativo ospitante per accedere ai servizi forniti da esso. Questo consente dunque l'esecuzione dell'applicazione su diverse piattaforme e la possibilità di utilizzare librerie per accedere a funzionalità esclusive di determinati sistemi operativi, oppure viceversa, integrare il codice \gls{flutter}\glsoccur in un'applicazione nativa già esistente;
-    \item \textbf{Flutter engine}: è il componente centrale che fornisce l'implementazione di basso livello dell'\gls{apig}\glsoccur principale di \gls{flutter}\glsoccur, inclusa la grafica, il layout di testo, operazioni di \emph{I/O}, rete, ecc.;
+    \item \textbf{Embedder}: fornisce un punto d'ingresso con il sistema operativo ospitante per accedere ai servizi forniti da esso. Questo consente dunque l'esecuzione dell'applicazione su diverse piattaforme e la possibilità di utilizzare librerie per accedere a funzionalità esclusive di determinati sistemi operativi, oppure viceversa, integrare il codice \emph{Flutter}\cite{site:flutter} in un'applicazione nativa già esistente;
+    \item \textbf{Flutter engine}: è il componente centrale che fornisce l'implementazione di basso livello dell'\gls{apig}\glsoccur principale di \emph{Flutter}\cite{site:flutter}, inclusa la grafica, il layout di testo, operazioni di \emph{I/O}, rete, ecc.;
     \item \textbf{Flutter framework}: componente con il quale lo sviluppatore interagisce attraverso un insieme di librerie, che partendo dal basso sono:
     \begin{itemize}
         \item \textbf{foundation}: fornisce un'astrazione delle funzionalità di animazione, grafica e \gls{gesture}\glsoccur;
         \item \textbf{rendering}: fornisce un'astrazione per gestire il layout. Con questo livello è possibile costruire un albero di oggetti renderizzabili.
-        \item \textbf{widget}: ogni oggetto renderizzabile ha una classe corrispondente in questa libreria, definiti appunto \emph{widget}, l'unità fondamentale in \gls{flutter}\glsoccur, che permettono la realizzazione dell'interfaccia grafica;
+        \item \textbf{widget}: ogni oggetto renderizzabile ha una classe corrispondente in questa libreria, definiti appunto \emph{widget}, l'unità fondamentale in \emph{Flutter}\cite{site:flutter}, che permettono la realizzazione dell'interfaccia grafica;
         \item \textbf{Material e Cupertino}: forniscono un'implementazione di alto livello dei \emph{widget} per la realizzazione di interfacce grafiche seguendo le linee guida di \emph{Material Design} e \emph{Cupertino}, rispettivamente per le piattaforme \emph{Android} e \emph{iOS}.
     \end{itemize}
-    \item \textbf{Dart App}: codice sorgente sviluppato dall'utente, contenente i \emph{widget} per l'implementazione della \gls{ui}\glsoccur e la logica dell'applicazione.
+    \item \textbf{Dart App}: codice sorgente sviluppato dall'utente, contenente i \emph{widget} per l'implementazione della \gls{uig}\glsoccur e la logica dell'applicazione.
 \end{itemize}
 
 Inoltre, essendo un \gls{framework}\glsoccur \gls{open-source}\glsoccur, è possibile utilizzare librerie di terze parti, sviluppate dalla community, per aggiungere funzionalità all'applicazione, come ad esempio librerie per la gestione dello stato dell'applicazione, librerie per la gestione delle richieste HTTP, ecc. \\
@@ -46,35 +48,87 @@ Inoltre, essendo un \gls{framework}\glsoccur \gls{open-source}\glsoccur, è poss
     \label{fig:architettura-flutter}
 \end{figure}
 
-Il concetto centrale di \gls{flutter}\glsoccur è quello dei \emph{widget}, oggetti immutabili che descrivono come deve essere visualizzata una parte dell'interfaccia grafica. Questi possono essere di due tipi:
+Il concetto centrale di \emph{Flutter}\cite{site:flutter} è quello dei \emph{widget}, oggetti che descrivono come deve essere visualizzata una parte dell'interfaccia grafica. Questi possono essere di due tipi:
 \begin{itemize}
     \item \textbf{StatelessWidget}: non hanno uno stato interno, ovvero non cambiano nel tempo, e sono definiti da un insieme di proprietà, chiamate \emph{proprietà immutabili}, che vengono passate al costruttore del \emph{widget};
     \item \textbf{StatefulWidget}: al contrario, possiedono uno stato interno, e sono definiti da due classi: una che estende \emph{StatefulWidget} e una che estende \emph{State}, quest'ultima rappresenta lo stato interno del \emph{widget}. È un oggetto mutabile, che viene creato quando il \emph{widget} viene inserito nell'albero dei \emph{widget}, e viene distrutto quando viene rimosso dall'albero.
 \end{itemize}
 
 Lo stato può essere considerato come \emph{ephemeral} (ing. effimero) o \emph{app state} (ing. stato dell'applicazione). \\
-Lo stato \emph{ephemeral} è uno stato che può essere opportunamente confinato all'interno di un singolo \emph{widget} e può essere gestito attraverso la primitiva \lstinline{setState()}, che permette di definire come aggiornarlo.\\
+\emph{Ephemeral} è uno stato che può essere opportunamente confinato all'interno di un singolo \emph{widget} e gestito attraverso la primitiva \lstinline{setState()}, che permette di definire come aggiornarlo.\\
 Mentre \emph{app state} è uno stato che viene condiviso tra più \emph{widget} e per la sua gestione, più complessa utilizzando solamente la primitiva sopra citata, esistono diverse librerie di terze parti, ciascuna con le proprie peculiarità a seconda del caso d'uso.\\
-\indent La problematica di come gestire lo stato dell'applicazione è definito in gergo \emph{state management}, e dopo un'attenta analisi delle librerie disponibili, si è scelto di utilizzare \href{https://riverpod.dev/}{Riverpod}.\\
+\indent La problematica di come gestire lo stato dell'applicazione è definito in gergo \emph{state management}\cite{site:flutter-state-mgmt}, e dopo un'attenta analisi delle librerie disponibili, si è scelto di utilizzare \emph{Riverpod}\cite{site:riverpod}.\\
 
 \subsection{Riverpod}
 \label{subsec:riverpod}
-% DA CITARE IN BIBLIOGRAFIA E FARNE RIFERIMENTO
-
 % cos'è
 % come funziona
 % vantaggi
 % svantaggi
 % motivazione della scelta
-Libreria che semplifica notevolmente lo \emph{state management} e si basa sul concetto di \emph{provider}, evoluto dalla \href{https://pub.dev/packages/provider}{libreria} da cui deriva.\\
-A differenza di \emph{InheritedWidget} che permette di condividere lo stato tra più widget, il concetto fondamentale su cui si sono basate queste librerie, \emph{provider}, che ne è una reimplementazione, è indipendente dai \emph{widget}, in quanto è dichiarato a livello globale e può essere richiamato ovunque.\\
-Inoltre evita di aggiornare l'interfaccia grafica, ovvero di richiamare il metodo \lstinline{build()} di un \emph{widget} quando non è necessario, poichè è un'operazione costosa.
+Libreria che semplifica notevolmente lo \emph{state management} e si basa su un concetto evoluto da \emph{Provider}\cite{site:provider}, libreria da cui deriva.\\
+A differenza di \lstinline{InheritedWidget}\cite{site:inheritw} che permette di condividere lo stato tra più \emph{widget}, il concetto fondamentale su cui si sono basate queste librerie, \emph{Riverpod}, che ne è una reimplementazione, fornisce \emph{providers} che sono indipendenti dai \emph{widget}, in quanto una volta dichiarato il \lstinline{ProviderScope} a livello globale, possono essere richiamati ovunque.\\
+Da questo ne consegue che si evita di aggiornare l'interfaccia grafica, ovvero di richiamare il metodo \lstinline{build()} di un \emph{widget} quando non è necessario, poichè è un'operazione costosa.
+Un \emph{provider} dunque è un oggetto che può essere richiamato da un \emph{widget} con la finalità di leggerne un valore.\\
+Ne esistono di varie tipologie, per le quali si rimanda alla documentazione ufficiale\cite{site:riverpod}, ma quelle utilizzate in questo progetto sono:
+\begin{itemize}
+    \item \lstinline{FutureProvider}: utilizzato per ricevere un valore generato da un'operazione asincrona (es: richiesta \gls{httpg})\glsoccur;
+    \item \lstinline{StateNotifierProvider}: utilizzato per rimanre in ascolto di un oggetto di una classe che incapsula un singolo stato immutabile e di esporre dei metodi per aggiornarlo.
+\end{itemize}
 
-Un \emph{provider} è un oggetto che può essere letto da un \emph{widget} e che può essere utilizzato per ottenere un valore, che può essere un oggetto o una funzione.\\
+\subsection{Architettura dell'applicazione}
+\label{subsec:architettura-app}
+
+Per l'architettura dell'applicazione si è scelto di utilizzare un \emph{pattern} architetturale basato su \gls{mvcg}\glsoccur, che permette di separare la logica dell'applicazione dalla sua rappresentazione grafica, in modo da rendere più semplice la manutenzione e l'aggiunta di nuove funzionalità.\\
+Nel dettaglio l'applicazione è composta da quattro livelli\cite{site:app-architecture}:
+\begin{itemize}
+    \item \textbf{Data Layer}: contiene le classi che si occupano di recuperare i dati dal server, attraverso richieste \gls{httpg}\glsoccur, e di convertirli in oggetti rappresentati nel \emph{domain layer};
+    \item \textbf{Domain Layer}: contiene le classi che rappresentano i dati dell'applicazione;
+    \item \textbf{Application Layer}: contiene le classi che si occupano di gestire la logica dell'applicazione, ovvero di recuperare i dati dal \emph{data layer} e di fornirli al \emph{presentation layer};
+    \item \textbf{Presentation Layer}: contiene le classi che si occupano di gestire l'interfaccia, ovvero di eseguire il rendering dei \emph{widget} e di gestire gli eventi generati dall'utente.
+\end{itemize}
+Questa architettura permette inoltre di avere la possibilità di definire eventualmente più sorgenti da cui recuperare i dati senza dover modificare il codice relativo ai livelli superiori, in quanto è sufficiente modificare il \emph{data layer}.\\
 
 \section{Struttura del progetto}
 \label{sec:struttura-progetto}
 % Struttura del progetto: cartelle, file, ecc. -> LAYER FIRST
+Un altro aspettato importante da considerare per la realizzazione di un progetto software è la sua struttura, ovvero come organizzare i file e le cartelle che lo compongono.\\
+Dopo opportune ricerche ed analisi, si è scelto di adottare, tra le due alternative disponibili, la struttura \emph{layer first}\cite{site:project-structure}, che prevede di organizzare i file e le cartelle in base al livello a cui appartengono, in modo da rendere più semplice la manutenzione e l'aggiunta di nuove funzionalità.\\
+\emph{Feature first}, l'altra alternativa, organizza invece i file e le cartelle, mantendendo la separazione tra i livelli, in base alle funzionalità che l'applicazione offre.\\
+Il motivo principale per cui la scelta non è ricaduta su quest'ultima è che, nonostante sia quella che garantisca un'organizzazione e manutenzione del codice migliore, risulta essere più complessa da implementare in quanto adatta per progetti di dimensione e complessità maggiore.\\
+Di seguito verranno illustrati entrambi gli approcci, in modo da poterli confrontare e comprendere meglio le loro differenze.\\
+\begin{multicols}{2}
+    \begin{verbatim}
+        // LAYER FIRST
+        lib/
+            data/
+                feature1.dart
+                feature2.dart
+            domain/
+                feature1.dart
+                feature2.dart
+            application/
+                feature1.dart
+                feature2.dart
+            presentation/
+                feature1.dart
+                feature2.dart
+    \end{verbatim}
+    \begin{verbatim}
+        // FEATURE FIRST
+        lib/
+            feature1/
+                data.dart
+                domain.dart
+                application.dart
+                presentation.dart
+            feature2/
+                data.dart
+                domain.dart
+                application.dart
+                presentation.dart
+    \end{verbatim}
+\end{multicols}
 
 % \section{Diagrammi UML}
 % \label{sec:uml}
@@ -94,10 +148,29 @@ Un \emph{provider} è un oggetto che può essere letto da un \emph{widget} e che
 % SEGUI ISSUE #4 E #5 PER LA STESURA DI QUESTA SEZIONE
 Di seguito viene data una panoramica delle tecnologie e strumenti utilizzati.
 
-Per fare ciò è stato utilizzato il software \href{https://www.figma.com/}{Figma}, che permette di creare interfacce grafiche per applicazioni web e mobile.\\
+\subsection*{Figma}
+\emph{Figma}\cite{site:figma} è un software di editor di grafica vettoriale che permette di progettare interfacce grafiche per applicazioni web e mobile.\\
+È stato utilizzato per la realizzazione del \gls{mockup}\glsoccur dell'applicazione, in quanto permette inoltre, di creare prototipi interattivi, che simulano l'interazione dell'utente con l'applicazione, e di condividerli con il team di sviluppo, in modo da avere un'idea più chiara di come l'applicazione debba essere strutturata e di come debba funzionare.\\
 
-\subsection*{Tecnologia 1}
-Descrizione Tecnologia 1.
+\subsection*{Git}
+\emph{Git}\cite{site:git} è un sistema di controllo di versione distribuito, finalizzato al tracciamento del codice sorgente e delle sue modifiche, inoltre ne permette la condivisione e dunque la collaborazione tre più sviluppatori.\\
+Inoltre è possibile, eventualmente, in caso di errori, di poter ripristinare una versione precedente del codice sorgente.\\
 
-\subsection*{Tecnologia 2}
-Descrizione Tecnologia 2
+\subsection*{GitHub}
+% DA DEFINIRE: ISSUE, MILESTONE
+\emph{GitHub}\cite{site:github} è un servizio di hosting per il codice sorgente di progetti software e utilizza \emph{Git} come sistema di controllo di versione.\\
+Per questo progetto è stato utilizzato per la condivisione e gestione del codice sorgente attraverso una repository dedicata, fornita dall'azienda.\\
+Per la pianificazione della fase di implementazione è stato utilizzato il sistema di \emph{issue tracking} integrato, creando delle \emph{milestone} per ogni classe di obbiettivi da raggiungere in base alla loro priorità (vedi sezione \ref{sec:obiettivi}).\\
+In ciascuna \emph{milestone} sono state create delle \emph{issue}, in base ai requisiti o ad un insieme di questi, necessarie per il raggiungimento di ciascun obbiettivo, garantendo così una maggiore organizzazione e tracciabilità del lavoro svolto e dei progressi fatti.\\
+
+\subsection*{VSCode}
+Descrizione Tecnologia
+
+\subsection*{Flutter}
+Descrizione Tecnologia
+
+\subsection*{StarUML}
+Descrizione Tecnologia
+
+\subsection*{Emulatori Android e iOS}
+Descrizione Tecnologia

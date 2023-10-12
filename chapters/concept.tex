@@ -3,19 +3,12 @@
 
 \intro{In questo capitolo verranno illustrati e descritti i casi d'uso del sistema applicativo e classificati i requisiti analizzati.}\\
 
-\section{Casi d'uso}
-\label{sec:usecase}
-
-Per lo studio dei \glspl{usecase}\glsoccur del prodotto sono stati creati degli appositi diagrammi che illustrano le interazioni tra gli \glspl{attore}\glsoccur e il sistema.\\
-Ciascun \gls{usecase}\glsoccur viene fornito con una descrizione che ne riporta le informazioni principali, come attori coinvolti, pre e post condizioni, scenario principale ed eventuali scenari secondari.\\
-Per questioni di leggibilità, i diagrammi sono stati suddivisi in più parti, raggrupando i \glspl{usecase}\glsoccur che costituiscono una macro-funzionalità oppure specificano in dettaglio un \gls{usecase}\glsoccur del sistema.
-
-\subsection{Attori}
+\section{Attori}
 \label{subsec:attori}
 
 In questa sezione vengono definiti gli \glspl{attore}\glsoccur che interagiscono con il sistema.
 
-\subsubsection{Attori primari}
+\subsection{Attori primari}
 \label{subsubsec:attori-primari}
 
 \begin{itemize}
@@ -23,23 +16,31 @@ In questa sezione vengono definiti gli \glspl{attore}\glsoccur che interagiscono
     \item \textbf{Utente autenticato}: utente che ha effettuato l'autenticazione al sistema.
 \end{itemize}
 
-\subsubsection{Attori secondari}
+\subsection{Attori secondari}
 \label{subsubsec:attori-secondari}
 
 \begin{itemize}
     \item \textbf{\emph{RiskAPP API}}: sistema che fornisce le \gls{apig}\glsoccur del \emph{Tool Trattative} per l'interazione con il \gls{backend}\glsoccur dell'applicazione.
 \end{itemize}
 
-\subsection{Token di autenticazione}
+\section{Token di autenticazione}
 \label{subsec:token-autenticazione}
 
-Il \emph{token} di autenticazione, in questo contesto applicativo, si tratta di una stringa che, una volta inserite e validate le credenziali, viene generata dal \gls{backend}\glsoccur e memorizzata dall'applicazione, il cui scopo è quello, oltre al mantenimento dell'accesso al proprio account, di effettuare le richieste \gls{httpg}\glsoccur al \gls{backend}\glsoccur.\\
+Per \emph{token} di autenticazione, del quale nel corso della sezione \ref{sec:usecase} si farà riferimento, si tratta di una stringa univoca che, una volta inserite e validate le credenziali, viene generata dal \gls{backend}\glsoccur e memorizzata dall'applicazione, il cui scopo è quello, oltre al mantenimento dell'accesso al proprio account, di effettuare le richieste \gls{httpg}\glsoccur.\\
 Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà effettuare nuovamente l'autenticazione per ottenerne uno nuovo.
+
+\section{Casi d'uso}
+\label{sec:usecase}
+
+Per lo studio dei \glspl{usecase}\glsoccur del prodotto sono stati creati degli appositi diagrammi che illustrano le interazioni tra gli \glspl{attore}\glsoccur e il sistema.\\
+Ciascun \gls{usecase}\glsoccur viene fornito con una descrizione che ne riporta le informazioni principali, come attori coinvolti, pre e post condizioni, scenario principale ed eventuali scenari secondari.\\
+Per questioni di leggibilità, i diagrammi sono stati suddivisi in più parti, raggrupando i \glspl{usecase}\glsoccur che costituiscono una macro-funzionalità oppure specificano in dettaglio un \gls{usecase}\glsoccur del sistema.
 
 \begin{figure}[!h] 
     \centering 
     \includegraphics[width=1.0\columnwidth]{usecase/1-uc} 
     \caption{Use Case - Login}
+    \label{fig:uc-login}
 \end{figure}
 
 \begin{usecase}{01}{Autenticazione}
@@ -49,6 +50,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasedesc{L'utente effettua l'autenticazione al sistema, scegliendo se farlo, inserendo manualmente le credenziali, oppure tramite \gls{riconoscimentobiometrico}\glsoccur.}
     \usecasepost{L'utente è autenticato nel sistema}
     \usecasealt{Se l'autenticazione fallisce, si verifica \hyperref[UC04]{UC04}}
+    \usecaseimg{\ref{fig:uc-login}}
     \label{UC01}
 \end{usecase}
 
@@ -57,6 +59,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente non è ancora autenticato nel sistema}
     \usecasedesc{L'utente inserisce manualmente le proprie credenziali per effettuare l'autenticazione al sistema.}
     \usecasepost{L'utente è autenticato nel sistema}
+    \usecaseimg{\ref{fig:uc-login}}
     \label{UC02}
 \end{usecase}
 
@@ -65,6 +68,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente non è ancora autenticato nel sistema}
     \usecasedesc{L'utente utilizza il \gls{riconoscimentobiometrico}\glsoccur per effettuare l'autenticazione al sistema.}
     \usecasepost{L'utente è autenticato nel sistema}
+    \usecaseimg{\ref{fig:uc-login}}
     \label{UC03}
 \end{usecase}
 
@@ -80,6 +84,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
             \item connessione ad internet assente.
         \end{itemize}}
     \usecasepost{L'utente non è autenticato nel sistema}
+    \usecaseimg{\ref{fig:uc-login}}
     \label{UC04}
 \end{usecase}
 
@@ -87,6 +92,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \centering 
     \includegraphics[width=1.0\columnwidth]{usecase/2-uc} 
     \caption{Use Case - Visualizzazione Meeting Note}
+    \label{fig:uc-meetingnote}
 \end{figure}
 
 \begin{usecase}{05}{Visualizzazione lista Meeting Note}
@@ -96,6 +102,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasedesc{L'utente vuole visualizzare la lista di tutte le \gls{meetingnote}\glsoccur associate.}
     \usecasepost{È visualizzabile la lista delle \gls{meetingnote}\glsoccur}
     \usecasealt{Se la visualizzazione fallisce, si verifica \hyperref[UC06]{UC06}}
+    \usecaseimg{\ref{fig:uc-meetingnote}}
     \label{UC05}
 \end{usecase}
 
@@ -103,6 +110,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \centering 
     \includegraphics[width=1.0\columnwidth]{usecase/3-uc} 
     \caption{Use Case - Visualizzazione lista Meeting Note}
+    \label{fig:uc-meetingnote-list-details}
 \end{figure}
 
 \begin{usecase}{05.1}{Visualizzazione cliente delle Meeting Note}
@@ -110,6 +118,8 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente visualizza la lista delle \gls{meetingnote}\glsoccur}
     \usecasedesc{L'utente vuole visualizzare gli identificativi dei \glspl{cliente}\glsoccur associati alle \gls{meetingnote}\glsoccur.}
     \usecasepost{Sono visualizzabili i \glspl{cliente}\glsoccur associati alle \gls{meetingnote}\glsoccur}
+    \usecaseimg{\ref{fig:uc-meetingnote-list-details}}
+    \label{UC05.1}
 \end{usecase}
 
 \begin{usecase}{05.2}{Visualizzazione data della Meeting Note}
@@ -117,6 +127,8 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente visualizza la lista delle \gls{meetingnote}\glsoccur}
     \usecasedesc{L'utente vuole visualizzare le date degli incontri associati alle \gls{meetingnote}\glsoccur.}
     \usecasepost{Sono visualizzabili le date degli incontri associati alle \gls{meetingnote}\glsoccur}
+    \usecaseimg{\ref{fig:uc-meetingnote-list-details}}
+    \label{UC05.2}
 \end{usecase}
 
 \begin{usecase}{05.3}{Visualizzazione parziale contenuto delle Meeting Note}
@@ -124,6 +136,8 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente visualizza la lista delle \gls{meetingnote}\glsoccur}
     \usecasedesc{L'utente vuole visualizzare parzialmente i contenuti delle \gls{meetingnote}\glsoccur.}
     \usecasepost{Sono visualizzabili parzialmente i contenuti delle \gls{meetingnote}\glsoccur}
+    \usecaseimg{\ref{fig:uc-meetingnote-list-details}}
+    \label{UC05.3}
 \end{usecase}
 
 \begin{usecase}{06}{Errore visualizzazione lista Meeting Note}
@@ -138,6 +152,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
             \item connessione ad internet assente.
         \end{itemize}}
     \usecasepost{Non è visualizzabile la lista delle \gls{meetingnote}\glsoccur}
+    \usecaseimg{\ref{fig:uc-meetingnote}}
     \label{UC06}
 \end{usecase}
 
@@ -146,6 +161,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente visualizza la lista delle \gls{meetingnote}\glsoccur a lui associate}
     \usecasedesc{L'utente effettua una ricerca all'interno della lista delle \gls{meetingnote}\glsoccur.}
     \usecasepost{Lista delle \gls{meetingnote}\glsoccur è filtrata}
+    \usecaseimg{\ref{fig:uc-meetingnote}}
     \label{UC07}
 \end{usecase}
 
@@ -155,6 +171,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \centering 
     \includegraphics[width=1.0\columnwidth]{usecase/4-uc} 
     \caption{Use Case - Ricerca Meeting Note}
+    \label{fig:uc-meetingnote-search}
 \end{figure}
 
 \begin{usecase}{07.1}{Ricerca per identificativo del cliente}
@@ -164,6 +181,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasedesc{L'utente effettua una ricerca per identificativo del \gls{cliente}\glsoccur all'interno della lista delle \gls{meetingnote}\glsoccur.}
     \usecasepost{Lista delle \gls{meetingnote}\glsoccur è filtrata per identificativo del \gls{cliente}\glsoccur}
     \usecasealt{Se la ricerca fallisce, si verifica \hyperref[UC07.6]{UC07.6}}
+    \usecaseimg{\ref{fig:uc-meetingnote-search}}
     \label{UC07.1}
 \end{usecase}
 
@@ -172,6 +190,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente visualizza la lista delle \gls{meetingnote}\glsoccur a lui associate}
     \usecasedesc{L'utente seleziona la categoria del \gls{cliente}\glsoccur per effettuare la ricerca per identificativo all'interno della lista delle \gls{meetingnote}\glsoccur.}
     \usecasepost{La categoria del \gls{cliente}\glsoccur è selezionata}
+    \usecaseimg{\ref{fig:uc-meetingnote-search}}
     \label{UC07.2}
 \end{usecase}
 
@@ -182,6 +201,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasedesc{L'utente effettua una ricerca per data all'interno della lista delle \gls{meetingnote}\glsoccur.}
     \usecasepost{Lista delle \gls{meetingnote}\glsoccur è filtrata per data}
     \usecasealt{Se la ricerca fallisce, si verifica \hyperref[UC07.6]{UC07.6}}
+    \usecaseimg{\ref{fig:uc-meetingnote-search}}
     \label{UC07.3}
 \end{usecase}
 
@@ -190,6 +210,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente visualizza la lista delle \gls{meetingnote}\glsoccur a lui associate}
     \usecasedesc{L'utente effettua una ricerca per data singola all'interno della lista delle \gls{meetingnote}\glsoccur.}
     \usecasepost{Lista delle \gls{meetingnote}\glsoccur è filtrata per data singola}
+    \usecaseimg{\ref{fig:uc-meetingnote-search}}
     \label{UC07.4}
 \end{usecase}
 
@@ -198,6 +219,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente visualizza la lista delle \gls{meetingnote}\glsoccur a lui associate}
     \usecasedesc{L'utente effettua una ricerca per intervallo di date all'interno della lista delle \gls{meetingnote}\glsoccur.}
     \usecasepost{Lista delle \gls{meetingnote}\glsoccur è filtrata per intervallo di date}
+    \usecaseimg{\ref{fig:uc-meetingnote-search}}
     \label{UC07.5}
 \end{usecase}
 
@@ -213,6 +235,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
             \item connessione ad internet assente.
         \end{itemize}}
     \usecasepost{Lista delle \gls{meetingnote}\glsoccur non è filtrata}
+    \usecaseimg{\ref{fig:uc-meetingnote-search}}
     \label{UC07.6}
 \end{usecase}
 
@@ -223,12 +246,15 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasedesc{L'utente vuole visualizzare i propri dati personali.}
     \usecasepost{Sono visualizzabili i dati personali dell'utente}
     \usecasealt{Se la visualizzazione fallisce, si verifica \hyperref[UC09]{UC09}} 
+    \usecaseimg{\ref{fig:uc-meetingnote}}
+    \label{UC08}
 \end{usecase}
 
 \begin{figure}[!h] 
     \centering 
     \includegraphics[width=1.0\columnwidth]{usecase/5-uc} 
     \caption{Use Case - Visualizzazione dati utente}
+    \label{fig:uc-user}
 \end{figure}
 
 \begin{usecase}{08.1}{Visualizzazione nome utente}
@@ -237,6 +263,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente visualizza i propri dati personali}
     \usecasedesc{L'utente vuole visualizzare il proprio nome.}
     \usecasepost{È visualizzabile il nome dell'utente}
+    \usecaseimg{\ref{fig:uc-user}}
     \label{UC08.1}
 \end{usecase}
 
@@ -246,6 +273,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente visualizza i propri dati personali}
     \usecasedesc{L'utente vuole visualizzare il proprio cognome.}
     \usecasepost{È visualizzabile il cognome dell'utente}
+    \usecaseimg{\ref{fig:uc-user}}
     \label{UC08.2}
 \end{usecase}
 
@@ -255,6 +283,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente visualizza i propri dati personali}
     \usecasedesc{L'utente vuole visualizzare la propria email.}
     \usecasepost{È visualizzabile la email dell'utente}
+    \usecaseimg{\ref{fig:uc-user}}
     \label{UC08.3}
 \end{usecase}
 
@@ -264,6 +293,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente visualizza i propri dati personali}
     \usecasedesc{L'utente vuole visualizzare il proprio avatar.}
     \usecasepost{È visualizzabile l'avatar dell'utente}
+    \usecaseimg{\ref{fig:uc-user}}
     \label{UC08.4}
 \end{usecase}
 
@@ -272,6 +302,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente visualizza i propri dati personali}
     \usecasedesc{L'utente vuole effetuare il logout.}
     \usecasepost{L'utente non è più autenticato al sistema}
+    \usecaseimg{\ref{fig:uc-user}}
     \label{UC08.5}
 \end{usecase}
 
@@ -281,6 +312,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente visualizza i propri dati personali}
     \usecasedesc{L'utente vuole abilitare il \gls{riconoscimentobiometrico}\glsoccur, deve inserire le proprie credenziali per la conferma.}
     \usecasepost{Riconoscimento biometrico abilitato}
+    \usecaseimg{\ref{fig:uc-user}}
     \label{UC08.6}
 \end{usecase}
 
@@ -291,6 +323,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasedesc{L'utente inserisce le proprie credenziali per abilitare il \gls{riconoscimentobiometrico}\glsoccur.}
     \usecasepost{Riconoscimento biometrico abilitato}
     \usecasealt{Se la conferma fallisce, si verifica \hyperref[UC08.8]{UC08.8}}
+    \usecaseimg{\ref{fig:uc-user}}
     \label{UC08.7}
 \end{usecase}
 
@@ -305,6 +338,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
             \item connessione ad internet assente.
         \end{itemize}}
     \usecasepost{Riconoscimento biometrico non abilitato}
+    \usecaseimg{\ref{fig:uc-user}}
     \label{UC08.8}
 \end{usecase}
 
@@ -319,6 +353,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
             \item connessione ad internet assente.
         \end{itemize}}
     \usecasepost{Non sono visualizzabili i dati personali dell'utente}
+    \usecaseimg{\ref{fig:uc-meetingnote}}
     \label{UC09}
 \end{usecase}
 
@@ -329,6 +364,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasedesc{L'utente vuole ordinare la lista delle \gls{meetingnote}\glsoccur.}
     \usecasepost{Lista delle \gls{meetingnote}\glsoccur è ordinata}
     \usecasealt{Se l'ordinamento fallisce, si verifica \hyperref[UC13]{UC13}}
+    \usecaseimg{\ref{fig:uc-meetingnote}}
     \label{UC10}
 \end{usecase}
 
@@ -339,6 +375,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasedesc{L'utente vuole ordinare la lista delle \gls{meetingnote}\glsoccur dalla meno recente.}
     \usecasepost{Lista delle \gls{meetingnote}\glsoccur è ordinata dalla meno recente}
     \usecasealt{Se l'ordinamento fallisce, si verifica \hyperref[UC13]{UC13}}
+    \usecaseimg{\ref{fig:uc-meetingnote}}
     \label{UC11}
 \end{usecase}
 
@@ -349,6 +386,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasedesc{L'utente vuole ordinare la lista delle \gls{meetingnote}\glsoccur dalla più recente.}
     \usecasepost{Lista delle \gls{meetingnote}\glsoccur è ordinata dalla più recente}
     \usecasealt{Se l'ordinamento fallisce, si verifica \hyperref[UC13]{UC13}}
+    \usecaseimg{\ref{fig:uc-meetingnote}}
     \label{UC12}
 \end{usecase}
 
@@ -363,6 +401,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
             \item connessione ad internet assente.
         \end{itemize}}
     \usecasepost{Lista delle \gls{meetingnote}\glsoccur non è ordinata}
+    \usecaseimg{\ref{fig:uc-meetingnote}}
     \label{UC13}
 \end{usecase}
 
@@ -371,6 +410,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente visualizza la lista delle \gls{meetingnote}\glsoccur}
     \usecasedesc{L'utente vuole visualizzare i dettagli di una singola \gls{meetingnote}\glsoccur.}
     \usecasepost{Sono visualizzabili i dettagli di una singola \gls{meetingnote}\glsoccur}
+    \usecaseimg{\ref{fig:uc-meetingnote}}
     \label{UC14}
 \end{usecase}
 
@@ -380,6 +420,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \centering 
     \includegraphics[width=1.0\columnwidth]{usecase/6-uc} 
     \caption{Use Case - Visualizzazione singola Meeting Note}
+    \label{fig:uc-meetingnote-details}
 \end{figure}
 
 \begin{usecase}{14.1}{Visualizzazione cliente Meeting Note}
@@ -387,6 +428,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente visualizza i dettagli di una singola \gls{meetingnote}\glsoccur}
     \usecasedesc{L'utente vuole visualizzare il \gls{cliente}\glsoccur di una \gls{meetingnote}\glsoccur.}
     \usecasepost{È visualizzabile il \gls{cliente}\glsoccur di una \gls{meetingnote}\glsoccur}
+    \usecaseimg{\ref{fig:uc-meetingnote-details}}
     \label{UC14.1}
 \end{usecase}
 
@@ -395,6 +437,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente visualizza i dettagli di una singola \gls{meetingnote}\glsoccur}
     \usecasedesc{L'utente vuole visualizzare la data di una \gls{meetingnote}\glsoccur.}
     \usecasepost{È visualizzabile la data di una \gls{meetingnote}\glsoccur}
+    \usecaseimg{\ref{fig:uc-meetingnote-details}}
     \label{UC14.2}
 \end{usecase}
 
@@ -403,6 +446,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente visualizza i dettagli di una singola \gls{meetingnote}\glsoccur}
     \usecasedesc{L'utente vuole visualizzare il contenuto di una \gls{meetingnote}\glsoccur.}
     \usecasepost{È visualizzabile il contenuto di una \gls{meetingnote}\glsoccur}
+    \usecaseimg{\ref{fig:uc-meetingnote-details}}
     \label{UC14.3}
 \end{usecase}
 
@@ -411,6 +455,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente visualizza i dettagli di una singola \gls{meetingnote}\glsoccur}
     \usecasedesc{L'utente vuole visualizzare l'autore di una \gls{meetingnote}\glsoccur.}
     \usecasepost{È visualizzabile l'autore di una \gls{meetingnote}\glsoccur}
+    \usecaseimg{\ref{fig:uc-meetingnote-details}}
     \label{UC14.4}
 \end{usecase}
 
@@ -421,6 +466,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasedesc{L'utente vuole eliminare la \gls{meetingnote}\glsoccur selezionata.}
     \usecasepost{La \gls{meetingnote}\glsoccur selezionata è stata eliminata}
     \usecasealt{Se l'eliminazione fallisce, si verifica \hyperref[UC14.6]{UC14.6}}
+    \usecaseimg{\ref{fig:uc-meetingnote-details}}
     \label{UC14.5}
 \end{usecase}
 
@@ -434,7 +480,8 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
             \item token di autenticazione scaduto;
             \item connessione ad internet assente.
         \end{itemize}}
-        \usecasepost{La \gls{meetingnote}\glsoccur selezionata non è stata eliminata}
+    \usecasepost{La \gls{meetingnote}\glsoccur selezionata non è stata eliminata}
+    \usecaseimg{\ref{fig:uc-meetingnote-details}}
     \label{UC14.6}
 \end{usecase}
 
@@ -443,6 +490,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente visualizza i dettagli di una singola \gls{meetingnote}\glsoccur}
     \usecasedesc{L'utente vuole modificare la \gls{meetingnote}\glsoccur selezionata.}
     \usecasepost{La \gls{meetingnote}\glsoccur selezionata è stata modificata}
+    \usecaseimg{\ref{fig:uc-meetingnote-details}}
     \label{UC14.7}
 \end{usecase}
 
@@ -452,6 +500,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \centering 
     \includegraphics[width=1.0\columnwidth]{usecase/7-uc} 
     \caption{Use Case - Creazione Meeting Note}
+    \label{fig:uc-meetingnote-create}
 \end{figure}
 
 \begin{usecase}{15}{Crea Meeting Note}
@@ -459,6 +508,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente è autenticato nel sistema}
     \usecasedesc{L'utente vuole creare una nuova \gls{meetingnote}\glsoccur.}
     \usecasepost{Una nuova \gls{meetingnote}\glsoccur è stata creata}
+    \usecaseimg{\ref{fig:uc-meetingnote-create}}
     \label{UC15}
 \end{usecase}
 
@@ -467,6 +517,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente è autenticato nel sistema}
     \usecasedesc{L'utente vuole creare manualmente una nuova \gls{meetingnote}\glsoccur.}
     \usecasepost{Una nuova \gls{meetingnote}\glsoccur è stata creata manualmente}
+    \usecaseimg{\ref{fig:uc-meetingnote-create}}
     \label{UC16}
 \end{usecase}
 
@@ -475,6 +526,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente è autenticato nel sistema}
     \usecasedesc{L'utente vuole creare automaticamente una nuova \gls{meetingnote}\glsoccur.}
     \usecasepost{Una nuova \gls{meetingnote}\glsoccur è stata creata automaticamente}
+    \usecaseimg{\ref{fig:uc-meetingnote-create}}
     \label{UC17}
 \end{usecase}
 
@@ -484,6 +536,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \centering 
     \includegraphics[width=1.0\columnwidth]{usecase/9-uc} 
     \caption{Use Case - Creazione automatica}
+    \label{fig:uc-meetingnote-create-automatic}
 \end{figure}
 
 \begin{usecase}{17.1}{Compilazione dati Meeting Note}
@@ -491,6 +544,8 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente vuole creare automaticamente una \gls{meetingnote}\glsoccur}
     \usecasedesc{L'utente compila i dati necessari per la creazione automatica di una \gls{meetingnote}\glsoccur sotto forma di una descrizione testuale.}
     \usecasepost{È stato scritto una breve descrizione testuale con i dati necessari per la creazione automatica di una \gls{meetingnote}\glsoccur}
+    \usecaseimg{\ref{fig:uc-meetingnote-create-automatic}}
+    \label{UC17.1}
 \end{usecase}
 
 \begin{usecase}{17.2}{Elaborazione dati}
@@ -500,6 +555,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasedesc{Il testo viene elaborato da una algoritmo di \gls{iag}\glsoccur per estrapolare i dati (cliente, data e contenuto) per la creazione automatica di una \gls{meetingnote}\glsoccur.}
     \usecasepost{I dati (cliente, data e contenuto) per la creazione automatica di una \gls{meetingnote}\glsoccur sono stati estrapolati}
     \usecasealt{Se l'elaborazione fallisce, si verifica \hyperref[UC17.3]{UC17.3}}
+    \usecaseimg{\ref{fig:uc-meetingnote-create-automatic}}
     \label{UC17.2}
 \end{usecase}
 
@@ -515,6 +571,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
             \item connessione ad internet assente.
         \end{itemize}}
     \usecasepost{I dati per la creazione automatica di una \gls{meetingnote}\glsoccur non sono stati estrapolati}
+    \usecaseimg{\ref{fig:uc-meetingnote-create-automatic}}
     \label{UC17.3}
 \end{usecase}
 
@@ -523,6 +580,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'algoritmo ha estrapolato i dati per la creazione di una \gls{meetingnote}\glsoccur}
     \usecasedesc{L'utente vuole visualizzare i dati estrapolati dall'algoritmo per la creazione automatica di una \gls{meetingnote}\glsoccur, per accertarsi della loro correttezza.}
     \usecasepost{Sono visualizzabili i dati estrapolati dall'algoritmo per la creazione di una \gls{meetingnote}\glsoccur}
+    \usecaseimg{\ref{fig:uc-meetingnote-create-automatic}}
     \label{UC17.4}
 \end{usecase}
 
@@ -532,6 +590,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \centering 
     \includegraphics[width=1.0\columnwidth]{usecase/10-uc} 
     \caption{Use Case - Visualizzazione risultato elaborazione}
+    \label{fig:uc-meetingnote-create-automatic-result}
 \end{figure}
 
 \begin{usecase}{17.4.1}{Visualizzazione categoria cliente}
@@ -539,6 +598,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente visualizza i dati estrapolati dall'algoritmo}
     \usecasedesc{L'utente vuole visualizzare la categoria del \gls{cliente}\glsoccur estrapolato}
     \usecasepost{È visualizzabile la categoria del \gls{cliente}\glsoccur estrapolato}
+    \usecaseimg{\ref{fig:uc-meetingnote-create-automatic-result}}
     \label{UC17.4.1}
 \end{usecase}
 
@@ -547,6 +607,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente visualizza i dati estrapolati dall'algoritmo}
     \usecasedesc{L'utente vuole visualizzare del \gls{cliente}\glsoccur estrapolato}
     \usecasepost{È visualizzabile l'identificativo del \gls{cliente}\glsoccur estrapolato}
+    \usecaseimg{\ref{fig:uc-meetingnote-create-automatic-result}}
     \label{UC17.4.2}
 \end{usecase}
 
@@ -555,6 +616,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente visualizza i dati estrapolati dall'algoritmo}
     \usecasedesc{L'utente vuole visualizzare la data estrapolata}
     \usecasepost{È visualizzabile la data estrapolata}
+    \usecaseimg{\ref{fig:uc-meetingnote-create-automatic-result}}
     \label{UC17.4.3}
 \end{usecase}
 
@@ -563,6 +625,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente visualizza i dati estrapolati dall'algoritmo}
     \usecasedesc{L'utente vuole visualizzare il contenuto estrapolato}
     \usecasepost{È visualizzabile il contenuto estrapolato}
+    \usecaseimg{\ref{fig:uc-meetingnote-create-automatic-result}}
     \label{UC17.4.4}
 \end{usecase}
 
@@ -571,6 +634,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente visualizza la categoria del \gls{cliente}\glsoccur estrapolato}
     \usecasedesc{L'utente modifica la categoria del \gls{cliente}\glsoccur}
     \usecasepost{La categoria del \gls{cliente}\glsoccur è stato modificato}
+    \usecaseimg{\ref{fig:uc-meetingnote-create-automatic-result}}
     \label{15.4.5}
 \end{usecase}
 
@@ -579,6 +643,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente visualizza l'identificativo del \gls{cliente}\glsoccur estrapolato}
     \usecasedesc{L'utente modifica l'identificativo del \gls{cliente}\glsoccur}
     \usecasepost{L'identificativo del \gls{cliente}\glsoccur è stato modificato}
+    \usecaseimg{\ref{fig:uc-meetingnote-create-automatic-result}}
     \label{15.4.6}
 \end{usecase}
 
@@ -587,6 +652,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente visualizza la data estrapolata}
     \usecasedesc{L'utente modifica la data}
     \usecasepost{La data è stata modificata}
+    \usecaseimg{\ref{fig:uc-meetingnote-create-automatic-result}}
     \label{15.4.7}
 \end{usecase}
 
@@ -595,6 +661,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente visualizza il contenuto estrapolato}
     \usecasedesc{L'utente modifica il contenuto}
     \usecasepost{Il contenuto è stato modificato}
+    \usecaseimg{\ref{fig:uc-meetingnote-create-automatic-result}}
     \label{15.4.8}
 \end{usecase}
 
@@ -604,6 +671,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasedesc{L'utente conferma la creazione automatica di una \gls{meetingnote}\glsoccur.}
     \usecasepost{Una nuova \gls{meetingnote}\glsoccur è stata creata automaticamente}
     \usecasealt{Se la conferma fallisce, si verifica \hyperref[UC31]{UC31}}
+    \usecaseimg{\ref{fig:uc-meetingnote-create-automatic-result}}
     \label{15.4.9}
 \end{usecase}
 
@@ -612,6 +680,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente é in fase di creazione automatica di una \gls{meetingnote}\glsoccur}
     \usecasedesc{L'utente annulla la creazione automatica di una \gls{meetingnote}\glsoccur.}
     \usecasepost{Non è stata creata una nuova \gls{meetingnote}\glsoccur}
+    \usecaseimg{\ref{fig:uc-meetingnote-create-automatic}}
     \label{UC17.5}
 \end{usecase}
 
@@ -621,6 +690,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \centering 
     \includegraphics[width=1.0\columnwidth]{usecase/8-uc} 
     \caption{Use Case - Creazione manuale (\hyperref[UC16]{UC16}) e Modifica (\hyperref[UC14.7]{UC14.7}) di una Meeting Note}
+    \label{fig:uc-meetingnote-create-manual}
 \end{figure}
 
 \noindent Per la creazione manuale (\hyperref[UC16]{UC16}) e modifica (\hyperref[UC14.7]{UC14.7}) di una \gls{meetingnote}\glsoccur sono stati individuati i seguenti \glspl{usecase}\glsoccur, che sono in comune tra le due funzionalità sopra citate, in quanto condividono la stessa sequenza di azioni, e dunque di attori principali, secondari, precondizioni e postcondizioni.
@@ -630,6 +700,8 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente vuole creare manualmente o modificare una \gls{meetingnote}\glsoccur}
     \usecasedesc{L'utente deve selezionare un \gls{cliente}\glsoccur per la creazione o la modifica di una \gls{meetingnote}\glsoccur.}
     \usecasepost{Il \gls{cliente}\glsoccur è stato selezionato}
+    \usecaseimg{\ref{fig:uc-meetingnote-create-manual}}
+    \label{UC18}
 \end{usecase}
 
 \begin{usecase}{19}{Visualizzazione lista clienti}
@@ -639,6 +711,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasedesc{L'utente vuole visualizzare la lista di tutti i \glspl{cliente}\glsoccur della categoria selezionata.}
     \usecasepost{È visualizzabile la lista dei \glspl{cliente}\glsoccur filtrata per categoria}
     \usecasealt{Se la visualizzazione fallisce, si verifica \hyperref[UC20]{UC20}}
+    \usecaseimg{\ref{fig:uc-meetingnote-create-manual}}
     \label{UC19}
 \end{usecase}
 
@@ -654,6 +727,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
             \item connessione ad internet assente.
         \end{itemize}}
     \usecasepost{Non è visualizzabile la lista dei \glspl{cliente}\glsoccur filtrata per categoria}
+    \usecaseimg{\ref{fig:uc-meetingnote-create-manual}}
     \label{UC20}
 \end{usecase}
 
@@ -664,6 +738,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasedesc{L'utente effettua una ricerca per identificativo del \gls{cliente}\glsoccur.}
     \usecasepost{L'identificativo del \gls{cliente}\glsoccur è stato trovato}
     \usecasealt{Se la ricerca fallisce, si verifica \hyperref[UC22]{UC22}}
+    \usecaseimg{\ref{fig:uc-meetingnote-create-manual}}
     \label{UC21}
 \end{usecase}
 
@@ -679,6 +754,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
             \item connessione ad internet assente.
         \end{itemize}}
     \usecasepost{L'identificativo del \gls{cliente}\glsoccur non è stato trovato}
+    \usecaseimg{\ref{fig:uc-meetingnote-create-manual}}
     \label{UC22}
 \end{usecase}
 
@@ -687,6 +763,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente è in fase di creazione o modifica}
     \usecasedesc{L'utente seleziona la categoria del \gls{cliente}\glsoccur per filtrare la lista dei \glspl{cliente}\glsoccur e/o la ricerca dell'identificativo.}
     \usecasepost{La categoria del \gls{cliente}\glsoccur è stata selezionata}
+    \usecaseimg{\ref{fig:uc-meetingnote-create-manual}}
     \label{UC23}
 \end{usecase}
 
@@ -695,6 +772,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente vuole creare manualmente o modificare una \gls{meetingnote}\glsoccur}
     \usecasedesc{L'utente deve selezionare una data, in cui è avvenuto l'incontro, per la creazione o la modifica di una \gls{meetingnote}\glsoccur.}
     \usecasepost{La data dell'incontro è stata selezionata}
+    \usecaseimg{\ref{fig:uc-meetingnote-create-manual}}
     \label{UC24}
 \end{usecase}
 
@@ -703,6 +781,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente ha selezionato un \gls{cliente}\glsoccur e una data}
     \usecasedesc{Viene visualizzato il riepilogo dei dati selezionati.}
     \usecasepost{È visualizzabile il riepilogo dei dati selezionati}
+    \usecaseimg{\ref{fig:uc-meetingnote-create-manual}}
     \label{UC25}
 \end{usecase}
 
@@ -712,6 +791,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \centering 
     \includegraphics[width=1.0\columnwidth]{usecase/11-uc} 
     \caption{Use Case - Visualizzazione riepilogo}
+    \label{fig:uc-meetingnote-create-manual-result}
 \end{figure}
 
 \begin{usecase}{25.1}{Visualizzazione identificativo cliente}
@@ -719,6 +799,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente visualizza il riepilogo}
     \usecasedesc{Viene visualizzato l'identificativo del \gls{cliente}\glsoccur selezionato.}
     \usecasepost{È visualizzabile l'identificativo del \gls{cliente}\glsoccur selezionato}
+    \usecaseimg{\ref{fig:uc-meetingnote-create-manual-result}}
     \label{UC25.1}
 \end{usecase}
 
@@ -727,6 +808,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente visualizza il riepilogo}
     \usecasedesc{Viene visualizzata la data selezionata.}
     \usecasepost{È visualizzabile la data selezionata}
+    \usecaseimg{\ref{fig:uc-meetingnote-create-manual-result}}
     \label{UC25.2}
 \end{usecase}
 
@@ -735,6 +817,8 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente vuole creare manualmente o modificare una \gls{meetingnote}\glsoccur}
     \usecasedesc{L'utente deve compilare il contenuto della \gls{meetingnote}\glsoccur.}
     \usecasepost{Il contenuto della \gls{meetingnote}\glsoccur è compilato}
+    \usecaseimg{\ref{fig:uc-meetingnote-create-manual}}
+    \label{UC26}
 \end{usecase}
 
 \begin{usecase}{27}{Compilazione testuale}
@@ -742,6 +826,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente deve compilare il contenuto della \gls{meetingnote}\glsoccur}
     \usecasedesc{L'utente deve compilare il contenuto della \gls{meetingnote}\glsoccur con l'ausilio della tastiera.}
     \usecasepost{Il contenuto della \gls{meetingnote}\glsoccur è stato compilato con l'ausilio della tastiera}
+    \usecaseimg{\ref{fig:uc-meetingnote-create-manual}}
     \label{UC27}
 \end{usecase}
 
@@ -750,6 +835,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente deve compilare il contenuto della \gls{meetingnote}\glsoccur}
     \usecasedesc{L'utente deve compilare il contenuto della \gls{meetingnote}\glsoccur attraverso la dettatura vocale.}
     \usecasepost{Il contenuto della \gls{meetingnote}\glsoccur è stato compilato attraverso la dettatura vocale}
+    \usecaseimg{\ref{fig:uc-meetingnote-create-manual}}
     \label{UC28}
 \end{usecase}
 
@@ -758,6 +844,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasepre{L'utente ha selezionato: \gls{cliente}\glsoccur, data e compilato il contenuto della \gls{meetingnote}\glsoccur}
     \usecasedesc{L'utente vuole annullare l'operazione di creazione o modifica di una \gls{meetingnote}\glsoccur.}
     \usecasepost{L'operazione di creazione o modifica di una \gls{meetingnote}\glsoccur è annullata}
+    \usecaseimg{\ref{fig:uc-meetingnote-create-manual}}
     \label{UC29}
 \end{usecase}
 
@@ -768,6 +855,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
     \usecasedesc{L'utente vuole confermare l'operazione di creazione o modifica di una \gls{meetingnote}\glsoccur.}
     \usecasepost{L'operazione di creazione o modifica di una \gls{meetingnote}\glsoccur è confermata}
     \usecasealt{Se la conferma fallisce, si verifica \hyperref[UC31]{UC31}}
+    \usecaseimg{\ref{fig:uc-meetingnote-create-manual}}
     \label{UC30}
 \end{usecase}
 
@@ -782,12 +870,13 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
             \item connessione ad internet assente.
         \end{itemize}}
     \usecasepost{La conferma dell'operazione di creazione o modifica di una \gls{meetingnote}\glsoccur è fallita}
+    \usecaseimg{\ref{fig:uc-meetingnote-create-manual}}
     \label{UC31}
 \end{usecase}
 
 \section{Tracciamento dei requisiti}
 
-Da un'attenta analisi dei requisiti e degli use case effettuata sul progetto è stata stilata la tabella che traccia i requisiti in rapporto agli use case.\\
+Da un'attenta analisi dei requisiti e degli use case effettuata sul progetto è stata stilata la tabella che traccia i requisiti.\\
 Sono stati individuati diversi tipi di requisiti e si è quindi fatto utilizzo di un codice identificativo per distinguerli.\\
 Il codice dei requisiti è così strutturato R(F/Q/V)(N/D/O) dove:
 \begin{enumerate}
@@ -799,7 +888,13 @@ Il codice dei requisiti è così strutturato R(F/Q/V)(N/D/O) dove:
     \item[D =] desiderabile
     \item[Z =] opzionale
 \end{enumerate}
-Nelle tabelle \ref{tab:requisiti-funzionali-1}, \ref{tab:requisiti-funzionali-2}, \ref{tab:requisiti-funzionali-3}, \ref{tab:requisiti-funzionali-4}, \ref{tab:requisiti-qualitativi} e \ref{tab:requisiti-vincolo} sono riassunti i requisiti e il loro tracciamento con gli use case delineati in fase di analisi.
+
+Di seguito sono riportate le tabelle che raccolgono, per tipologia, i requisiti individuati.\\
+\begin{itemize}
+    \item \textbf{Requisiti funzionali}: descrivono le funzionalità offerte dal prodotto software. Sono stati individuati requisiti funzionali e sono stati tracciati con i \glspl{usecase} delineati in fase di analisi. Si faccia riferimento alle tabelle \ref{tab:requisiti-funzionali-1}, \ref{tab:requisiti-funzionali-2}, \ref{tab:requisiti-funzionali-3}, \ref{tab:requisiti-funzionali-4};
+    \item \textbf{Requisiti qualitativi}: descrivono le caratteristiche qualitative che il prodotto software deve possedere. Si faccia riferimento alla tabella \ref{tab:requisiti-qualitativi};
+    \item \textbf{Requisiti di vincolo}: descrivono i vincoli che il prodotto software deve rispettare. Sono stati individuati requisiti di vincolo, si faccia riferimento alla tabella \ref{tab:requisiti-vincolo}.
+\end{itemize}
 
 \clearpage
 
@@ -1042,9 +1137,9 @@ RQN-4 & L'applicazione deve soddisfare la proprietà di \gls{responsivita}\glsoc
 \hline\hline
 \textbf{Requisito} & \textbf{Descrizione} & \textbf{Fonte}\\
 \hline
-RVN-1 & Utilizzo del linguaggio \gls{dart}\glsoccur per lo sviluppo dell'applicazione & - \\
+RVN-1 & Utilizzo del linguaggio \emph{dart}\cite per lo sviluppo dell'applicazione & - \\
 \hline
-RVN-2 & Utilizzo di \gls{flutter}\glsoccur per lo sviluppo dell'applicazione & - \\
+RVN-2 & Utilizzo di \emph{Flutter}\cite{site:flutter} per lo sviluppo dell'applicazione & - \\
 \hline
 RVN-3 & Utilizzo delle \gls{apig}\glsoccur della piattaforma \emph{RiskAPP} per la comunicazione con il \gls{backend}\glsoccur & - \\
 \hline
