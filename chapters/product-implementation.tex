@@ -3,6 +3,83 @@
 
 \intro{Breve introduzione al capitolo}\\
 
+Seguendo quanto descritto nel capitolo \ref{cap:progettazione}, si è proceduto con l'implementazione del prodotto software.\\
+Di seguito verrà illustratta l'effettiva struttura del progetto (vedi sezione \ref{sec:struttura-progetto}), descrivendone poi la varie classi principali contenute in ciascuna cartella. \\
+
+\begin{verbatim}
+    lib/
+        components/
+        constants/
+        data/
+            model/
+            service/
+        provider/
+        screens
+        styles/
+        utils/
+        main.dart
+\end{verbatim}
+
+\section{Components}
+\label{sec:components}
+
+INSERIRE LE FIGURE???\\
+SPIEGARE O RIMANDARE ALLA DOCUMENTAZIONE DI COME FUNZIONANO I WIDGET\\
+
+In questa cartella sono raccolti tutti i \emph{widget} personalizzati, utilizzati dalle schermate presenti in \emph{screens} (vedi sezione \ref{sec:screens}).\\
+
+\subsection{Alert Dialogs}
+\label{subsec:alert-dialogs}
+
+Nel file denominato \lstinline{alert_dialogs.dart} sono stati implementati i \emph{widget} che permetto di visualizzare un \emph{alert dialog} personalizzabile.\\
+
+\subsubsection*{CustomBaseAlertDialog}
+\label{subsubsec:custom-base-alert-dialog}
+
+È una classe astratta che implementa un \lstinline{AlertDialog}\cite{site:alert-dialog}  definisce l'aspetto base di un \emph{alert dialog}, in cui sono sono presenti degli elementi fissi, come il titolo, un'icona posta sotto il titolo, il suo colore e \gls{padding}\glsoccur.\\
+Mentre è possibile scegliere se aggiungere o meno un testo descrittivo, e se aggiungere o meno dei bottoni di conferma e/o annulla, in base all'operazione del contesto.\\
+
+\subsubsection*{IconAlertDialog}
+\label{subsubsec:icon-alert-dialog}
+
+Classe concreta che implementa \lstinline{CustomBaseAlertDialog} ed imposta con dei valori fissi sia il \gls{padding}\glsoccur che la dimensione dell'icona.\\
+Attraverso il costruttore è obbligatorio passare il \emph{widget} che rappresenta l'icona, il suo colore e un titolo, mentre è opzionale passare un testo descrittivo, e se aggiungere o meno dei bottoni di conferma e/o annulla.\\
+
+\subsubsection*{LoadingAlertDialog}
+\label{subsubsec:loading-alert-dialog}
+
+Classe concreta che implementa \lstinline{IconAlertDialog} ed imposta come icona un \lstinline{CircularProgressIndicator}\cite{site:circular-progress-indicator}, che rappresenta un indicatore di caricamento.\\
+È possibile decidere, attraveso il passaggio di parametri, il colore dell'indicatore e il titolo da visualizzare.\\
+
+\subsubsection*{WarningAlertDialog}
+\label{subsubsec:warning-alert-dialog}
+
+\subsubsection*{ResponseDialog}
+\label{subsubsec:response-dialog}
+
+\subsubsection*{NetworkAlertDialog}
+\label{subsubsec:network-alert-dialog}
+\section{Constants}
+\label{sec:constants}
+
+\section{Data}
+\label{sec:data}
+
+\section{Provider}
+\label{sec:provider}
+
+\section{Screens}
+\label{sec:screens}
+
+\section{Styles}
+\label{sec:styles}
+
+\section{Utils}
+\label{sec:utils}
+
+\section{main.dart}
+\label{sec:main}
+
 % Listato delle varie classi principali implementate
 % Fai riferimento allo storico dei commits su GitHub
 
