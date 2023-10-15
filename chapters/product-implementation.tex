@@ -1,12 +1,13 @@
 \chapter{Implementazione}
 \label{cap:implementazione}
 
-\intro{Breve introduzione al capitolo}\\
+\intro{In questo capitolo si discuterà dell'implementazione (o codifica) dell'applicazione in conseguenza alle scelte progettuali descritte nel capitolo precedente. Inoltre verranno descritte le librerie di terze parti utilizzate, motivandone la scelta.}\\
 
 Seguendo quanto descritto nel capitolo \ref{cap:progettazione}, si è proceduto con l'implementazione del prodotto software.\\
-Di seguito verrà illustratta l'effettiva struttura del progetto (vedi sezione \ref{sec:struttura-progetto}), descrivendone poi la varie classi principali contenute in ciascuna cartella. \\
+Di seguito verrà illustratta l'effettiva struttura del progetto basata sull'approccio \emph{layer first} (vedi sezione \ref{sec:struttura-progetto}) implementata, descrivendone poi la varie classi contenute in ciascuna cartella. \\
 
 \begin{verbatim}
+    assets/
     lib/
         components/
         constants/
@@ -20,6 +21,8 @@ Di seguito verrà illustratta l'effettiva struttura del progetto (vedi sezione \
         main.dart
 \end{verbatim}
 
+L'architettura menzionata nella sezione \ref{subsec:architettura-app} è stata implementata nel seguente modo: il \emph{data layer} e \emph{domain layer} sono stati implementati rispettivamente in \lstinline{service} e \lstinline{model}, contenute all'interno della cartella \lstinline{data}, mentre l'\emph{application layer} è stato implementato nella cartella \lstinline{provider} e il \emph{presentation layer} nella cartella \lstinline{screens}.\\
+Le restanti cartelle sono servite come ausilio per l'implementazione delle funzionalità dei \emph{layer} sopraccitati, come ad esempio \lstinline{components} per la creazione di \emph{widget} personalizzati, \lstinline{constants} per la definizione di costanti, \lstinline{styles} per la definizione di stili e del tema dell'applicazione e \lstinline{utils} per la definizione di alcune funzioni di utilità.\\
 \section{Components}
 \label{sec:components}
 
@@ -31,34 +34,58 @@ In questa cartella sono raccolti tutti i \emph{widget} personalizzati, utilizzat
 \subsection{Alert Dialogs}
 \label{subsec:alert-dialogs}
 
-Nel file denominato \lstinline{alert_dialogs.dart} sono stati implementati i \emph{widget} che permetto di visualizzare un \emph{alert dialog} personalizzabile.\\
+Nel file denominato \lstinline{alert_dialogs.dart} sono stati implementati i \emph{widget} che consentono di personalizzare un \emph{alert dialog}.\\
 
 \subsubsection*{CustomBaseAlertDialog}
 \label{subsubsec:custom-base-alert-dialog}
 
-È una classe astratta che implementa un \lstinline{AlertDialog}\cite{site:alert-dialog}  definisce l'aspetto base di un \emph{alert dialog}, in cui sono sono presenti degli elementi fissi, come il titolo, un'icona posta sotto il titolo, il suo colore e \gls{padding}\glsoccur.\\
-Mentre è possibile scegliere se aggiungere o meno un testo descrittivo, e se aggiungere o meno dei bottoni di conferma e/o annulla, in base all'operazione del contesto.\\
+È una classe che implementa un \lstinline{AlertDialog}\cite{site:alert-dialog} e ne definisce l'aspetto base, inserendo alcuni elementi fissi, come il titolo, un'icona posta sotto il titolo, il suo colore e \gls{padding}\glsoccur.\\
+Mentre è possibile scegliere se aggiungere o meno un testo descrittivo e dei bottoni di conferma e/o annulla, in base all'operazione del contesto.\\
 
 \subsubsection*{IconAlertDialog}
 \label{subsubsec:icon-alert-dialog}
 
-Classe concreta che implementa \lstinline{CustomBaseAlertDialog} ed imposta con dei valori fissi sia il \gls{padding}\glsoccur che la dimensione dell'icona.\\
-Attraverso il costruttore è obbligatorio passare il \emph{widget} che rappresenta l'icona, il suo colore e un titolo, mentre è opzionale passare un testo descrittivo, e se aggiungere o meno dei bottoni di conferma e/o annulla.\\
+Classe che implementa \lstinline{CustomBaseAlertDialog} personalizzandolo ulteriormente impostando con dei valori fissi sia il \gls{padding}\glsoccur che la dimensione dell'icona.\\
+Attraverso il costruttore è obbligatorio passare il \emph{widget} di tipo \lstinline{IconData}\cite{site:icon-data} che rappresenta l'icona, il suo colore e un titolo, mentre è opzionale passare un testo descrittivo, e se aggiungere o meno dei bottoni di conferma e/o annulla.\\
 
 \subsubsection*{LoadingAlertDialog}
 \label{subsubsec:loading-alert-dialog}
 
-Classe concreta che implementa \lstinline{IconAlertDialog} ed imposta come icona un \lstinline{CircularProgressIndicator}\cite{site:circular-progress-indicator}, che rappresenta un indicatore di caricamento.\\
-È possibile decidere, attraveso il passaggio di parametri, il colore dell'indicatore e il titolo da visualizzare.\\
+Personalizzazione di \lstinline{IconAlertDialog} in cui viene impostata come icona un \lstinline{CircularProgressIndicator}\cite{site:circular-progress-indicator}, che rappresenta un indicatore di caricamento.\\
+È possibile decidere, attraveso il costruttore, il colore dell'indicatore e il titolo da visualizzare.\\
+Lo scopo di questa classe è quella di essere utilizzata per mostrare un indicatore di caricamento durante l'esecuzione di un'operazione asincrona.\\
 
 \subsubsection*{WarningAlertDialog}
 \label{subsubsec:warning-alert-dialog}
 
+Personalizzazione di \lstinline{IconAlertDialog} dove si richiede, nel costruttore, di passare un'icona e il suo colore, un titolo, il contenuto del testo descrittivo, l'azione che deve compiere il bottone di conferma alla sua pressione e il suo stile grafico (vedi sezione \ref{sec:styles}), mentre il pulsante di annullamento è stato fissato.\\
+Lo scopo di questa classe è quella di essere utilizzata per mostrare un messaggio di avvertimento all'utente riguardante una scelta e di scegliere se confermarla.\\
 \subsubsection*{ResponseDialog}
 \label{subsubsec:response-dialog}
 
+Personalizzazione di \lstinline{IconAlertDialog} dove si richiede, nel costruttore, di passare un'icona, il suo colore e un titolo.\\
+Lo scopo di questa classe è quella di essere utilizzata per mostrare un messaggio di risposta all'utente riguardante l'esito di un'operazione.\\
+
 \subsubsection*{NetworkAlertDialog}
 \label{subsubsec:network-alert-dialog}
+
+La sua implementazione è simile a \lstinline{WarningAlertDialog}, con la differenza che non è presente il pulsante di annullamento, in quanto il suo scopo è quello di notificare l'utente la mancanza di connessione ad internet e di cliccare il pulsante di conferma per chiudere l'\emph{alert dialog}.\\
+
+\subsection{App Bars}
+\label{subsec:app-bars}
+
+Nel file denominato \lstinline{app_bars.dart} sono stati implementati i \emph{widget} che consentono di personalizzare un \emph{app bar}.\\
+
+\subsubsection*{CustomAppBar}
+\label{subsubsec:custom-app-bar}
+
+Classe che implementa \lstinline{AppBar}\cite{site:app-bar} definendone il colore di background, applicato dal tema dell'applicazione (vedi sezione \ref{sec:styles}), il titolo, in cui si tratta dell'applicazione di un'immagine vettoriale contenuta nella cartella \lstinline{assets} la quale rapresenta il logo dell'azienda.\\
+Infine è possibile scegliere se aggiungere o meno un'icona, che rappresenta il pulsante di accesso alla schermata dell'account utente.\\
+
+\subsubsection*{LoginAppBar}
+\label{subsubsec:login-app-bar}
+
+
 \section{Constants}
 \label{sec:constants}
 
@@ -73,6 +100,8 @@ Classe concreta che implementa \lstinline{IconAlertDialog} ed imposta come icona
 
 \section{Styles}
 \label{sec:styles}
+
+SPIEGARE COME FUNZIONANO I TEMI, OVVERO CHE UNA VOLTA DEFINITO ADEGUATAMENTE, AI WIDGET IMPLEMENTATI VIENE, generalmente, APPLICATO in maniera AUTOMATICA, altre volte, se si vuole una ulteriore personalizzazione, si usa Theme.of(context).<nome_elemento>.<colore>\\
 
 \section{Utils}
 \label{sec:utils}
