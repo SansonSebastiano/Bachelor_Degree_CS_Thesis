@@ -23,6 +23,7 @@ Di seguito verrà illustratta l'effettiva struttura del progetto basata sull'app
 
 L'architettura menzionata nella sezione \ref{subsec:architettura-app} è stata implementata nel seguente modo: il \emph{data layer} e \emph{domain layer} sono stati implementati rispettivamente in \lstinline{service} e \lstinline{model}, contenute all'interno della cartella \lstinline{data}, mentre l'\emph{application layer} è stato implementato nella cartella \lstinline{provider} e il \emph{presentation layer} nella cartella \lstinline{screens}.\\
 Le restanti cartelle sono servite come ausilio per l'implementazione delle funzionalità dei \emph{layer} sopraccitati, come ad esempio \lstinline{components} per la creazione di \emph{widget} personalizzati, \lstinline{constants} per la definizione di costanti, \lstinline{styles} per la definizione di stili e del tema dell'applicazione e \lstinline{utils} per la definizione di alcune funzioni di utilità.\\
+
 \section{Components}
 \label{sec:components}
 
@@ -30,16 +31,18 @@ INSERIRE LE FIGURE???\\
 SPIEGARE O RIMANDARE ALLA DOCUMENTAZIONE DI COME FUNZIONANO I WIDGET\\
 
 In questa cartella sono raccolti tutti i \emph{widget} personalizzati, utilizzati dalle schermate presenti in \emph{screens} (vedi sezione \ref{sec:screens}).\\
+Di seguito verranno descritti i vari \emph{widget} implementati, suddivisi in base alla loro funzionalità.\\
+Si specifica inoltre che la maggior parte di questi abbiano una visibilità pubblica, in quanto devono essere richiamabile dalle schermate, mentre alcuni hanno una visibilità privata, in quanto sono stati creati per essere utilizzati esclusivamente all'interno di altri \emph{widget}.\\
 
 \subsection{Alert Dialogs}
 \label{subsec:alert-dialogs}
 
-Nel file denominato \lstinline{alert_dialogs.dart} sono stati implementati i \emph{widget} che consentono di personalizzare un \emph{alert dialog}.\\
+Nel file denominato \lstinline{alert_dialogs.dart} sono stati implementati dei \emph{widget}, estendendo \lstinline{StatelessWidget}, che consentono di personalizzare un \emph{alert dialog}.\\
 
 \subsubsection*{CustomBaseAlertDialog}
 \label{subsubsec:custom-base-alert-dialog}
 
-È una classe che implementa un \lstinline{AlertDialog}\cite{site:alert-dialog} e ne definisce l'aspetto base, inserendo alcuni elementi fissi, come il titolo, un'icona posta sotto il titolo, il suo colore e \gls{padding}\glsoccur.\\
+È una classe che implementa un \lstinline{AlertDialog}\cite{site:alert-dialog} e ne definisce l'aspetto base, fissando alcuni elementi, come \lstinline{Text}\cite{site:text} per il titolo, \lstinline{Widget} per l'icona posta sotto il titolo, il suo colore e \gls{padding}\glsoccur.\\
 Mentre è possibile scegliere se aggiungere o meno un testo descrittivo e dei bottoni di conferma e/o annulla, in base all'operazione del contesto.\\
 
 \subsubsection*{IconAlertDialog}
@@ -59,7 +62,7 @@ Lo scopo di questa classe è quella di essere utilizzata per mostrare un indicat
 \label{subsubsec:warning-alert-dialog}
 
 Personalizzazione di \lstinline{IconAlertDialog} dove si richiede, nel costruttore, di passare un'icona e il suo colore, un titolo, il contenuto del testo descrittivo, l'azione che deve compiere il bottone di conferma alla sua pressione e il suo stile grafico (vedi sezione \ref{sec:styles}), mentre il pulsante di annullamento è stato fissato.\\
-Lo scopo di questa classe è quella di essere utilizzata per mostrare un messaggio di avvertimento all'utente riguardante una scelta e di scegliere se confermarla.\\
+Lo scopo di questa classe è quella di essere utilizzata per mostrare un messaggio di avvertimento all'utente riguardante una scelta e la sua conferma.\\
 \subsubsection*{ResponseDialog}
 \label{subsubsec:response-dialog}
 
@@ -74,17 +77,121 @@ La sua implementazione è simile a \lstinline{WarningAlertDialog}, con la differ
 \subsection{App Bars}
 \label{subsec:app-bars}
 
-Nel file denominato \lstinline{app_bars.dart} sono stati implementati i \emph{widget} che consentono di personalizzare un \emph{app bar}.\\
+Nel file denominato \lstinline{app_bars.dart} sono stati implementati dei widget, estendendo \lstinline{StatelessWidget}, che consentono di personalizzare un \emph{app bar}.\\
 
 \subsubsection*{CustomAppBar}
 \label{subsubsec:custom-app-bar}
 
-Classe che implementa \lstinline{AppBar}\cite{site:app-bar} definendone il colore di background, applicato dal tema dell'applicazione (vedi sezione \ref{sec:styles}), il titolo, in cui si tratta dell'applicazione di un'immagine vettoriale contenuta nella cartella \lstinline{assets} la quale rapresenta il logo dell'azienda.\\
+Classe che implementa \lstinline{AppBar}\cite{site:app-bar} definendone il colore di background, applicato dal tema dell'applicazione (vedi sezione \ref{sec:styles}) e il titolo, in cui si tratta dell'applicazione di un'immagine vettoriale contenuta nella cartella \lstinline{assets} la quale rappresenta il logo dell'azienda.\\
 Infine è possibile scegliere se aggiungere o meno un'icona, che rappresenta il pulsante di accesso alla schermata dell'account utente.\\
+La motivazione di quest'ultima scelta è a causa del fatto che questa personalizzazione dell'\lstinline{AppBar} viene utilizzata per la quasi totalità delle viste, anche in quella dell'account utente, dove non si rende necessaria l'icona menzionata precedentemente poichè ci si trova già in tale vista.
 
 \subsubsection*{LoginAppBar}
 \label{subsubsec:login-app-bar}
 
+Classe che implementa \lstinline{AppBar}, personalizzandolo appositamente per la schermata di \emph{login} (vedi sezione \ref{sec:screens}), che è simile a quella precedente, differenziandosi per la non presenza dell'icona che funge da pulsante di accesso alla schermata dell'account utente.
+
+\subsection{Biomteric Switch}
+\label{subsec:biometric-switch}
+
+Nel file denominato \lstinline{biometric_switch.dart} è stato implementato un \emph{widget} che estende \lstinline{StatefulWidget} per costruire un componente in grado di permettere all'utente di abilitare il riconoscimento biometrico. \\
+Questo \emph{widget} è composto da un \lstinline{Switch}\cite{site:switch} e un \lstinline{Text}\cite{site:text} che rappresenta il testo descrittivo.\\
+Inoltre ne viene definito l'aspetto e il comportamento attraverso la definizione di un \lstinline{State} che estende \lstinline{StatefulWidget} implementando il metodo \lstinline{build} per la costruzione del \emph{widget} e il metodo \lstinline{onChanged} per la gestione dell'evento di cambiamento di stato del \lstinline{Switch}.\\
+Stato che è rappresentato da due variabili di tipo \lstinline{bool}, una che si occupa di gestire l'abilitazione del componente e l'altro che indica se nel dispositivo in cui viene eseguita l'applicazione è supportato il riconoscimento biometrico.\\
+La prima tra queste, ad ogni suo cambiamento di stato, viene salvata in locale attraverso una libreria di terze parti (di cui verrà discussa nella sezione \ref{sec:utils} - SPECIFICA LA PARTE PRECISA) per mantenere in memoria la preferenza dell'utente. \\
+Il caso in cui la seconda variabile menzionata precedentemente sia \lstinline{false}, dunque non vi è il supporto per il riconoscimento biometrico, attraverso un \emph{widget} \lstinline{Text} si notifica l'utente di tale mancanza e si disabilita il \lstinline{Switch}.
+
+\subsection{Date Picker}
+\label{subsec:date-picker}
+
+Nel file denominato \lstinline{date_picker.dart} sono stati implementati dei \emph{widget} che estendono sia \lstinline{StatelessWidget} che \lstinline{StatefulWidget} per costruire dei componenti in grado di permettere all'utente di selezionare una data o un intervallo di date.\\
+
+\subsubsection*{DateButton}
+\label{subsubsec:date-button}
+
+Questo componente estende \lstinline{StatelessWidget} e si occupa di costruire un bottone che visualizza la data, o un intervallo di date, selezionata/e dall'utente.\\
+Ha visibilità privata, poichè è stato creato per essere utilizzato esclusivamente all'interno dei \emph{widget} contenuti nello stesso file.\\
+È composto da un \lstinline{TextButton}\cite{site:text-button}, in cui viene definito l'aspetto grafico, e un \lstinline{Text} che visualizza la data o un intervallo di date. \\
+Attraverso il suo costruttore è possibile definire il testo da visualizzare e il comportamento del bottone alla sua pressione.\\
+
+\subsubsection*{CustomDateRangePicker}
+\label{subsubsec:custom-date-range-picker}
+
+Questo componente estende \lstinline{StatefulWidget} e si occupa di costruire un \emph{widget} che permette all'utente di selezionare un intervallo di date.\\
+È composto da \lstinline{DateButton}, al quale il primo parametro che viene passato è l'intervallo di date da visualizzare, di default o selezionato dall'utente, precedentemente formattata da un metodo privato \lstinline{dateFormatter}: riceve in input la data iniziale e finale dell'intervallo e restituisce una stringa che rappresenta l'intervallo di date formattato opportunamente.\\
+Mentre come secondo parametro viene passato un altro metodo privato \lstinline{show} che si occupa di visualizzare il calendario e di consentire all'utente di seleziona un intervallo. \\
+Inoltre è presente un metodo pubblico \lstinline{onDateRangeSelected} che si occupa di gestire l'evento di selezione dell'intervallo di date, aggiornando lo stato del \emph{widget}. \\
+
+\subsubsection*{CustomDatePicker}
+\label{subsubsec:custom-date-picker}
+
+L'implementazione di questo componente è del tutto analoga a quella di \lstinline{CustomDateRangePicker}, con la differenza che permette all'utente di selezionare una singola data.\\
+
+\subsection{Filter Panel}
+\label{subsec:filter-panel}
+
+\subsection{Login Form}
+\label{subsec:login-form}
+
+\subsection{Meeting Note Card}
+\label{subsec:meeting-note-card}
+
+\subsubsection*{MeetingNoteItem}
+\label{subsubsec:meeting-note-item}
+
+\subsubsection*{MeetingNotePreview}
+\label{subsubsec:meeting-note-preview}
+
+\subsubsection*{MeetingNoteCard}
+\label{subsubsec:meeting-note-card}
+
+\subsubsection*{MeetingNoteTitle}
+\label{subsubsec:meeting-note-title}
+
+\subsection{Object Picker}
+\label{subsec:object-picker}
+
+\subsection{Recording Button}
+\label{subsec:recording-button}
+
+\subsection{Screens Template}
+\label{subsec:screens-template}
+
+\subsubsection*{BaseScreen}
+\label{subsubsec:base-screen}
+
+\subsubsection*{WizardScreen}
+\label{subsubsec:wizard-screen}
+
+\subsubsection*{WizardHeader}
+\label{subsubsec:wizard-header}
+
+\subsubsection*{WizardStepper}
+\label{subsubsec:wizard-stepper}
+
+\subsubsection*{Step}
+\label{subsubsec:step}
+
+\subsection{Scroll Date Picker}
+\label{subsec:scroll-date-picker}
+
+\subsection{Search Bar}
+\label{subsec:search-bar}
+
+\subsubsection*{CustomSearchBar}
+\label{subsubsec:custom-search-bar}
+
+\subsubsection*{CustomAutocomplete}
+\label{subsubsec:custom-autocomplete}
+
+\subsection{Text Box}
+\label{subsec:text-box}
+
+\subsection{Toogle Buttons}
+\label{subsec:toogle-buttons}
+
+\subsection{Warning Alert}
+\label{subsec:warning-alert}
 
 \section{Constants}
 \label{sec:constants}
@@ -101,7 +208,7 @@ Infine è possibile scegliere se aggiungere o meno un'icona, che rappresenta il 
 \section{Styles}
 \label{sec:styles}
 
-SPIEGARE COME FUNZIONANO I TEMI, OVVERO CHE UNA VOLTA DEFINITO ADEGUATAMENTE, AI WIDGET IMPLEMENTATI VIENE, generalmente, APPLICATO in maniera AUTOMATICA, altre volte, se si vuole una ulteriore personalizzazione, si usa Theme.of(context).<nome_elemento>.<colore>\\
+% SPIEGARE COME FUNZIONANO I TEMI, OVVERO CHE UNA VOLTA DEFINITO ADEGUATAMENTE, AI WIDGET IMPLEMENTATI VIENE, generalmente, APPLICATO in maniera AUTOMATICA, altre volte, se si vuole una ulteriore personalizzazione, si usa Theme.of(context).<nome_elemento>.<colore>\\
 
 \section{Utils}
 \label{sec:utils}
@@ -113,5 +220,3 @@ SPIEGARE COME FUNZIONANO I TEMI, OVVERO CHE UNA VOLTA DEFINITO ADEGUATAMENTE, AI
 % Fai riferimento allo storico dei commits su GitHub
 
 % \section{Design Pattern utilizzati}
-
-% \section{Codifica}
