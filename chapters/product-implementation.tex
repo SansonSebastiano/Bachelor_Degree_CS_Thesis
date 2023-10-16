@@ -118,20 +118,44 @@ Attraverso il suo costruttore è possibile definire il testo da visualizzare e i
 \label{subsubsec:custom-date-range-picker}
 
 Questo componente estende \lstinline{StatefulWidget} e si occupa di costruire un \emph{widget} che permette all'utente di selezionare un intervallo di date.\\
-È composto da \lstinline{DateButton}, al quale il primo parametro che viene passato è l'intervallo di date da visualizzare, di default o selezionato dall'utente, precedentemente formattata da un metodo privato \lstinline{dateFormatter}: riceve in input la data iniziale e finale dell'intervallo e restituisce una stringa che rappresenta l'intervallo di date formattato opportunamente.\\
+È composto da \lstinline{DateButton}, al quale il primo parametro che viene passato è l'intervallo di date da visualizzare, di default o selezionato dall'utente, precedentemente formattato da un metodo privato \lstinline{dateFormatter}: riceve in input la data iniziale e finale dell'intervallo (nel caso in cui si intenda selezionare un singolo giorno è sufficiente impostarne con esso entrambi i cambi) e restituisce una stringa che rappresenta l'intervallo di date formattato opportunamente.\\
 Mentre come secondo parametro viene passato un altro metodo privato \lstinline{show} che si occupa di visualizzare il calendario e di consentire all'utente di seleziona un intervallo. \\
 Inoltre è presente un metodo pubblico \lstinline{onDateRangeSelected} che si occupa di gestire l'evento di selezione dell'intervallo di date, aggiornando lo stato del \emph{widget}. \\
+Lo scopo di questo \emph{widget} è quello di fornire la possibilità all'utente di selezionare una singola data o intervallo di date per filtrare la lista di \emph{Meeting Note} (vedi requisiti \hyperref[RFN-18]{RFN-18} e \hyperref[RFN-19]{RFN-19}).
 
 \subsubsection*{CustomDatePicker}
 \label{subsubsec:custom-date-picker}
 
 L'implementazione di questo componente è del tutto analoga a quella di \lstinline{CustomDateRangePicker}, con la differenza che permette all'utente di selezionare una singola data.\\
+Mentre il suo scopo è quello di fornire all'utente, nel momento di revisione dei dati estratti dall'elaborazione del testo da parte di un algoritmo di \emph{intelligenza artificiale}, di modificare la data di una \emph{Meeting Note} da creare (vedi requisito \hyperref[RFN-53]{RFN-53}).
 
 \subsection{Filter Panel}
 \label{subsec:filter-panel}
 
+Nel file denominato \lstinline{filter_panel.dart} è stato implementato un \emph{widget} che estende \lstinline{ConsumerStatefulWidget}\cite{site:reading-provider}, il cui comportamento è il medesimo di uno \lstinline{StatefulWidget}, con l'aggiunta che è in grado di leggere i dati forniti da un \emph{Provider} (vedi sezione \ref{subsec:riverpod}).
+Tale componente è composto da quattro \emph{widget}, ciascuno dei quali consente di filtrare la lista di \emph{Meeting Note}  secondo i criteri definiti in fase di analisi dei requisiti (vedi requisiti dal \hyperref[RFN-15]{RFN-15} al \hyperref[RFN-19]{RFN-19} e dal \hyperref[RFN-31]{RFN-31} al \hyperref[RFN-33]{RFN-33}). \\
+Di seguito verranno elencati i vari \emph{widget} che compongono il \emph{Filter Panel}: 
+\begin{itemize}
+    \item \lstinline{CustomObjectPicker} (componente la cui implementazione è discussa nella sezione \ref{subsec:object-picker});
+    \item \lstinline{CustomAutocomplete} (componente la cui implementazione è discussa nella sezione \ref{subsubsec:custom-autocomplete});
+    \item \lstinline{CustomDateRangePicker} (componente la cui implementazione è discussa nella sezione \ref{subsubsec:custom-date-range-picker});
+    \item \lstinline{CustomToogleButtons} (componente la cui implementazione è discussa nella sezione \ref{subsec:toogle-buttons}).
+\end{itemize}
+Come da prassi, ne viene definito l'aspetto grafico e il comportamento che deve avere.\\
+Per quanto riguarda il comportamento e dunque la gestione dello stato, che sostanzialmente consiste nel memorizzare e passare alla schermata dedicata (RIMANDARE ALLA SEZIONE PRECISA) quali filtri sono stati attivati dall'utente, tale operazione viene effettuata attraverso uno \lstinline{StateNotifierProvider} (vedi sezione \ref{subsec:riverpod}) e una classe \lstinline{FilterinOptions} (RIMANDARE ALLA SEZIONE PRECISA) che si occupa appunto di memorizzare e passare i filtri.\\
+
 \subsection{Login Form}
 \label{subsec:login-form}
+
+Nel file denominato \lstinline{login_form.dart} è stato implementato un \emph{widget} che estende \lstinline{ConsumerStatefulWidget}.\\
+Lo scopo di questo componente è quello di consentire all'utente di autenticarsi all'applicazione, per farlo ci sono due modi: inserendo manualmente le credenziali oppure utilizzando il riconoscimento biometrico.\\
+Nel primo caso il componente è composto da due \lstinline{TextFormField}\cite{site:text-form-field} e un \lstinline{ElevatedButton}\cite{site:elevated-button} di cui vengono definiti l'aspetto grafico.\\
+Il \lstinline{TextFormField} riguardante l'inserimento della password presenta anche un pulsante per mostrarla in chiaro o nasconderla.\\
+Il pulsante di conferma è disabilitato fintanto che non vengono inserite entrambe le credenziali.\\
+Successivamente attraverso l'ausilio del \emph{provider} \lstinline{authProvider} (SPECIFICA LA SEZIONE PRECISA) viene effettuata la richiesta di autenticazione, che in caso di successo porta alla schermata principale dell'applicazione, salvando il \emph{token} di autenticazione ricevuto (RIMANDA ALLA SEZIONE SPECIFICA), altrimenti viene mostrato un messaggio di errore.\\ 
+Mentre nel secondo caso, si effettua un controllo per verificare se l'utente in precedenza aveva abilitato tale funzionalità, in caso affermativo viene eseguito il riconoscimento biometrico (RIMANDA ALLA SEZIONE SPECIFICA), altrimenti si prosegue con l'inserimento manuale delle credenziali.\\
+L'esito dell'autenticazione attraverso il riconoscimento biometrico è il medesimo di quello descritto per l'autenticazione manuale.\\
+SPECIFICARE I REQUISITI CORRELATI.
 
 \subsection{Meeting Note Card}
 \label{subsec:meeting-note-card}
