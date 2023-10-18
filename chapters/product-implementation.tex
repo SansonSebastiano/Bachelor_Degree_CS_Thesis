@@ -142,35 +142,48 @@ Di seguito verranno elencati i vari \emph{widget} che compongono il \emph{Filter
     \item \lstinline{CustomToogleButtons} (componente la cui implementazione è discussa nella sezione \ref{subsec:toogle-buttons}).
 \end{itemize}
 Come da prassi, ne viene definito l'aspetto grafico e il comportamento che deve avere.\\
-Per quanto riguarda il comportamento e dunque la gestione dello stato, che sostanzialmente consiste nel memorizzare e passare alla schermata dedicata (RIMANDARE ALLA SEZIONE PRECISA) quali filtri sono stati attivati dall'utente, tale operazione viene effettuata attraverso uno \lstinline{StateNotifierProvider} (vedi sezione \ref{subsec:riverpod}) e una classe \lstinline{FilterinOptions} (RIMANDARE ALLA SEZIONE PRECISA) che si occupa appunto di memorizzare e passare i filtri.\\
+Per quanto riguarda il comportamento e dunque la gestione dello stato, che sostanzialmente consiste nel memorizzare e passare alla schermata dedicata (RIMANDARE ALLA SEZIONE PRECISA) quali filtri sono stati attivati dall'utente, tale operazione viene effettuata attraverso uno \lstinline{StateNotifierProvider} (vedi sezione \ref{subsec:riverpod}) e una classe \lstinline{FilteringOptions} (RIMANDARE ALLA SEZIONE PRECISA).\\
 
 \subsection{Login Form}
 \label{subsec:login-form}
 
 Nel file denominato \lstinline{login_form.dart} è stato implementato un \emph{widget} che estende \lstinline{ConsumerStatefulWidget}.\\
 Lo scopo di questo componente è quello di consentire all'utente di autenticarsi all'applicazione, per farlo ci sono due modi: inserendo manualmente le credenziali oppure utilizzando il riconoscimento biometrico.\\
-Nel primo caso il componente è composto da due \lstinline{TextFormField}\cite{site:text-form-field} e un \lstinline{ElevatedButton}\cite{site:elevated-button} di cui vengono definiti l'aspetto grafico.\\
+Per soddisfare il primo caso (vedi requisito \hyperref[RFN-2]{RFN-2}), il componente è composto da due \lstinline{TextFormField}\cite{site:text-form-field} e un \lstinline{ElevatedButton}\cite{site:elevated-button} di cui vengono definiti l'aspetto grafico.\\
 Il \lstinline{TextFormField} riguardante l'inserimento della password presenta anche un pulsante per mostrarla in chiaro o nasconderla.\\
 Il pulsante di conferma è disabilitato fintanto che non vengono inserite entrambe le credenziali.\\
-Successivamente attraverso l'ausilio del \emph{provider} \lstinline{authProvider} (SPECIFICA LA SEZIONE PRECISA) viene effettuata la richiesta di autenticazione, che in caso di successo porta alla schermata principale dell'applicazione, salvando il \emph{token} di autenticazione ricevuto (RIMANDA ALLA SEZIONE SPECIFICA), altrimenti viene mostrato un messaggio di errore.\\ 
-Mentre nel secondo caso, si effettua un controllo per verificare se l'utente in precedenza aveva abilitato tale funzionalità, in caso affermativo viene eseguito il riconoscimento biometrico (RIMANDA ALLA SEZIONE SPECIFICA), altrimenti si prosegue con l'inserimento manuale delle credenziali.\\
-L'esito dell'autenticazione attraverso il riconoscimento biometrico è il medesimo di quello descritto per l'autenticazione manuale.\\
-SPECIFICARE I REQUISITI CORRELATI.
+Successivamente attraverso l'ausilio del \emph{provider} \lstinline{authProvider} (SPECIFICA LA SEZIONE PRECISA) viene effettuata la richiesta di autenticazione, che in caso di successo porta alla schermata principale dell'applicazione, salvando il \emph{token} di autenticazione ricevuto (RIMANDA ALLA SEZIONE SPECIFICA), altrimenti viene mostrato un messaggio di errore (vedi \hyperref[RFN-4]{RFN-4}).\\ 
+Mentre nel secondo caso (vedi \hyperref[RFN-3]{RFN-3}), si effettua un controllo per verificare se l'utente in precedenza aveva abilitato tale funzionalità, in caso affermativo viene eseguito il riconoscimento biometrico (RIMANDA ALLA SEZIONE SPECIFICA), altrimenti si prosegue con l'inserimento manuale delle credenziali.\\
+L'operazione e l'esito dell'autenticazione attraverso il riconoscimento biometrico, che avviene sempre attraverso \lstinline{authProvider}, è simile a quello descritto per l'autenticazione manuale, con la differenza che quest'ultimo metodo preleva le credenziali dalla memoria locale, precedentemente salvate dall'operazione di abilitazione del riconoscimento biometrico da parte dell'utente (vedi sezione \ref{subsec:biometric-switch}).
 
 \subsection{Meeting Note Card}
 \label{subsec:meeting-note-card}
 
+INSERIRE LE IMMAGINI \\
+
+Nel file denominato \lstinline{meeting_note_card.dart} sono stati implementati dei \emph{widget} che estendono \lstinline{StatelessWidget} per costruire un componente in grado di visualizzare una \emph{Meeting Note} in una lista, e/o in dettaglio, con la possibilità di eliminarla e/o modificarla. \\
+Per la costruzione di questo componente si sono creati vari \emph{widget} che ne definiscono l'aspetto grafico e di cui verranno illustratti di seguito.\\
+Si specifica che tutti i dati necessari sono stati passati attraverso il costruttore.
+
+\subsubsection*{MeetingNoteTitle}
+\label{subsubsec:meeting-note-title}
+
+Si tratta di un \emph{widget} che si occupa di disporre gli elementi che compongono il titolo di una 
+\emph{Meeting Note}, ovvero l'identificativo del cliente e la data dell'incontro, in modo tale che entrambi siano posizionati sulla stessa riga, con il primo che occupa la maggior parte dello spazio e il secondo che viene posizionato a destra.\\
+Inoltre è stato aggiunto un \lstinline{Divider}\cite{site:divider} che funge da separatore tra il titolo e il contenuto parziale della \emph{Meeting Note}, visualizzabile direttamente nella lista di \emph{Meeting Note}.
+
 \subsubsection*{MeetingNoteItem}
 \label{subsubsec:meeting-note-item}
 
-\subsubsection*{MeetingNotePreview}
-\label{subsubsec:meeting-note-preview}
+\emph{Widget} che effettivamente costruisce l'\emph{item} della lista di \emph{Meeting Note} (vedi requisiti da \hyperref[RFN-8]{RFN-8} a \hyperref[RFN-11]{RFN-11}), composto da un \lstinline{ListTile}\cite{site:list-tile}, in cui nella proprietà \lstinline{title} viene posto un \lstinline{MeetingNoteTitle} e in \lstinline{subtitle} viene posto il contenuto della \emph{Meeting Note} stroncato ad un massimo di due righe di testo.\\
+All'evento \lstinline{onTap} del componente, viene mostrato a schermo una modale che appare dal basso contenente i dettagli della \emph{Meeting Note}.\\
+Si vuole precisare che contrariamente a quanto pensato durante la realizzazione del \gls{mockup}\glsoccur, si è deciso di apportare una modifica per quanto riguarda la visualizzazione dei dettagli della \emph{Meeting Note}, in quanto essendo l'applicazione usata da utenti in mobilità, è più ergonomico mostrare i dettagli in una modale che appare dal basso, piuttosto che nell'espansione di un item.
 
 \subsubsection*{MeetingNoteCard}
 \label{subsubsec:meeting-note-card}
 
-\subsubsection*{MeetingNoteTitle}
-\label{subsubsec:meeting-note-title}
+Componente contenuto nella modale menzionata precedentemente, il quale si occupa di disporre tutti gli elementi di cui è composta una \emph{Meeting Note} (vedi requisiti dal \hyperref[RFN-35]{RFN-35} al \hyperref[RFN-42]{RFN-42}).\\
+È composto da un \lstinline{MeetingNoteTitle}, il contenuto della \emph{Meeting Note}, l'autore e i due pulsanti che permettono di eliminarla e/o modificarla, il comportamento della prima azione viene passata per parametro, mentre per la seconda viene definita direttamente in quanto è stato sufficiente rimandare alla schermata del \emph{wizard} per poi effettuare le modifiche (RIMANDA ALLA SEZIONE SPECIFICA).
 
 \subsection{Object Picker}
 \label{subsec:object-picker}
