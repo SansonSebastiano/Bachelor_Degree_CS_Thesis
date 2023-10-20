@@ -121,7 +121,7 @@ Questo componente estende \lstinline{StatefulWidget} e si occupa di costruire un
 È composto da \lstinline{DateButton}, al quale il primo parametro che viene passato è l'intervallo di date da visualizzare, di default o selezionato dall'utente, precedentemente formattato da un metodo privato \lstinline{dateFormatter}: riceve in input la data iniziale e finale dell'intervallo (nel caso in cui si intenda selezionare un singolo giorno è sufficiente impostarne con esso entrambi i cambi) e restituisce una stringa che rappresenta l'intervallo di date formattato opportunamente.\\
 Mentre come secondo parametro viene passato un altro metodo privato \lstinline{show} che si occupa di visualizzare il calendario e di consentire all'utente di seleziona un intervallo. \\
 Inoltre è presente un metodo pubblico \lstinline{onDateRangeSelected} che si occupa di gestire l'evento di selezione dell'intervallo di date, aggiornando lo stato del \emph{widget}. \\
-Lo scopo di questo \emph{widget} è quello di fornire la possibilità all'utente di selezionare una singola data o intervallo di date per filtrare la lista di \emph{Meeting Note} (vedi requisiti \hyperref[RFN-18]{RFN-18} e \hyperref[RFN-19]{RFN-19}).
+Lo scopo di questo \emph{widget} è quello di fornire la possibilità all'utente di selezionare una singola data o intervallo di date per filtrare la lista di \emph{Meeting Note} (vedi requisiti \hyperref[RFN-18]{RFN-18} e \hyperref[RFN-19]{RFN-19}) e viene impiegato solamente all'interno del \lstinline{FilterPanel} (vedi sezione \ref{subsec:filter-panel}).
 
 \subsubsection*{CustomDatePicker}
 \label{subsubsec:custom-date-picker}
@@ -189,6 +189,7 @@ Componente contenuto nella modale menzionata precedentemente, il quale si occupa
 \label{subsec:object-picker}
 
 Nel file denominato \lstinline{object_picker.dart} è stato implementato \lstinline{CustomObjectPicker} un \emph{widget} che estende \lstinline{StatefulWidget} per costruire un componente in grado di permettere all'utente di selezionare la categoria dei clienti (vedi requisiti \hyperref[RFN-16]{RFN-16}, \hyperref[RFN-66]{RFN-66}). \\
+Viene utilizzato all'interno del \emph{Filter Panel} (vedi sezione \ref{subsec:filter-panel}), del \emph{wizard} di creazione/modifica di una \emph{Meeting Note} (vedi sezione DA SPECIFICARE) e nella schermata di revisione per la creazione automatica di una \emph{Meeting Note} (vedi sezione DA SPECIFICARE).\\
 Anche per questo componente si è pensato di rivisitarlo rispetto al \gls{mockup}\glsoccur, in quanto si è deciso di utilizzare un \lstinline{CupertinoPicker}\cite{site:cupertino-picker}, che visualizza le categorie dei clienti selezionabili, passate in input attraverso il costruttore, al posto di un \lstinline{DropdownMenu}\cite{site:dropdown-menu}, questo per favorire l'utilizzo dell'applicazione da parte di utenti in mobilità, poichè il primo appare dal basso e dunque diventa più facilmente raggiungibile per il suo utilizzo. \\
 Inoltre possiede dei metodi che permettono di ottenere la categoria selezionata attraverso l'indice e di aggiornare lo stato del \emph{widget} al cambiamento di quest'ultima.\\
 
@@ -245,7 +246,8 @@ Sostanzialmente è composto da un \lstinline{Divider}\cite{site:divider} che rap
 
 Nel file denominato \lstinline{scroll_date_picker.dart} è stato definito la classe \lstinline{CustomScrollDatePicker} che estende \lstinline{StatefulWidget} per costruire un componente in grado di permettere all'utente di selezionare una data.\\
 È composto da un \lstinline{Text}\cite{site:text} che visualizza la data selezionata, un \lstinline{ScrollDatePicker}\cite{site:scroll-date-picker} e un pulsante che reimposta la data selezionata a quella corrente.\\
-Espone dei metodi che permettono di ottenere la data selezionata con \lstinline{selectedDate}, e di aggiornare lo stato del \emph{widget} al cambiamento di quest'ultima con \lstinline{onDateChanged}.
+Espone dei metodi che permettono di ottenere la data selezionata con \lstinline{selectedDate}, e di aggiornare lo stato del \emph{widget} al cambiamento di quest'ultima con \lstinline{onDateChanged}.\\
+Lo scopo di tale componente è quello di fornire all'utente, nel momento di creazione/modifica di una \emph{Meeting Note}, la possibilità di selezionare una data (vedi requisito \hyperref[RFN-67]{RFN-67}).
 
 \subsection{Search Bar}
 \label{subsec:search-bar}
@@ -255,17 +257,36 @@ Nel file denominato \lstinline{search_bar.dart} sono stati implementati dei \emp
 \subsubsection*{CustomSearchBar}
 \label{subsubsec:custom-search-bar}
 
+Classe che implementa una \lstinline{SearchBar}\cite{site:search-bar} in cui viene definito pressochè solo l'aspetto grafico in quanto attraverso il costruttore è obbligatorio passare un \lstinline{TextEditingController}\cite{site:text-editing-controller}, che si occupa di gestire il testo inserito dall'utente, e un metodo \lstinline{onChanged} che si occupa di gestire l'evento di cambiamento del testo inserito dall'utente, mentre è opzionale passare il colore del \emph{background} del componente. \\
+Lo scopo è quello di fornire all'utente la possibilità di effettuare una ricerca all'interno della lista dei clienti (vedi requisito \hyperref[RFN-65]{RFN-65}).
+
 \subsubsection*{CustomAutocomplete}
 \label{subsubsec:custom-autocomplete}
+
+Classe che implementa \lstinline{Autocomplete}\cite{site:autocomplete}, consente di fornire dei suggerimenti per l'autocompletamento nella ricerca, in cui viene anche qui solo l'aspetto grafico. \\
+Attraverso il costruttore si rende necessario passare dei metodi fondamentali: \lstinline{optionsBuilder} che si occupa di fornire i suggerimenti per l'autocompletamento, \lstinline{displayStringForOption} che si occupa di fornire la stringa da visualizzare per ogni suggerimento e \lstinline{onSelected} che si occupa di gestire l'evento di selezione di un suggerimento.\\
+Viene impiegato nel \emph{widget} \lstinline{FilterPanel} (vedi sezione \ref{subsec:filter-panel}) per fornire all'utente la possibilità di ricercare un cliente (vedi requisito \hyperref[RFN-16]{RFN-16}).
 
 \subsection{Text Box}
 \label{subsec:text-box}
 
+Nel file denominato \lstinline{text_box.dart} è stato implementato un \emph{widget} che estende \lstinline{StatefulWidget} per costruire un componente in grado di permettere all'utente di inserire del testo.\\
+È composto da semplicemente un \lstinline{TextField}\cite{site:text-field} in cui viene personalizzato nell'aspetto grafico, viene richiesto dal costruttore di passare l'altezza di questo componente, in modo da poterlo utilizzare in diverse situazioni, poi è necessatio passare un \lstinline{TextEditingController}\cite{site:text-editing-controller} e un metodo \lstinline{onChanged} che si occupa di gestire l'evento di cambiamento del testo inserito dall'utente.\\
+Viene utilizzato per la creazione/modifica di una \emph{Meeting Note} (vedi requisito \hyperref[RFN-72]{RFN-72}) e per la creazione automatica (vedi requisito \hyperref[RFD-58]{RFD-58}).
+
 \subsection{Toogle Buttons}
 \label{subsec:toogle-buttons}
 
+Nel file denominato \lstinline{toogle_buttons.dart} è stato implementato un \emph{widget} che estende \lstinline{StatefulWidget} per costruire un componente in grado di permettere all'utente di selezionare una delle due opzioni disponibili.\\
+È composto da un \lstinline{ToggleButtons}\cite{site:toggle-buttons} di cui viene definito l'aspetto grafico e il comportamento.\\
+Attraverso il costruttore è necessario passare un \lstinline{List<Widget>} contenente le due opzioni disponibili, un \lstinline{List<bool>} che indica quale opzione è stata selezionata e un metodo \lstinline{onChoiceSelected} che si occupa di gestire l'evento di selezione di un'opzione.\\
+Viene impiegato nel \lstinline{FilterPanel} (vedi sezione \ref{subsec:filter-panel}) per fornire all'utente la possibilità di selezionare una delle due opzioni disponibili per filtrare la lista di \emph{Meeting Note} (vedi requisiti \hyperref[RFN-31]{RFN-31} e \hyperref[RFN-32]{RFN-32}).
+
 \subsection{Warning Alert}
 \label{subsec:warning-alert}
+
+Nel file denominato \lstinline{warning_alert.dart} è stato implementato un \emph{widget} che estende \lstinline{StatelessWidget} per costruire un componente in grado di mostrare un messaggio di avvertimento all'utente, i casi in cui viene richiesto si faccia riferimento ai seguenti requisiti: \hyperref[RFN-12]{RFN-12}, \hyperref[RFN-13]{RFN-13}, \hyperref[RFN-20]{RFN-20}, \hyperref[RFN-30]{RFN-30}, \hyperref[RFN-34]{RFN-34}, \hyperref[RFN-64]{RFN-64}. \\
+È composto da un \lstinline{Text}\cite{site:text} e un \lstinline{Icon}\cite{site:icon}, il loro scopo è quello di visualizzare il messaggio di avvertimento, attraverso i parametri del costruttore viene passato il messaggio e il colore che devono avere il testo e l'icona. 
 
 \section{Constants}
 \label{sec:constants}
