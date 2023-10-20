@@ -291,8 +291,97 @@ Nel file denominato \lstinline{warning_alert.dart} è stato implementato un \emp
 \section{Constants}
 \label{sec:constants}
 
+In questa cartella sono stati definiti dei file che contengono delle costanti utilizzate all'interno dell'applicazione.\\
+
+
+\subsection{App constants}
+\label{subsec:app-constants}
+
+Nel file denominato \lstinline{app_constants.dart} sono state definite delle costanti di tipo \lstinline{String} che rappresentano i nomi dei vari componenti dell'applicazione come messaggi di errore, nomi delle schermate, nomi dei campi di una \emph{Meeting Note} e così via.
+
+\subsection{API constants}
+\label{subsec:api-constants}
+
+Nel file denominato \lstinline{api_constants.dart} sono state definite due classi che rappresentano le costanti utilizzate per effettuare le richieste all'\gls{apig}\glsoccur.\\
+Nella prima classe \lstinline{ApiUrls} sono presenti le costanti che si riferiscono agli \gls{endpoint}\glsoccur dell'\gls{apig}\glsoccur.\\
+Nella seconda \lstinline{ApiFields} sono presenti costanti che si riferiscono al nome dei parametri che devono essere passati all'\gls{urig}\glsoccur di alcune richieste all'\gls{apig}\glsoccur.
+
 \section{Data}
 \label{sec:data}
+
+Questa cartella contiene due cartelle rappresentanti i \emph{data layer} e \emph{domain layer} dell'applicazione, rispettivamente
+
+\subsection{Model}
+\label{subsec:model}
+
+Sono contenuti i file che rappresentano i modelli dei dati utilizzati all'interno dell'applicazione.\\
+Si specifica, per evitare rindondanze, che alcune classi in questione sono state implementate seguendo un \emph{pattern} specifico: oltre alla definizione degli attributi opportuni, per ciascuna classe, è presente un metodo \lstinline{fromJson}, come si intuisce si occupano di convertire da da \gls{jsong}\glsoccur all'oggetto interessato, dei metodi che ritornano il valore di ciascun attributo e un metodo \lstinline{toString} che ritorna una stringa che rappresenta l'oggetto.\\
+Nel corso di questa sezione verrà specificato quando una classe è stata implementata seguendo tale \emph{pattern}, mentre per le altre verrà descritta specificatamente l'implementazione. \\
+Di seguito verranno elencate le classi che rappresentano i modelli dei dati utilizzati all'interno dell'applicazione.
+
+\subsubsection*{Authentication}
+\label{subsubsec:authentication}
+
+In questo file sono state definite tutte le classi necessari per eseguire l'operazione di autenticazione all'applicazione, di seguito verrà descritta l'implementazione di ciascuna.
+
+\paragraph*{AuthArgs} ~ \\
+\label{par:auth-args}
+
+\noindent Classe che incapsula i parametri necessari per effettuare la richiesta di autenticazione all'\gls{apig}\glsoccur, è composta da due attributi di tipo \lstinline{String} che rappresentano lo \emph{username} e la \emph{password} dell'utente.\\
+Inoltre espone due metodi che si occupano di effettuare degli \gls{overriding}\glsoccur dei metodi \lstinline{operator ==}\cite{site:operator-equals} e \lstinline{hashCode}\cite{site:hascode-property} per poter effettuare il confronto tra due oggetti di tipo \lstinline{AuthArgs}.\\
+Infine è presente un metodo \lstinline{toString} che ritorna una stringa che rappresenta l'oggetto.
+
+\paragraph*{AuthValues} ~ \\
+\label{par:auth-values}
+
+\noindent Classe che incapsula il valore restituito dall'\gls{apig}\glsoccur in seguito alla richiesta di autenticazione, è composta da un attributo di tipo \lstinline{String} che rappresenta il \emph{token} di autenticazione.\\
+La sua implementazione è stata effettuata seguendo il \emph{pattern} nell'introduzione di questa sezione.
+
+\paragraph*{AuthResponse} ~ \\
+\label{par:auth-response}
+
+\noindent Classe che incapsula l'esito della richiesta di autenticazione, è composta da un attributo di tipo \lstinline{StatusResponse} (vedi sezione \ref{subsubsec:status-response}) che ne rappresenta l'esito e un attributo di tipo \lstinline{AuthValues} (vedi sezione \ref{par:auth-values}) che ne rappresenta il valore restituito.
+
+\subsubsection*{Meeting Note}
+\label{subsubsec:meeting-note}
+
+\subsubsection*{Meeting Note Object}
+\label{subsubsec:meeting-note-object}
+
+\subsubsection*{Object Category}
+\label{subsubsec:object-category}
+
+Si tratta semplicemente di una enumerazione che rappresenta le tre categorie dei \glspl{cliente}\glsoccur:
+\begin{itemize}
+    \item \lstinline{ObjectCategory.broker}: rappresenta la categoria dei broker;
+    \item \lstinline{ObjectCategory.contractor}: rappresenta la categoria dei contraenti;
+    \item \lstinline{ObjectCategory.delegatedInsurer}: rappresenta la categoria delle compagnie assicurative.
+\end{itemize}
+
+\subsubsection*{Status Response}
+\label{subsubsec:status-response}
+
+La classe astratta \lstinline{BaseResponse} modella l'esito di una qualsiasi richiesta \gls{httpg}\glsoccur fatta all'\gls{apig}\glsoccur. \\
+Ha un attributo di tipo \lstinline{StatusResponse}, una enumerazione che rappresenta tre possibili stati di una richiesta \gls{httpg}\glsoccur:
+\begin{itemize}
+    \item \lstinline{StatusResponse.success}: la richiesta è andata a buon fine;
+    \item \lstinline{StatusResponse.unauthorizedException}: la richiesta non è andata a buon fine a causa del \emph{token} di autenticazione scaduto;
+    \item \lstinline{StatusResponse.genericException}: la richiesta non è andata a buon fine per un errore generico.
+\end{itemize}
+Inoltre espone due metodi, il primo si occupa di restituire il valore dell'attributo \lstinline{StatusResponse} e il secondo di restituire una stringa che rappresenta l'oggetto.
+
+\subsubsection*{User}
+\label{subsubsec:user}
+
+In questo file sono state definite tutte le classi necessari per gestire l'utente all'interno dell'applicazione, di seguito verrà descritta l'implementazione di ciascuna.
+
+\paragraph*{User} ~ \\
+\label{par:user}
+
+
+
+\subsection{Services}
+\label{subsec:services}
 
 \section{Provider}
 \label{sec:provider}
