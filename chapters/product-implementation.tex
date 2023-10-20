@@ -188,32 +188,69 @@ Componente contenuto nella modale menzionata precedentemente, il quale si occupa
 \subsection{Object Picker}
 \label{subsec:object-picker}
 
+Nel file denominato \lstinline{object_picker.dart} è stato implementato \lstinline{CustomObjectPicker} un \emph{widget} che estende \lstinline{StatefulWidget} per costruire un componente in grado di permettere all'utente di selezionare la categoria dei clienti (vedi requisiti \hyperref[RFN-16]{RFN-16}, \hyperref[RFN-66]{RFN-66}). \\
+Anche per questo componente si è pensato di rivisitarlo rispetto al \gls{mockup}\glsoccur, in quanto si è deciso di utilizzare un \lstinline{CupertinoPicker}\cite{site:cupertino-picker}, che visualizza le categorie dei clienti selezionabili, passate in input attraverso il costruttore, al posto di un \lstinline{DropdownMenu}\cite{site:dropdown-menu}, questo per favorire l'utilizzo dell'applicazione da parte di utenti in mobilità, poichè il primo appare dal basso e dunque diventa più facilmente raggiungibile per il suo utilizzo. \\
+Inoltre possiede dei metodi che permettono di ottenere la categoria selezionata attraverso l'indice e di aggiornare lo stato del \emph{widget} al cambiamento di quest'ultima.\\
+
+
 \subsection{Recording Button}
 \label{subsec:recording-button}
+
+Nel file denominato \lstinline{recording_button.dart} è stato implementato un \emph{widget} che estende \lstinline{StatelessWidget} per costruire un componente in grado di permettere all'utente di attivare la dettatura vocale (vedi requisito \hyperref[RFN-73]{RFN-73}).\\
+È composto da un \lstinline{Text}\cite{site:text} che esplicita all'utente lo scopo del pulsante, da un \lstinline{IconButton}\cite{site:icon-button} e da un \lstinline{AvatarGlow}\cite{site:avatar-glow} che rappresenta l'animazione che viene visualizzata quando la dettatura vocale è attiva.\\
+L'attivazione avviene in base al valore della variabile \emph{booleana} \lstinline{isRecording} che viene passata attraverso il costruttore, come anche il comportamento del pulsante, che viene definito attraverso il metodo \lstinline{onPressed}.
 
 \subsection{Screens Template}
 \label{subsec:screens-template}
 
+Nel file denominato \lstinline{screens_template.dart} sono stati implementati dei \emph{widget} che estendono \lstinline{StatelessWidget} per costruire diversi componenti che rappresentano gli elementi comuni delle schermate dell'applicazione.
+
 \subsubsection*{BaseScreen}
 \label{subsubsec:base-screen}
+
+Classe in cui viene definito la struttura e l'aspetto base che dovranno avere tutte le schermate dell'applicazione.\\
+È composto da un \lstinline{Scaffold}\cite{site:scaffold}, contenitore principale di tutti gli elementi grafici, in cui viene applicato il tema dell'applicazione (vedi sezione \ref{sec:styles}). \\
+Sono state definite poi varie proprietà di base dello \lstinline{Scaffold}, tra cui \lstinline{appBar} con \lstinline{CustomAppBar} (vedi sezione \ref{subsubsec:custom-app-bar}) e un \lstinline{body}, passato per parametro del costruttore, in quanto ogni schermata ha il suo contenuto.\\
+È stata inoltre definita la proprietà \lstinline{bottomNavigationBar} che non viene utilizzata da tutte le schermate, ma per ciascuna vi è la possibilità di implementarla nel caso cui si voglia aggiungere dei pulsanti di navigazione nella parte inferiore della schermata per avanzare o retrocedere tra le varie schermate dell'applicazione.\\
+Per abilitare tali pulsanti è sufficiente passare, a seconda delle necessità, un \emph{widget} \lstinline{forwardButton} per la progressione e/o \lstinline{backButton} per la regressione.\\
 
 \subsubsection*{WizardScreen}
 \label{subsubsec:wizard-screen}
 
+Classe che implementa \lstinline{BaseScreen} e che si occupa di fornire un \emph{template} per le schermate che compongono il \gls{wizard}\glsoccur di creazione/modifica di una \emph{Meeting Note}.\\
+Imposta a \lstinline{true} la proprietà \lstinline{enableIcon} per mantenere il pulsante di accesso alla schermata dell'account utente.\\
+Attraverso i parametri del costruttore è obbligatorio passare il \lstinline{body}, mentre sono opzionali \lstinline{forwardButton} e \lstinline{backButton}.\\
+
 \subsubsection*{WizardHeader}
 \label{subsubsec:wizard-header}
+
+Classe che definisce l'aspetto grafico dell'\emph{header} del \gls{wizard}\glsoccur di creazione/modifica di una \emph{Meeting Note}.\\
+É composto da un \lstinline{Text}\cite{site:text} che rappresenta il titolo della schermata, da un \lstinline{IconButton}\cite{site:icon-button} e da un \emph{widget} privato \lstinline{WizardStepper} (vedi sezione \ref{subsubsec:wizard-stepper}) che aiuta all'utente a capire in quale punto del processo di creazione/modifica si trova.\\
+Il pulsante menzionato ha lo scopo di mostrare un \lstinline{WarningAlertDialog} (vedi sezione \ref{subsubsec:warning-alert-dialog}) chiedendo all'utente se vuole abbandonare il \gls{wizard}\glsoccur, in caso affermativo viene mostrata la schermata principale dell'applicazione, altrimenti viene chiusa la modale.\\    
 
 \subsubsection*{WizardStepper}
 \label{subsubsec:wizard-stepper}
 
+Classe che è composta da tre \lstinline{Step} (vedi sezione \ref{subsubsec:step}), il numero massimo di passi pensato per il \gls{wizard}\glsoccur, inoltre riceve in input il numero di passo corrente in modo da evidenziare a che punto l'utente si trova nella progressione.
+Si specifica che \lstinline{WizardStepper} è stato creato per essere utilizzato esclusivamente all'interno di questo \emph{widget}.\\
+
 \subsubsection*{Step}
 \label{subsubsec:step}
+
+Classe che definisce l'aspetto grafico di un passo del \gls{wizard}\glsoccur di creazione/modifica di una \emph{Meeting Note}.\\
+Sostanzialmente è composto da un \lstinline{Divider}\cite{site:divider} che rappresenta un passo, definendo due colori diversi per evidenziare il passo in cui l'utente si trova da quelli precedenti e/o successivi.
 
 \subsection{Scroll Date Picker}
 \label{subsec:scroll-date-picker}
 
+Nel file denominato \lstinline{scroll_date_picker.dart} è stato definito la classe \lstinline{CustomScrollDatePicker} che estende \lstinline{StatefulWidget} per costruire un componente in grado di permettere all'utente di selezionare una data.\\
+È composto da un \lstinline{Text}\cite{site:text} che visualizza la data selezionata, un \lstinline{ScrollDatePicker}\cite{site:scroll-date-picker} e un pulsante che reimposta la data selezionata a quella corrente.\\
+Espone dei metodi che permettono di ottenere la data selezionata con \lstinline{selectedDate}, e di aggiornare lo stato del \emph{widget} al cambiamento di quest'ultima con \lstinline{onDateChanged}.
+
 \subsection{Search Bar}
 \label{subsec:search-bar}
+
+Nel file denominato \lstinline{search_bar.dart} sono stati implementati dei \emph{widget} che estendono \lstinline{StatelessWidget} per costruire dei componenti in grado di permettere all'utente di effettuare una ricerca.
 
 \subsubsection*{CustomSearchBar}
 \label{subsubsec:custom-search-bar}
