@@ -498,6 +498,84 @@ La sua implementazione è stata effettuata seguendo il \emph{pattern} specificat
 \subsection{Services}
 \label{subsec:services}
 
+In questa sezione verranno discusse le classi che si occupano di effettuare le richieste \gls{httpg}\glsoccur al \gls{backend}\glsoccur attraverso le \gls{apig}\glsoccur, per evitare rindondanze, ogni servizio, eccetto \lstinline{BaseService}, gestisce le eventuali eccezioni (RIMANDA A SEZIONE SPECIFICA) in caso una chiamata non vada a buon fine.
+
+\subsubsection*{Authentication Service}
+\label{subsubsec:authentication-service}
+
+In questo file è definita una classe che estende \lstinline{BaseService} (classe discussa di seguito) con la composizione di \lstinline{PostRequest} per definire il metodo \lstinline{getToken} che si occupa di effettuare una richiesta \lstinline{POST} al \gls{backend}\glsoccur. \\
+Riceve in input un oggetto di tipo \lstinline{AuthArgs} (vedi sezione \ref{subsec:model}) che incapsula lo \emph{username} e la \emph{password} dell'utente per poi restituire eventualmente un oggetto di tipo \lstinline{AuthResponse}.
+
+\subsubsection*{Base Service}
+\label{subsubsec:base-service}
+
+In questo file sono state definite tutte le classi necessarie per fornire un'astrazione per le chiamate \gls{httpg}\glsoccur all'\gls{apig}\glsoccur, di seguito verrà descritta l'implementazione di ciascuna.
+
+\paragraph*{BaseService} ~ \\
+\label{par:base-service}
+
+\noindent Classe astratta che si occupa di fornire un'interfaccia per gestire le chiamate \gls{httpg}\glsoccur e provede a definire i metodi fondamentali per effettuare una richiesta:
+\begin{itemize}
+    \item \lstinline{getUrl}, che si occupa di restituire l'\gls{urig}\glsoccur della risorsa data una stringa in input;
+    \item \lstinline{handleResponse}, invocata per ogni tipologia di richiesta, che si occupa di determinare se una richiesta è avvenuta con successo o meno, in caso di quest'ultimo viene lanciata un'eccezione (RIMANDA A SEZIONE SPECIFICA).
+\end{itemize}
+Le seguenti classi sono di tipo \lstinline{mixin}\cite{site:mixins} e aggiungono funzionalità alla classe \lstinline{BaseService}: ogni classe \lstinline{mixin} si occupa di fornire un implementazione per una chiamata \gls{httpg}\glsoccur specifica. \\
+Successivamente, quando verranno utilizzate, la classe in questione dovrà estendere \lstinline{BaseService} e includere alcune di queste classi \lstinline{mixin}, in modo da aggiungere ad un servizio le chiamate necessarie.\\
+Di seguito verranno descritte le classi \lstinline{mixin}, per ciascuna si specificheranno i parametri necessari per la configurazione dell'\emph{header} o del \emph{body} della richiesta, a seconda delle necessità. \\
+
+\paragraph*{GetRequest} ~ \\
+\label{par:get-request}
+
+\noindent Classe \lstinline{mixin} che si occupa di fornire un'implementazione per effettuare una richiesta \lstinline{GET}, i parametri necessari sono l'\emph{url} della risorsa e il \emph{token} di autenticazione.
+
+\paragraph*{PatchRequest} ~ \\
+\label{par:patch-request}
+
+\noindent Classe \lstinline{mixin} che si occupa di fornire un'implementazione per effettuare una richiesta \lstinline{PATCH}, i parametri necessari sono l'\emph{url} della risorsa, il \emph{token} di autenticazione e il \emph{body} della richiesta.
+
+\paragraph*{DeleteRequest} ~ \\
+\label{par:delete-request}
+
+\noindent Classe \lstinline{mixin} che si occupa di fornire un'implementazione per effettuare una richiesta \lstinline{DELETE}, i parametri necessari sono l'\emph{url} della risorsa e il \emph{token} di autenticazione.
+
+\paragraph*{PostRequest} ~ \\
+\label{par:post-request}
+
+\noindent Classe \lstinline{mixin} che si occupa di fornire un'implementazione per effettuare una richiesta \lstinline{POST}. \\
+Vi sono presenti due metodi, il primo si occupa di effettuare una richiesta \lstinline{POST} con lo scopo di salvare dei dati sul \emph{backend}, i parametri necessari sono l'\emph{url} della risorsa, il \emph{token} di autenticazione e il \emph{body} della richiesta. \\
+Il secondo si occupa di effettuare una richiesta \lstinline{POST} con lo scopo di ottenere il \emph{token} di autenticazione, l'unico parametro necessario è di tipo \lstinline{AuthArgs} (vedi precedentemente).
+
+\subsubsection*{Meeting Note Object Service}
+\label{subsubsec:meeting-note-object-service}
+
+In questo file è definita una classe che estende \lstinline{BaseService} (classe discussa in precedenza) con la composizione di \lstinline{GetRequest} per definire i seguenti metodi:
+\begin{itemize}
+    \item \lstinline{getMeetingNoteObject}, ritorna \lstinline{MeetingNoteObjectResponse} (vedi sezione \ref{subsec:model}) in seguito alla richiesta di ottenere un singolo \gls{cliente}\glsoccur per la creazione di una \emph{Meeting Note}, per fare ciò è necessario passare il \emph{token} di autenticazione, l'\emph{url} della risorsa e la categoria del cliente;
+    \item \lstinline{getContractors}, ritorna \lstinline{MeetingNoteObjectResponse} (vedi sezione \ref{subsec:model}) in seguito alla richiesta di ottenere la lista paginata dei \glspl{cliente}\glsoccur di tipo \emph{contraente}, per fare ciò è necessario passare obbligatoriamente il \emph{token} di autenticazione, \lstinline{pageSize} e \lstinline{pageNumber} che rappresentano rispettivamente la dimensione della pagina e il numero della pagina, opzionalmente è possibile passare anche il nome del \gls{cliente} da ricercare;
+    \item \lstinline{getBrokers}, implementazione analoga a \lstinline{getContractors} ma per i \glspl{cliente}\glsoccur di tipo \emph{broker};
+    \item \lstinline{getDelegatedInsurers}, ritorna \lstinline{MeetingNoteObjectResponse} (vedi sezione \ref{subsec:model}) in seguito alla richiesta di ottenere la lista non paginata dei \glspl{cliente}\glsoccur di una \emph{compagnia assicurativa}, per fare ciò è necessario passare il \emph{token} di autenticazione ed opzionalmente il nome del \gls{cliente} da ricercare;
+    \item \lstinline{buildUrl}, si occupa di costruire l'\gls{urig}\glsoccur della risorsa in base ai parametri passati, che sono: l'\emph{url} della risorsa, la dimensione della pagina, il numero della pagina e il nome del \gls{cliente} da ricercare, esso viene utilizzato dai metodi \lstinline{getContractors} e \lstinline{getBrokers}.
+\end{itemize}
+
+\subsubsection*{Meeting Note Service}
+\label{subsubsec:meeting-note-service}
+
+In questo file è definita una classe che estende \lstinline{BaseService} (classe discussa in precedenza) con la composizione di \lstinline{GetRequest}, \lstinline{PostRequest}, \lstinline{PatchRequest} e \lstinline{DeleteRequest} per definire i seguenti metodi:
+\begin{itemize}
+    \item \lstinline{getMeetingNotes}, ritorna \lstinline{MeetingNoteResponse} (vedi sezione \ref{subsec:model}) in seguito alla richiesta di ottenere la lista paginata delle \emph{Meeting Note}, per fare ciò è necessario passare obbligatoriamente il \emph{token} di autenticazione, \lstinline{pageSize} e \lstinline{pageNumber} che rappresentano rispettivamente la dimensione della pagina e il numero della pagina, opzionalmente è possibile passare anche un oggetto \lstinline{FilteringOptions} (RIMANDARE A SEZIONE SPECIFICA) che rappresenta le opzioni di filtraggio. \\
+    Nel dettaglio, ad ogni chiamata riceve la lista di \lstinline{RawMeetingNote} e la converte in una lista di \lstinline{MeetingNote} (vedi sezione \ref{subsec:model});
+    \item \lstinline{postMeetingNote}, ritorna \lstinline{MeetingNoteResponse} (vedi sezione \ref{subsec:model}) in seguito alla richiesta di creare una \emph{Meeting Note}, per fare ciò è necessario passare il \emph{token} di autenticazione e un oggetto di tipo \lstinline{MeetingNote} (vedi sezione \ref{subsec:model}), convertendo quest'ultimo in \gls{jsong}\glsoccur attraverso un metodo dedicato;
+    \item \lstinline{patchMeetingNote}, ritorna \lstinline{MeetingNoteResponse} (vedi sezione \ref{subsec:model}) in seguito alla richiesta di modificare una \emph{Meeting Note}, per fare ciò è necessario passare il \emph{token} di autenticazione e un oggetto di tipo \lstinline{MeetingNote} (vedi sezione \ref{subsec:model}), convertendo quest'ultimo in \gls{jsong}\glsoccur attraverso un metodo dedicato;
+    \item \lstinline{deleteMeetingNote}, ritorna \lstinline{MeetingNoteResponse} (vedi sezione \ref{subsec:model}) in seguito alla richiesta di eliminare una \emph{Meeting Note}, per fare ciò è necessario passare il \emph{token} di autenticazione e l'\emph{uuid} della \emph{Meeting Note};
+    \item \lstinline{postSmartCreationMeetingNote}, ritorna \lstinline{SmartCreationResponse} (vedi sezione \ref{subsec:model}) in seguito alla richiesta di creare una \emph{Meeting Note} in modo automatico, per fare ciò è necessario passare il \emph{token} di autenticazione e il testo da elaborare;;
+    \item \lstinline{buildUrl}, si occupa di costruire l'\gls{urig}\glsoccur della risorsa in base ai parametri passati, che sono: la dimensione della pagina, il numero della pagina ed eventualmente le opzioni di filtraggio, esso viene utilizzato dal metodo \lstinline{getMeetingNotes}.
+\end{itemize}
+
+\subsubsection*{User Service}
+\label{subsubsec:user-service}
+
+In questo file è definita una classe che estende \lstinline{BaseService} (classe discussa in precedenza) con la composizione di \lstinline{GetRequest} per definire il metodo \lstinline{getUser} che si occupa di effettuare una richiesta \lstinline{GET} al \gls{backend}\glsoccur per ottenere i dati dell'utente, ricevendo in input il \emph{token} di autenticazione e restitornando un oggetto di tipo \lstinline{UserResponse} (vedi sezione \ref{subsec:model}).
+
 \section{Provider}
 \label{sec:provider}
 
