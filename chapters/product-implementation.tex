@@ -160,6 +160,7 @@ L'operazione e l'esito dell'autenticazione attraverso il riconoscimento biometri
 \label{subsec:meeting-note-card}
 
 INSERIRE LE IMMAGINI \\
+RICHIAMARE I REQUISITI CORRELATI \\
 
 Nel file denominato \lstinline{meeting_note_card.dart} sono stati implementati dei \emph{widget} che estendono \lstinline{StatelessWidget} per costruire un componente in grado di visualizzare una \emph{Meeting Note} in una lista, e/o in dettaglio, con la possibilità di eliminarla e/o modificarla. \\
 Per la costruzione di questo componente si sono creati vari \emph{widget} che ne definiscono l'aspetto grafico e di cui verranno illustratti di seguito.\\
@@ -314,10 +315,12 @@ Questa cartella contiene due cartelle rappresentanti i \emph{data layer} e \emph
 \subsection{Model}
 \label{subsec:model}
 
-Sono contenuti i file che rappresentano i modelli dei dati utilizzati all'interno dell'applicazione.\\
-Si specifica, per evitare rindondanze, che alcune classi in questione sono state implementate seguendo un \emph{pattern} specifico: oltre alla definizione degli attributi opportuni, per ciascuna classe, è presente un metodo \lstinline{fromJson}, come si intuisce si occupano di convertire da da \gls{jsong}\glsoccur all'oggetto interessato, dei metodi che ritornano il valore di ciascun attributo e un metodo \lstinline{toString} che ritorna una stringa che rappresenta l'oggetto.\\
+Sono contenuti i file che rappresentano il modello dei dati utilizzato all'interno dell'applicazione.\\
+Si specifica, per evitare rindondanze, che alcune classi in questione sono state implementate seguendo un \emph{pattern} specifico: oltre alla definizione degli attributi opportuni, ovvero quelli specificati, e che sono vincolanti, nelle \gls{apig}\glsoccur del sistema, sono presenti un costruttore \emph{factory}\cite{site:factory} \lstinline{fromJson}, come si intuisce si occupa di convertire da \gls{jsong}\glsoccur all'oggetto interessato, dei metodi che ritornano il valore di ciascun attributo e un metodo \lstinline{toString} che ritorna una stringa che rappresenta l'oggetto.\\
 Nel corso di questa sezione verrà specificato quando una classe è stata implementata seguendo tale \emph{pattern}, mentre per le altre verrà descritta specificatamente l'implementazione. \\
-Di seguito verranno elencate le classi che rappresentano i modelli dei dati utilizzati all'interno dell'applicazione.
+Inoltre in quasi tutti i file è presente una classe, il cui nome termina con suffisso \lstinline{Response}, che estende \lstinline{BaseResponse} (vedi sezione \ref{subsubsec:status-response}) e rappresenta l'esito di una richiesta \gls{httpg}\glsoccur fatta all'\gls{apig}\glsoccur, nel caso in cui l'esito sia positivo contiene anche il valore da restituire.\\
+Infine, per ogni classe è sottinteso la presenza del costruttore con tutti gli attributi presenti, che non viene riportato per evitare ridondanze. \\ 
+Di seguito tali classi verranno discusse nel dettaglio.
 
 \subsubsection*{Authentication}
 \label{subsubsec:authentication}
@@ -340,13 +343,113 @@ La sua implementazione è stata effettuata seguendo il \emph{pattern} nell'intro
 \paragraph*{AuthResponse} ~ \\
 \label{par:auth-response}
 
-\noindent Classe che incapsula l'esito della richiesta di autenticazione, è composta da un attributo di tipo \lstinline{StatusResponse} (vedi sezione \ref{subsubsec:status-response}) che ne rappresenta l'esito e un attributo di tipo \lstinline{AuthValues} (vedi sezione \ref{par:auth-values}) che ne rappresenta il valore restituito.
+\noindent Classe che estende \lstinline{BaseResponse}, nella quale viene aggiunto un attributo di tipo \lstinline{AuthValues} che ne rappresenta il valore restituito.
 
 \subsubsection*{Meeting Note}
 \label{subsubsec:meeting-note}
 
+In questo file sono state definite tutte le classi necessari per gestire i dati riguardanti le \emph{Meeting Note} all'interno dell'applicazione, di seguito verrà descritta l'implementazione di ciascuna.
+
+\paragraph*{RawMeetingNote} ~ \\
+\label{par:raw-meeting-note}
+
+\noindent Classe che si occupa di incapsulare i dati di una \emph{Meeting Note} ricevuti da una chiamata \gls{httpg}\glsoccur all'\gls{apig}\glsoccur, però non sono ancora utilizzabili all'interno dell'applicazione, la quasi totalità degli attributi di tipo \lstinline{String} ed alcuni di essi dunque non sono del tipo opportuno per la loro elaborazione all'interno dell'applicazione.\\
+Gli attributi di tipo \lstinline{String} in questione sono:
+\begin{itemize}
+    \item \lstinline{uuid}, utilizzato per l'identificazione di una \emph{Meeting Note};
+    \item \lstinline{meetingDate}, la data dell'incontro;
+    \item \lstinline{note}, il contenuto della \emph{Meeting Note};
+    \item \lstinline{userCreator}, l'autore della \emph{Meeting Note}.
+\end{itemize}
+Inoltre sono presenti tre attributi opzionali di tipo \lstinline{MeetingNoteObject}, ciascuno rappresentante un \gls{cliente}\glsoccur delle tre categorie: tra i quali solo uno di loro viene restituito da una chiamata al \emph{backend} e dunque non è nullo, poichè una \emph{Meeting Note} può essere associata ad un solo \gls{cliente}\glsoccur.\\
+Una considerazione necessaria da fare è per l'attributo \lstinline{meetingDate} che non è di tipo \lstinline{DateTime}\cite{site:date-time}, dunque non è possibile effettuare ad esempio un confronto tra due date, situazione analoga per l'attributo \lstinline{userCreator} che è di tipo \lstinline{String} e non \lstinline{User}.\\
+Per questo motivo è stata definita la classe \lstinline{MeetingNote} (discussa di seguito) che si occupa di effettuare la conversione da \lstinline{RawMeetingNote} a \lstinline{MeetingNote} e permette quindi di operare più facilmente su questi dati. \\
+La sua implementazione è stata effettuata seguendo il \emph{pattern} nell'introduzione di questa sezione, con un ulteriore metodo \lstinline{toJson} che si occupa di convertire l'oggetto in \gls{jsong}\glsoccur per poterlo inviare al \gls{backend}\glsoccur.
+
+\paragraph*{PaginatedMeetingNote} ~ \\
+\label{par:paginated-meeting-note}
+
+\noindent Classe che si occupa di incapsulare una lista di \lstinline{RawMeetingNote} paginata, con l'ulteriore presenza di due attributi di tipo \lstinline{String} che rappresentano rispettivamente il \emph{link} alla pagina precedente e successiva.\\
+La sua implementazione è stata effettuata seguendo il \emph{pattern} nell'introduzione di questa sezione.
+
+\paragraph*{MeetingNote} ~ \\
+\label{par:meeting-note}
+
+\noindent Classe che si occupa di incapsulare i dati di una \emph{Meeting Note} pronta per essere utilizzata all'interno dell'applicazione ed è composta dai seguenti attributi:
+\begin{itemize}
+    \item \lstinline{uuid} di tipo \lstinline{String}, utilizzato per l'identificazione di una \emph{Meeting Note};
+    \item \lstinline{meetingDate} di tipo \lstinline{DateTime}\cite{site:date-time}, la data dell'incontro;
+    \item \lstinline{note} di tipo \lstinline{String}, il contenuto della \emph{Meeting Note};
+    \item \lstinline{user} di tipo \lstinline{User}, l'autore della \emph{Meeting Note};
+    \item \lstinline{object} di tipo \lstinline{MeetingNoteObject}, il \gls{cliente}\glsoccur associato alla \emph{Meeting Note}.
+\end{itemize}
+La sua implementazione, molto semplice, consiste nei metodi per ottenere i valori degli attributi e un metodo \lstinline{toString} che ritorna una stringa che rappresenta l'oggetto.
+
+\paragraph*{MeetingNoteResponse} ~ \\
+\label{par:meeting-note-response}
+
+\noindent Classe che estende \lstinline{BaseResponse}, nella quale viene aggiunto un attributo di tipo \lstinline{List<MeetingNote>} che ne rappresenta il valore restituito.
+
+\paragraph*{SmartCreationValue} ~ \\
+\label{par:smart-creation-value}
+
+\noindent Classe che si occupa di incapsulare i dati, risultati dell'elaborazione da parte di un algoritmo di \gls{ai}\glsoccur per la creazione automatica di una \emph{Meeting Note}, è composta dai seguenti attributi:
+\begin{itemize}
+    \item \lstinline{customer} di tipo \lstinline{String}, il nome del \gls{cliente}\glsoccur elaborato dall'algoritmo;
+    \item \lstinline{date} di tipo \lstinline{DateTime}, la data dell'incontro elaborato dall'algoritmo;
+    \item \lstinline{category} di tipo \lstinline{String}, la categoria del \gls{cliente}\glsoccur elaborato dall'algoritmo;
+    \item \lstinline{note} di tipo \lstinline{String}, il contenuto della \emph{Meeting Note} elaborato dall'algoritmo.
+\end{itemize}
+La sua implementazione è stata effettuata seguendo il \emph{pattern} nell'introduzione di questa sezione, con un ulteriore metodo \lstinline{toJson} che si occupa di convertire l'oggetto in \gls{jsong}\glsoccur per poterlo inviare al \gls{backend}\glsoccur e un altro metodo \lstinline{getObjectCategory} che converte l'attributo \lstinline{category} in un oggetto di tipo \lstinline{ObjectCategory}.
+
+\paragraph*{SmartCreationResponse} ~ \\
+\label{par:smart-creation-response}
+
+\noindent Classe che estende \lstinline{BaseResponse}, nella quale viene aggiunto un attributo di tipo \lstinline{SmartCreationValue} che ne rappresenta il valore restituito.
+
 \subsubsection*{Meeting Note Object}
 \label{subsubsec:meeting-note-object}
+
+In questo file sono state definite tutte le classi necessarie per gestire i dati riguardanti i \glspl{cliente} all'interno dell'applicazione, di seguito verrà descritta l'implementazione di ciascuna.
+
+\paragraph*{MeetingNoteObject} ~ \\
+\label{par:meeting-note-object}
+
+\noindent Classe che rappresenta il modello di un \gls{cliente} relativo ad una \emph{Meeting Note}, ed è composta dai seguenti attributi:
+\begin{itemize}
+    \item \lstinline{uuid}, di tipo \lstinline{String}, utilizzato per l'identificazione di un \gls{cliente};
+    \item \lstinline{name}, di tipo \lstinline{String}, il nome del \gls{cliente};
+    \item \lstinline{vatNumber}, di tipo \lstinline{String}, il numero di partita IVA del \gls{cliente} ed è presente solo per i \emph{contraenti};
+    \item \lstinline{category}, di tipo \lstinline{ObjectCategory}, la categoria del \gls{cliente}.
+\end{itemize}
+La sua implementazione è stata effettuata seguendo il \emph{pattern} nell'introduzione di questa sezione.
+
+\paragraph*{PaginatedObject} ~ \\
+\label{par:paginated-object}
+
+\noindent Dalle specifiche dell'\gls{apig}\glsoccur, solamente i clienti di tipo \emph{broker} e \emph{contraente} vengono resituiti in modo paginato, per questo motivo è stata definita questa classe che rappresenta un \emph{wrapper} di una lista di \lstinline{MeetingNoteObject} e di due altri attributi di tipo \lstinline{String} che rappresentano rispettivamente il \emph{link} alla pagina precedente e successiva.\\
+La sua implementazione è stata effettuata seguendo il \emph{pattern} nell'introduzione di questa sezione.
+
+\paragraph*{ObjectValue} ~ \\
+\label{par:object-value}
+
+\noindent É una classe \emph{sealed}\cite{site:sealed-class} in cui è stato definito un costruttore di \emph{default} e un metodo \lstinline{toString} che ritorna una stringa che rappresenta l'oggetto.\\
+
+\paragraph*{ObjectListValue} ~ \\
+\label{par:object-list-value}
+
+\noindent Classe che estende \lstinline{ObjectValue} e rappresenta il valore restituito dall'\gls{apig}\glsoccur in seguito alla richiesta di ottenere la lista dei clienti, indipendentemente a quale categoria appartengono e se sono paginati o meno.\\
+Ridefinisce il costruttore e il metodo \lstinline{toString}, mentre viene aggiunto un metodo per ottenere la lista dei clienti.
+
+\paragraph*{SingleObjectValue} ~ \\
+\label{par:single-object-value}
+
+\noindent Classe che estende \lstinline{ObjectValue} e rappresenta il valore restituito dall'\gls{apig}\glsoccur in seguito alla richiesta di ottenere un singolo cliente, la sua implementazione è analoga a quella di \lstinline{ObjectListValue}.
+
+\paragraph*{MeetingNoteObjectResponse} ~ \\
+\label{par:meeting-note-object-response}
+
+\noindent Classe che estende \lstinline{BaseResponse}, nella quale viene aggiunto un attributo di tipo \lstinline{ObjectValue} che ne rappresenta il valore restituito.
 
 \subsubsection*{Object Category}
 \label{subsubsec:object-category}
@@ -378,7 +481,19 @@ In questo file sono state definite tutte le classi necessari per gestire l'utent
 \paragraph*{User} ~ \\
 \label{par:user}
 
+\noindent Classe che modella l'utente all'interno dell'applicazione, gli attributi che la compongono sono: \emph{email}, \emph{firstName}, \emph{lastName}, di tipo \lstinline{String}, e \emph{profile} di tipo \lstinline{Profile}. \\
+La sua implementazione è stata effettuata seguendo il \emph{pattern} specificato nell'introduzione di questa sezione.
 
+\paragraph*{Profile} ~ \\
+\label{par:profile}
+
+\noindent Classe che modella il profilo dell'utente all'interno dell'applicazione, gli attributi che la compongono sono: \emph{uuid}, un identificativo univoco assegnato ad ogni utente, e l'\emph{avatar}, contiene il link dell'immagine profilo, entrambi di tipo \lstinline{String}. \\
+La sua implementazione è stata effettuata seguendo il \emph{pattern} specificato nell'introduzione di questa sezione.
+
+\paragraph*{UserResponse} ~ \\
+\label{par:user-response}
+
+\noindent Classe che estende \lstinline{BaseResponse}, nella quale viene aggiunto un attributo di tipo \lstinline{User} che ne rappresenta il valore restituito.
 
 \subsection{Services}
 \label{subsec:services}
