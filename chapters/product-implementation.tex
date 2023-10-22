@@ -99,7 +99,7 @@ Questo \emph{widget} è composto da un \lstinline{Switch}\cite{site:switch} e un
 Inoltre ne viene definito l'aspetto e il comportamento attraverso la definizione di un \lstinline{State} che estende \lstinline{StatefulWidget} implementando il metodo \lstinline{build} per la costruzione del \emph{widget} e il metodo \lstinline{onChanged} per la gestione dell'evento di cambiamento di stato del \lstinline{Switch}.\\
 Stato che è rappresentato da due variabili di tipo \lstinline{bool}, una che si occupa di gestire l'abilitazione del componente e l'altro che indica se nel dispositivo in cui viene eseguita l'applicazione è supportato il riconoscimento biometrico.\\
 La prima tra queste, ad ogni suo cambiamento di stato, viene salvata in locale attraverso una libreria di terze parti (di cui verrà discussa nella sezione \ref{sec:utils} - SPECIFICA LA PARTE PRECISA) per mantenere in memoria la preferenza dell'utente. \\
-Il caso in cui la seconda variabile menzionata precedentemente sia \lstinline{false}, dunque non vi è il supporto per il riconoscimento biometrico, attraverso un \emph{widget} \lstinline{Text} si notifica l'utente di tale mancanza e si disabilita il \lstinline{Switch}.
+Il caso in cui la seconda variabile menzionata precedentemente sia \lstinline{false}, dunque non vi è il supporto per il riconoscimento biometrico, attraverso un \emph{widget} \lstinline{Text} si notifica l'utente di tale mancanza e si disabilita lo \lstinline{Switch}.
 
 \subsection{Date Picker}
 \label{subsec:date-picker}
@@ -305,7 +305,8 @@ Nel file denominato \lstinline{app_constants.dart} sono state definite delle cos
 
 Nel file denominato \lstinline{api_constants.dart} sono state definite due classi che rappresentano le costanti utilizzate per effettuare le richieste all'\gls{apig}\glsoccur.\\
 Nella prima classe \lstinline{ApiUrls} sono presenti le costanti che si riferiscono agli \gls{endpoint}\glsoccur dell'\gls{apig}\glsoccur.\\
-Nella seconda \lstinline{ApiFields} sono presenti costanti che si riferiscono al nome dei parametri che devono essere passati all'\gls{urig}\glsoccur di alcune richieste all'\gls{apig}\glsoccur.
+Nella seconda \lstinline{ApiFields} sono presenti costanti che si riferiscono al nome dei parametri che devono essere passati all'\gls{urig}\glsoccur di alcune richieste all'\gls{apig}\glsoccur. \\
+L'utilizzo di queste costanti avviene esclusivamente all'interno delle classi contenute nella cartella \emph{Services} (vedi sezione \ref{subsec:services}).\\
 
 \section{Data}
 \label{sec:data}
@@ -579,8 +580,130 @@ In questo file è definita una classe che estende \lstinline{BaseService} (class
 \section{Provider}
 \label{sec:provider}
 
+In questa cartella sono presenti le classi che si occupano di gestire la \emph{logica di business} dell'applicazione, si tratta dunque dell'\emph{application layer} (vedi sezione \ref{subsec:architettura-app}).\\
+In ciascun file viene definita una classe al cui interno sono stati implementati dei metodi opportuni per effettuare delle operazioni e al di fuori di essa si istanzia un \lstinline{FutureProvider}\cite{site:future-provider} (discusso nella sezione \ref{subsec:riverpod}) per esporre questi metodi al \emph{presentation layer}.\\
+Inoltre ciascuna classe per effettuare le operazioni necessarie si avvale dei corrispettivi servizi (vedi sezione \ref{subsec:services}) e modelli (vedi sezione \ref{subsec:model}) precedentemente discussi. \\
+Si vuole infine precisare che, eccetto per \lstinline{AuthenticationHelper} (discussa nella sezione \ref{subsec:authentication-provider}), nelle restanti classi, ogni metodo che effettua una richiesta include l'operazione di lettura del \emph{token} per autenticare quest'ultime.
+
+\subsection{Authentication Provider}
+\label{subsec:authentication-provider}
+
+In questo file è definita la classe \lstinline{AuthenticationHelper} che si occupa di gestire la logica dell'autenticazione all'applicazione, in particolare espone i seguenti metodi:
+\begin{itemize}
+    \item \lstinline{verifyCredentials}, si occupa di verificare la validità delle credenziali, passate per parametro, inserite dall'utente;
+    \item \lstinline{authenticate}, verifica le credenziali dell'utente, avvalendosi del metodo \lstinline{verifyCredentials}, e in caso di successo ritorna un \emph{token} di autenticazione attraverso l'oggetto \lstinline{AuthResponse} (vedi sezione \ref{subsec:model}) salvandolo poi in locale con l'ausilio della libreria \lstinline{shared_preferences}\cite{site:shared-preferences} (discussa nella sezione \ref{sec:utils});
+    \item \lstinline{logout}, si occupa di effettuare il \emph{logout} dall'applicazione, eliminando il \emph{token} di autenticazione salvato in locale e riportando l'applicazione alla schermata di \emph{login};
+    \item \lstinline{isAuthenticated}, verifica se l'utente è autenticato, controllando se il \emph{token} di autenticazione è salvato in locale;
+    \item \lstinline{isUnauthorized}, verifica se l'utente è autorizzato ad effettuare una chiamata \gls{httpg}\glsoccur, controllandone l'esito e in caso negativo effettua il \emph{logout} dall'applicazione, poichè significa che il \emph{token} di autenticazione è scaduto;
+    \item \lstinline{isBiometricEnabled}, verifica se l'utente ha abilitato l'autenticazione biometrica all'interno dell'applicazione, controllando se il \emph{flag} è salvato in locale;
+    \item \lstinline{readCredentials}, si occupa di leggere le credenziali cifrate salvate in locale, attraverso la libreria \lstinline{FlutterSecureStorage}\cite{site:flutter-secure-storage}, restituendo un oggetto di tipo \lstinline{AuthArgs} (vedi sezione \ref{subsec:model});
+    \item \lstinline{saveCredentials}, si occupa di salvare le credenziali cifrate in locale, ricevendo in input un oggetto di tipo \lstinline{AuthArgs} (vedi sezione \ref{subsec:model});
+    \item \lstinline{removeCredentials}, si occupa di eliminare le credenziali cifrate salvate in locale;
+\end{itemize}
+
+\subsection{Meeting Note Object Provider}
+\label{subsec:meeting-note-object-provider}
+
+In questo file è definita la classe \lstinline{MeetingNoteObjectHelper} che si occupa di gestire la logica dei \glspl{cliente}\glsoccur all'interno dell'applicazione, in particolare espone i seguenti metodi:
+\begin{itemize}
+    \item \lstinline{getContractors} si occupa di ottenere la lista paginata di tutti i \glspl{cliente}\glsoccur di tipo \emph{contraente} oppure solo di quelli ricercati dall'utente attraverso il passaggio del parametro \lstinline{searchTerm}, dati in input il numero della pagina e la dimensione della pagina, restituendo un oggetto di tipo \lstinline{MeetingNoteObjectResponse} (vedi sezione \ref{subsec:model});
+    \item \lstinline{getBrokers} implementazione analoga a \lstinline{getContractors} ma per i \glspl{cliente}\glsoccur di tipo \emph{broker};
+    \item \lstinline{getDelegatedInsurers} implementazione analoga ai due metodi precedenti ma per i \glspl{cliente}\glsoccur di tipo \emph{compagnia assicurativa} e senza la possibilità di paginazione.
+\end{itemize}
+
+\subsection{Meeting Note Provider}
+\label{subsec:meeting-note-provider}
+
+In questo file è definita la classe \lstinline{MeetingNoteHelper} che si occupa di gestire la logica delle \emph{Meeting Note} all'interno dell'applicazione, in particolare espone i seguenti metodi:
+\begin{itemize}
+    \item \lstinline{fecthMeetingNotes}, si occupa di ottenere la lista paginata delle \emph{Meeting Note} oppure solo di quelle filtrate dall'utente attraverso il passaggio del parametro \lstinline{filteringOptions} (RIMANDARE ALLA SEZIONE SPECIFICA), dati in input il numero della pagina e la dimensione della pagina, restituendo un oggetto di tipo \lstinline{MeetingNoteResponse} (vedi sezione \ref{subsec:model});
+    \item \lstinline{createMeetingNote}, si occupa di memorizzare la \emph{Meeting Note} creata e passata in input come oggetto di tipo \lstinline{MeetingNote} nel \gls{backend}\glsoccur, restituendo un oggetto di tipo \lstinline{StatusResponse} (vedi sezione \ref{subsec:model}) in quanto è sufficiente ritornare l'esito della richiesta;
+    \item \lstinline{deleteMeetingNote}, si occupa di eliminare la \emph{Meeting Note} passata in input lo \lstinline{uuid} come parametro, restituendo un oggetto di tipo \lstinline{StatusResponse} (vedi sezione \ref{subsec:model}) in quanto è sufficiente ritornare l'esito della richiesta;
+    \item \lstinline{modifyMeetingNote}, si occupa di modificare la \emph{Meeting Note} passata in input come oggetto di tipo \lstinline{MeetingNote}, restituendo un oggetto di tipo \lstinline{StatusResponse} (vedi sezione \ref{subsec:model}) in quanto è sufficiente ritornare l'esito della richiesta;
+    \item \lstinline{smartCreation}, si occupa di creare una \emph{Meeting Note} in modo automatico, passando in input il testo da elaborare, restituendo un oggetto di tipo \lstinline{SmartCreationResponse} (vedi sezione \ref{subsec:model}).
+\end{itemize}
+
+\subsection{User Provider}
+\label{subsec:user-provider}
+
+In questo file è definita la classe \lstinline{UserHelper} che si occupa di gestire la logica dell'utente all'interno dell'applicazione, in particolare espone il metodo \lstinline{initUser} che si occupa di ottenere i dati dell'utente, restituendo un oggetto di tipo \lstinline{UserResponse} (vedi sezione \ref{subsec:model}).
+
 \section{Screens}
 \label{sec:screens}
+
+In questa cartella sono presenti tutte le schermate dell'applicazione, le quali verranno descritte di seguito.
+
+\subsection{Account Screen}
+\label{subsec:account-screen}
+
+Schermata che permette all'utente di visualizzare i propri dati, letti attraverso il \lstinline{UserProvider} (vedi sezione \ref{subsec:user-provider}), si ricorda che per poter effettuare una lettura del \emph{provider} è necessario che la classe estenda \lstinline{ConsumerWidget} (discussa nella sezione \ref{subsec:riverpod}). \\
+Per la defizione dell'aspetto grafico questa schermata implementa \lstinline{BaseScreen} (vedi sezione \ref{subsec:screens-template}) e prima di renderizzare ulteriori componenti effettua un controllo sullo stato della connessione ad internet, ottenuto attraverso il \lstinline{NetworkAwareProvider} (RIMANDARE ALLA SEZIONE SPECIFICA), in caso di assenza di connessione viene mostrato un \lstinline{WarningAlert} (vedi sezione \ref{subsec:warning-alert}) con il relativo messaggio di errore. \\
+Altrimenti viene mostrato il contenuto della schermata servendosi di \lstinline{FutureBuilder}\cite{site:future-builder} per invocare il metodo \lstinline{initUser} del \lstinline{UserProvider} e ottenere i dati dell'utente, in particolare ci possono essere vari esiti:
+\begin{itemize}
+    \item \emph{waiting}, viene mostrato un \lstinline{CircularProgressIndicator}\cite{site:circular-progress-indicator} per indicare che la richiesta è in corso;
+    \item \emph{unauthorizedException}, l'utente non è autorizzato ad effettuare la richiesta, viene reindirizzato alla schermata di \emph{login};
+    \item \emph{genericException}, la richiesta non è andata a buon fine per un errore generico e viene mostrato un \lstinline{WarningAlert} con il relativo messaggio di errore;
+    \item \emph{success}, la richiesta è andata a buon fine e viene mostrato il contenuto della schermata.
+\end{itemize}
+In quest'ultimo caso vengono renderizzati i seguenti componenti:
+\begin{itemize}
+    \item \lstinline{TextButton}\cite{site:text-button}, per effettuare il \emph{logout} dall'applicazione, che mostra un \lstinline{WarningAlertDialog} (vedi sezione \ref{subsec:warning-alert}) che informa l'utente che ne deve confermare o meno l'operazione;
+    \item \lstinline{CircleAvatar}\cite{site:circle-avatar}, per mostrare l'immagine profilo dell'utente;
+    \item \lstinline{AccountCard}, \emph{StatelessWidget} privato che si occupa di mostrare il nome, cognome e la mail dell'utente;
+    \item \lstinline{BiometricOption}, \emph{StatefulWidget} privato che implementa \lstinline{BiometricSwitch} (vedi sezione \ref{subsec:biometric-switch}), si ricorda che lo stato di questo componente è salvato in locale attraverso la libreria \lstinline{shared_preferences}\cite{site:shared-preferences} (discussa nella sezione \ref{sec:utils}); per la sua attivazione verrà richiesto all'utente di confermare l'operazione attraverso l'inserimento delle credenziali di autenticazione, anch'esse salvate in locale attraverso la libreria \lstinline{FlutterSecureStorage}\cite{site:flutter-secure-storage} (discussa nella sezione \ref{sec:utils}).
+\end{itemize}
+
+\subsection{Home Screen}
+\label{subsec:home-screen}
+
+% inizializzazione variabili di stato (tutte private)
+    % - filteringOptions 
+    % - isFiltering
+    % - pagingController
+% provider:
+    % - networkAwareProvider
+    % - filterProvider
+    % - meetingNoteProvider
+    % - authProvider
+% componenti:
+    % - BaseScreen
+    % - _HomeHeader (privato)
+        % - FilterPanel
+    % - controllo stato di connessione ad internet prima di renderizzare: 
+        % - PagedListView (spiegare)
+    % - SpeedDial
+% metodi privati:
+    % - fetchPage
+    % - showWizardCreationPage1
+    % - showWarningDialog
+    % - showSmartCreationPage
+
+Schermata principale dell'applicazione, si ricorda che per poter effettuare una lettura del \emph{provider} è necessario che la classe estenda \lstinline{ConsumerStatefulWidget} (discussa nella sezione \ref{subsec:riverpod}). \\
+Prima della renderizzazione dell'aspetto grafico viene effettuata l'inizializzazione delle variabili di stato, in particolare:
+\begin{itemize}
+    \item \lstinline{filteringOptions}, oggetto di tipo \lstinline{FilteringOptions} (RIMANDARE ALLA SEZIONE SPECIFICA) che rappresenta le opzioni di filtraggio attive;
+    \item \lstinline{isFiltering}, \lstinline{bool} che indica se l'utente ha attivato o meno almeno un filtro;
+    \item \lstinline{pagingController}, oggetto di tipo \lstinline{PagingController}\cite{site:infinite-scroll-pagination} che si occupa di gestire la paginazione dei dati.
+\end{itemize}
+Per la defizione dell'aspetto grafico questa schermata implementa \lstinline{BaseScreen} (vedi sezione \ref{subsec:screens-template}) e il suo contenuto è strutturato come segue:
+\begin{itemize}
+    \item \lstinline{HomeHeader}, \emph{StatelessWidget} privato che mostra il titolo della schermata e due pulsanti, uno per eliminare i filtri attivi e l'altro per aprire il pannello di filtraggio;
+\end{itemize}
+
+\subsection{Login Screen}
+\label{subsec:login-screen}
+
+\subsection{Smart Creation Screen}
+\label{subsec:smart-creation-screen}
+
+\subsection{Wizard Screen 1}
+\label{subsec:wizard-screen-1}
+
+\subsection{Wizard Screen 2}
+\label{subsec:wizard-screen-2}
+
+\subsection{Wizard Screen 3}
+\label{subsec:wizard-screen-3}
 
 \section{Styles}
 \label{sec:styles}
@@ -592,6 +715,9 @@ In questo file è definita una classe che estende \lstinline{BaseService} (class
 
 \section{main.dart}
 \label{sec:main}
+
+\section{Responsività}
+\label{sec:responsivity}
 
 % Listato delle varie classi principali implementate
 % Fai riferimento allo storico dei commits su GitHub

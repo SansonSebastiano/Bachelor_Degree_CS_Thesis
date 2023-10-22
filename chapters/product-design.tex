@@ -54,13 +54,9 @@ Mentre \emph{app state} è uno stato che viene condiviso tra più \emph{widget} 
 
 \subsection{Riverpod}
 \label{subsec:riverpod}
-% cos'è
-% come funziona
-% vantaggi
-% svantaggi
-% motivazione della scelta
+
 \emph{Riverpod} semplifica notevolmente lo \emph{state management} e si basa su un concetto evoluto da \emph{Provider}\cite{site:provider}, libreria da cui deriva.\\
-A differenza di \lstinline{InheritedWidget}\cite{site:inheritw} che permette di condividere lo stato tra più \emph{widget}, \emph{Riverpod}, che ne è una reimplementazione, fornisce \emph{providers} che sono indipendenti dai \emph{widget}, in quanto una volta dichiarato il \lstinline{ProviderScope} a livello globale, possono essere richiamati ovunque.\\
+A differenza di \lstinline{InheritedWidget}\cite{site:inheritw} che permette di condividere lo stato tra più \emph{widget}, \emph{Riverpod}, che ne è una reimplementazione, fornisce \emph{providers} che sono indipendenti dai \emph{widget}, in quanto una volta dichiarato il \lstinline{ProviderScope} a livello globale, possono essere letti ovunque, a condizione che la classe richiamante venga estesa con \lstinline{ConsumerWidget} o \lstinline{ConsumerStatefulWidget}\cite{site:reading-provider}. \\
 Da questo ne consegue che si evita di aggiornare l'interfaccia grafica, ovvero di richiamare il metodo \lstinline{build()} di un \emph{widget} quando non è necessario, poichè è un'operazione costosa.
 Un \emph{provider} dunque è un oggetto che può essere richiamato da un \emph{widget} con la finalità di leggerne un valore.\\
 Ne esistono di varie tipologie, per le quali si rimanda alla documentazione ufficiale\cite{site:riverpod}, ma quelle utilizzate in questo progetto sono:
