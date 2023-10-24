@@ -22,7 +22,7 @@ Di seguito verrà illustratta l'effettiva struttura del progetto basata sull'app
 \end{verbatim}
 
 L'architettura menzionata nella sezione \ref{subsec:architettura-app} è stata implementata nel seguente modo: il \emph{data layer} e \emph{domain layer} sono stati implementati rispettivamente in \lstinline{service} e \lstinline{model}, contenute all'interno della cartella \lstinline{data}, mentre l'\emph{application layer} è stato implementato nella cartella \lstinline{provider} e il \emph{presentation layer} nella cartella \lstinline{screens}.\\
-Le restanti cartelle sono servite come ausilio per l'implementazione delle funzionalità dei \emph{layer} sopraccitati, come ad esempio \lstinline{components} per la creazione di \emph{widget} personalizzati, \lstinline{constants} per la definizione di costanti, \lstinline{styles} per la definizione di stili e del tema dell'applicazione e \lstinline{utils} per la definizione di alcune funzioni di utilità.\\
+Le restanti cartelle sono servite come ausilio per l'implementazione delle funzionalità dei \emph{layer} sopracitati, come ad esempio \lstinline{components} per la creazione di \emph{widget} personalizzati, \lstinline{constants} per la definizione di costanti, \lstinline{styles} per la definizione di stili grafici e del tema dell'applicazione e \lstinline{utils} per la definizione di alcune funzioni di utilità.\\
 
 \section{Components}
 \label{sec:components}
@@ -739,7 +739,7 @@ La struttura di questa modale è la seguente:
 Vi sono presenti inoltre due metodi privati, \lstinline{search} e \lstinline{onConfirmation}. \\
 Il primo si occupa di effettuare la ricerca dell'identificativo del \gls{cliente}\glsoccur ricevuto input come parametro, con l'ausilio di \lstinline{meetingNoteObjectProvider} (vedi sezione \ref{subsec:meeting-note-object-provider}) e di controllare l'autorizzazione della richiesta con \lstinline{authProvider}, prima di tutto ciò viene assicurata la presenza di connessione ad internet da \lstinline{networkAwareProvider} (RIMANDARE ALLA SEZIONE SPECIFICA). \\
 Vengono gestiti inoltre i vari esiti della richiesta (i medesimi illustrati nella sezione \ref{subsec:model}, vedi paragrafo \emph{Status Response}) e solamente in caso di successo viene restituito il risultato e aggiornato lo stato di \lstinline{selectedMeetingNoteObject}. \\
-Mentre il secondo mostra all'utente una finestra di dialogo attraverso \lstinline{showConfirmationDialog} (RIMANDA ALLA SEZIONE SPECIFICA) che gli chiede di confermare la creazione della \emph{Meeting Note} e in caso affermativo viene effettuata la richiesta al \gls{backend}\glsoccur attraverso \lstinline{meetingNoteProvider} (vedi sezione \ref{subsec:meeting-note-provider}), controllandone l'autorizzazione con \lstinline{authProvider} e gestendo i vari esiti della richiesta (i medesimi illustrati nella sezione \ref{subsec:model}, vedi paragrafo \emph{Status Response}).
+Mentre il secondo mostra all'utente una finestra di dialogo attraverso la quale si chiede all'utente di confermare la creazione della \emph{Meeting Note} e in caso affermativo viene effettuata la richiesta al \gls{backend}\glsoccur attraverso \lstinline{meetingNoteProvider} (vedi sezione \ref{subsec:meeting-note-provider}), controllandone l'autorizzazione con \lstinline{authProvider} e gestendo i vari esiti della richiesta (i medesimi illustrati nella sezione \ref{subsec:model}, vedi paragrafo \emph{Status Response}).
 
 \subsubsection*{TitleLabel}
 \label{subsubsec:title-label}
@@ -954,18 +954,181 @@ Per la definizione dell'aspetto grafico questa schermata implementa \lstinline{W
     \item \lstinline{OutlinedButton}\cite{site:outline-button}, pulsante che si occupa di renderizzare alla schermata precedente del \gls{wizard}\glsoccur;
     \item \lstinline{ElevatedButton}\cite{site:elevated-button}, pulsante che si occupa di confermare la creazione/modifica della \emph{Meeting Note} richiamando il metodo \lstinline{onConfirmation}.
 \end{itemize}
-Il metodo privato \lstinline{onConfirmation} si occupa di mostrare all'utente una finestra di dialogo attraverso \lstinline{showConfirmationDialog} (RIMANDA ALLA SEZIONE SPECIFICA) che gli chiede di confermare la creazione della \emph{Meeting Note} e in caso affermativo viene effettuata la richiesta al \gls{backend}\glsoccur attraverso \lstinline{meetingNoteProvider} (vedi sezione \ref{subsec:meeting-note-provider}), controllandone l'autorizzazione con \lstinline{authProvider} e gestendo i vari esiti della richiesta (i medesimi illustrati nella sezione \ref{subsec:model}, vedi paragrafo \emph{Status Response}). \\
+Il metodo privato \lstinline{onConfirmation} si occupa di mostrare all'utente una finestra di dialogo attraverso la quale si chiede all'utente di confermare la creazione della \emph{Meeting Note} e in caso affermativo viene effettuata la richiesta al \gls{backend}\glsoccur attraverso \lstinline{meetingNoteProvider} (vedi sezione \ref{subsec:meeting-note-provider}), controllandone l'autorizzazione con \lstinline{authProvider} e gestendo i vari esiti della richiesta (i medesimi illustrati nella sezione \ref{subsec:model}, vedi paragrafo \emph{Status Response}). \\
 Per differenziare il caso di creazione a quello di modifica si utilizza lo stesso approccio descritto nella sezione \ref{subsubsec:wizard-page-1}, ovvero si verifica se l'oggetto \lstinline{MeetingNote} passato in input è vuoto, in tal caso l'utente sta creando una nuova \emph{Meeting Note}, altrimenti sta modificando una \emph{Meeting Note} esistente, di conseguenza viene invocato la chiamata opportuna. \\
 Prima della gestione degli esiti possibili della richiesta viene effettuato un controllo sullo stato della connessione ad internet attraverso il \lstinline{NetworkAwareProvider} (RIMANDARE ALLA SEZIONE SPECIFICA), in caso di assenza di connessione viene mostrato un \lstinline{WarningAlert} (vedi sezione \ref{subsec:warning-alert}) con il relativo messaggio di errore. \\
-Infine durante l'elaborazione della richiesta viene mostrato una finestra di dialogo attraverso \lstinline{showLoadingDialog} (RIMANDA ALLA SEZIONE SPECIFICA) che indica all'utente che l'operazione è in corso.
+Infine durante l'elaborazione della richiesta viene mostrato una finestra di dialogo mostrando all'utente che l'operazione è in corso.
 
 \section{Styles}
 \label{sec:styles}
 
-% SPIEGARE COME FUNZIONANO I TEMI, OVVERO CHE UNA VOLTA DEFINITO ADEGUATAMENTE, AI WIDGET IMPLEMENTATI VIENE, generalmente, APPLICATO in maniera AUTOMATICA, altre volte, se si vuole una ulteriore personalizzazione, si usa Theme.of(context).<nome_elemento>.<colore>\\
+% SPIEGARE COME FUNZIONANO I TEMI, OVVERO CHE UNA VOLTA DEFINITO ADEGUATAMENTE E RICHIAMATO NEL MAIN.DART, AI WIDGET IMPLEMENTATI VIENE, generalmente, APPLICATO in maniera AUTOMATICA, altre volte, se si vuole una ulteriore personalizzazione, si usa Theme.of(context).<nome_elemento>.<colore>\\
+
+\emph{Flutter}\cite{site:flutter} per applicare uno stile grafico all'interfaccia si serve della classe \lstinline{Theme}\cite{site:theme-class} in cui viene richiamata nel \lstinline{main.dart} (vedi sezione \ref{sec:main}), la conseguenza è che i \emph{widget} implementati erediteranno lo stile grafico definito. \\
+Senza una ridefinizione del tema, verrà applicato quello di \emph{default}, per questo progetto invece, seguendo il \gls{mockup}\glsoccur è stato personalizzato. \\
+In particolare è sufficiente ridefinire opportunamente la classe \lstinline{ThemeData}\cite{site:theme-data-class}, che contiene tutta la configurazione grafica dell'applicazione. \\
+Per la ridefinizione del tema si sono create delle classi, raccolte in opportuni file, che si occupano di definire i colori, dimensioni e stili grafici utilizzati nell'applicazione. \\
+Si specifica che le variabili utilizzate per la configurazione grafica sono definite come \lstinline{static const}, in quanto devono essere accessibili senza la necessità di istanziare la classe. \\
+Di seguito verrà illustrato nel dettaglio il contenuto di ogni file.
+
+\subsection{AppColors}
+\label{subsec:app-colors}
+
+\lstinline{AppColors} è una classe in cui viene ridefinita la \emph{palette} colori utilizzata nell'applicazione, in particolare:
+\begin{itemize}
+    \item \lstinline{primary}, rappresenta il colore primario, applicato ai compomenti principali dell'applicazione (es. pulsanti, icone, ecc.);
+    \item \lstinline{secondary}, rappresenta il colore secondario dell'applicazione, applicato ai componenti secondari (es. \emph{filter chips}\cite{site:chips});
+    \item \lstinline{error}, rappresenta il colore da applicare nelle eccezioni (es. validazione dei campi);
+    \item \lstinline{surface}, rappresenta il colore di sfondo per una categoria di componenti (es. \emph{card}\cite{site:card});
+    \item \lstinline{background}, rappresenta il colore di sfondo per l'intera applicazione.
+\end{itemize}
+
+\subsection{ButtonStyles}
+\label{subsec:button-styles}
+
+In questo file sono presenti differenti classi il cui scopo è di ridefinire lo stile grafico dei pulsanti utilizzati nell'applicazione. \\
+Successivamente verrà discusso in dettaglio la configurazione dello stile grafico dei pulsanti di tipo \lstinline{ElevatedButton}\cite{site:elevated-button}, si precisa dunque che per le altre due tipologie di pulsanti, \lstinline{OutlinedButton}\cite{site:outline-button} e \lstinline{TextButton}\cite{site:text-button}, è stato seguito lo stesso approccio.
+
+\subsubsection*{ButtonsColor}
+\label{subsubsec:button-color}
+
+\lstinline{ButtonsColor} è una classe in cui viene ridefinito il colore dei pulsanti, in particolare:
+\begin{itemize}
+    \item \lstinline{disabledButton}, colore applicato ai pulsanti disabilitati;
+    \item \lstinline{backgroundButton}, colore di sfondo dei pulsanti abilitati;
+    \item \lstinline{overlayButton}, colore di sfondo dei pulsanti abilitati quando vengono premuti;
+    \item \lstinline{confirmButton}, colore di sfondo dei pulsanti di conferma;
+    \item \lstinline{deleteButton}, colore di sfondo dei pulsanti di annullamento o eliminazione.
+\end{itemize}
+
+\subsubsection*{ButtonsPadding}
+\label{subsubsec:button-padding}
+
+Classe privata, infatti verrà utilizzata solamente all'interno del file per la configurazione dello stile grafico dei pulsanti, in cui ne viene ridefinito il \emph{padding}\cite{site:padding}. \\
+Ne sono stati implementati due: \lstinline{normalButtonPadding} e \lstinline{smallButtonPadding}, il primo è stato applicato alla maggior parte dei pulsanti presenti nell'applicazione, mentre il secondo ai pulsanti contenuti in componenti di dimensioni ridotte (es. \lstinline{AlertDialog}).
+
+\subsubsection*{ButtonsBorder}
+\label{subsubsec:button-border}
+
+Classe privata implementata per definire la proprietà \lstinline{border}\cite{site:border}, in particolare è stato semplicemente impostato il raggio degli angoli a \lstinline{20.0}.
+
+\subsubsection*{ElevatedButton}
+\label{subsubsec:elevated-button}
+
+Classe pubblica che contiene tutte le impostazione grafiche per i pulsanti di tipo \lstinline{ElevatedButton}\cite{site:elevated-button}, in particolare i colori che deve assumere in base agli stati di attivazione e disattivazione, il \emph{padding}, precisamente \lstinline{normalButtonPadding}, e la \emph{border radius}\cite{site:border-radius}. \\
+Questo viene fatto, oltre per lo stile del pulsante base, ma anche per queli di conferma e di annullamento/eliminazione.
+
+\subsubsection*{AlertDialogButton}
+\label{subsubsec:alert-dialog-button}
+
+Classe che definisce lo stile grafico dei pulsanti impiegati nelle finestre di dialogo, in particolare ne vengono configurati solo due, uno per la conferma e uno per l'annullamento. \\
+Entrambi condividono lo stesso \emph{padding}, precisamente \lstinline{smallButtonPadding}, e la \emph{border radius}\cite{site:border-radius}, mentre differiscono per il colore di sfondo, \lstinline{confirmButton} e \lstinline{deleteButton} rispettivamente e per la tipologia (FORSE, DA CONFERMARE).
+
+\subsection{TextStyles}
+\label{subsec:text-styles}
+
+In questo file sono presenti differenti classi il cui scopo è di ridefinire lo stile grafico dei testi utilizzati nell'applicazione. \\
+La classe principale \lstinline{TextStyles} contiene varie stili di testo, in particolare per ciascuno di essi è stato definito: \lstinline{fontSize}\cite{site:font-size} e \lstinline{fontWeight}\cite{site:font-weight}. \\
+Gli stili di testo\cite{site:text-theme} che sono stati ridefiniti sono:
+ \lstinline{displayLarge},
+ \lstinline{displayMedium},
+ \lstinline{displaySmall},
+ \lstinline{titleLarge},
+ \lstinline{titleMedium},
+ \lstinline{titleSmall},
+ \lstinline{bodyLarge},
+ \lstinline{bodyMedium} e
+ \lstinline{bodySmall}. \\
+ È presente un ulteriore classe, \lstinline{AlertDialogTextStyles}, in cui viene ridefinito lo stile grafico dei testi utilizzati nelle finestre di dialogo, in particolare una configurazione per il titolo, \lstinline{alertDialogTitleStyle}, e una per il contenuto, \lstinline{alertDialogContentStyle}, richiamando per ciascuno, uno degli stili sopra elencati.
+
+ \subsection{AppTheme}
+\label{subsec:app-theme}
+
+Classe che si occupa di ridefinire il tema dell'applicazione, richiamando per ciascuna delle proprietà di \lstinline{ThemeData}\cite{site:theme-data-class} le classi precedentemente descritte. \\
+I colori precedentemente configurati sono stati richiamati nella proprietà \lstinline{colorScheme}, mentre lo stile dei testi in \lstinline{textTheme}. \\
+Nelle proprietà \lstinline{elevatedButtonTheme} e \lstinline{outlinedButtonTheme} sono stati richiamati rispettivamente le configurazione grafiche illustrate in precedenza.\\
+Infine è stato impostato \emph{ad hoc} lo stile grafico del \lstinline{floatingActionButton}\cite{site:fab}.
 
 \section{Utils}
 \label{sec:utils}
+
+In questa cartella sono raccolti file in cui sono definite delle classi che espongono metodi ausiliari per la gestione di determinate funzionalità. \\
+Di seguito, per ciascun file, verranno illustrate nel dettaglio le classi presenti.
+
+\subsection{Biometric auth}
+\label{subsec:biometric-auth}
+
+È presente la classe \lstinline{BiometricAuth} che implementa la libreria \emph{local auth}\cite{site:local-auth} per la gestione dell'autenticazione attraverso il riconoscimento biometrico. \\
+Sono presenti due metodi: \lstinline{isBiometricSupported} che ritorna \lstinline{true} se il dispositivo supporta il riconoscimento biometrico e \lstinline{authenticate} che si occupa di effettuare l'autenticazione attraverso il riconoscimento biometrico, se l'operazione va a buon fine viene restituito \lstinline{true}, altrimenti \lstinline{false} e in quest'ultimo caso è comunque possibile effettuare l'autenticazione attraverso l'inserimento delle credenziali manualmente.
+
+\subsection{Debouncer}
+\label{subsec:debouncer}
+
+Classe che implementa il \gls{designpattern}\glsoccur \emph{debouncer}: tecnica per prevenire l'esecuzione di una funzione troppe volte. \\
+In questo progetto è servito per la gestione della ricerca dell'identificativo dei clienti, evitando di effettuare una richiesta \gls{httpg}\glsoccur al \gls{backend}\glsoccur ad ogni carattere digitato dall'utente, inserendo dunque un intervallo di tempo per ritardarne l'esecuzione.
+
+\subsection{Exception handler}
+\label{subsec:exception-handler}
+
+La classe \lstinline{UnauthorizedException} implementa l'interfaccia \lstinline{Exception}\cite{site:exception} per gestione delle eccezione che si verifica quando l'utente non è autorizzato ad effettuare una determinata richiesta al \gls{backend}\glsoccur. 
+
+\subsection{Filtering}
+\label{subsec:filtering}
+
+La classe \lstinline{FilteringOptions} incapsula le informazioni necessarie per effettuare un filtraggio nella lista di \emph{Meeting Note}.\\
+Le variabili di stato sono:
+\begin{itemize}
+    \item \lstinline{object}, \lstinline{MeetingNoteObject} che rappresenta il \gls{cliente}\glsoccur;
+    \item \lstinline{dateRange}, \lstinline{DateTimeRange} che rappresenta l'intervallo di date;
+    \item \lstinline{isChronologicalOrder}, \lstinline{bool} che indica se l'ordinamento deve avvenire in maniera cronologica o meno.
+\end{itemize}
+Inoltre sono presenti dei metodi per impostare il valore di ciasuna variabile di stato, inoltre è stato definito un metodo \lstinline{isNull} che restituisce \lstinline{false} se tutte le variabili di stato sono \lstinline{null}. \\
+È stato creato poi un \emph{Provider} di tipo \lstinline{StateNotifierProvider}\cite{site:state-notifier-provider} per gestire lo stato di \lstinline{FilteringOptions} nella schermata principale dell'applicazione {vedi sezione \ref{subsec:home-screen}}.
+
+\subsection{Network handler}
+\label{subsec:network-handler}
+
+In questo file è contenuto una enumerazione \lstinline{NetworkStatus} che rappresenta lo stato della connessione ad internet che può essere assunto dall'applicazione, in particolare: \lstinline{notDetermined}, \lstinline{connected} e \lstinline{disconnected}. \\
+È presente la classe \lstinline{NetworkDetectorNotifier} in cui è stato implementato un costruttore che si occupa di inizializzare la variabile di stato \lstinline{networkStatus} con il valore \lstinline{notDetermined} e di aggiornarla quando avvengono dei cambiamenti. \\
+È stato creato poi \lstinline{networkAwareProvider} un \emph{provider} di tipo \lstinline{StateNotifierProvider}\cite{site:state-notifier-provider} per leggere lo stato della connessione ad internet a livello globale.
+
+\subsection{Shared preferences}
+\label{subsec:shared-preferences}
+
+In questo file vengono implemetate le librerie \lstinline{SharedPreferences}\cite{site:shared-preferences} e \lstinline{SecureStorage}\cite{site:flutter-secure-storage} per la memorizzazione di alcuni dati in locale, a supporto delle funzionalità di autenticazione e riconoscimento biometrico. \\
+Si specifica che sono state definite due classi, per entrambe le due librerie, utilizzando il \gls{designpattern}\glsoccur \gls{singleton}\glsoccur, in quanto è necessario che vi sia una sola istanza per ciascuna classe. \\
+La classe \lstinline{AuthPreferences} ha lo scopo di gestire il \emph{token} di autenticazione e lo stato di abilitazione del riconoscimento biometrico, esponendo i seguenti metodi:
+\begin{itemize}
+    \item \lstinline{saveToken}, salva il \emph{token} di autenticazione;
+    \item \lstinline{getToken}, restituisce il \emph{token} di autenticazione;
+    \item \lstinline{deleteToken}, elimina il \emph{token} di autenticazione.
+    \item \lstinline{saveBiometricState}, salva una variabile \emph{booleana} che indica se l'utente ha abilitato il riconoscimento biometrico;
+    \item \lstinline{getBiometricState}, restituisce il valore della variabile \emph{booleana} che indica se l'utente ha abilitato il riconoscimento biometrico.
+\end{itemize}
+Mentre la classe \lstinline{SecureStorage} ha lo scopo di gestire le credenziali di accesso, esponendo i seguenti metodi:
+\begin{itemize}
+    \item \lstinline{setUsername}, cifra e salva l'username;
+    \item \lstinline{getUsername}, decifra e restituisce l'username;
+    \item \lstinline{removeUsername}, elimina l'username;
+    \item \lstinline{setPassword}, cifra e salva la password;
+    \item \lstinline{getPassword}, decifra e restituisce la password;
+    \item \lstinline{removePassword}, elimina la password;
+    \item \lstinline{hasCredentials}, restituisce \lstinline{true} se sono salvate e cifrate le credenziali di accesso.
+    \item \lstinline{removeAll}, elimina tutte le credenziali di accesso, invocando i metodi \lstinline{removeUsername} e \lstinline{removePassword};
+    \item \lstinline{saveAll}, salva e cifra le credenziali di accesso, invocando i metodi \lstinline{setUsername} e \lstinline{setPassword}.
+\end{itemize}
+
+\subsection{Speech to text}
+\label{subsec:speech-to-text}
+
+In questo file è presente la classe \lstinline{AudioRecognizer} che implementa la libreria \lstinline{SpeechToText}\cite{site:speech-to-text} per la gestione della dettatura vocale. \\
+In essa sono stati definiti i seguenti metodi:
+\begin{itemize}
+    \item \lstinline{initSpeech}, determina se il dispositivo supporta la dettatura vocale;
+    \item \lstinline{startListening}, avvia la dettatura vocale, inoltre vengono impostati alcuni parametri, come la lingua e la durata massima della registrazione;
+    \item \lstinline{stopListening}, interrompe la dettatura vocale;
+    \item \lstinline{isListening}, restituisce \lstinline{true} se la dettatura vocale è in corso;
+\end{itemize}
 
 \section{main.dart}
 \label{sec:main}
