@@ -1133,11 +1133,23 @@ In essa sono stati definiti i seguenti metodi:
 \section{main.dart}
 \label{sec:main}
 
+Il file \lstinline{main.dart} è il punto di ingresso dell'applicazione, in particolare è presente la funzione \lstinline{main} che si occupa di inizializzare l'applicazione, fissando l'orientamento dello schermo a \lstinline{portraitUp} e dichiarando il \lstinline{ProviderScope} (vedi sezione \ref{subsec:provider}). \\
+Richiama poi \lstinline{MyApp}, un \emph{ConsumerWidget}, e come prima cosa controlla se è salvato in memoria il \emph{token} di autenticazione attraverso \lstinline{authProvider} (vedi sezione \ref{subsec:authentication-provider}) e decidere se rimandare alla schermata di autenticazione o alla schermata principale dell'applicazione. \\
+Il reindirizzamenton avviene attraverso \lstinline{InitApp}, uno \emph{StatelessWidget}, invocando \lstinline{ScreenUtilInit} (vedi sezione \ref{sec:responsivity}), fissando inoltre il parametro \lstinline{supportedLocales} a \lstinline{[const Locale('it', 'IT')]}, in modo tale che l'applicazione imposti automaticamente alcuni \emph{widget} come il calendario e la data nel formatto corretto e infine viene impostato il tema dell'applicazione (discusso precedentemente).
+
 \section{Responsività}
 \label{sec:responsivity}
 
+Per la gestione della responsività dell'applicazione è stata utilizzata la libreria \lstinline{flutter_screenutil}\cite{site:flutter-screenutil} che si occupa di adattare le dimensioni degli elementi grafici in base alle dimensioni dello schermo del dispositivo. \\
+In particolare è stato utilizzato il \emph{widget} \lstinline{ScreenUtilInit} che si occupa di inizializzare la libreria, inoltre è stato fissato il parametro \lstinline{designSize} con le dimensioni del \gls{mockup}\glsoccur, in modo tale che la libreria possa effettuare i calcoli necessari per effettuare i dovuti adattamenti. 
+
 \section{Usabilità}
 \label{sec:usability}
+
+\section{Icona}
+\label{sec:icon}
+
+
 
 % Listato delle varie classi principali implementate
 % Fai riferimento allo storico dei commits su GitHub
