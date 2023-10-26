@@ -22,7 +22,7 @@ Di seguito verrà illustratta l'effettiva struttura del progetto basata sull'app
 \end{verbatim}
 
 L'architettura menzionata nella sezione \ref{subsec:architettura-app} è stata implementata nel seguente modo: il \emph{data layer} e \emph{domain layer} sono stati implementati rispettivamente in \lstinline{service} e \lstinline{model}, contenute all'interno della cartella \lstinline{data}, mentre l'\emph{application layer} è stato implementato nella cartella \lstinline{provider} e il \emph{presentation layer} nella cartella \lstinline{screens}.\\
-Le restanti invece sono servite come ausilio per l'implementazione delle funzionalità dei \emph{layer} sopracitati, come ad esempio \lstinline{components} per la creazione di \emph{widget} personalizzati e utilizzati dal \emph{presentation layer}.\\
+Le restanti invece sono servite come ausilio per l'implementazione delle funzionalità dei \emph{layer} sopracitati, come ad esempio \lstinline{components} per la creazione di \emph{widget} personalizzati e utilizzati dal \emph{presentation layer}.
 
 \section{Components}
 \label{sec:components}
@@ -32,37 +32,37 @@ SPIEGARE O RIMANDARE ALLA DOCUMENTAZIONE DI COME FUNZIONANO I WIDGET\\
 
 In questa cartella sono raccolti tutti i \emph{widget} personalizzati, utilizzati dalle schermate presenti in \emph{screens} (sezione \ref{sec:screens}).\\
 Di seguito verranno descritti i vari \emph{widget} implementati, suddivisi in base alla loro funzionalità.\\
-Si specifica inoltre che la maggior parte di questi abbiano una visibilità pubblica, in quanto devono essere utilizzati dalle schermate, mentre alcuni hanno una visibilità privata, poichè sono stati creati per essere utilizzati esclusivamente all'interno di altri \emph{widget} contenuti nel medesimo file.\\
+Si specifica inoltre che la maggior parte di questi abbiano una visibilità pubblica, in quanto devono essere utilizzati dalle schermate, mentre alcuni hanno una visibilità privata, poichè sono stati creati per essere utilizzati esclusivamente all'interno di altri \emph{widget} contenuti nel medesimo file.
 
 \subsection{Alert Dialogs}
 \label{subsec:alert-dialogs}
 
-Nel file denominato \lstinline{alert_dialogs.dart} sono stati implementati dei \lstinline{StatelessWidget} che consentono di personalizzare un \emph{alert dialog}.\\
+Nel file denominato \lstinline{alert_dialogs.dart} sono stati implementati dei \lstinline{StatelessWidget} che consentono di personalizzare un \emph{alert dialog}.
 
 \subsubsection*{CustomBaseAlertDialog}
 \label{subsubsec:custom-base-alert-dialog}
 
 È una classe che implementa un \lstinline{AlertDialog}\cite{site:alert-dialog} e ne definisce l'aspetto base, fissando alcuni elementi, come \lstinline{Text}\cite{site:text} per il titolo, \lstinline{Widget} per l'icona posta sotto il titolo, il suo colore e \gls{padding}\glsoccur.\\
-Mentre è possibile scegliere se aggiungere o meno un testo descrittivo e dei pulsanti di conferma e/o annulla, in base al contesto dell'operazione.\\
+Mentre è possibile scegliere se aggiungere o meno un testo descrittivo e dei pulsanti di conferma e/o annulla, in base al contesto dell'operazione.
 
 \subsubsection*{IconAlertDialog}
 \label{subsubsec:icon-alert-dialog}
 
 Classe che implementa \lstinline{CustomBaseAlertDialog} personalizzandolo ulteriormente impostando con dei valori fissi sia il \gls{padding}\glsoccur che la dimensione dell'icona.\\
-Attraverso il costruttore è obbligatorio passare il \emph{widget} di tipo \lstinline{IconData}\cite{site:icon-data}, il suo colore e un titolo, mentre è opzionale passare un testo descrittivo, e se aggiungere o meno dei bottoni di conferma e/o annulla.\\
+Attraverso il costruttore è obbligatorio passare il \emph{widget} di tipo \lstinline{IconData}\cite{site:icon-data}, il suo colore e un titolo, mentre è opzionale passare un testo descrittivo, e se aggiungere o meno dei bottoni di conferma e/o annulla.
 
 \subsubsection*{LoadingAlertDialog}
 \label{subsubsec:loading-alert-dialog}
 
 Personalizzazione di \lstinline{IconAlertDialog} in cui viene impostata come icona un \lstinline{CircularProgressIndicator}\cite{site:circular-progress-indicator}, che rappresenta un indicatore di caricamento.\\
 È possibile decidere, attraveso il costruttore, il colore dell'indicatore e il titolo da visualizzare.\\
-Lo scopo di questa classe è quella di essere utilizzata per mostrare un indicatore di caricamento durante l'esecuzione di un'operazione asincrona.\\
+Lo scopo di questa classe è quella di essere utilizzata per mostrare un indicatore di caricamento durante l'esecuzione di un'operazione asincrona.
 
 \subsubsection*{WarningAlertDialog}
 \label{subsubsec:warning-alert-dialog}
 
 Personalizzazione di \lstinline{IconAlertDialog} dove si richiede, nel costruttore, di passare un'icona e il suo colore, un titolo, il contenuto del testo descrittivo, l'azione che deve compiere il bottone di conferma alla sua pressione e il suo stile grafico (sezione \ref{subsec:button-styles}), mentre il pulsante di annullamento è stato fissato.\\
-Lo scopo di questa classe è quella di essere utilizzata per mostrare un messaggio di avvertimento all'utente riguardante una scelta e la sua conferma.\\
+Lo scopo di questa classe è quella di essere utilizzata per mostrare un messaggio di avvertimento all'utente riguardante una scelta e la sua conferma.
 \subsubsection*{ResponseDialog}
 \label{subsubsec:response-dialog}
 
@@ -72,12 +72,12 @@ Lo scopo di questa classe è quella di essere utilizzata per mostrare un messagg
 \subsubsection*{NetworkAlertDialog}
 \label{subsubsec:network-alert-dialog}
 
-La sua implementazione è simile a \lstinline{WarningAlertDialog}, con la differenza che non è presente il pulsante di annullamento, in quanto il suo scopo è quello di notificare l'utente la mancanza di connessione ad internet e di cliccare il pulsante di conferma per chiudere l'\emph{alert dialog}.\\
+La sua implementazione è simile a \lstinline{WarningAlertDialog}, con la differenza che non è presente il pulsante di annullamento, in quanto il suo scopo è quello di notificare l'utente la mancanza di connessione ad internet e di cliccare il pulsante di conferma per chiudere l'\emph{alert dialog}.
 
 \subsection{App Bars}
 \label{subsec:app-bars}
 
-Nel file denominato \lstinline{app_bars.dart} sono stati implementati dei \lstinline{StatelessWidget} che consentono di personalizzare un \emph{app bar}.\\
+Nel file denominato \lstinline{app_bars.dart} sono stati implementati dei \lstinline{StatelessWidget} che consentono di personalizzare un \emph{app bar}.
 
 \subsubsection*{CustomAppBar}
 \label{subsubsec:custom-app-bar}
@@ -104,14 +104,14 @@ Il caso in cui la seconda variabile menzionata precedentemente sia \lstinline{fa
 \subsection{Date Picker}
 \label{subsec:date-picker}
 
-Nel file denominato \lstinline{date_picker.dart} sono stati implementati dei \emph{widget} per costruire dei componenti in grado di permettere all'utente di selezionare una data o un intervallo di date.\\
+Nel file denominato \lstinline{date_picker.dart} sono stati implementati dei \emph{widget} per costruire dei componenti in grado di permettere all'utente di selezionare una data o un intervallo di date.
 
 \subsubsection*{DateButton}
 \label{subsubsec:date-button}
 
 Questo componente estende \lstinline{StatelessWidget} e si occupa di costruire un bottone che visualizza la data, o un intervallo di date, selezionata/e dall'utente.\\
 Ha visibilità privata, poichè è stato creato per essere utilizzato esclusivamente all'interno dei \emph{widget} contenuti nello stesso file.\\
-È composto da un \lstinline{TextButton}\cite{site:text-button}, in cui viene definito l'aspetto grafico, e un \lstinline{Text} per visualizzare la data o un intervallo di date, passato attraverso il costruttore, insieme anche al comportamento del pulsante, definito attraverso il metodo \lstinline{onPressed}\cite{site:on-pressed}.\\
+È composto da un \lstinline{TextButton}\cite{site:text-button}, in cui viene definito l'aspetto grafico, e un \lstinline{Text} per visualizzare la data o un intervallo di date, passato attraverso il costruttore, insieme anche al comportamento del pulsante, definito attraverso il metodo \lstinline{onPressed}\cite{site:on-pressed}.
 
 \subsubsection*{CustomDateRangePicker}
 \label{subsubsec:custom-date-range-picker}
@@ -140,7 +140,7 @@ Tale componente è composto da quattro \emph{widget}, ciascuno dei quali consent
     \item \lstinline{CustomToogleButtons} (la cui implementazione è discussa nella sezione \ref{subsec:toogle-buttons}).
 \end{itemize}
 Come da prassi, ne viene definito l'aspetto grafico e il comportamento che deve avere.\\
-Per quanto riguarda quest'ultimo, che sostanzialmente consiste nel memorizzare e passare alla schermata dedicata quali filtri sono stati attivati dall'utente, tale operazione viene effettuata attraverso uno \lstinline{StateNotifierProvider} (sezione \ref{subsec:riverpod}) e una classe \lstinline{FilteringOptions} (sezione \ref{subsec:filtering}).\\
+Per quanto riguarda quest'ultimo, che sostanzialmente consiste nel memorizzare e passare alla schermata dedicata quali filtri sono stati attivati dall'utente, tale operazione viene effettuata attraverso uno \lstinline{StateNotifierProvider} (sezione \ref{subsec:riverpod}) e una classe \lstinline{FilteringOptions} (sezione \ref{subsec:filtering}).
 
 \subsection{Login Form}
 \label{subsec:login-form}
@@ -187,7 +187,7 @@ Componente contenuto nella modale menzionata precedentemente, il quale si occupa
 Nel file denominato \lstinline{object_picker.dart} è stato implementato \lstinline{CustomObjectPicker}, classe che estende un \lstinline{StatefulWidget} per costruire un componente in grado di permettere all'utente di selezionare la categoria dei clienti ( requisiti \hyperref[RFN-16]{RFN-16}, \hyperref[RFN-66]{RFN-66}). \\
 Viene utilizzato all'interno del \emph{Filter Panel} (sezione \ref{subsec:filter-panel}), dal \emph{wizard} di creazione/modifica di una \emph{Meeting Note} (sezione \ref{subsec:wizard-screen-1}) e nella schermata di revisione per la creazione automatica di una \emph{Meeting Note} (sezione \ref{subsec:smart-creation-screen}).\\
 Anche per questo componente si è pensato di rivisitarlo rispetto al \gls{mockup}\glsoccur, in quanto si è deciso di utilizzare un \lstinline{CupertinoPicker}\cite{site:cupertino-picker}, che visualizza le categorie dei clienti selezionabili, passate in input attraverso il costruttore, al posto di un \lstinline{DropdownMenu}\cite{site:dropdown-menu}, questo per favorire l'utilizzo dell'applicazione da parte di utenti in mobilità, poichè il primo appare dal basso e dunque diventa più facilmente raggiungibile. \\
-Inoltre sono stati definiti dei metodi che permettono di ottenere la categoria selezionata attraverso l'indice e di aggiornare lo stato del \emph{widget} al cambiamento di quest'ultima.\\
+Inoltre sono stati definiti dei metodi che permettono di ottenere la categoria selezionata attraverso l'indice e di aggiornare lo stato del \emph{widget} al cambiamento di quest'ultima.
 
 
 \subsection{Recording Button}
@@ -209,21 +209,21 @@ Classe in cui viene definito la struttura e l'aspetto base che dovranno avere tu
 È composto da un \lstinline{Scaffold}\cite{site:scaffold}, contenitore principale di tutti gli elementi grafici, in cui viene applicato il tema dell'applicazione (sezione \ref{subsec:app-theme}). \\
 Sono state definite poi varie proprietà di base dello \lstinline{Scaffold}, tra cui \lstinline{appBar} con \lstinline{CustomAppBar} (sezione \ref{subsubsec:custom-app-bar}) e un \lstinline{body}, passato per parametro del costruttore, in quanto ogni schermata ha il suo contenuto.\\
 È stata inoltre definita la proprietà \lstinline{bottomNavigationBar} che non viene utilizzata da tutte le schermate, ma vi è comunque la possibilità di implementarla nel caso cui si vogliano aggiungere dei pulsanti di navigazione nella parte inferiore della vista per avanzare o retrocedere tra le varie schermate dell'applicazione.\\
-Per abilitare tali pulsanti è sufficiente passare, a seconda delle necessità, un \emph{widget} \lstinline{forwardButton} per la progressione e/o \lstinline{backButton} per la retrocessione.\\
+Per abilitare tali pulsanti è sufficiente passare, a seconda delle necessità, un \emph{widget} \lstinline{forwardButton} per la progressione e/o \lstinline{backButton} per la retrocessione.
 
 \subsubsection*{WizardScreen}
 \label{subsubsec:wizard-screen}
 
 Classe che implementa \lstinline{BaseScreen} e che si occupa di fornire un \emph{template} per le schermate che compongono il \gls{wizard}\glsoccur di creazione/modifica di una \emph{Meeting Note}.\\
 Imposta a \lstinline{true} la proprietà \lstinline{enableIcon} per mantenere il pulsante di accesso alla schermata dell'account utente.\\
-Attraverso i parametri del costruttore è obbligatorio passare il \lstinline{body}, mentre sono opzionali \lstinline{forwardButton} e \lstinline{backButton}.\\
+Attraverso i parametri del costruttore è obbligatorio passare il \lstinline{body}, mentre sono opzionali \lstinline{forwardButton} e \lstinline{backButton}.
 
 \subsubsection*{WizardHeader}
 \label{subsubsec:wizard-header}
 
 Classe che definisce l'aspetto grafico dell'\emph{header} del \gls{wizard}\glsoccur di creazione/modifica di una \emph{Meeting Note}.\\
 É composto da un \lstinline{Text}\cite{site:text} che rappresenta il titolo della schermata, da un \lstinline{IconButton}\cite{site:icon-button} e da un \emph{widget} privato \lstinline{WizardStepper} (sezione \ref{subsubsec:wizard-stepper}) che aiuta all'utente a capire in quale punto del processo di creazione/modifica si trova.\\
-Il pulsante (\lstinline{IconButton}) menzionato ha lo scopo di mostrare un \lstinline{WarningAlertDialog} (sezione \ref{subsubsec:warning-alert-dialog}) chiedendo all'utente se vuole abbandonare il \gls{wizard}\glsoccur, in caso affermativo viene mostrata la schermata principale dell'applicazione, altrimenti viene chiusa la modale.\\    
+Il pulsante (\lstinline{IconButton}) menzionato ha lo scopo di mostrare un \lstinline{WarningAlertDialog} (sezione \ref{subsubsec:warning-alert-dialog}) chiedendo all'utente se vuole abbandonare il \gls{wizard}\glsoccur, in caso affermativo viene mostrata la schermata principale dell'applicazione, altrimenti viene chiusa la modale. 
 
 \subsubsection*{WizardStepper}
 \label{subsubsec:wizard-stepper}
@@ -286,36 +286,36 @@ Nel file denominato \lstinline{warning_alert.dart} è stato implementato un \lst
 \section{Constants}
 \label{sec:constants}
 
-In questa cartella sono stati definiti dei file che contengono delle costanti utilizzate all'interno dell'applicazione.\\
-
+In questa cartella sono presenti file che contengono delle costanti utilizzate all'interno dell'applicazione.\\
+Le costanti sono incapsulate all'interno di classi, raggrupate in base al loro utilizzo, e sono state definite in maniera statica così da essere richiamate senza dover istanziare un oggetto.\\
+Lo scopo è quello di centralizzare tutte le costanti in un unico posto, in modo da poterle modificare facilmente e da poterle utilizzare in maniera uniforme all'interno dell'applicazione.
 
 \subsection{App constants}
 \label{subsec:app-constants}
 
-Nel file denominato \lstinline{app_constants.dart} sono state definite delle costanti di tipo \lstinline{String} che rappresentano i nomi dei vari componenti dell'applicazione come messaggi di errore, nomi delle schermate, nomi dei campi di una \emph{Meeting Note} e così via.
+Nel file denominato \lstinline{app_constants.dart} sono state definite delle costanti di tipo \lstinline{String} che rappresentano ad esempio i nomi delle schermate, dei campi di una \emph{Meeting Note} o il contenuto testuale di alcuni pulsanti, ecc.
 
 \subsection{API constants}
 \label{subsec:api-constants}
 
-Nel file denominato \lstinline{api_constants.dart} sono state definite due classi che rappresentano le costanti utilizzate per effettuare le richieste all'\gls{apig}\glsoccur.\\
-Nella prima classe \lstinline{ApiUrls} sono presenti le costanti che si riferiscono agli \gls{endpoint}\glsoccur dell'\gls{apig}\glsoccur.\\
-Nella seconda \lstinline{ApiFields} sono presenti costanti che si riferiscono al nome dei parametri che devono essere passati all'\gls{urig}\glsoccur di alcune richieste all'\gls{apig}\glsoccur. \\
-L'utilizzo di queste costanti avviene esclusivamente all'interno delle classi contenute nella cartella \emph{Services} (sezione \ref{subsec:services}).\\
+Nel file denominato \lstinline{api_constants.dart} sono state definite due classi che contengono le costanti utilizzate per effettuare le richieste al \gls{backend}\glsoccur.\\
+Nella prima classe \lstinline{ApiUrls} sono presenti le costanti che si riferiscono agli \gls{endpoint}\glsoccur dell'\gls{apig}\glsoccur, mentre nella seconda, \lstinline{ApiFields}, sono presenti quelle che si riferiscono al nome dei parametri che devono essere passati all'\gls{urig}\glsoccur di alcune richieste al \gls{backend}\glsoccur. \\
+L'utilizzo di queste costanti avviene esclusivamente all'interno delle classi contenute nella cartella \emph{services} (sezione \ref{subsec:services}).
 
 \section{Data}
 \label{sec:data}
 
-Questa cartella contiene due cartelle rappresentanti i \emph{data layer} e \emph{domain layer} dell'applicazione, rispettivamente
+Questa cartella contiene due cartelle rappresentanti rispettivamente i \emph{data layer} e \emph{domain layer} dell'applicazione.
 
 \subsection{Model}
 \label{subsec:model}
 
 Sono contenuti i file che rappresentano il modello dei dati utilizzato all'interno dell'applicazione.\\
-Si specifica, per evitare rindondanze, che alcune classi in questione sono state implementate seguendo un \emph{pattern} specifico: oltre alla definizione degli attributi opportuni, ovvero quelli specificati, e che sono vincolanti, nelle \gls{apig}\glsoccur del sistema, sono presenti un costruttore \emph{factory}\cite{site:factory} \lstinline{fromJson}, come si intuisce si occupa di convertire da \gls{jsong}\glsoccur all'oggetto interessato, dei metodi che ritornano il valore di ciascun attributo e un metodo \lstinline{toString} che ritorna una stringa che rappresenta l'oggetto.\\
-Nel corso di questa sezione verrà specificato quando una classe è stata implementata seguendo tale \emph{pattern}, mentre per le altre verrà descritta specificatamente l'implementazione. \\
-Inoltre in quasi tutti i file è presente una classe, il cui nome termina con suffisso \lstinline{Response}, che estende \lstinline{BaseResponse} (sezione \ref{subsubsec:status-response}) e rappresenta l'esito di una richiesta \gls{httpg}\glsoccur fatta all'\gls{apig}\glsoccur, nel caso in cui l'esito sia positivo contiene anche il valore da restituire.\\
-Infine, per ogni classe è sottinteso la presenza del costruttore con tutti gli attributi presenti, che non viene riportato per evitare ridondanze. \\ 
-Di seguito tali classi verranno discusse nel dettaglio.
+Si specifica, per evitare rindondanze, che alcune classi in questione sono state implementate seguendo un \emph{pattern} specifico: oltre alla definizione degli attributi opportuni, ovvero quelli specificati, e che sono vincolanti, nelle \gls{apig}\glsoccur del \gls{backend}\glsoccur, sono presenti un costruttore \emph{factory}\cite{site:factory} \lstinline{fromJson}, come si intuisce si occupa di convertire da \gls{jsong}\glsoccur all'oggetto interessato, dei metodi che ritornano il valore di ciascun attributo e un metodo \lstinline{toString} che ritorna una stringa rappresentante un'istanza della classe.\\
+Quest'ultimo metodo è stato definito con il solo scopo di visualizzare il contenuto di un oggetto in fase di \emph{debugging}.
+Nel corso di questa sezione verrà specificato quando una classe è stata implementata seguendo tale \emph{pattern}, mentre per le altre verrà descritta nel dettaglio. \\
+Inoltre in quasi tutti i file è presente una classe, il cui nome termina con suffisso \lstinline{Response}, che estende \lstinline{BaseResponse} (sezione \ref{subsubsec:status-response}) e rappresenta l'esito di una richiesta \gls{httpg}\glsoccur fatta al \gls{backend}\glsoccur, nel caso in cui l'esito sia positivo contiene anche il valore da restituire.\\
+Infine, per ogni classe è sottinteso la presenza del costruttore con tutti gli attributi presenti. 
 
 \subsubsection*{Authentication}
 \label{subsubsec:authentication}
@@ -325,20 +325,20 @@ In questo file sono state definite tutte le classi necessari per eseguire l'oper
 \paragraph*{AuthArgs} ~ \\
 \label{par:auth-args}
 
-\noindent Classe che incapsula i parametri necessari per effettuare la richiesta di autenticazione all'\gls{apig}\glsoccur, è composta da due attributi di tipo \lstinline{String} che rappresentano lo \emph{username} e la \emph{password} dell'utente.\\
+\noindent Classe che incapsula i parametri necessari per effettuare la richiesta di autenticazione, è composta da due attributi di tipo \lstinline{String} che rappresentano lo \emph{username} e la \emph{password} dell'utente.\\
 Inoltre espone due metodi che si occupano di effettuare degli \gls{overriding}\glsoccur dei metodi \lstinline{operator ==}\cite{site:operator-equals} e \lstinline{hashCode}\cite{site:hascode-property} per poter effettuare il confronto tra due oggetti di tipo \lstinline{AuthArgs}.\\
-Infine è presente un metodo \lstinline{toString} che ritorna una stringa che rappresenta l'oggetto.
+Infine è presente un metodo \lstinline{toString} che ritorna una stringa rappresentante un'istanza della classe.
 
 \paragraph*{AuthValues} ~ \\
 \label{par:auth-values}
 
-\noindent Classe che incapsula il valore restituito dall'\gls{apig}\glsoccur in seguito alla richiesta di autenticazione, è composta da un attributo di tipo \lstinline{String} che rappresenta il \emph{token} di autenticazione.\\
-La sua implementazione è stata effettuata seguendo il \emph{pattern} nell'introduzione di questa sezione.
+\noindent Classe che incapsula il valore restituito dal \gls{backend}\glsoccur in seguito alla richiesta di autenticazione, è composta da un attributo di tipo \lstinline{String} che rappresenta il \emph{token} di autenticazione.\\
+La sua implementazione è stata effettuata seguendo il \emph{pattern} descritto nell'introduzione di questa sezione.
 
 \paragraph*{AuthResponse} ~ \\
 \label{par:auth-response}
 
-\noindent Classe che estende \lstinline{BaseResponse}, nella quale viene aggiunto un attributo di tipo \lstinline{AuthValues} che ne rappresenta il valore restituito.
+\noindent Classe che estende \lstinline{BaseResponse} (sezione \ref{subsubsec:status-response}), nella quale viene aggiunto un attributo di tipo \lstinline{AuthValues} che ne rappresenta il valore restituito.
 
 \subsubsection*{Meeting Note}
 \label{subsubsec:meeting-note}
@@ -348,7 +348,7 @@ In questo file sono state definite tutte le classi necessari per gestire i dati 
 \paragraph*{RawMeetingNote} ~ \\
 \label{par:raw-meeting-note}
 
-\noindent Classe che si occupa di incapsulare i dati di una \emph{Meeting Note} ricevuti da una chiamata \gls{httpg}\glsoccur all'\gls{apig}\glsoccur, però non sono ancora utilizzabili all'interno dell'applicazione, la quasi totalità degli attributi di tipo \lstinline{String} ed alcuni di essi dunque non sono del tipo opportuno per la loro elaborazione all'interno dell'applicazione.\\
+\noindent Classe che si occupa di incapsulare i dati di una \emph{Meeting Note} ricevuti da una chiamata al \gls{backend}\glsoccur, che però non sono ancora utilizzabili all'interno dell'applicazione, la quasi totalità degli attributi di tipo \lstinline{String} ed alcuni di essi dunque non sono del tipo opportuno per la loro elaborazione all'interno dell'applicazione.\\
 Gli attributi di tipo \lstinline{String} in questione sono:
 \begin{itemize}
     \item \lstinline{uuid}, utilizzato per l'identificazione di una \emph{Meeting Note};
@@ -433,13 +433,13 @@ La sua implementazione è stata effettuata seguendo il \emph{pattern} nell'intro
 \paragraph*{ObjectListValue} ~ \\
 \label{par:object-list-value}
 
-\noindent Classe che estende \lstinline{ObjectValue} e rappresenta il valore restituito dall'\gls{apig}\glsoccur in seguito alla richiesta di ottenere la lista dei clienti, indipendentemente a quale categoria appartengono e se sono paginati o meno.\\
+\noindent Classe che estende \lstinline{ObjectValue} e rappresenta il valore restituito in seguito alla richiesta di ottenere la lista dei clienti, indipendentemente a quale categoria appartengono e se sono paginati o meno.\\
 Ridefinisce il costruttore e il metodo \lstinline{toString}, mentre viene aggiunto un metodo per ottenere la lista dei clienti.
 
 \paragraph*{SingleObjectValue} ~ \\
 \label{par:single-object-value}
 
-\noindent Classe che estende \lstinline{ObjectValue} e rappresenta il valore restituito dall'\gls{apig}\glsoccur in seguito alla richiesta di ottenere un singolo cliente, la sua implementazione è analoga a quella di \lstinline{ObjectListValue}.
+\noindent Classe che estende \lstinline{ObjectValue} e rappresenta il valore restituito in seguito alla richiesta di ottenere un singolo cliente, la sua implementazione è analoga a quella di \lstinline{ObjectListValue}.
 
 \paragraph*{MeetingNoteObjectResponse} ~ \\
 \label{par:meeting-note-object-response}
@@ -459,14 +459,14 @@ Si tratta semplicemente di una enumerazione che rappresenta le tre categorie dei
 \subsubsection*{Status Response}
 \label{subsubsec:status-response}
 
-La classe astratta \lstinline{BaseResponse} modella l'esito di una qualsiasi richiesta \gls{httpg}\glsoccur fatta all'\gls{apig}\glsoccur. \\
+La classe astratta \lstinline{BaseResponse} modella l'esito di una qualsiasi richiesta \gls{httpg}\glsoccur fatta al \gls{backend}\glsoccur. \\
 Ha un attributo di tipo \lstinline{StatusResponse}, una enumerazione che rappresenta tre possibili stati di una richiesta \gls{httpg}\glsoccur:
 \begin{itemize}
     \item \lstinline{StatusResponse.success}: la richiesta è andata a buon fine;
-    \item \lstinline{StatusResponse.unauthorizedException}: la richiesta non è andata a buon fine a causa del \emph{token} di autenticazione scaduto;
+    \item \lstinline{StatusResponse.unauthorizedException}: la richiesta non è andata a buon fine a causa del \emph{token} di autenticazione scaduto (sezione \ref{subsec:exception-handler});
     \item \lstinline{StatusResponse.genericException}: la richiesta non è andata a buon fine per un errore generico.
 \end{itemize}
-Inoltre espone due metodi, il primo si occupa di restituire il valore dell'attributo \lstinline{StatusResponse} e il secondo di restituire una stringa che rappresenta l'oggetto.
+Inoltre espone due metodi, il primo si occupa di restituire il valore dell'attributo \lstinline{StatusResponse} e il secondo di restituire una stringa che rappresentante un'istanza della classe.
 
 \subsubsection*{User}
 \label{subsubsec:user}
@@ -493,18 +493,18 @@ La sua implementazione è stata effettuata seguendo il \emph{pattern} specificat
 \subsection{Services}
 \label{subsec:services}
 
-In questa sezione verranno discusse le classi che si occupano di effettuare le richieste \gls{httpg}\glsoccur al \gls{backend}\glsoccur attraverso le \gls{apig}\glsoccur, per evitare rindondanze, ogni servizio, eccetto \lstinline{BaseService}, gestisce le eventuali eccezioni (RIMANDA A SEZIONE SPECIFICA) in caso una chiamata non vada a buon fine.
+In questa sezione verranno discusse le classi che si occupano di effettuare le richieste \gls{httpg}\glsoccur al \gls{backend}\glsoccur attraverso le \gls{apig}\glsoccur, per evitare rindondanze, ogni servizio, eccetto \lstinline{BaseService}, gestisce le eventuali eccezioni in caso una chiamata non vada a buon fine.
 
 \subsubsection*{Authentication Service}
 \label{subsubsec:authentication-service}
 
 In questo file è definita una classe che estende \lstinline{BaseService} (classe discussa di seguito) con la composizione di \lstinline{PostRequest} per definire il metodo \lstinline{getToken} che si occupa di effettuare una richiesta \lstinline{POST} al \gls{backend}\glsoccur. \\
-Riceve in input un oggetto di tipo \lstinline{AuthArgs} (sezione \ref{subsec:model}) che incapsula lo \emph{username} e la \emph{password} dell'utente per poi restituire eventualmente un oggetto di tipo \lstinline{AuthResponse}.
+Riceve in input un oggetto di tipo \lstinline{AuthArgs} (sezione \ref{subsec:model}) e restituisce un oggetto di tipo \lstinline{AuthResponse}.
 
 \subsubsection*{Base Service}
 \label{subsubsec:base-service}
 
-In questo file sono state definite tutte le classi necessarie per fornire un'astrazione per le chiamate \gls{httpg}\glsoccur all'\gls{apig}\glsoccur, di seguito verrà descritta l'implementazione di ciascuna.
+In questo file sono state definite tutte le classi necessarie per fornire un'astrazione per le chiamate \gls{httpg}\glsoccur, di seguito verrà descritta l'implementazione di ciascuna.
 
 \paragraph*{BaseService} ~ \\
 \label{par:base-service}
@@ -512,7 +512,7 @@ In questo file sono state definite tutte le classi necessarie per fornire un'ast
 \noindent Classe astratta che si occupa di fornire un'interfaccia per gestire le chiamate \gls{httpg}\glsoccur e provede a definire i metodi fondamentali per effettuare una richiesta:
 \begin{itemize}
     \item \lstinline{getUrl}, che si occupa di restituire l'\gls{urig}\glsoccur della risorsa data una stringa in input;
-    \item \lstinline{handleResponse}, invocata per ogni tipologia di richiesta, che si occupa di determinare se una richiesta è avvenuta con successo o meno, in caso di quest'ultimo viene lanciata un'eccezione (RIMANDA A SEZIONE SPECIFICA).
+    \item \lstinline{handleResponse}, invocata per ogni tipologia di richiesta, che si occupa di determinare se essa è avvenuta con successo o meno, in caso di quest'ultimo viene lanciata un'eccezione.
 \end{itemize}
 Le seguenti classi sono di tipo \lstinline{mixin}\cite{site:mixins} e aggiungono funzionalità alla classe \lstinline{BaseService}: ogni classe \lstinline{mixin} si occupa di fornire un implementazione per una chiamata \gls{httpg}\glsoccur specifica. \\
 Successivamente, quando verranno utilizzate, la classe in questione dovrà estendere \lstinline{BaseService} e includere alcune di queste classi \lstinline{mixin}, in modo da aggiungere ad un servizio le chiamate necessarie.\\
@@ -521,12 +521,12 @@ Di seguito verranno descritte le classi \lstinline{mixin}, per ciascuna si speci
 \paragraph*{GetRequest} ~ \\
 \label{par:get-request}
 
-\noindent Classe \lstinline{mixin} che si occupa di fornire un'implementazione per effettuare una richiesta \lstinline{GET}, i parametri necessari sono l'\emph{url} della risorsa e il \emph{token} di autenticazione.
+\noindent Classe \lstinline{mixin} che si occupa di fornire un'implementazione per effettuare una richiesta \lstinline{GET}, i parametri necessari richiesti nell'\emph{header} sono l'\emph{url} della risorsa e il \emph{token} di autenticazione.
 
 \paragraph*{PatchRequest} ~ \\
 \label{par:patch-request}
 
-\noindent Classe \lstinline{mixin} che si occupa di fornire un'implementazione per effettuare una richiesta \lstinline{PATCH}, i parametri necessari sono l'\emph{url} della risorsa, il \emph{token} di autenticazione e il \emph{body} della richiesta.
+\noindent Classe \lstinline{mixin} che si occupa di fornire un'implementazione per effettuare una richiesta \lstinline{PATCH}, i parametri necessari sono l'\emph{url} della risorsa, il \emph{token} di autenticazione e il contenuto per il \emph{body} della richiesta.
 
 \paragraph*{DeleteRequest} ~ \\
 \label{par:delete-request}
@@ -537,15 +537,15 @@ Di seguito verranno descritte le classi \lstinline{mixin}, per ciascuna si speci
 \label{par:post-request}
 
 \noindent Classe \lstinline{mixin} che si occupa di fornire un'implementazione per effettuare una richiesta \lstinline{POST}. \\
-Vi sono presenti due metodi, il primo si occupa di effettuare una richiesta \lstinline{POST} con lo scopo di salvare dei dati sul \emph{backend}, i parametri necessari sono l'\emph{url} della risorsa, il \emph{token} di autenticazione e il \emph{body} della richiesta. \\
-Il secondo si occupa di effettuare una richiesta \lstinline{POST} con lo scopo di ottenere il \emph{token} di autenticazione, l'unico parametro necessario è di tipo \lstinline{AuthArgs} ( precedentemente).
+Vi sono presenti due metodi, il primo si occupa di effettuare una \lstinline{POST} con lo scopo di salvare dei dati sul \emph{backend}, i parametri necessari sono l'\emph{url} della risorsa, il \emph{token} di autenticazione e il \emph{body} della richiesta. \\
+Il secondo si occupa di effettuare una \lstinline{POST} con lo scopo di ottenere il \emph{token} di autenticazione, l'unico parametro necessario è di tipo \lstinline{AuthArgs}.
 
 \subsubsection*{Meeting Note Object Service}
 \label{subsubsec:meeting-note-object-service}
 
 In questo file è definita una classe che estende \lstinline{BaseService} (classe discussa in precedenza) con la composizione di \lstinline{GetRequest} per definire i seguenti metodi:
 \begin{itemize}
-    \item \lstinline{getMeetingNoteObject}, ritorna \lstinline{MeetingNoteObjectResponse} (sezione \ref{subsec:model}) in seguito alla richiesta di ottenere un singolo \gls{cliente}\glsoccur per la creazione di una \emph{Meeting Note}, per fare ciò è necessario passare il \emph{token} di autenticazione, l'\emph{url} della risorsa e la categoria del cliente;
+    \item \lstinline{getMeetingNoteObject}, ritorna \lstinline{MeetingNoteObjectResponse} (sezione \ref{subsec:model}) in seguito alla richiesta di ottenere un singolo \gls{cliente}\glsoccur per la creazione di una \emph{Meeting Note}, per fare ciò è necessario passare il \emph{token} di autenticazione, l'\emph{url} della risorsa, includendo il parametro \emph{uuid} del cliente e la sua categoria;
     \item \lstinline{getContractors}, ritorna \lstinline{MeetingNoteObjectResponse} (sezione \ref{subsec:model}) in seguito alla richiesta di ottenere la lista paginata dei \glspl{cliente}\glsoccur di tipo \emph{contraente}, per fare ciò è necessario passare obbligatoriamente il \emph{token} di autenticazione, \lstinline{pageSize} e \lstinline{pageNumber} che rappresentano rispettivamente la dimensione della pagina e il numero della pagina, opzionalmente è possibile passare anche il nome del \gls{cliente} da ricercare;
     \item \lstinline{getBrokers}, implementazione analoga a \lstinline{getContractors} ma per i \glspl{cliente}\glsoccur di tipo \emph{broker};
     \item \lstinline{getDelegatedInsurers}, ritorna \lstinline{MeetingNoteObjectResponse} (sezione \ref{subsec:model}) in seguito alla richiesta di ottenere la lista non paginata dei \glspl{cliente}\glsoccur di una \emph{compagnia assicurativa}, per fare ciò è necessario passare il \emph{token} di autenticazione ed opzionalmente il nome del \gls{cliente} da ricercare;
@@ -557,11 +557,11 @@ In questo file è definita una classe che estende \lstinline{BaseService} (class
 
 In questo file è definita una classe che estende \lstinline{BaseService} (classe discussa in precedenza) con la composizione di \lstinline{GetRequest}, \lstinline{PostRequest}, \lstinline{PatchRequest} e \lstinline{DeleteRequest} per definire i seguenti metodi:
 \begin{itemize}
-    \item \lstinline{getMeetingNotes}, ritorna \lstinline{MeetingNoteResponse} (sezione \ref{subsec:model}) in seguito alla richiesta di ottenere la lista paginata delle \emph{Meeting Note}, per fare ciò è necessario passare obbligatoriamente il \emph{token} di autenticazione, \lstinline{pageSize} e \lstinline{pageNumber} che rappresentano rispettivamente la dimensione della pagina e il numero della pagina, opzionalmente è possibile passare anche un oggetto \lstinline{FilteringOptions} (RIMANDARE A SEZIONE SPECIFICA) che rappresenta le opzioni di filtraggio. \\
+    \item \lstinline{getMeetingNotes}, ritorna \lstinline{MeetingNoteResponse} (sezione \ref{subsec:model}) in seguito alla richiesta di ottenere la lista paginata delle \emph{Meeting Note}, per fare ciò è necessario passare obbligatoriamente il \emph{token} di autenticazione, \lstinline{pageSize} e \lstinline{pageNumber} che rappresentano rispettivamente la dimensione della pagina e il numero della pagina, opzionalmente è possibile passare anche un oggetto \lstinline{FilteringOptions} (sezione \ref{subsec:filtering}) che rappresenta le opzioni di filtraggio. \\
     Nel dettaglio, ad ogni chiamata riceve la lista di \lstinline{RawMeetingNote} e la converte in una lista di \lstinline{MeetingNote} (sezione \ref{subsec:model});
-    \item \lstinline{postMeetingNote}, ritorna \lstinline{MeetingNoteResponse} (sezione \ref{subsec:model}) in seguito alla richiesta di creare una \emph{Meeting Note}, per fare ciò è necessario passare il \emph{token} di autenticazione e un oggetto di tipo \lstinline{MeetingNote} (sezione \ref{subsec:model}), convertendo quest'ultimo in \gls{jsong}\glsoccur attraverso un metodo dedicato;
-    \item \lstinline{patchMeetingNote}, ritorna \lstinline{MeetingNoteResponse} (sezione \ref{subsec:model}) in seguito alla richiesta di modificare una \emph{Meeting Note}, per fare ciò è necessario passare il \emph{token} di autenticazione e un oggetto di tipo \lstinline{MeetingNote} (sezione \ref{subsec:model}), convertendo quest'ultimo in \gls{jsong}\glsoccur attraverso un metodo dedicato;
-    \item \lstinline{deleteMeetingNote}, ritorna \lstinline{MeetingNoteResponse} (sezione \ref{subsec:model}) in seguito alla richiesta di eliminare una \emph{Meeting Note}, per fare ciò è necessario passare il \emph{token} di autenticazione e l'\emph{uuid} della \emph{Meeting Note};
+    \item \lstinline{postMeetingNote}, ritorna \lstinline{StatusResponse} in seguito alla richiesta di creare una \emph{Meeting Note}, per fare ciò è necessario passare il \emph{token} di autenticazione e un oggetto di tipo \lstinline{MeetingNote} (sezione \ref{subsec:model}), convertendo quest'ultimo in \gls{jsong}\glsoccur attraverso un metodo dedicato;
+    \item \lstinline{patchMeetingNote}, ritorna \lstinline{StatusResponse} in seguito alla richiesta di modificare una \emph{Meeting Note}, per fare ciò è necessario passare il \emph{token} di autenticazione e un oggetto di tipo \lstinline{MeetingNote} (sezione \ref{subsec:model}), convertendo quest'ultimo in \gls{jsong}\glsoccur attraverso un metodo dedicato;
+    \item \lstinline{deleteMeetingNote}, ritorna \lstinline{StatusResponse} in seguito alla richiesta di eliminare una \emph{Meeting Note}, per fare ciò è necessario passare il \emph{token} di autenticazione e l'\emph{uuid} della \emph{Meeting Note};
     \item \lstinline{postSmartCreationMeetingNote}, ritorna \lstinline{SmartCreationResponse} (sezione \ref{subsec:model}) in seguito alla richiesta di creare una \emph{Meeting Note} in modo automatico, per fare ciò è necessario passare il \emph{token} di autenticazione e il testo da elaborare;;
     \item \lstinline{buildUrl}, si occupa di costruire l'\gls{urig}\glsoccur della risorsa in base ai parametri passati, che sono: la dimensione della pagina, il numero della pagina ed eventualmente le opzioni di filtraggio, esso viene utilizzato dal metodo \lstinline{getMeetingNotes}.
 \end{itemize}
@@ -569,7 +569,7 @@ In questo file è definita una classe che estende \lstinline{BaseService} (class
 \subsubsection*{User Service}
 \label{subsubsec:user-service}
 
-In questo file è definita una classe che estende \lstinline{BaseService} (classe discussa in precedenza) con la composizione di \lstinline{GetRequest} per definire il metodo \lstinline{getUser} che si occupa di effettuare una richiesta \lstinline{GET} al \gls{backend}\glsoccur per ottenere i dati dell'utente, ricevendo in input il \emph{token} di autenticazione e restitornando un oggetto di tipo \lstinline{UserResponse} (sezione \ref{subsec:model}).
+In questo file è definita una classe che estende \lstinline{BaseService} (classe discussa in precedenza) con la composizione di \lstinline{GetRequest} per definire il metodo \lstinline{getUser} che si occupa di effettuare una richiesta \lstinline{GET} al \gls{backend}\glsoccur per ottenere i dati dell'utente, ricevendo in input il \emph{token} di autenticazione e tornando un oggetto di tipo \lstinline{UserResponse}.
 
 \section{Provider}
 \label{sec:provider}
@@ -577,7 +577,7 @@ In questo file è definita una classe che estende \lstinline{BaseService} (class
 In questa cartella sono presenti le classi che si occupano di gestire la \emph{logica di business} dell'applicazione, si tratta dunque dell'\emph{application layer} (sezione \ref{subsec:architettura-app}).\\
 In ciascun file viene definita una classe al cui interno sono stati implementati dei metodi opportuni per effettuare delle operazioni e al di fuori di essa si istanzia un \lstinline{FutureProvider}\cite{site:future-provider} (discusso nella sezione \ref{subsec:riverpod}) per esporre questi metodi al \emph{presentation layer}.\\
 Inoltre ciascuna classe per effettuare le operazioni necessarie si avvale dei corrispettivi servizi (sezione \ref{subsec:services}) e modelli (sezione \ref{subsec:model}) precedentemente discussi. \\
-Si vuole infine precisare che, eccetto per \lstinline{AuthenticationHelper} (discussa nella sezione \ref{subsec:authentication-provider}), nelle restanti classi, ogni metodo che effettua una richiesta include l'operazione di lettura del \emph{token} per autenticare quest'ultime.
+Si vuole infine precisare che, eccetto per \lstinline{AuthenticationHelper} (sezione \ref{subsec:authentication-provider}), nelle restanti classi, ogni metodo che effettua una richiesta include l'operazione di lettura del \emph{token} per autenticare quest'ultime.
 
 \subsection{Authentication Provider}
 \label{subsec:authentication-provider}
@@ -585,8 +585,8 @@ Si vuole infine precisare che, eccetto per \lstinline{AuthenticationHelper} (dis
 In questo file è definita la classe \lstinline{AuthenticationHelper} che si occupa di gestire la logica dell'autenticazione all'applicazione, in particolare espone i seguenti metodi:
 \begin{itemize}
     \item \lstinline{verifyCredentials}, si occupa di verificare la validità delle credenziali, passate per parametro, inserite dall'utente;
-    \item \lstinline{authenticate}, verifica le credenziali dell'utente, avvalendosi del metodo \lstinline{verifyCredentials}, e in caso di successo ritorna un \emph{token} di autenticazione attraverso l'oggetto \lstinline{AuthResponse} (sezione \ref{subsec:model}) salvandolo poi in locale con l'ausilio della libreria \lstinline{shared_preferences}\cite{site:shared-preferences} (discussa nella sezione \ref{sec:utils});
-    \item \lstinline{logout}, si occupa di effettuare il \emph{logout} dall'applicazione, eliminando il \emph{token} di autenticazione salvato in locale e riportando l'applicazione alla schermata di \emph{login};
+    \item \lstinline{authenticate}, verifica le credenziali dell'utente, avvalendosi del metodo \lstinline{verifyCredentials} e in caso di successo ritorna un \emph{token} di autenticazione attraverso l'oggetto \lstinline{AuthResponse} salvandolo poi in locale con l'ausilio della libreria \lstinline{shared_preferences}\cite{site:shared-preferences} (sezione \ref{subsec:shared-preferences});
+    \item \lstinline{logout}, si occupa di effettuare il \emph{logout} dall'applicazione, eliminando il \emph{token} di autenticazione salvato in locale e riportando l'utente alla schermata di \emph{login};
     \item \lstinline{isAuthenticated}, verifica se l'utente è autenticato, controllando se il \emph{token} di autenticazione è salvato in locale;
     \item \lstinline{isUnauthorized}, verifica se l'utente è autorizzato ad effettuare una chiamata \gls{httpg}\glsoccur, controllandone l'esito e in caso negativo effettua il \emph{logout} dall'applicazione, poichè significa che il \emph{token} di autenticazione è scaduto;
     \item \lstinline{isBiometricEnabled}, verifica se l'utente ha abilitato l'autenticazione biometrica all'interno dell'applicazione, controllando se il \emph{flag} è salvato in locale;
@@ -600,7 +600,7 @@ In questo file è definita la classe \lstinline{AuthenticationHelper} che si occ
 
 In questo file è definita la classe \lstinline{MeetingNoteObjectHelper} che si occupa di gestire la logica dei \glspl{cliente}\glsoccur all'interno dell'applicazione, in particolare espone i seguenti metodi:
 \begin{itemize}
-    \item \lstinline{getContractors} si occupa di ottenere la lista paginata di tutti i \glspl{cliente}\glsoccur di tipo \emph{contraente} oppure solo di quelli ricercati dall'utente attraverso il passaggio del parametro \lstinline{searchTerm}, dati in input il numero della pagina e la dimensione della pagina, restituendo un oggetto di tipo \lstinline{MeetingNoteObjectResponse} (sezione \ref{subsec:model});
+    \item \lstinline{getContractors} si occupa di ottenere la lista paginata di tutti i \glspl{cliente}\glsoccur di tipo \emph{contraente} oppure solo di quelli ricercati dall'utente attraverso il passaggio del parametro \lstinline{searchTerm}, dati in input il numero della pagina e la dimensione della pagina, restituendo un oggetto di tipo \lstinline{MeetingNoteObjectResponse};
     \item \lstinline{getBrokers} implementazione analoga a \lstinline{getContractors} ma per i \glspl{cliente}\glsoccur di tipo \emph{broker};
     \item \lstinline{getDelegatedInsurers} implementazione analoga ai due metodi precedenti ma per i \glspl{cliente}\glsoccur di tipo \emph{compagnia assicurativa} e senza la possibilità di paginazione.
 \end{itemize}
@@ -610,17 +610,17 @@ In questo file è definita la classe \lstinline{MeetingNoteObjectHelper} che si 
 
 In questo file è definita la classe \lstinline{MeetingNoteHelper} che si occupa di gestire la logica delle \emph{Meeting Note} all'interno dell'applicazione, in particolare espone i seguenti metodi:
 \begin{itemize}
-    \item \lstinline{fecthMeetingNotes}, si occupa di ottenere la lista paginata delle \emph{Meeting Note} oppure solo di quelle filtrate dall'utente attraverso il passaggio del parametro \lstinline{filteringOptions} (RIMANDARE ALLA SEZIONE SPECIFICA), dati in input il numero della pagina e la dimensione della pagina, restituendo un oggetto di tipo \lstinline{MeetingNoteResponse} (sezione \ref{subsec:model});
-    \item \lstinline{createMeetingNote}, si occupa di memorizzare la \emph{Meeting Note} creata e passata in input come oggetto di tipo \lstinline{MeetingNote} nel \gls{backend}\glsoccur, restituendo un oggetto di tipo \lstinline{StatusResponse} (sezione \ref{subsec:model}) in quanto è sufficiente ritornare l'esito della richiesta;
-    \item \lstinline{deleteMeetingNote}, si occupa di eliminare la \emph{Meeting Note} passata in input lo \lstinline{uuid} come parametro, restituendo un oggetto di tipo \lstinline{StatusResponse} (sezione \ref{subsec:model}) in quanto è sufficiente ritornare l'esito della richiesta;
-    \item \lstinline{modifyMeetingNote}, si occupa di modificare la \emph{Meeting Note} passata in input come oggetto di tipo \lstinline{MeetingNote}, restituendo un oggetto di tipo \lstinline{StatusResponse} (sezione \ref{subsec:model}) in quanto è sufficiente ritornare l'esito della richiesta;
-    \item \lstinline{smartCreation}, si occupa di creare una \emph{Meeting Note} in modo automatico, passando in input il testo da elaborare, restituendo un oggetto di tipo \lstinline{SmartCreationResponse} (sezione \ref{subsec:model}).
+    \item \lstinline{fecthMeetingNotes}, si occupa di ottenere la lista paginata delle \emph{Meeting Note} oppure solo di quelle filtrate dall'utente attraverso il passaggio del parametro \lstinline{filteringOptions} (sezione \ref{subsec:filtering}), dati in input il numero della pagina e la dimensione della pagina, restituendo un oggetto di tipo \lstinline{MeetingNoteResponse};
+    \item \lstinline{createMeetingNote}, si occupa di memorizzare la \emph{Meeting Note} creata e passata in input come oggetto di tipo \lstinline{MeetingNote} nel \gls{backend}\glsoccur, restituendo un oggetto di tipo \lstinline{StatusResponse} in quanto è sufficiente ritornare l'esito della richiesta;
+    \item \lstinline{deleteMeetingNote}, si occupa di eliminare la \emph{Meeting Note} passata in input lo \lstinline{uuid} come parametro, restituendo un oggetto di tipo \lstinline{StatusResponse} in quanto è sufficiente ritornare l'esito della richiesta;
+    \item \lstinline{modifyMeetingNote}, si occupa di modificare la \emph{Meeting Note} passata in input come oggetto di tipo \lstinline{MeetingNote}, restituendo un oggetto di tipo \lstinline{StatusResponse} in quanto è sufficiente ritornare l'esito della richiesta;
+    \item \lstinline{smartCreation}, si occupa di creare una \emph{Meeting Note} in modo automatico, passando in input il testo da elaborare, restituendo un oggetto di tipo \lstinline{SmartCreationResponse}.
 \end{itemize}
 
 \subsection{User Provider}
 \label{subsec:user-provider}
 
-In questo file è definita la classe \lstinline{UserHelper} che si occupa di gestire la logica dell'utente all'interno dell'applicazione, in particolare espone il metodo \lstinline{initUser} che si occupa di ottenere i dati dell'utente, restituendo un oggetto di tipo \lstinline{UserResponse} (sezione \ref{subsec:model}).
+In questo file è definita la classe \lstinline{UserHelper} che si occupa di gestire la logica dell'utente all'interno dell'applicazione, in particolare espone il metodo \lstinline{initUser} che si occupa di ottenere i dati dell'utente, restituendo un oggetto di tipo \lstinline{UserResponse}.
 
 \section{Screens}
 \label{sec:screens}
@@ -630,9 +630,9 @@ In questa cartella sono presenti tutte le schermate dell'applicazione, le quali 
 \subsection{Account Screen}
 \label{subsec:account-screen}
 
-Schermata che permette all'utente di visualizzare i propri dati, letti attraverso il \lstinline{UserProvider} (sezione \ref{subsec:user-provider}), si ricorda che per poter effettuare una lettura dei \emph{provider} è necessario che la classe estenda \lstinline{ConsumerWidget} (discussa nella sezione \ref{subsec:riverpod}). \\
-Per la definizione dell'aspetto grafico questa schermata implementa \lstinline{BaseScreen} (sezione \ref{subsec:screens-template}) e prima di renderizzare ulteriori componenti effettua un controllo sullo stato della connessione ad internet, ottenuto attraverso il \lstinline{NetworkAwareProvider} (RIMANDARE ALLA SEZIONE SPECIFICA), in caso di assenza di connessione viene mostrato un \lstinline{WarningAlert} (sezione \ref{subsec:warning-alert}) con il relativo messaggio di errore. \\
-Altrimenti viene mostrato il contenuto della schermata servendosi di \lstinline{FutureBuilder}\cite{site:future-builder} per invocare il metodo \lstinline{initUser} del \lstinline{UserProvider} e ottenere i dati dell'utente, in particolare ci possono essere vari esiti:
+Schermata che permette all'utente di visualizzare i propri dati, letti attraverso \lstinline{UserProvider} (sezione \ref{subsec:user-provider}), la cui classe estende \lstinline{ConsumerWidget} (sezione \ref{subsec:riverpod}) in modo da essere in grado di invocare un \emph{provider}. \\
+Per la definizione dell'aspetto grafico questa schermata implementa \lstinline{BaseScreen} (sezione \ref{subsec:screens-template}) e prima di renderizzare ulteriori componenti effettua un controllo sullo stato della connessione ad internet, ottenuto attraverso il \lstinline{NetworkAwareProvider} (sezione \ref{subsec:network-handler}), in caso di assenza di connessione viene mostrato un \lstinline{WarningAlert} (sezione \ref{subsec:warning-alert}) con il relativo messaggio di errore. \\
+Altrimenti viene mostrato il contenuto della schermata servendosi di \lstinline{FutureBuilder}\cite{site:future-builder} per invocare il metodo \lstinline{initUser} e ottenere i dati dell'utente, in particolare ci possono essere vari esiti:
 \begin{itemize}
     \item \emph{waiting}, viene mostrato un \lstinline{CircularProgressIndicator}\cite{site:circular-progress-indicator} per indicare che la richiesta è in corso;
     \item \emph{unauthorizedException}, l'utente non è autorizzato ad effettuare la richiesta, viene reindirizzato alla schermata di \emph{login};
@@ -641,36 +641,31 @@ Altrimenti viene mostrato il contenuto della schermata servendosi di \lstinline{
 \end{itemize}
 In quest'ultimo caso vengono renderizzati i seguenti componenti:
 \begin{itemize}
-    \item \lstinline{TextButton}\cite{site:text-button}, per effettuare il \emph{logout} dall'applicazione, che mostra un \lstinline{WarningAlertDialog} (sezione \ref{subsec:warning-alert}) che informa l'utente che ne deve confermare o meno l'operazione;
-    \item \lstinline{CircleAvatar}\cite{site:circle-avatar}, per mostrare l'immagine profilo dell'utente;
-    \item \lstinline{AccountCard}, \emph{StatelessWidget} privato che si occupa di mostrare il nome, cognome e la mail dell'utente;
-    \item \lstinline{BiometricOption}, \emph{StatefulWidget} privato che implementa \lstinline{BiometricSwitch} (sezione \ref{subsec:biometric-switch}), si ricorda che lo stato di questo componente è salvato in locale attraverso la libreria \lstinline{shared_preferences}\cite{site:shared-preferences} (discussa nella sezione \ref{sec:utils}); per la sua attivazione verrà richiesto all'utente di confermare l'operazione attraverso l'inserimento delle credenziali di autenticazione, anch'esse salvate in locale attraverso la libreria \lstinline{FlutterSecureStorage}\cite{site:flutter-secure-storage} (discussa nella sezione \ref{sec:utils}).
+    \item \lstinline{TextButton}\cite{site:text-button}, effettua il \emph{logout} dall'applicazione, alla sua pressione mostra un \lstinline{WarningAlertDialog} (sezione \ref{subsec:warning-alert}) informando l'utente dell'evento, che ne deve confermare o meno l'operazione;
+    \item \lstinline{CircleAvatar}\cite{site:circle-avatar}, mostra l'immagine profilo dell'utente;
+    \item \lstinline{AccountCard}, \emph{StatelessWidget} privato, creato appositamente con lo scopo di definire l'aspetto grafico per la visualizzazione del nome, cognome e la mail dell'utente;
+    \item \lstinline{BiometricOption}, \emph{StatefulWidget} privato che implementa \lstinline{BiometricSwitch} (sezione \ref{subsec:biometric-switch}), si ricorda che lo stato di questo componente è salvato in locale attraverso la libreria \lstinline{shared_preferences}\cite{site:shared-preferences} (sezione \ref{subsec:shared-preferences}); per la sua attivazione verrà richiesto all'utente di confermare l'operazione attraverso l'inserimento delle credenziali di autenticazione, anch'esse salvate in locale attraverso la libreria \lstinline{FlutterSecureStorage}\cite{site:flutter-secure-storage} (sezione \ref{subsec:shared-preferences}).
 \end{itemize}
 
 \subsection{Home Screen}
 \label{subsec:home-screen}
 
-Schermata principale dell'applicazione, si ricorda che per poter effettuare una lettura dei \emph{provider} è necessario che la classe estenda \lstinline{ConsumerStatefulWidget} (discussa nella sezione \ref{subsec:riverpod}). \\
+Schermata principale dell'applicazione, la cui classe estende \lstinline{ConsumerStatefulWidget} (sezione \ref{subsec:riverpod}) in modo da essere in grado di invocare un \emph{provider}. \\
 Prima della renderizzazione dell'aspetto grafico viene effettuata l'inizializzazione delle variabili di stato, in particolare:
 \begin{itemize}
-    \item \lstinline{filteringOptions}, oggetto di tipo \lstinline{FilteringOptions} (RIMANDARE ALLA SEZIONE SPECIFICA) che rappresenta le opzioni di filtraggio attive;
+    \item \lstinline{filteringOptions}, oggetto di tipo \lstinline{FilteringOptions} (sezione \ref{subsec:filtering}) che incapsula le opzioni di filtraggio attive;
     \item \lstinline{isFiltering}, \lstinline{bool} che indica se l'utente ha attivato o meno almeno un filtro;
     \item \lstinline{pagingController}, oggetto di tipo \lstinline{PagingController}\cite{site:infinite-scroll-pagination} che si occupa di gestire la paginazione dei dati.
 \end{itemize}
 Per la definizione dell'aspetto grafico questa schermata implementa \lstinline{BaseScreen} (sezione \ref{subsec:screens-template}) e il suo contenuto è strutturato come segue:
 \begin{itemize}
     \item \lstinline{HomeHeader}, \emph{StatelessWidget} privato che mostra il titolo della schermata e due pulsanti, uno per eliminare i filtri attivati e l'altro per aprire il \lstinline{FilterPanel} (sezione \ref{subsec:filter-panel});
-    \item \lstinline{SpeedDial}, componente che mostra un \lstinline{FloatingActionButton}\cite{site:fab} che consente all'utente di scegliere la modalità di creazione di una \emph{Meeting Note}, in base alla scelta l'utente verrà reindirizzato alla schermata corrispondente;
-    \item \lstinline{PagedListView}\cite{site:infinite-scroll-pagination}, componente che si occupa di mostrare la lista paginata delle \emph{Meeting Note}, in particolare si avvale del \lstinline{PagingController} per gestire la paginazione dei dati, inoltre per ogni elemento della lista viene mostrato un \lstinline{MeetingNoteItem} (sezione \ref{subsec:meeting-note-card}) che rappresenta la \emph{Meeting Note} e permette all'utente di modificarla o eliminarla.
+    \item \lstinline{SpeedDial}, componente che mostra un \lstinline{FloatingActionButton}\cite{site:fab} che consente all'utente di scegliere la modalità di creazione di una \emph{Meeting Note}, in base alla scelta quest'ultimo verrà reindirizzato alla schermata corrispondente;
+    \item \lstinline{PagedListView}\cite{site:infinite-scroll-pagination}, componente che si occupa di mostrare la lista paginata delle \emph{Meeting Note}, in particolare si avvale del \lstinline{PagingController} per gestire la paginazione dei dati, lista che è composta da \lstinline{MeetingNoteItem} (sezione \ref{subsec:meeting-note-card}) che definisce la rappresentazione grafica della \emph{Meeting Note} e permette all'utente di modificarla o eliminarla.
 \end{itemize}
-Nel dettaglio, prima della visualizzazione della lista paginata, si effettua un controllo dello stato della connessione ad internet attraverso il \lstinline{NetworkAwareProvider} (RIMANDARE ALLA SEZIONE SPECIFICA), in caso di assenza di connessione viene mostrato un \lstinline{WarningAlert} (sezione \ref{subsec:warning-alert}) con il relativo messaggio di errore. \\
-Altrimenti viene mostrato il contenuto della schermata servendosi del metodo privato \lstinline{fetchPage} che si occupa di effettuare la richiesta al \gls{backend}\glsoccur attraverso il \lstinline{MeetingNoteProvider} (sezione \ref{subsec:meeting-note-provider}), controllando se l'utente è autorizzato ad effettuare la richiesta attraverso il metodo \lstinline{isUnauthorized} fornito da \lstinline{authProvider} (sezione \ref{subsec:authentication-provider}), per poi restituire la lista paginata delle \emph{Meeting Note} e aggiornare lo stato del \lstinline{PagingController}. \\
-È presente un ulteriore metodo privato \lstinline{showWarningDialog} che si occupa di mostrare un \lstinline{WarningAlertDialog} (sezione \ref{subsec:warning-alert}) chiedendo conferma l'utente per la eliminazione di una \emph{Meeting Note} e in base alla scelta dell'utente e all'esito della richiesta, vengono gestiti i seguenti casi {i medesimi illustrati nella sezione \ref{subsec:model},  paragrafo \emph{StatusResponse}}:
-\begin{itemize}
-    \item \emph{success}, viene mostrato un \lstinline{SuccessAlertDialog} (sezione \ref{subsec:success-alert}) con il relativo messaggio di successo e di conseguenza viene aggiornato lo stato del \lstinline{PagingController};
-    \item \emph{unauthorizedException}, l'utente non è autorizzato ad effettuare la richiesta, viene reindirizzato alla schermata di \emph{login};
-    \item \emph{genericException}, la richiesta non è andata a buon fine per un errore generico e viene mostrato un \lstinline{WarningAlert} con il relativo messaggio di errore.
-\end{itemize}
+Nel dettaglio, prima della visualizzazione della lista paginata, si effettua un controllo dello stato della connessione ad internet attraverso il \lstinline{NetworkAwareProvider} (sezione \ref{subsec:network-handler}), in caso di assenza di connessione viene mostrato un \lstinline{WarningAlert} (sezione \ref{subsec:warning-alert}) con il relativo messaggio di errore. \\
+Altrimenti viene mostrato il contenuto della schermata servendosi del metodo privato \lstinline{fetchPage} che si occupa di effettuare la richiesta al \gls{backend}\glsoccur attraverso \lstinline{MeetingNoteProvider} (sezione \ref{subsec:meeting-note-provider}), controllando se l'utente è autorizzato ad effettuare la richiesta attraverso il metodo \lstinline{isUnauthorized} fornito da \lstinline{authProvider} (sezione \ref{subsec:authentication-provider}), per poi restituire la lista paginata delle \emph{Meeting Note} e aggiornare lo stato del \lstinline{PagingController}. \\
+È presente un ulteriore metodo privato \lstinline{showWarningDialog} che si occupa di mostrare un \lstinline{WarningAlertDialog} (sezione \ref{subsec:warning-alert}) chiedendo conferma l'utente per la eliminazione di una \emph{Meeting Note} e in base alla scelta dell'utente e all'esito della richiesta, vengono gestiti i seguenti casi {i medesimi illustrati nella sezione \ref{subsec:model}, paragrafo \emph{StatusResponse}}.
 
 \subsection{Login Screen}
 \label{subsec:login-screen}
@@ -689,9 +684,9 @@ Schermata che permette all'utente di creare una \emph{Meeting Note} in modo auto
 Classe che si occupa di ricevere in input il contenuto testuale dall'utente che verrà elaborato da un algoritmo di \emph{intelligenza artificiale} per creare una \emph{Meeting Note} in modo automatico. \\
 Prima della renderizzazione dell'aspetto grafico viene effettuata l'inizializzazione delle variabili di stato, in particolare:
 \begin{itemize}
-    \item \lstinline{textController}, \lstinline{TextEditingController} che si occupa di gestire il contenuto testuale inserito dall'utente;
+    \item \lstinline{textController}, \lstinline{TextEditingController}\cite{site:text-editing-controller} che si occupa di gestire il contenuto testuale inserito dall'utente;
     \item \lstinline{isButtonEnabled}, \lstinline{bool} che indica se l'utente ha inserito del testo oppure no e abilita di conseguenza il pulsante che avvia l'elaborazione del testo;
-    \item \lstinline{speechToText}, \lstinline{SpeechToText} che si occupa di gestire la dettatura vocale;
+    \item \lstinline{speechToText}, \lstinline{SpeechToText}\cite{site:speech-to-text} che si occupa di gestire la dettatura vocale;
     \item \lstinline{listenedWords}, \lstinline{String} che memorizza quanto detto dall'utente.
 \end{itemize}
 Per la definizione dell'aspetto grafico questa schermata implementa \lstinline{WizardScreen} (sezione \ref{subsec:screens-template}) e il suo contenuto è strutturato come segue:
@@ -702,18 +697,18 @@ Per la definizione dell'aspetto grafico questa schermata implementa \lstinline{W
     \item \lstinline{ElevatedButton}\cite{site:elevated-button}, componente che si occupa di avviare l'elaborazione del testo inserito dall'utente.
 \end{itemize}
 Nel dettaglio quest'ultima operazione viene effettuata servendosi di \lstinline{meetingNoteProvider} per effettuare l'elaborazione e di \lstinline{authProvider} per autorizzare la richiesta attraverso il metodo \lstinline{isUnauthorized}, inoltre viene mostrato un \lstinline{CircularProgressIndicator}\cite{site:circular-progress-indicator} per indicare che la richiesta è in corso. \\
-Al termine dell'elaborazione, con i tre possibili esiti (i medesimi illustrati nella sezione \ref{subsec:model},  sezione \emph{Status Response}), e in caso di successo viene mostrato \lstinline{ConfirmCreationPopup} attraverso una modale che appare dal basso.
+Al termine dell'elaborazione, con i tre possibili esiti (i medesimi illustrati nella sezione \ref{subsec:model}, paragrafo \emph{Status Response}), e in caso di successo viene mostrato \lstinline{ConfirmCreationPopup} attraverso una modale che appare dal basso.
 
 \subsubsection*{ConfirmCreationPopup}
 \label{subsubsec:confirm-creation-popup}
 
-Classe che si occupa di mostrare all'utente i dati estratti dall'elaborazione del testo, passati input dal costruttore dall'oggetto di tipo \lstinline{SmartCreationValue} (sezione \ref*{subsec:model}) e di permettergli di confermare la creazione della \emph{Meeting Note} o di eventualmente apportare delle modifiche ad alcuni campi. \\
+Classe che si occupa di mostrare all'utente i dati estratti dall'elaborazione del testo, passati input dal costruttore dall'oggetto di tipo \lstinline{SmartCreationValue} e di permettergli di confermare la creazione della \emph{Meeting Note} o di eventualmente apportare delle modifiche ad alcuni campi. \\
 Prima della renderizzazione dell'aspetto grafico viene effettuata l'inizializzazione delle variabili di stato, in particolare:
 \begin{itemize}
     \item \lstinline{selectedCategory}, \lstinline{ObjectCategory} che rappresenta la categoria del \gls{cliente}\glsoccur estratto dall'elaborazione del testo;
     \item \lstinline{selectedCategoryIndex}, \lstinline{int} che rappresenta l'indice della categoria del \gls{cliente}\glsoccur;
     \item \lstinline{initialValue}, \lstinline{String} che viene inzializzato con il nome del \gls{cliente}\glsoccur estratto dall'elaborazione del testo;
-    \item \lstinline{debouncedSearch} (RIMANDA ALL SEZIONE SPECIFICA), si occupa di gestire la ricerca del \gls{cliente}\glsoccur attraverso il componente \lstinline{CustomAutocomplete};
+    \item \lstinline{debouncedSearch} (sezione \ref{subsec:debouncer}), si occupa di gestire la ricerca del \gls{cliente}\glsoccur attraverso il componente \lstinline{CustomAutocomplete};
     \item \lstinline{selectedMeetingNoteObject}, \lstinline{MeetingNoteObject} che si occupa di gestire eventuali modifiche sulla ricerca dell'identificativo del cliente apportate dall'utente ;
     \item \lstinline{isButtonEnabled}, \lstinline{bool} che abilita il pulsante di creazione se tutti i campi sono correttamente compilati;
     \item \lstinline{isNameFound}, \lstinline{bool} che indica se l'identificativo del \gls{cliente}\glsoccur, estratto dall'algoritmo sia stato trovato o meno;
@@ -724,15 +719,15 @@ La struttura di questa modale è la seguente:
 \begin{itemize}
     \item \lstinline{TitleLabel}, mostra il titolo della \emph{label} per ogni campo elencato di seguito;
     \item \lstinline{CustomObjectPicker}, componente che si occupa di mostrare la lista delle categorie dei \glspl{cliente}\glsoccur e di permettere eventualmente all'utente di apportare modifiche, il cui funzionamento è supportato dalle variabili di stato \lstinline{selectedCategory} e \lstinline{selectedCategoryIndex} (sezione \ref{subsec:object-picker});
-    \item \lstinline{CustomAutoComplete}, componente che visualizza l'identificativo del cliente e permette all'utente di apportare modifiche effettuando una ricerca, il suo funzionamento è supportato dalle variabili di stato \lstinline{initialValue}, \lstinline{debouncedSearch} e \lstinline{selectedMeetingNoteObject} (sezione \ref{subsec:autocomplete}), imposta inoltre il valore di \lstinline{isNameFound} in base all'esito della ricerca;
-    \item \lstinline{CustomDatePicker}, componente che visualizza la data estratta dall'elaborazione del testo e permette all'utente di apportare modifiche, il suo funzionamento è supportato dalla variabile di stato \lstinline{selectedDate} ( sezione \ref{subsec:date-picker});
+    \item \lstinline{CustomAutoComplete}, componente che visualizza l'identificativo del cliente e permette all'utente di apportare modifiche effettuando una ricerca, il suo funzionamento è supportato dalle variabili di stato \lstinline{initialValue}, \lstinline{debouncedSearch} e \lstinline{selectedMeetingNoteObject}, imposta inoltre il valore di \lstinline{isNameFound} in base all'esito della ricerca (sezione \ref{subsec:search-bar});
+    \item \lstinline{CustomDatePicker}, componente che visualizza la data estratta dall'elaborazione del testo e permette all'utente di apportare modifiche, il suo funzionamento è supportato dalla variabile di stato \lstinline{selectedDate} (sezione \ref{subsec:date-picker});
     \item \lstinline{CustomTextBox}, componente che visualizza il contenuto dell'incontro estratto dall'elaborazione del testo e permette all'utente di apportare modifiche, il suo funzionamento è supportato dalla variabile di stato \lstinline{textController} (sezione \ref{subsec:text-box});
     \item \lstinline{OutlineButton}\cite{site:outline-button}, componente che si occupa di confermare la creazione della \emph{Meeting Note} richiamando il metodo \lstinline{onConfirmation}.
 \end{itemize}
 Vi sono presenti inoltre due metodi privati, \lstinline{search} e \lstinline{onConfirmation}. \\
-Il primo si occupa di effettuare la ricerca dell'identificativo del \gls{cliente}\glsoccur ricevuto input come parametro, con l'ausilio di \lstinline{meetingNoteObjectProvider} (sezione \ref{subsec:meeting-note-object-provider}) e di controllare l'autorizzazione della richiesta con \lstinline{authProvider}, prima di tutto ciò viene assicurata la presenza di connessione ad internet da \lstinline{networkAwareProvider} (RIMANDARE ALLA SEZIONE SPECIFICA). \\
+Il primo si occupa di effettuare la ricerca dell'identificativo del \gls{cliente}\glsoccur ricevuto input come parametro, con l'ausilio di \lstinline{meetingNoteObjectProvider} (sezione \ref{subsec:meeting-note-object-provider}) e di controllare l'autorizzazione della richiesta con \lstinline{authProvider}, prima di tutto ciò viene assicurata la presenza di connessione ad internet da \lstinline{networkAwareProvider} (sezione \ref{subsec:network-handler}). \\
 Vengono gestiti inoltre i vari esiti della richiesta (i medesimi illustrati nella sezione \ref{subsec:model},  paragrafo \emph{Status Response}) e solamente in caso di successo viene restituito il risultato e aggiornato lo stato di \lstinline{selectedMeetingNoteObject}. \\
-Mentre il secondo mostra all'utente una finestra di dialogo attraverso la quale si chiede all'utente di confermare la creazione della \emph{Meeting Note} e in caso affermativo viene effettuata la richiesta al \gls{backend}\glsoccur attraverso \lstinline{meetingNoteProvider} (sezione \ref{subsec:meeting-note-provider}), controllandone l'autorizzazione con \lstinline{authProvider} e gestendo i vari esiti della richiesta (i medesimi illustrati nella sezione \ref{subsec:model},  paragrafo \emph{Status Response}).
+Mentre il secondo mostra all'utente una finestra di dialogo attraverso la quale si chiede all'utente di confermare la creazione della \emph{Meeting Note} e in caso affermativo viene effettuata la richiesta al \gls{backend}\glsoccur attraverso \lstinline{meetingNoteProvider} (sezione \ref{subsec:meeting-note-provider}), seguendo poi lo stesso algoritmo descritto sopra.
 
 \subsubsection*{TitleLabel}
 \label{subsubsec:title-label}
@@ -817,13 +812,13 @@ Prima della renderizzazione dell'aspetto grafico viene effettuata l'inizializzaz
 \end{itemize}
 Per la definizione dell'aspetto grafico questa schermata implementa \lstinline{WizardScreen} (sezione \ref{subsec:screens-template}) e il suo contenuto è strutturato come segue:
 \begin{itemize}
-    \item \lstinline{WizardHeader}, imposta il titolo della schermata (sezione \ref{subsec:screens-template});
+    \item \lstinline{WizardHeader}, imposta il titolo della schermata;
     \item \lstinline{CustomObjectPicker}, componente che si occupa di mostrare la lista delle categorie dei \glspl{cliente}\glsoccur e di permettere all'utente di effettuare una selezione, aggiornando di conseguenza \lstinline{pagingController} e filtrando la lista dei clienti con la categoria selezionata, il suo funzionamento è supportato dalle variabili di stato \lstinline{selectedCategory} e \lstinline{selectedCategoryIndex} (sezione \ref{subsec:object-picker});
     \item \lstinline{CustomSearchBar}, componente che visualizza l'identificativo del cliente e permette all'utente di effettuare una ricerca, aggiornando eventualmente \lstinline{pagingController} e filtrando opportunamente la lista dei clienti, il suo funzionamento è supportato dalle variabili di stato \lstinline{searchController} e \lstinline{searchTerm} (sezione \ref{subsec:search-bar});
-    \item \lstinline{MeetingNoteObjectList}, componente che si occupa di mostrare la lista dei clienti opportunamente filtrata e paginata, il suo funzionamento è supportato dalle variabili di stato \lstinline{selectedMeetingNoteObject}, il cui scopo è di evidenziare quale cliente è stato selezionato e \lstinline{pagingController} (sezione \ref{subsec:meeting-note-object-list});
+    \item \lstinline{MeetingNoteObjectList}, componente che si occupa di mostrare la lista dei clienti opportunamente filtrata e paginata, il suo funzionamento è supportato dalle variabili di stato \lstinline{selectedMeetingNoteObject}, il cui scopo è di evidenziare quale cliente è stato selezionato e \lstinline{pagingController};
     \item \lstinline{ElevatedButton}\cite{site:elevated-button}, componente che si occupa di confermare la selezione del cliente e di mostrare la schermata successiva del \gls{wizard}\glsoccur.
 \end{itemize}
-Nel dettaglio, prima della visualizzazione della lista paginata, si effettua un controllo dello stato della connessione ad internet attraverso il \lstinline{NetworkAwareProvider} (RIMANDARE ALLA SEZIONE SPECIFICA), in caso di assenza di connessione viene mostrato un \lstinline{WarningAlert} (sezione \ref{subsec:warning-alert}) con il relativo messaggio di errore. \\
+Nel dettaglio, prima della visualizzazione della lista paginata, si effettua un controllo dello stato della connessione ad internet attraverso il \lstinline{NetworkAwareProvider} (sezione \ref{subsec:network-handler}), in caso di assenza di connessione viene mostrato un \lstinline{WarningAlert} (sezione \ref{subsec:warning-alert}) con il relativo messaggio di errore. \\
 Sono presenti dei metodi privati a supporto del funzionamento del \gls{wizard}\glsoccur, che sono:
 \begin{itemize}
     \item \lstinline{fetchPage}, si occupa di effettuare la richiesta al \gls{backend}\glsoccur attraverso il \lstinline{MeetingNoteObjectProvider} (sezione \ref{subsec:meeting-note-object-provider}), controllando se l'utente è autorizzato ad effettuare la richiesta attraverso il metodo \lstinline{isUnauthorized} fornito da \lstinline{authProvider} ( sezione \ref{subsec:authentication-provider}), per poi restituire la lista dei clienti e aggiornare lo stato del \lstinline{PagingController};
@@ -843,7 +838,7 @@ Per la definizione dell'aspetto grafico questa schermata implementa \lstinline{S
 \subsubsection*{MeetingNoteObjectItem}
 \label{subsubsec:meeting-note-object-item}
 
-Classe che si occupa di mostrare il cliente nella lista e permette all'utente di selezionarlo. \\
+Classe che si occupa di visualizzare il cliente nella lista e permette all'utente di selezionarlo. \\
 Attraverso il costruttore riceve in input i seguenti parametri:
 \begin{itemize}
     \item \lstinline{isContractor}, \lstinline{bool} che indica se il cliente è un \gls{cliente}\glsoccur appartiene alla categoria dei \emph{contraenti};
@@ -933,7 +928,7 @@ Schermata inerente al terzo \emph{step} per la creazione/modifica di una \emph{M
 \lstinline{WizardPage3} è la classe principale che si occupa di ricevere in input il contenuto testuale dall'utente e di permettergli di confermare la creazione della \emph{Meeting Note}. \\
 Prima della renderizzazione dell'aspetto grafico viene effettuata l'inizializzazione delle variabili di stato, in particolare:
 \begin{itemize}
-    \item \lstinline{textController}, \lstinline{TextEditingController} che si occupa di gestire il contenuto testuale inserito dall'utente, se l'utente sta modificando la \emph{Meeting Note} viene inizializzato con il contenuto testuale della \emph{Meeting Note} passata in input, altrimenti viene inizializzato con una stringa vuota;
+    \item \lstinline{textController}, \lstinline{TextEditingController} che si occupa di gestire il contenuto testuale inserito dall'utente, se l'utente sta modificando la \emph{Meeting Note}, viene inizializzato con il suo contenuto, altrimenti con una stringa vuota;
     \item \lstinline{isButtonEnabled}, \lstinline{bool} che indica se l'utente ha inserito del testo e abilita di conseguenza il pulsante per confermare la creazione della \emph{Meeting Note};
     \item \lstinline{speechToText}, \lstinline{SpeechToText} che si occupa di gestire la dettatura vocale;
     \item \lstinline{listenedWords}, \lstinline{String} che memorizza quanto detto dall'utente.
@@ -941,7 +936,7 @@ Prima della renderizzazione dell'aspetto grafico viene effettuata l'inizializzaz
 Per la definizione dell'aspetto grafico questa schermata implementa \lstinline{WizardScreen} (sezione \ref{subsec:screens-template}) e il suo contenuto è strutturato come segue:
 \begin{itemize}
     \item \lstinline{WizardHeader}, imposta il titolo della schermata (sezione \ref{subsec:screens-template});
-    \item \lstinline{SummaryCard}, classe che si occupa di mostrare un riepilogo dei dati inseriti dall'utente, il suo funzionamento è supportato dalle variabili di stato \lstinline{meetingNoteObject} e \lstinline{meetingNoteDate}, verrà discussa la sua struttura nel dettaglio in seguito;
+    \item \lstinline{SummaryCard}, classe privata, sviluppata con lo scopo di visualizzare un riepilogo dei dati inseriti dall'utente, il suo funzionamento è supportato dalle variabili di stato \lstinline{meetingNoteObject} e \lstinline{meetingNoteDate}, verrà discussa la sua struttura nel dettaglio in seguito;
     \item \lstinline{CustomTextBox}, componente che si occupa di ricevere in input il contenuto testuale inserito dall'utente, che può avvenire in due modalità differenti come specificato nei requisiti \hyperref[RFN-72]{RFN-72} e \hyperref[RFN-73]{RFN-73} (sezione \ref{subsec:text-box});
     \item \lstinline{RecordingButton}, componente che si occupa attivare la dettatura vocale (sezione \ref{subsec:recording-button});
     \item \lstinline{OutlinedButton}\cite{site:outline-button}, pulsante che si occupa di renderizzare alla schermata precedente del \gls{wizard}\glsoccur;
@@ -949,7 +944,7 @@ Per la definizione dell'aspetto grafico questa schermata implementa \lstinline{W
 \end{itemize}
 Il metodo privato \lstinline{onConfirmation} si occupa di mostrare all'utente una finestra di dialogo attraverso la quale si chiede all'utente di confermare la creazione della \emph{Meeting Note} e in caso affermativo viene effettuata la richiesta al \gls{backend}\glsoccur attraverso \lstinline{meetingNoteProvider} (sezione \ref{subsec:meeting-note-provider}), controllandone l'autorizzazione con \lstinline{authProvider} e gestendo i vari esiti della richiesta (i medesimi illustrati nella sezione \ref{subsec:model},  paragrafo \emph{Status Response}). \\
 Per differenziare il caso di creazione a quello di modifica si utilizza lo stesso approccio descritto nella sezione \ref{subsubsec:wizard-page-1}, ovvero si verifica se l'oggetto \lstinline{MeetingNote} passato in input è vuoto, in tal caso l'utente sta creando una nuova \emph{Meeting Note}, altrimenti sta modificando una \emph{Meeting Note} esistente, di conseguenza viene invocato la chiamata opportuna. \\
-Prima della gestione degli esiti possibili della richiesta viene effettuato un controllo sullo stato della connessione ad internet attraverso il \lstinline{NetworkAwareProvider} (RIMANDARE ALLA SEZIONE SPECIFICA), in caso di assenza di connessione viene mostrato un \lstinline{WarningAlert} (sezione \ref{subsec:warning-alert}) con il relativo messaggio di errore. \\
+Prima della gestione degli esiti possibili della richiesta viene effettuato un controllo sullo stato della connessione ad internet attraverso il \lstinline{NetworkAwareProvider} (sezione \ref{subsec:network-handler}), in caso di assenza di connessione viene mostrato un \lstinline{WarningAlert} (sezione \ref{subsec:warning-alert}) con il relativo messaggio di errore. \\
 Infine durante l'elaborazione della richiesta viene mostrato una finestra di dialogo mostrando all'utente che l'operazione è in corso.
 
 \section{Styles}
@@ -961,7 +956,7 @@ Infine durante l'elaborazione della richiesta viene mostrato una finestra di dia
 Senza una ridefinizione del tema, verrà applicato quello di \emph{default}, per questo progetto invece, seguendo il \gls{mockup}\glsoccur è stato personalizzato. \\
 In particolare è sufficiente ridefinire opportunamente la classe \lstinline{ThemeData}\cite{site:theme-data-class}, che contiene tutta la configurazione grafica dell'applicazione. \\
 Per la ridefinizione del tema si sono create delle classi, raccolte in opportuni file, che si occupano di definire i colori, dimensioni e stili grafici utilizzati nell'applicazione. \\
-Si specifica che le variabili utilizzate per la configurazione grafica sono definite come \lstinline{static const}, in quanto devono essere accessibili senza la necessità di istanziare la classe. \\
+Si specifica che le variabili utilizzate per la configurazione sono definite come \lstinline{static const}, in quanto devono essere accessibili senza la necessità di istanziare la classe. \\
 Di seguito verrà illustrato nel dettaglio il contenuto di ogni file.
 
 \subsection{AppColors}
@@ -1008,21 +1003,21 @@ Classe privata implementata per definire la proprietà \lstinline{border}\cite{s
 \subsubsection*{ElevatedButton}
 \label{subsubsec:elevated-button}
 
-Classe pubblica che contiene tutte le impostazione grafiche per i pulsanti di tipo \lstinline{ElevatedButton}\cite{site:elevated-button}, in particolare i colori che deve assumere in base agli stati di attivazione e disattivazione, il \emph{padding}, precisamente \lstinline{normalButtonPadding}, e la \emph{border radius}\cite{site:border-radius}. \\
+Classe pubblica che contiene tutte le impostazione grafiche per i pulsanti di tipo \lstinline{ElevatedButton}\cite{site:elevated-button}, in particolare i colori che deve assumere in base agli stati di attivazione e disattivazione, il \emph{padding}, precisamente \lstinline{normalButtonPadding}, e \emph{border radius}\cite{site:border}. \\
 Questo viene fatto, oltre per lo stile del pulsante base, ma anche per queli di conferma e di annullamento/eliminazione.
 
 \subsubsection*{AlertDialogButton}
 \label{subsubsec:alert-dialog-button}
 
 Classe che definisce lo stile grafico dei pulsanti impiegati nelle finestre di dialogo, in particolare ne vengono configurati solo due, uno per la conferma e uno per l'annullamento. \\
-Entrambi condividono lo stesso \emph{padding}, precisamente \lstinline{smallButtonPadding}, e la \emph{border radius}\cite{site:border-radius}, mentre differiscono per il colore di sfondo, \lstinline{confirmButton} e \lstinline{deleteButton} rispettivamente e per la tipologia (FORSE, DA CONFERMARE).
+Entrambi condividono lo stesso \emph{padding}, precisamente \lstinline{smallButtonPadding}, e \emph{border radius}\cite{site:border}, mentre differiscono per il colore di sfondo, \lstinline{confirmButton} e \lstinline{deleteButton} rispettivamente e per la tipologia.
 
 \subsection{TextStyles}
 \label{subsec:text-styles}
 
 In questo file sono presenti differenti classi il cui scopo è di ridefinire lo stile grafico dei testi utilizzati nell'applicazione. \\
 La classe principale \lstinline{TextStyles} contiene varie stili di testo, in particolare per ciascuno di essi è stato definito: \lstinline{fontSize}\cite{site:font-size} e \lstinline{fontWeight}\cite{site:font-weight}. \\
-Gli stili di testo\cite{site:text-theme} che sono stati ridefiniti sono:
+Gli stili di testo\cite{site:text-theme} in questione sono:
  \lstinline{displayLarge},
  \lstinline{displayMedium},
  \lstinline{displaySmall},
@@ -1052,7 +1047,7 @@ Di seguito, per ciascun file, verranno illustrate nel dettaglio le classi presen
 \label{subsec:biometric-auth}
 
 È presente la classe \lstinline{BiometricAuth} che implementa la libreria \emph{local auth}\cite{site:local-auth} per la gestione dell'autenticazione attraverso il riconoscimento biometrico. \\
-Sono presenti due metodi: \lstinline{isBiometricSupported} che ritorna \lstinline{true} se il dispositivo supporta il riconoscimento biometrico e \lstinline{authenticate} che si occupa di effettuare l'autenticazione attraverso il riconoscimento biometrico, se l'operazione va a buon fine viene restituito \lstinline{true}, altrimenti \lstinline{false} e in quest'ultimo caso è comunque possibile effettuare l'autenticazione attraverso l'inserimento delle credenziali manualmente.
+Sono presenti due metodi: \lstinline{isBiometricSupported} che ritorna \lstinline{true} se il dispositivo supporta il riconoscimento biometrico e \lstinline{authenticate} che si occupa di effettuare l'autenticazione attraverso il riconoscimento biometrico, se l'operazione va a buon fine viene restituito \lstinline{true}, altrimenti \lstinline{false} e in quest'ultimo caso è comunque possibile effettuare l'autenticazione attraverso l'inserimento manuale delle credenziali.
 
 \subsection{Debouncer}
 \label{subsec:debouncer}
@@ -1126,21 +1121,24 @@ In essa sono stati definiti i seguenti metodi:
 \section{main.dart}
 \label{sec:main}
 
-Il file \lstinline{main.dart} è il punto di ingresso dell'applicazione, in particolare è presente la funzione \lstinline{main} che si occupa di inizializzare l'applicazione, fissando l'orientamento dello schermo a \lstinline{portraitUp} e dichiarando il \lstinline{ProviderScope} (sezione \ref{subsec:provider}). \\
+Il file \lstinline{main.dart} è il punto di ingresso dell'applicazione, in particolare è presente la funzione \lstinline{main} che si occupa di inizializzare l'applicazione, fissando l'orientamento dello schermo a \lstinline{portraitUp} e dichiarando il \lstinline{ProviderScope}. \\
 Richiama poi \lstinline{MyApp}, un \emph{ConsumerWidget}, e come prima cosa controlla se è salvato in memoria il \emph{token} di autenticazione attraverso \lstinline{authProvider} (sezione \ref{subsec:authentication-provider}) e decidere se rimandare alla schermata di autenticazione o alla schermata principale dell'applicazione. \\
-Il reindirizzamenton avviene attraverso \lstinline{InitApp}, uno \emph{StatelessWidget}, invocando \lstinline{ScreenUtilInit} (sezione \ref{sec:responsivity}), fissando inoltre il parametro \lstinline{supportedLocales} a \lstinline{[const Locale('it', 'IT')]}, in modo tale che l'applicazione imposti automaticamente alcuni \emph{widget} come il calendario e la data nel formatto corretto e infine viene impostato il tema dell'applicazione (discusso precedentemente).
+Il reindirizzamenton avviene attraverso \lstinline{InitApp}, uno \emph{StatelessWidget}, invocando \lstinline{ScreenUtilInit} (sezione \ref{sec:responsivity}), fissando inoltre il parametro \lstinline{supportedLocales} a \lstinline{const Locale('it', 'IT')}, in modo tale che l'applicazione imposti automaticamente alcuni \emph{widget} come il calendario e la data nel formatto corretto e infine viene impostato il tema dell'applicazione (discusso precedentemente).
 
 \section{Responsività}
 \label{sec:responsivity}
 
-Per la gestione della responsività dell'applicazione è stata utilizzata la libreria \lstinline{flutter_screenutil}\cite{site:flutterscreenutil} che si occupa di adattare le dimensioni degli elementi grafici in base alle dimensioni dello schermo del dispositivo. \\
-In particolare è stato invocato \lstinline{ScreenUtilInit} che si occupa di inizializzare la libreria, fissando il parametro \lstinline{designSize} con le dimensioni del \gls{mockup}\glsoccur, in modo tale che la libreria possa effettuare i calcoli necessari per effettuare i dovuti adattamenti. 
+Per la gestione della responsività dell'applicazione è stata utilizzata la libreria \lstinline{flutter_screenutil}\cite{site:screenutil} che si occupa di adattare le dimensioni degli elementi grafici in base a quelle dello schermo del dispositivo. \\
+In particolare è stato invocato \lstinline{ScreenUtilInit} per inizializzare la libreria, fissando il parametro \lstinline{designSize} con le dimensioni definite nel \gls{mockup}\glsoccur, in modo tale che la libreria possa mantenere le proporzioni degli elementi grafici. 
 
 \section{Usabilità}
 \label{sec:usability}
 
-\section{Icona}
-\label{sec:icon}
+% \section{Icona}
+% \label{sec:icon}
+
+\section{Ottimizzazioni per le performance}
+\label{sec:performance}
 
 
 
