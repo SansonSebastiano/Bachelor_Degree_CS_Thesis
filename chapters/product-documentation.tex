@@ -1,4 +1,67 @@
 \chapter{Documentazione}
 \label{cap:documentazione}
 
-\intro{Breve introduzione al capitolo}\\
+% \intro{In questo capitolo viene descritto }\\
+
+\section{README}
+\label{sec:readme}
+
+Insieme al codice sorgente dell'applicazione è stata consegnata anche una breve documentazione, scritta in lingua inglese, secondo la richiesta dell'azienda, utilizzando il linguaggio di markup \gls{markdown}\glsoccur.\\
+È stato redatto il file \lstinline{README.md}, il cui contenuto è riportato di seguito:
+\begin{itemize}
+    \item \textbf{Abstract}: breve descrizione dell'applicazione e del contesto applicativo;
+    \item \textbf{Getting Started}: istruzioni per poter compilare ed eseguire l'applicazione;
+    \item \textbf{Libraries Used}: elenco delle librerie utilizzate, necessarie per la compilazione;
+    \item \textbf{Project Structure}: descrizione della struttura e architettura del progetto;
+    \item \textbf{Features}: elenco delle funzionalità implementate.
+\end{itemize}
+
+\lstset{
+    language=Java,
+    basicstyle=\ttfamily,
+    keywordstyle=\color{blue}\ttfamily,
+    stringstyle=\color{red}\ttfamily,
+    commentstyle=\color{green!60!black}\ttfamily,
+}
+
+\section{Documentazione del codice}
+\label{sec:documentazione-codice}
+
+Per quanto riguarda il codice sorgente, è stato scritto un commento per ogni classe, metodo e variabile, in modo da rendere più chiara la lettura del codice.\\
+Lo standard seguito è quello proposto nella documentazione ufficiale di \emph{Dart}\cite{site:comment}. \\
+
+In particolare, per i commenti alle classi, è stato utilizzato il seguente formato, spiegando anche il significato e scopo delle variabili di stato:
+\begin{lstlisting}[language=Java, caption={Commento classe}, captionpos=b]
+/// Class encapsulating the authentication's params,
+/// given in input to the authentication request.
+///
+/// [_username], the user's username
+///
+/// [_password], the user's password
+class AuthArgs {
+    final String _username;
+    final String _password;
+    // ...
+}
+\end{lstlisting}
+
+Per i commenti ai metodi, è stato utilizzato il medesimo formato utilizzato per i commenti alle classi, spiegando lo scopo del metodo, i parametri in input e il valore di ritorno:
+\begin{lstlisting}[language=Java, caption={Commento metodo}, captionpos=b]
+/// Authenticate the user with the given authentication [args]
+/// retrieving the token and saving it in the local storage if the authentication request is successful.
+///
+/// Return [AuthResponse] object with:
+///
+/// - [AuthValues] object, containing the token if the request is successful
+///
+/// - [StatusResponse] object, containing the response's status
+Future<AuthResponse> authenticate({required AuthArgs args}) async {
+    log("credentials: ${args.toString()}");
+
+    // ...
+
+    log("auth response: ${result.toString()}");
+
+    // ...
+}
+\end{lstlisting}

@@ -8,13 +8,7 @@
 
 Il primo passo per la progettazione dell'applicazione è stato quello di realizzare un \gls{mockup}\glsoccur con lo scopo di definirne il più dettagliatamente possibile l'interfaccia grafica: il numero di viste necessarie, la loro struttura, i componenti grafici e la loro disposizione, la \emph{palette} dei colori, come l'utente interagirà con l'applicazione e come questa dovrà rispondere a tali interazioni simulabili attraverso un prototipo. Infatti, per l'implementazione della \gls{uig}\glsoccur si è rivelato essere di notevole utilità, in quanto ha reso più semplice e veloce la realizzazione di quest'ultima, avendo compreso a priori come questa dovesse essere strutturata.\\
 Inoltre il \gls{mockup} è stato utilizzato per definire le funzionalità che l'applicazione deve offrire, in modo da avere un'idea più chiara di come queste debbano essere implementate e, infine, come è stato menzionato nella sezione \ref{subsec:variazione-pianificazione}, è stato indispensabile per la fase di \emph{analisi dei requisiti} .\\ 
-Si specifica che nel corso della fase di implementazione sono state apportate delle modifiche all'interfaccia grafica per migliorarne l'usabilità, mantenendo però invariata la struttura generale dell'applicazione e prestando particolare attenzione all'esperienza utente, in modo da rendere l'utilizzo dell'applicazione, in mobilità, il più semplice e intuitivo possibile.\\
-|| FORSE, HA SENSO METTERE IN CONFRONTO IL MOCKUP E REALE UI ? ||\\
-Di seguito dunque vengono presentate le schermate che compongono il mockup dell'applicazione, con una breve descrizione riguardanti le funzionalità che esse offrono e i componenti grafici che la compongono, con lo scopo di rendere più chiara la loro funzione e il loro utilizzo. 
-
-\subsection{Schermata di login}
-\label{subsec:login}
-
+Si specifica che nel corso della fase di implementazione sono state apportate delle modifiche all'interfaccia grafica per migliorarne l'usabilità, mantenendo però invariata la struttura generale dell'applicazione e prestando particolare attenzione all'esperienza utente, in modo da rendere l'utilizzo dell'applicazione, in mobilità, il più semplice e intuitivo possibile.
 
 \section{Architettura}
 \label{sec:architettura}
@@ -38,7 +32,7 @@ Per comprendere al meglio la peculiarità di \emph{Flutter} descritta nella sezi
     \item \textbf{Dart App}: codice sorgente sviluppato dall'utente, contenente i \emph{widget} per l'implementazione della \gls{uig}\glsoccur e la logica dell'applicazione.
 \end{itemize}
 
-Inoltre, essendo un \gls{framework}\glsoccur \gls{open-source}\glsoccur, è possibile utilizzare librerie di terze parti, sviluppate dalla community, per aggiungere funzionalità all'applicazione, come ad esempio librerie per la gestione dello stato dell'applicazione, librerie per la gestione delle richieste HTTP, ecc. \\
+Inoltre, essendo un \gls{framework}\glsoccur \gls{open-source}\glsoccur, è possibile utilizzare librerie di terze parti, sviluppate dalla community, per aggiungere funzionalità all'applicazione, come ad esempio librerie per la gestione dello stato dell'applicazione, librerie per la gestione delle richieste HTTP, ecc.
 
 \begin{figure}[!h] 
     \centering 
@@ -50,7 +44,9 @@ Inoltre, essendo un \gls{framework}\glsoccur \gls{open-source}\glsoccur, è poss
 Lo stato posseduto dai \lstinline{StatefulWidget} (vedi sezione \ref{subsec:flutter}) può essere considerato come \emph{ephemeral} (ing. effimero) o \emph{app state} (ing. stato dell'applicazione). \\
 \emph{Ephemeral} è uno stato che può essere opportunamente confinato all'interno di un singolo \emph{widget} e gestito attraverso la primitiva \lstinline{setState()}, che permette di definire come aggiornarlo.\\
 Mentre \emph{app state} è uno stato che viene condiviso tra più \emph{widget} e per la sua gestione, più complessa utilizzando solamente la primitiva sopra citata, esistono diverse librerie di terze parti, ciascuna con le proprie peculiarità a seconda del caso d'uso.\\
-\indent La problematica di come gestire lo stato dell'applicazione è definito in gergo \emph{state management}\cite{site:flutter-state-mgmt}, e dopo un'attenta analisi delle librerie disponibili, si è scelto di utilizzare \emph{Riverpod}\cite{site:riverpod}.\\
+\indent La problematica di come gestire lo stato dell'applicazione è definito in gergo \emph{state management}\cite{site:flutter-state-mgmt}, e dopo un'attenta analisi delle librerie disponibili, si è scelto di utilizzare \emph{Riverpod}\cite{site:riverpod}.
+
+\newpage
 
 \subsection{Riverpod}
 \label{subsec:riverpod}
@@ -58,11 +54,10 @@ Mentre \emph{app state} è uno stato che viene condiviso tra più \emph{widget} 
 \emph{Riverpod} semplifica notevolmente lo \emph{state management} e si basa su un concetto evoluto da \emph{Provider}\cite{site:provider}, libreria da cui deriva.\\
 A differenza di \lstinline{InheritedWidget}\cite{site:inheritw} che permette di condividere lo stato tra più \emph{widget}, \emph{Riverpod}, che ne è una reimplementazione, fornisce \emph{providers} che sono indipendenti dai \emph{widget}, in quanto una volta dichiarato il \lstinline{ProviderScope} a livello globale, possono essere letti ovunque, a condizione che la classe richiamante venga estesa con \lstinline{ConsumerWidget} o \lstinline{ConsumerStatefulWidget}\cite{site:reading-provider}. \\
 Da questo ne consegue che si evita di aggiornare l'interfaccia grafica, ovvero di richiamare il metodo \lstinline{build()} di un \emph{widget} quando non è necessario, poichè è un'operazione costosa.
-Un \emph{provider} dunque è un oggetto che può essere richiamato da un \emph{widget} con la finalità di leggerne un valore.\\
 Ne esistono di varie tipologie, per le quali si rimanda alla documentazione ufficiale\cite{site:riverpod}, ma quelle utilizzate in questo progetto sono:
 \begin{itemize}
     \item \lstinline{FutureProvider}\cite{site:future-provider}: utilizzato per ricevere un valore generato da un'operazione asincrona (es: richiesta \gls{httpg}\glsoccur);
-    \item \lstinline{StateNotifierProvider}\cite{site:state-provider}: utilizzato per gestire una classe che mantiene uno stato, più complesso di una semplice variabile primitiva, e di esporre dei metodi per monitorarlo o aggiornarlo.
+    \item \lstinline{StateNotifierProvider}\cite{site:state-notifier-provider}: utilizzato per gestire una classe che mantiene uno stato, più complesso di una semplice variabile primitiva, e di esporre dei metodi per monitorarlo o aggiornarlo.
 \end{itemize}
 
 \subsection{Architettura dell'applicazione}
@@ -76,7 +71,7 @@ Nel dettaglio l'applicazione è composta da quattro livelli:
     \item \textbf{Application Layer}: contiene le classi che si occupano di gestire la logica dell'applicazione;
     \item \textbf{Presentation Layer}: contiene le classi che si occupano di gestire l'interfaccia, ovvero di eseguire il rendering dei \emph{widget} e di gestire gli eventi generati dall'utente.
 \end{itemize}
-Questa architettura permette inoltre di avere la possibilità di definire eventualmente più sorgenti da cui recuperare i dati senza dover modificare il codice relativo ai livelli superiori, in quanto è sufficiente modificare il \emph{data layer}\cite{site:app-architecture}.\\
+Questa architettura permette inoltre di avere la possibilità di definire eventualmente più sorgenti da cui recuperare i dati senza dover modificare il codice relativo ai livelli superiori, in quanto è sufficiente modificare il \emph{data layer}\cite{site:app-architecture}.
 
 \section{Struttura del progetto}
 \label{sec:struttura-progetto}
@@ -141,13 +136,13 @@ Di seguito viene descritto l'ambiente di sviluppo e data una panoramica delle te
 \label{subsec:figma}
 
 \emph{Figma}\cite{site:figma} è un software di editor di grafica vettoriale che permette di progettare interfacce grafiche per applicazioni \emph{web} e \emph{mobile}.\\
-È stato utilizzato per la realizzazione del \gls{mockup}\glsoccur dell'applicazione, in quanto vi è la possibilità di creare un prototipo interattivo, che simula l'interazione dell'utente con l'applicazione, e di condividerlo con il team di sviluppo, in modo da avere un'idea più chiara di come l'applicazione debba essere strutturata e di come debba funzionare.\\
+È stato utilizzato per la realizzazione del \gls{mockup}\glsoccur dell'applicazione, in quanto vi è la possibilità di creare un prototipo interattivo, che simula l'interazione dell'utente con l'applicazione, e di condividerlo con il team di sviluppo, in modo da avere un'idea più chiara di come l'applicazione debba essere strutturata e di come debba funzionare.
 
 \subsection*{Git}
 \label{subsec:git}
 
 \emph{Git}\cite{site:git} è un sistema di controllo di versione, finalizzato al tracciamento del codice sorgente e delle sue modifiche, inoltre ne permette la condivisione e dunque la collaborazione tra più sviluppatori.\\
-Inoltre è possibile, eventualmente, in caso di errori, di poter ripristinare una versione precedente del codice sorgente.\\
+Inoltre è possibile, in caso di errori, poter ripristinare una versione precedente del codice sorgente.
 
 \subsection*{GitHub}
 \label{subsec:github}
@@ -156,7 +151,7 @@ Inoltre è possibile, eventualmente, in caso di errori, di poter ripristinare un
 \emph{GitHub}\cite{site:github} è un servizio di hosting per il codice sorgente di progetti software che utilizza \emph{Git}.\\
 Per questo progetto è stato utilizzato per la condivisione e gestione del codice sorgente attraverso una repository dedicata, fornita dall'azienda.\\
 Per la pianificazione della fase di implementazione è stato utilizzato il sistema di \gls{issuetracking}\glsoccur integrato, creando delle \gls{milestone}\glsoccur per ogni classe di obbiettivi da raggiungere in base alla loro priorità (vedi sezione \ref{sec:obiettivi}).\\
-In ciascuna \gls{milestone}\glsoccur sono state create delle \emph{issue}, in base ai requisiti o ad un insieme di questi, necessarie per il raggiungimento di ciascun obbiettivo, garantendo così una maggiore organizzazione e tracciabilità del lavoro svolto e dei progressi fatti.\\
+In ciascuna \gls{milestone}\glsoccur sono state create delle \emph{issue}, in base ai requisiti o ad un insieme di questi, necessarie per il raggiungimento di ciascun obbiettivo, garantendo così una maggiore organizzazione e tracciabilità del lavoro svolto e dei progressi fatti.
 
 \subsection*{VSCode}
 \label{subsec:vscode}
@@ -182,7 +177,7 @@ Il concetto centrale di \emph{Flutter} è quello dei \emph{widget}, oggetti che 
 \label{subsec:staruml}
 
 \emph{StarUML}\cite{site:staruml} è uno strumento di modellazione per sistemi software che sono sviluppati secondo il paradigma \emph{orientato agli oggetti}, attraverso la creazione di diagrammi \gls{umlg}\glsoccur.\\
-È stato utilizzato per la realizzazione dei casi d'uso (vedi sezione \ref{sec:usecase}) e dei diagrammi delle classi.\\
+È stato utilizzato per la realizzazione dei casi d'uso (vedi sezione \ref{sec:usecase}) e dei diagrammi delle classi.
 
 \subsection*{Emulatori Android e iOS}
 \label{subsec:emulatori}
