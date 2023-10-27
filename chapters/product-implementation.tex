@@ -60,16 +60,29 @@ Lo scopo di questa classe è quella di essere utilizzata per mostrare un indicat
 
 Personalizzazione di \lstinline{IconAlertDialog} dove si richiede, nel costruttore, di passare un'icona e il suo colore, un titolo, il contenuto del testo descrittivo, l'azione che deve compiere il bottone di conferma alla sua pressione e il suo stile grafico (sezione \ref{subsec:button-styles}), mentre il pulsante di annullamento è stato fissato.\\
 Lo scopo di questa classe è quella di essere utilizzata per mostrare un messaggio di avvertimento all'utente riguardante una scelta e la sua conferma.
+
+\begin{figure}[!h] 
+    \centering 
+    \includegraphics[width=0.3\columnwidth]{screenshot/14-del_dialog} 
+    \includegraphics[width=0.3\columnwidth]{screenshot/23-wc3_confirm_dialog}
+    \caption{Esempi di \lstinline{WarningAlertDialog}}
+    \label{fig:warning-alert-dialog}
+\end{figure}
+
+\newpage
+
 \subsubsection*{ResponseDialog}
 \label{subsubsec:response-dialog}
 
-Personalizzazione di \lstinline{IconAlertDialog} dove si richiede, nel costruttore, di passare un'icona, il suo colore e un titolo.\\
+Personalizzazione di \lstinline{IconAlertDialog} dove si richiede, nel costruttore, di passare un'icona, il suo colore e un titolo (figura \ref{fig:response-dialog}).\\
 Lo scopo di questa classe è quella di essere utilizzata per mostrare un messaggio di risposta all'utente riguardante l'esito di un'operazione.\\
 
-\subsubsection*{NetworkAlertDialog}
-\label{subsubsec:network-alert-dialog}
-
-La sua implementazione è simile a \lstinline{WarningAlertDialog}, con la differenza che non è presente il pulsante di annullamento, in quanto il suo scopo è quello di notificare l'utente la mancanza di connessione ad internet e di cliccare il pulsante di conferma per chiudere l'\emph{alert dialog}.
+\begin{figure}[!h] 
+    \centering 
+    \includegraphics[width=0.3\columnwidth]{screenshot/24-wc3_success_dialog} 
+    \caption{Esempio di \lstinline{ResponseDialog}}
+    \label{fig:response-dialog}
+\end{figure}
 
 \subsection{App Bars}
 \label{subsec:app-bars}
@@ -80,19 +93,19 @@ Nel file denominato \lstinline{app_bars.dart} sono stati implementati dei \lstin
 \label{subsubsec:custom-app-bar}
 
 Classe che implementa \lstinline{AppBar}\cite{site:app-bar} definendone il colore di background, applicato dal tema dell'applicazione (sezione \ref{subsec:app-theme}) e il titolo, in cui si tratta dell'applicazione di un'immagine vettoriale contenuta nella cartella \lstinline{assets} la quale rappresenta il logo dell'azienda.\\
-Infine è possibile scegliere se aggiungere o meno un'icona, che rappresenta il pulsante di accesso alla schermata dell'account utente.\\
+Infine è possibile scegliere se aggiungere o meno un'icona, che rappresenta il pulsante di accesso alla schermata dell'account utente (figure \ref{fig:home-screen} e \ref{fig:account-screen}).\\
 La motivazione di quest'ultima scelta è a causa del fatto che questa personalizzazione dell'\lstinline{AppBar} viene utilizzata per la quasi totalità delle viste, anche in quella dell'account utente, dove non si rende necessaria l'icona menzionata precedentemente poichè ci si trova già in tale vista.
 
 \subsubsection*{LoginAppBar}
 \label{subsubsec:login-app-bar}
 
-Classe che implementa \lstinline{AppBar}, personalizzandolo appositamente per la schermata di \emph{login} (sezione \ref{subsec:login-screen}), che è simile a quella precedente, differenziandosi per la non presenza dell'icona che funge da pulsante di accesso alla schermata dell'account utente.
+Classe che implementa \lstinline{AppBar}, personalizzandolo appositamente per la schermata di \emph{login} (sezione \ref{subsec:login-screen}), che è simile a quella precedente, differenziandosi per la non presenza dell'icona che funge da pulsante di accesso alla schermata dell'account utente e per l'allineamento centrale del titolo (figura \ref{fig:login-screen}).
 
 \subsection{Biomteric Switch}
 \label{subsec:biometric-switch}
 
 Nel file denominato \lstinline{biometric_switch.dart} è stato implementato un \lstinline{StatefulWidget} per costruire un componente in grado di permettere all'utente di abilitare il riconoscimento biometrico. \\
-Questo \emph{widget} è composto da un \lstinline{Switch}\cite{site:switch} e un \lstinline{Text}\cite{site:text} che rappresenta il testo descrittivo.\\
+Questo \emph{widget} è composto da un \lstinline{Switch}\cite{site:switch} e un \lstinline{Text}\cite{site:text} che rappresenta il testo descrittivo (figura \ref{fig:account-screen}).\\
 Inoltre ne viene definito l'aspetto e il comportamento attraverso la definizione di un \lstinline{State} che estende \lstinline{StatefulWidget} implementando il metodo \lstinline{build} per la costruzione del \emph{widget} e il metodo \lstinline{onChanged} per la gestione dell'evento di cambiamento di stato dello \lstinline{Switch}.\\
 Stato che è rappresentato da due variabili di tipo \lstinline{bool}, una che si occupa di gestire l'abilitazione del componente e l'altro che indica se nel dispositivo in cui viene eseguita l'applicazione è supportato il riconoscimento biometrico.\\
 La prima tra queste, ad ogni suo cambiamento di stato, viene salvata in locale attraverso una libreria di terze parti (di cui verrà discussa nella sezione \ref{subsec:shared-preferences}) per mantenere in memoria la preferenza dell'utente. \\
@@ -108,28 +121,35 @@ Nel file denominato \lstinline{date_picker.dart} sono stati implementati dei \em
 
 Questo componente estende \lstinline{StatelessWidget} e si occupa di costruire un bottone che visualizza la data, o un intervallo di date, selezionata/e dall'utente.\\
 Ha visibilità privata, poichè è stato creato per essere utilizzato esclusivamente all'interno dei \emph{widget} contenuti nello stesso file.\\
-È composto da un \lstinline{TextButton}\cite{site:text-button}, in cui viene definito l'aspetto grafico, e un \lstinline{Text} per visualizzare la data o un intervallo di date, passato attraverso il costruttore, insieme anche al comportamento del pulsante, definito attraverso il metodo \lstinline{onPressed}\cite{site:on-pressed}.
+È composto da un \lstinline{TextButton}\cite{site:text-button}, in cui viene definito l'aspetto grafico, e un \lstinline{Text} per visualizzare la data o un intervallo di date (figura \ref{fig:filter-panel}), passato attraverso il costruttore, insieme anche al comportamento del pulsante, definito attraverso il metodo \lstinline{onPressed}\cite{site:on-pressed}.
 
 \subsubsection*{CustomDateRangePicker}
 \label{subsubsec:custom-date-range-picker}
 
 Questo componente estende \lstinline{StatefulWidget} e si occupa di costruire un \emph{widget} che permette all'utente di selezionare un intervallo di date.\\
 È composto da \lstinline{DateButton}, al quale il primo parametro che viene passato è l'intervallo di date da visualizzare, di default o selezionato dall'utente, precedentemente formattato da un metodo privato \lstinline{dateFormatter}: riceve in input la data iniziale e finale dell'intervallo (nel caso in cui si intenda selezionare un singolo giorno è sufficiente impostarne con esso entrambi i cambi) e restituisce una stringa che rappresenta l'intervallo di date formattato opportunamente.\\
-Mentre come secondo parametro viene passato un altro metodo privato \lstinline{show} che si occupa di visualizzare il calendario e di consentire all'utente di seleziona un intervallo. \\
+Mentre come secondo parametro viene passato un altro metodo privato \lstinline{show} che si occupa di visualizzare il calendario e di consentire all'utente di seleziona un intervallo (figura \ref{fig:date-range-picker}). \\
 Inoltre è presente un metodo pubblico \lstinline{onDateRangeSelected} che si occupa di gestire l'evento di selezione dell'intervallo di date, aggiornando lo stato del \emph{widget}. \\
-Lo scopo di questo \emph{widget} è quello di fornire la possibilità all'utente di selezionare una singola data o intervallo di date per filtrare la lista di \emph{Meeting Note} ( requisiti \hyperref[RFN-18]{RFN-18} e \hyperref[RFN-19]{RFN-19}) e viene impiegato solamente all'interno del \lstinline{FilterPanel} (sezione \ref{subsec:filter-panel}).
+Lo scopo di questo \emph{widget} è quello di fornire la possibilità all'utente di selezionare una singola data o intervallo di date per filtrare la lista di \emph{Meeting Note} e viene impiegato solamente all'interno del \lstinline{FilterPanel} (sezione \ref{subsec:filter-panel}).
+
+\begin{figure}[!h] 
+    \centering 
+    \includegraphics[width=0.3\columnwidth]{screenshot/11-date_range_picker} 
+    \caption{Selettore di intervallo di date}
+    \label{fig:date-range-picker}
+\end{figure}
 
 \subsubsection*{CustomDatePicker}
 \label{subsubsec:custom-date-picker}
 
-L'implementazione di questo componente è del tutto analoga a quella di \lstinline{CustomDateRangePicker}, con la differenza che permette all'utente di selezionare una singola data.\\
-Mentre il suo scopo è quello di fornire all'utente, nel momento di revisione dei dati estratti dall'elaborazione del testo da parte di un algoritmo di \emph{intelligenza artificiale}, di modificare la data di una \emph{Meeting Note} da creare ( requisito \hyperref[RFN-53]{RFN-53}).
+L'implementazione di questo componente è del tutto analoga a quella di \lstinline{CustomDateRangePicker}, con la differenza che permette all'utente di selezionare una singola data (figura \ref{fig:smart-popup}).\\
+Mentre il suo scopo è quello di fornire all'utente, nel momento di revisione dei dati estratti dall'elaborazione del testo da parte di un algoritmo di \emph{intelligenza artificiale}, di modificare la data di una \emph{Meeting Note} da creare.
 
 \subsection{Filter Panel}
 \label{subsec:filter-panel}
 
 Nel file denominato \lstinline{filter_panel.dart} è stato implementato un \lstinline{ConsumerStatefulWidget}\cite{site:reading-provider}, il cui comportamento è il medesimo di uno \lstinline{StatefulWidget}, con la differenza che è in grado di leggere i dati forniti da un \emph{Provider} (sezione \ref{subsec:riverpod}).
-Tale componente è composto da quattro \emph{widget}, ciascuno dei quali consente di filtrare la lista di \emph{Meeting Note}  secondo i criteri definiti in fase di analisi dei requisiti ( requisiti dal \hyperref[RFN-15]{RFN-15} al \hyperref[RFN-19]{RFN-19} e dal \hyperref[RFN-31]{RFN-31} al \hyperref[RFN-33]{RFN-33}), che verranno elencati di seguito:
+Tale componente è composto da quattro \emph{widget}, ciascuno dei quali consente di filtrare la lista di \emph{Meeting Note}  secondo i criteri definiti in fase di analisi dei requisiti, che verranno elencati di seguito (figura \ref{fig:filter-panel}):
 \begin{itemize}
     \item \lstinline{CustomObjectPicker} (la cui implementazione è discussa nella sezione \ref{subsec:object-picker});
     \item \lstinline{CustomAutocomplete} (la cui implementazione è discussa nella sezione \ref{subsubsec:custom-autocomplete});
@@ -139,16 +159,23 @@ Tale componente è composto da quattro \emph{widget}, ciascuno dei quali consent
 Come da prassi, ne viene definito l'aspetto grafico e il comportamento che deve avere.\\
 Per quanto riguarda quest'ultimo, che sostanzialmente consiste nel memorizzare e passare alla schermata dedicata quali filtri sono stati attivati dall'utente, tale operazione viene effettuata attraverso uno \lstinline{StateNotifierProvider} (sezione \ref{subsec:riverpod}) e una classe \lstinline{FilteringOptions} (sezione \ref{subsec:filtering}).
 
+\begin{figure}[!h] 
+    \centering 
+    \includegraphics[width=0.3\columnwidth]{screenshot/8-filter_panel} 
+    \caption{Popup del \lstinline{FilterPanel}}
+    \label{fig:filter-panel}
+\end{figure}
+
 \subsection{Login Form}
 \label{subsec:login-form}
 
 Nel file denominato \lstinline{login_form.dart} è stato implementato un \lstinline{ConsumerStatefulWidget} (discusso nella sezione \ref{subsec:riverpod}).\\
 Lo scopo di questo componente è quello di consentire all'utente di autenticarsi all'applicazione, per farlo ci sono due modi: inserendo manualmente le credenziali oppure utilizzando il riconoscimento biometrico.\\
 Per soddisfare il primo caso, il componente è composto da due \lstinline{TextFormField}\cite{site:text-form-field} e un \lstinline{ElevatedButton}\cite{site:elevated-button} di cui vengono definiti l'aspetto grafico.\\
-Il \lstinline{TextFormField} riguardante l'inserimento della password presenta anche un pulsante per mostrarla in chiaro o nasconderla.\\
+Il \lstinline{TextFormField} riguardante l'inserimento della password presenta anche un pulsante per mostrarla in chiaro o nasconderla (figura \ref{fig:login-screen}).\\
 Il pulsante di conferma è disabilitato fintanto che non vengono inserite entrambe le credenziali.\\
-Successivamente attraverso l'ausilio di \lstinline{authProvider} (sezione \ref{subsec:authentication-provider}) viene effettuata la richiesta di autenticazione, che in caso di successo porta alla schermata principale dell'applicazione, salvando il \emph{token} di autenticazione ricevuto (sezione \ref{subsec:shared-preferences}), altrimenti viene mostrato un messaggio di errore (\hyperref[RFN-4]{RFN-4}).\\ 
-Mentre nel secondo caso (\hyperref[RFN-3]{RFN-3}), si effettua un controllo per verificare se l'utente in precedenza aveva abilitato tale funzionalità, in caso affermativo viene eseguito il riconoscimento biometrico (sezione \ref{subsec:biometric-auth}), altrimenti si prosegue con l'inserimento manuale delle credenziali.\\
+Successivamente attraverso l'ausilio di \lstinline{authProvider} (sezione \ref{subsec:authentication-provider}) viene effettuata la richiesta di autenticazione, che in caso di successo porta alla schermata principale dell'applicazione, salvando il \emph{token} di autenticazione ricevuto (sezione \ref{subsec:shared-preferences}), altrimenti viene mostrato un messaggio di errore.\\ 
+Mentre nel secondo caso, si effettua un controllo per verificare se l'utente in precedenza aveva abilitato tale funzionalità, in caso affermativo viene eseguito il riconoscimento biometrico (sezione \ref{subsec:biometric-auth}), altrimenti si prosegue con l'inserimento manuale delle credenziali (figura \ref{fig:login-screen}).\\
 L'operazione e l'esito dell'autenticazione attraverso il riconoscimento biometrico, che avviene sempre attraverso \lstinline{authProvider}, è simile a quello descritto per l'autenticazione manuale, con la differenza che quest'ultimo metodo preleva le credenziali dalla memoria locale, precedentemente salvate dall'operazione di abilitazione del riconoscimento biometrico da parte dell'utente (sezione \ref{subsec:biometric-switch}). \\
 Inoltre è presente una variabile di stato \lstinline{isVerification} che se impostata a \lstinline{true} indica che questa \emph{form} viene impiegata come verifica delle credenziali per confermare l'abilitazione del riconscimento biometrico (sezione \ref{subsec:account-screen}).
 
@@ -168,24 +195,37 @@ Inoltre è stato aggiunto un \lstinline{Divider}\cite{site:divider} che funge da
 \subsubsection*{MeetingNoteItem}
 \label{subsubsec:meeting-note-item}
 
-\emph{Widget} che effettivamente costruisce l'\emph{item} della lista di \emph{Meeting Note} ( requisiti da \hyperref[RFN-8]{RFN-8} a \hyperref[RFN-11]{RFN-11}), composto da un \lstinline{ListTile}\cite{site:list-tile}, in cui nella proprietà \lstinline{title} viene posto \lstinline{MeetingNoteTitle} e in \lstinline{subtitle} il contenuto della \emph{Meeting Note} stroncato ad un massimo di due righe di testo.\\
+\emph{Widget} che effettivamente costruisce l'\emph{item} della lista di \emph{Meeting Note}, composto da un \lstinline{ListTile}\cite{site:list-tile}, in cui nella proprietà \lstinline{title} viene posto \lstinline{MeetingNoteTitle} e in \lstinline{subtitle} il contenuto della \emph{Meeting Note} stroncato ad un massimo di due righe di testo (figura \ref{fig:home-screen}).\\
 All'evento \lstinline{onTap} del componente, viene mostrato a schermo una modale che appare dal basso contenente i dettagli della \emph{Meeting Note}.\\
 Si vuole precisare che contrariamente a quanto pensato durante la realizzazione del \gls{mockup}\glsoccur, si è deciso di apportare una modifica per quanto riguarda la visualizzazione dei dettagli della \emph{Meeting Note}, in quanto essendo l'applicazione usata da utenti in mobilità, è più ergonomico mostrare i dettagli in una modale che appare dal basso, piuttosto che dall'espansione di un \emph{item}.
 
 \subsubsection*{MeetingNoteCard}
 \label{subsubsec:meeting-note-card}
 
-Componente contenuto nella modale menzionata precedentemente, il quale si occupa di disporre tutti gli elementi di cui è composta una \emph{Meeting Note} ( requisiti dal \hyperref[RFN-35]{RFN-35} al \hyperref[RFN-42]{RFN-42}).\\
+Componente contenuto nella modale menzionata precedentemente, il quale si occupa di disporre tutti gli elementi di cui è composta una \emph{Meeting Note} (figura \ref{fig:meeting-note-card}).\\
 È composto da un \lstinline{MeetingNoteTitle}, il contenuto della \emph{Meeting Note}, l'autore e i due pulsanti che permettono di eliminarla e/o modificarla, il comportamento della prima azione viene passata per parametro, mentre per la seconda viene definita direttamente in quanto è stato sufficiente rimandare alla schermata del \emph{wizard} per poi effettuare le modifiche (da sezione \ref{subsec:wizard-screen-1} a \ref{subsec:wizard-screen-3}).
+
+\begin{figure}[!h] 
+    \centering 
+    \includegraphics[width=0.3\columnwidth]{screenshot/13-meeting_note} 
+    \caption{\emph{Meeting Note Card}}
+    \label{fig:meeting-note-card}
+\end{figure}
 
 \subsection{Object Picker}
 \label{subsec:object-picker}
 
-Nel file denominato \lstinline{object_picker.dart} è stato implementato \lstinline{CustomObjectPicker}, classe che estende un \lstinline{StatefulWidget} per costruire un componente in grado di permettere all'utente di selezionare la categoria dei clienti ( requisiti \hyperref[RFN-16]{RFN-16}, \hyperref[RFN-66]{RFN-66}). \\
+Nel file denominato \lstinline{object_picker.dart} è stato implementato \lstinline{CustomObjectPicker}, classe che estende un \lstinline{StatefulWidget} per costruire un componente in grado di permettere all'utente di selezionare la categoria dei clienti. \\
 Viene utilizzato all'interno del \emph{Filter Panel} (sezione \ref{subsec:filter-panel}), dal \emph{wizard} di creazione/modifica di una \emph{Meeting Note} (sezione \ref{subsec:wizard-screen-1}) e nella schermata di revisione per la creazione automatica di una \emph{Meeting Note} (sezione \ref{subsec:smart-creation-screen}).\\
-Anche per questo componente si è pensato di rivisitarlo rispetto al \gls{mockup}\glsoccur, in quanto si è deciso di utilizzare un \lstinline{CupertinoPicker}\cite{site:cupertino-picker}, che visualizza le categorie dei clienti selezionabili, passate in input attraverso il costruttore, al posto di un \lstinline{DropdownMenu}\cite{site:dropdown-menu}, questo per favorire l'utilizzo dell'applicazione da parte di utenti in mobilità, poichè il primo appare dal basso e dunque diventa più facilmente raggiungibile. \\
+Anche per questo componente si è pensato di rivisitarlo rispetto al \gls{mockup}\glsoccur, in quanto si è deciso di utilizzare un \lstinline{CupertinoPicker}\cite{site:cupertino-picker}, che visualizza le categorie dei clienti selezionabili, passate in input attraverso il costruttore, al posto di un \lstinline{DropdownMenu}\cite{site:dropdown-menu}, questo per favorire l'utilizzo dell'applicazione da parte di utenti in mobilità, poichè il primo appare dal basso e dunque diventa più facilmente raggiungibile (figura \ref{fig:object-picker}). \\
 Inoltre sono stati definiti dei metodi che permettono di ottenere la categoria selezionata attraverso l'indice e di aggiornare lo stato del \emph{widget} al cambiamento di quest'ultima.
 
+\begin{figure}[!h] 
+    \centering 
+    \includegraphics[width=0.3\columnwidth]{screenshot/9-object_picker}
+    \caption{Selettore di categoria dei clienti}
+    \label{fig:object-picker}
+\end{figure}
 
 \subsection{Recording Button}
 \label{subsec:recording-button}
@@ -193,6 +233,17 @@ Inoltre sono stati definiti dei metodi che permettono di ottenere la categoria s
 Nel file denominato \lstinline{recording_button.dart} è stato implementato un \lstinline{StatelessWidget} per costruire un componente in grado di permettere all'utente di attivare la dettatura vocale ( requisito \hyperref[RFN-73]{RFN-73}).\\
 È composto da un \lstinline{Text}\cite{site:text} che esplicita all'utente lo scopo del pulsante, da un \lstinline{IconButton}\cite{site:icon-button} e da un \lstinline{AvatarGlow}\cite{site:avatar-glow} per rappresentare l'animazione che viene visualizzata quando la dettatura vocale è attiva.\\
 L'attivazione avviene in base al valore della variabile \lstinline{bool} \lstinline{isRecording} che viene passata attraverso il costruttore, come anche il comportamento del pulsante, definito attraverso il metodo \lstinline{onPressed}\cite{site:on-pressed}.
+
+\begin{figure}[!h] 
+    \centering 
+    \includegraphics[width=0.3\columnwidth]{screenshot/20-wc3}
+    \hfill
+    \includegraphics[width=0.3\columnwidth]{screenshot/21-wc3_record} 
+    \caption{Pulsante rispettivamente nello stato di non attivazione e attivazione della dettatura vocale}
+    \label{fig:record-button}
+\end{figure}
+
+\newpage
 
 \subsection{Screens Template}
 \label{subsec:screens-template}
@@ -211,7 +262,7 @@ Per abilitare tali pulsanti è sufficiente passare, a seconda delle necessità, 
 \subsubsection*{WizardScreen}
 \label{subsubsec:wizard-screen}
 
-Classe che implementa \lstinline{BaseScreen} e che si occupa di fornire un \emph{template} per le schermate che compongono il \gls{wizard}\glsoccur di creazione/modifica di una \emph{Meeting Note}.\\
+Classe che implementa \lstinline{BaseScreen} e che si occupa di fornire un \emph{template} per le schermate che compongono il \gls{wizard}\glsoccur di creazione/modifica di una \emph{Meeting Note} (figure \ref{fig:w1}, \ref{fig:w2} e \ref{fig:w3}).\\
 Imposta a \lstinline{true} la proprietà \lstinline{enableIcon} per mantenere il pulsante di accesso alla schermata dell'account utente.\\
 Attraverso i parametri del costruttore è obbligatorio passare il \lstinline{body}, mentre sono opzionali \lstinline{forwardButton} e \lstinline{backButton}.
 
@@ -219,14 +270,27 @@ Attraverso i parametri del costruttore è obbligatorio passare il \lstinline{bod
 \label{subsubsec:wizard-header}
 
 Classe che definisce l'aspetto grafico dell'\emph{header} del \gls{wizard}\glsoccur di creazione/modifica di una \emph{Meeting Note}.\\
-É composto da un \lstinline{Text}\cite{site:text} che rappresenta il titolo della schermata, da un \lstinline{IconButton}\cite{site:icon-button} e da un \emph{widget} privato \lstinline{WizardStepper} (sezione \ref{subsubsec:wizard-stepper}) che aiuta all'utente a capire in quale punto del processo di creazione/modifica si trova.\\
-Il pulsante (\lstinline{IconButton}) menzionato ha lo scopo di mostrare un \lstinline{WarningAlertDialog} (sezione \ref{subsubsec:warning-alert-dialog}) chiedendo all'utente se vuole abbandonare il \gls{wizard}\glsoccur, in caso affermativo viene mostrata la schermata principale dell'applicazione, altrimenti viene chiusa la modale. 
+É composto da un \lstinline{Text}\cite{site:text} che rappresenta il titolo della schermata e da un \lstinline{IconButton}\cite{site:icon-button}, ha lo scopo di mostrare un \lstinline{WarningAlertDialog} (sezione \ref{subsubsec:warning-alert-dialog}) chiedendo all'utente se vuole abbandonare il \gls{wizard}\glsoccur, in caso affermativo viene mostrata la schermata principale dell'applicazione, altrimenti viene chiusa la modale (figura \ref{fig:wizard-header}). 
+
+\begin{figure}[!h] 
+    \centering 
+    \includegraphics[width=0.3\columnwidth]{screenshot/42-wizard_header} 
+    \caption{Applicazione di \emph{WizardHeader}}
+    \label{fig:wizard-header}
+\end{figure}
 
 \subsubsection*{WizardStepper}
 \label{subsubsec:wizard-stepper}
 
 Classe che è composta da tre \lstinline{Step} (sezione \ref{subsubsec:step}), il numero massimo di passi pensato per il \gls{wizard}\glsoccur, inoltre riceve in input il numero di passo corrente in modo da evidenziare a che punto l'utente si trova nella progressione.
-Si specifica che \lstinline{WizardStepper} è privato, è stato infatti creato con lo scopo di essere utilizzato esclusivamente all'interno di questo \emph{widget}.\\
+Si specifica che \lstinline{WizardStepper} è privato, è stato infatti creato con lo scopo di essere utilizzato esclusivamente all'interno di questo \emph{widget} (figura \ref{fig:wizard-stepper}).\\
+
+\begin{figure}[!h] 
+    \centering 
+    \includegraphics[width=0.3\columnwidth]{screenshot/41-wizard_stepper} 
+    \caption{Applicazione di \emph{WizardStepper}}
+    \label{fig:wizard-stepper}
+\end{figure}
 
 \subsubsection*{Step}
 \label{subsubsec:step}
@@ -237,8 +301,8 @@ Sostanzialmente consiste in un \lstinline{Divider}\cite{site:divider} che rappre
 \subsection{Scroll Date Picker}
 \label{subsec:scroll-date-picker}
 
-Nel file denominato \lstinline{scroll_date_picker.dart} è stata definita la classe \lstinline{CustomScrollDatePicker} che estende \lstinline{StatefulWidget} per costruire un componente in grado di permettere all'utente di selezionare una data, nel momento di creazione/modifica di una \emph{Meeting Note}.\\
-È composto da un \lstinline{Text}\cite{site:text} che visualizza la data selezionata, un \lstinline{ScrollDatePicker}\cite{site:scroll-date-picker} e un pulsante che reimposta la data selezionata a quella corrente.\\
+Nel file denominato \lstinline{scroll_date_picker.dart} è stata definita la classe \lstinline{CustomScrollDatePicker} che estende \lstinline{StatefulWidget} per costruire un componente in grado di permettere all'utente di selezionare una data, nel momento di creazione/modifica di una \emph{Meeting Note} (figura \ref{fig:w2}).\\
+È composto da un \lstinline{Text}\cite{site:text} che visualizza la data selezionata, un \lstinline{ScrollDatePicker}\cite{site:scroll-date-picker} e un pulsante che reimposta la data selezionata a quella corrente (figura \ref{fig:w2}).\\
 Espone dei metodi che permettono di ottenere la data selezionata con \lstinline{selectedDate}, e di aggiornare lo stato del \emph{widget} al cambiamento di quest'ultima con \lstinline{onDateChanged}.
 
 \subsection{Search Bar}
@@ -249,15 +313,22 @@ Nel file denominato \lstinline{search_bar.dart} sono stati implementati dei \emp
 \subsubsection*{CustomSearchBar}
 \label{subsubsec:custom-search-bar}
 
-Classe che implementa una \lstinline{SearchBar}\cite{site:search-bar} in cui viene definito pressochè solo l'aspetto grafico in quanto attraverso il costruttore è obbligatorio passare un \lstinline{TextEditingController}\cite{site:text-editing-controller}, che si occupa di gestire il testo inserito dall'utente, e un metodo \lstinline{onChanged} che si occupa di gestire l'evento di cambiamento del testo inserito dall'utente, mentre è opzionale passare il colore del \emph{background} del componente. \\
-Lo scopo è quello di fornire all'utente la possibilità di effettuare una ricerca all'interno della lista dei clienti.
+Classe che implementa una \lstinline{SearchBar}\cite{site:search-bar} in cui viene definito pressochè solo l'aspetto grafico in quanto attraverso il costruttore è obbligatorio passare un \lstinline{TextEditingController}\cite{site:text-editing-controller}, che si occupa di gestire il testo inserito dall'utente, e un metodo \lstinline{onChanged} che gestisce l'evento di cambiamento del testo inserito dall'utente, mentre è opzionale passare il colore del \emph{background} del componente. \\
+Lo scopo è quello di fornire all'utente la possibilità di effettuare una ricerca all'interno della lista dei clienti (figura \ref{fig:w1}).
 
 \subsubsection*{CustomAutocomplete}
 \label{subsubsec:custom-autocomplete}
 
 Classe che implementa \lstinline{Autocomplete}\cite{site:autocomplete}, consente di fornire dei suggerimenti per l'autocompletamento nella ricerca, in cui viene anche qui definito solo l'aspetto grafico. \\
 Attraverso il costruttore si rende necessario passare dei metodi fondamentali: \lstinline{optionsBuilder} che fornisce i suggerimenti per l'autocompletamento, \lstinline{displayStringForOption} che definisce quale attributo dell'oggetto suggerito visualizzare e \lstinline{onSelected} che si occupa di gestire l'evento di selezione di un suggerimento.\\
-Viene impiegato nel \emph{widget} \lstinline{FilterPanel} (sezione \ref{subsec:filter-panel}) per fornire all'utente la possibilità di ricercare un cliente.
+Viene impiegato nel \emph{widget} \lstinline{FilterPanel} (sezione \ref{subsec:filter-panel}) per fornire all'utente la possibilità di ricercare un cliente e nella scherma di conferma per la creazione automatica di una \emph{Meeting Note} (sezione \ref{subsec:smart-creation-screen})
+
+\begin{figure}[!h] 
+    \centering 
+    \includegraphics[width=0.3\columnwidth]{screenshot/10-autcomplete} 
+    \caption{Applicazione di \emph{Autocomplete}}
+    \label{fig:autocomplete}
+\end{figure}
 
 \subsection{Text Box}
 \label{subsec:text-box}
@@ -266,19 +337,44 @@ Nel file denominato \lstinline{text_box.dart} è stato implementato un \lstinlin
 È composto da semplicemente un \lstinline{TextField}\cite{site:text-field} in cui viene personalizzato nell'aspetto grafico, è richiesto dal costruttore il passagio dell'altezza di questo componente, in modo da poterlo utilizzare in diverse situazioni, poi è necessatio passare un \lstinline{TextEditingController}\cite{site:text-editing-controller} e un metodo \lstinline{onChanged} che si occupa di gestire l'evento di cambiamento del testo inserito dall'utente.\\
 Viene utilizzato per la creazione/modifica di una \emph{Meeting Note} e per la creazione automatica.
 
+\begin{figure}[!h] 
+    \centering 
+    \includegraphics[width=0.3\columnwidth]{screenshot/22-wc3_textbox} 
+    \caption{Applicazione di \emph{TextBox}}
+    \label{fig:text-box}
+\end{figure}
+
 \subsection{Toogle Buttons}
 \label{subsec:toogle-buttons}
 
 Nel file denominato \lstinline{toogle_buttons.dart} è stato implementato un \lstinline{StatefulWidget} per costruire un componente in grado di permettere all'utente di selezionare una delle due opzioni disponibili.\\
 È composto da un \lstinline{ToggleButtons}\cite{site:toggle-buttons} di cui viene definito l'aspetto grafico e il comportamento.\\
 Attraverso il costruttore è necessario passare un \lstinline{List<Widget>} contenente le due opzioni disponibili, un \lstinline{List<bool>} che indica quale opzione è stata selezionata e un metodo \lstinline{onChoiceSelected} che si occupa di gestire l'evento di selezione di un'opzione.\\
-Viene impiegato nel \lstinline{FilterPanel} (sezione \ref{subsec:filter-panel}) per fornire all'utente la possibilità di selezionare una delle due opzioni disponibili per filtrare la lista di \emph{Meeting Note} ( requisiti \hyperref[RFN-31]{RFN-31} e \hyperref[RFN-32]{RFN-32}).
+Viene impiegato nel \lstinline{FilterPanel} (sezione \ref{subsec:filter-panel}) per fornire all'utente la possibilità di selezionare una delle due opzioni disponibili per filtrare la lista di \emph{Meeting Note}.
+
+\begin{figure}[!h] 
+    \centering 
+    \includegraphics[width=0.3\columnwidth]{screenshot/12-toggle_buttons} 
+    \caption{Applicazione di \emph{ToggleButtons}}
+    \label{fig:toggle-button}
+\end{figure}
+
+\clearpage
 
 \subsection{Warning Alert}
 \label{subsec:warning-alert}
 
-Nel file denominato \lstinline{warning_alert.dart} è stato implementato un \lstinline{StatelessWidget} per costruire un componente in grado di mostrare un messaggio di avvertimento all'utente, i casi in cui viene richiesto si faccia riferimento ai seguenti requisiti: \hyperref[RFN-12]{RFN-12}, \hyperref[RFN-13]{RFN-13}, \hyperref[RFN-20]{RFN-20}, \hyperref[RFN-30]{RFN-30}, \hyperref[RFN-34]{RFN-34}, \hyperref[RFN-64]{RFN-64}. \\
-È composto da un \lstinline{Text}\cite{site:text} e un \lstinline{Icon}\cite{site:icon}, il loro scopo è quello di visualizzare il messaggio di avvertimento, attraverso i parametri del costruttore viene passato il messaggio e il colore che devono avere il testo e l'icona. 
+Nel file denominato \lstinline{warning_alert.dart} è stato implementato un \lstinline{StatelessWidget} per costruire un componente composto da un \lstinline{Text}\cite{site:text} e un \lstinline{Icon}\cite{site:icon}, il loro scopo è quello di visualizzare il messaggio di avvertimento, attraverso i parametri del costruttore viene passato il messaggio e il colore che devono avere il testo e l'icona.\\
+I casi in cui viene richiesto si faccia riferimento ai seguenti requisiti: \hyperref[RFN-12]{RFN-12}, \hyperref[RFN-13]{RFN-13}, \hyperref[RFN-20]{RFN-20}, \hyperref[RFN-30]{RFN-30}, \hyperref[RFN-34]{RFN-34}, \hyperref[RFN-64]{RFN-64}.
+
+\begin{figure}[!h] 
+    \centering 
+    \includegraphics[width=0.3\columnwidth]{screenshot/37-warning_alert1}
+    \hfill
+    \includegraphics[width=0.3\columnwidth]{screenshot/39-warning_alert3} 
+    \caption{Esempio di \emph{WarningAlert}}
+    \label{fig:warning-alert}
+\end{figure}
 
 \section{Constants}
 \label{sec:constants}
@@ -636,7 +732,7 @@ Altrimenti viene mostrato il contenuto della schermata servendosi di \lstinline{
     \item \emph{genericException}, la richiesta non è andata a buon fine per un errore generico e viene mostrato un \lstinline{WarningAlert} con il relativo messaggio di errore;
     \item \emph{success}, la richiesta è andata a buon fine e viene mostrato il contenuto della schermata.
 \end{itemize}
-In quest'ultimo caso vengono renderizzati i seguenti componenti:
+In quest'ultimo caso vengono renderizzati i seguenti componenti (figura \ref{fig:account-screen}):
 \begin{itemize}
     \item \lstinline{TextButton}\cite{site:text-button}, effettua il \emph{logout} dall'applicazione, alla sua pressione mostra un \lstinline{WarningAlertDialog} (sezione \ref{subsec:warning-alert}) informando l'utente dell'evento, che ne deve confermare o meno l'operazione;
     \item \lstinline{CircleAvatar}\cite{site:circle-avatar}, mostra l'immagine profilo dell'utente;
@@ -644,12 +740,12 @@ In quest'ultimo caso vengono renderizzati i seguenti componenti:
     \item \lstinline{BiometricOption}, \emph{StatefulWidget} privato che implementa \lstinline{BiometricSwitch} (sezione \ref{subsec:biometric-switch}), si ricorda che lo stato di questo componente è salvato in locale attraverso la libreria \lstinline{shared_preferences}\cite{site:shared-preferences} (sezione \ref{subsec:shared-preferences}); per la sua attivazione verrà richiesto all'utente di confermare l'operazione attraverso l'inserimento delle credenziali di autenticazione, anch'esse salvate in locale attraverso la libreria \lstinline{FlutterSecureStorage}\cite{site:flutter-secure-storage} (sezione \ref{subsec:shared-preferences}).
 \end{itemize}
 
-% \begin{figure}[!h] 
-%     \centering 
-%     \includegraphics[width=1.0\columnwidth]{screenshot/11-uc} 
-%     \caption{Use Case - Visualizzazione riepilogo}
-%     \label{fig:uc-meetingnote-create-manual-result}
-% \end{figure}
+\begin{figure}[!h] 
+    \centering 
+    \includegraphics[width=0.3\columnwidth]{screenshot/6-account_screen} 
+    \caption{Account Screen}
+    \label{fig:account-screen}
+\end{figure}
 
 \subsection{Home Screen}
 \label{subsec:home-screen}
@@ -661,7 +757,7 @@ Prima della renderizzazione dell'aspetto grafico viene effettuata l'inizializzaz
     \item \lstinline{isFiltering}, \lstinline{bool} che indica se l'utente ha attivato o meno almeno un filtro;
     \item \lstinline{pagingController}, oggetto di tipo \lstinline{PagingController}\cite{site:infinite-scroll-pagination} che si occupa di gestire la paginazione dei dati.
 \end{itemize}
-Per la definizione dell'aspetto grafico questa schermata implementa \lstinline{BaseScreen} (sezione \ref{subsec:screens-template}) e il suo contenuto è strutturato come segue:
+Per la definizione dell'aspetto grafico questa schermata implementa \lstinline{BaseScreen} (sezione \ref{subsec:screens-template}) e il suo contenuto è strutturato come segue (figura \ref{fig:home-screen}):
 \begin{itemize}
     \item \lstinline{HomeHeader}, \emph{StatelessWidget} privato che mostra il titolo della schermata e due pulsanti, uno per eliminare i filtri attivati e l'altro per aprire il \lstinline{FilterPanel} (sezione \ref{subsec:filter-panel});
     \item \lstinline{SpeedDial}, componente che mostra un \lstinline{FloatingActionButton}\cite{site:fab} che consente all'utente di scegliere la modalità di creazione di una \emph{Meeting Note}, in base alla scelta quest'ultimo verrà reindirizzato alla schermata corrispondente;
@@ -671,11 +767,29 @@ Nel dettaglio, prima della visualizzazione della lista paginata, si effettua un 
 Altrimenti viene mostrato il contenuto della schermata servendosi del metodo privato \lstinline{fetchPage} che si occupa di effettuare la richiesta al \gls{backend}\glsoccur attraverso \lstinline{MeetingNoteProvider} (sezione \ref{subsec:meeting-note-provider}), controllando se l'utente è autorizzato ad effettuare la richiesta attraverso il metodo \lstinline{isUnauthorized} fornito da \lstinline{authProvider} (sezione \ref{subsec:authentication-provider}), per poi restituire la lista paginata delle \emph{Meeting Note} e aggiornare lo stato del \lstinline{PagingController}. \\
 È presente un ulteriore metodo privato \lstinline{showWarningDialog} che si occupa di mostrare un \lstinline{WarningAlertDialog} (sezione \ref{subsec:warning-alert}) chiedendo conferma l'utente per la eliminazione di una \emph{Meeting Note} e in base alla scelta dell'utente e all'esito della richiesta, vengono gestiti i seguenti casi {i medesimi illustrati nella sezione \ref{subsec:model}, paragrafo \emph{StatusResponse}}.
 
+\begin{figure}[!h] 
+    \centering 
+    \includegraphics[width=0.3\columnwidth]{screenshot/5-home_screen}
+    \caption{Home Screen}
+    \label{fig:home-screen}
+\end{figure}
+
+\newpage
+
 \subsection{Login Screen}
 \label{subsec:login-screen}
 
 Schermata che permette all'utente di effettuare l'autenticazione all'applicazione. \\
-Definisce semplicemente l'aspetto grafico della schermata: implementando \lstinline{BaseScreen} (sezione \ref{subsec:screens-template}), impostando \lstinline{LoginAppBar} (sezione \ref{subsec:app-bars}) e nel \lstinline{body} viene definito il titolo e richiamato il \lstinline{LoginForm} (sezione \ref{subsec:login-form}), che si occupa di gestire il comportamento e per questo motivo tale classe viene estesa con \emph{StatelessWidget}.
+Definisce semplicemente l'aspetto grafico della schermata (figura \ref{fig:login-screen}): implementando \lstinline{BaseScreen} (sezione \ref{subsec:screens-template}), impostando \lstinline{LoginAppBar} (sezione \ref{subsec:app-bars}) e nel \lstinline{body} viene definito il titolo e richiamato il \lstinline{LoginForm} (sezione \ref{subsec:login-form}), che si occupa di gestire il comportamento e per questo motivo tale classe viene estesa con \emph{StatelessWidget}.
+
+\begin{figure}[!h] 
+    \centering 
+    \includegraphics[width=0.3\columnwidth]{screenshot/1-login_screen} 
+    \caption{Login Screen}
+    \label{fig:login-screen}
+\end{figure}
+
+\newpage
 
 \subsection{Smart Creation Screen}
 \label{subsec:smart-creation-screen}
@@ -693,7 +807,7 @@ Prima della renderizzazione dell'aspetto grafico viene effettuata l'inizializzaz
     \item \lstinline{speechToText}, \lstinline{SpeechToText}\cite{site:speech-to-text} che si occupa di gestire la dettatura vocale;
     \item \lstinline{listenedWords}, \lstinline{String} che memorizza quanto detto dall'utente.
 \end{itemize}
-Per la definizione dell'aspetto grafico questa schermata implementa \lstinline{WizardScreen} (sezione \ref{subsec:screens-template}) e il suo contenuto è strutturato come segue:
+Per la definizione dell'aspetto grafico questa schermata implementa \lstinline{WizardScreen} (sezione \ref{subsec:screens-template}) e il suo contenuto è strutturato come segue (figura \ref{fig:smart-screen}):
 \begin{itemize}
     \item \lstinline{WizardHeader}, imposta il titolo della schermata (sezione \ref{subsec:screens-template});
     \item \lstinline{CustomTextBox}, componente che si occupa di ricevere in input il contenuto testuale inserito dall'utente, che può avvenire in due modalità differenti come specificato nei requisiti \hyperref[RFN-72]{RFN-72} e \hyperref[RFN-73]{RFN-73} (sezione \ref{subsec:text-box});
@@ -702,6 +816,13 @@ Per la definizione dell'aspetto grafico questa schermata implementa \lstinline{W
 \end{itemize}
 Nel dettaglio quest'ultima operazione viene effettuata servendosi di \lstinline{meetingNoteProvider} per effettuare l'elaborazione e di \lstinline{authProvider} per autorizzare la richiesta attraverso il metodo \lstinline{isUnauthorized}, inoltre viene mostrato un \lstinline{CircularProgressIndicator}\cite{site:circular-progress-indicator} per indicare che la richiesta è in corso. \\
 Al termine dell'elaborazione, con i tre possibili esiti (i medesimi illustrati nella sezione \ref{subsec:model}, paragrafo \emph{Status Response}), e in caso di successo viene mostrato \lstinline{ConfirmCreationPopup} attraverso una modale che appare dal basso.
+
+\begin{figure}[!h] 
+    \centering 
+    \includegraphics[width=0.3\columnwidth]{screenshot/36-smart_screen} 
+    \caption{Smart Creation Screen}
+    \label{fig:smart-screen}
+\end{figure}
 
 \subsubsection*{ConfirmCreationPopup}
 \label{subsubsec:confirm-creation-popup}
@@ -719,7 +840,7 @@ Prima della renderizzazione dell'aspetto grafico viene effettuata l'inizializzaz
     \item \lstinline{selectedDate}, \lstinline{DateTime} che rappresenta la data estratta dall'elaborazione del testo;
     \item \lstinline{textController}, \lstinline{TextEditingController} che si occupa di gestire il contenuto testuale inserito dall'utente.;
 \end{itemize}
-La struttura di questa modale è la seguente:
+La struttura di questa modale è la seguente (figura \ref{fig:smart-popup}):
 \begin{itemize}
     \item \lstinline{TitleLabel}, mostra il titolo della \emph{label} per ogni campo elencato di seguito;
     \item \lstinline{CustomObjectPicker}, componente che si occupa di mostrare la lista delle categorie dei \glspl{cliente}\glsoccur e di permettere eventualmente all'utente di apportare modifiche, il cui funzionamento è supportato dalle variabili di stato \lstinline{selectedCategory} e \lstinline{selectedCategoryIndex} (sezione \ref{subsec:object-picker});
@@ -737,6 +858,13 @@ Mentre il secondo mostra all'utente una finestra di dialogo attraverso la quale 
 \label{subsubsec:title-label}
 
 Classe privata che estende \lstinline{StatelessWidget} e definisce solamente l'aspetto grafico del titolo per la label di ogni campo della \emph{Meeting Note}.
+
+\begin{figure}[!h] 
+    \centering 
+    \includegraphics[width=0.3\columnwidth]{screenshot/30-smart_confirm} 
+    \caption{Confirm Creation Popup}
+    \label{fig:smart-popup}
+\end{figure}
 
 \subsection{Wizard Screen 1}
 \label{subsec:wizard-screen-1}
@@ -814,7 +942,7 @@ Prima della renderizzazione dell'aspetto grafico viene effettuata l'inizializzaz
     \item \lstinline{searchTerm}, \lstinline{String} che assume il valore dell'identificativo del cliente della \emph{Meeting Note} passata in input se l'utente sta modificando con il conseguente aggiornamento di \lstinline{pagingController}, altrimenti viene inizializzato di \emph{deafult} con una stringa vuota;
     \item \lstinline{isButtonEnabled}, \lstinline{bool} che abilita il pulsante di creazione se tutti i campi sono correttamente compilati e viene inizializzato a \lstinline{true} se l'utente sta modificando.
 \end{itemize}
-Per la definizione dell'aspetto grafico questa schermata implementa \lstinline{WizardScreen} (sezione \ref{subsec:screens-template}) e il suo contenuto è strutturato come segue:
+Per la definizione dell'aspetto grafico questa schermata implementa \lstinline{WizardScreen} (sezione \ref{subsec:screens-template}) e il suo contenuto è strutturato come segue (figura \ref{fig:w1}):
 \begin{itemize}
     \item \lstinline{WizardHeader}, imposta il titolo della schermata;
     \item \lstinline{CustomObjectPicker}, componente che si occupa di mostrare la lista delle categorie dei \glspl{cliente}\glsoccur e di permettere all'utente di effettuare una selezione, aggiornando di conseguenza \lstinline{pagingController} e filtrando la lista dei clienti con la categoria selezionata, il suo funzionamento è supportato dalle variabili di stato \lstinline{selectedCategory} e \lstinline{selectedCategoryIndex} (sezione \ref{subsec:object-picker});
@@ -842,7 +970,7 @@ Per la definizione dell'aspetto grafico questa schermata implementa \lstinline{S
 \subsubsection*{MeetingNoteObjectItem}
 \label{subsubsec:meeting-note-object-item}
 
-Classe che si occupa di visualizzare il cliente nella lista e permette all'utente di selezionarlo. \\
+Classe che si occupa di visualizzare il cliente in un \emph{item} della lista e permette all'utente di selezionarlo. \\
 Attraverso il costruttore riceve in input i seguenti parametri:
 \begin{itemize}
     \item \lstinline{isContractor}, \lstinline{bool} che indica se il cliente è un \gls{cliente}\glsoccur appartiene alla categoria dei \emph{contraenti};
@@ -854,6 +982,15 @@ Attraverso il costruttore riceve in input i seguenti parametri:
 \end{itemize}
 Per la definizione dell'aspetto grafico questa schermata implementa \lstinline{StatefulWidget} e il suo contenuto è strutturato sostanzialmente da \lstinline{ListTile}\cite{site:list-tile}, \emph{widget} che si occupa di mostrare il cliente nella lista, in particolare si avvale dei parametri \lstinline{title} e \lstinline{subtitle} per mostrare rispettivamente l'identificativo del cliente e la sua partita iva, inoltre evidenzia l'\emph{item} del cliente selezionato variandone il colore di sfondo e del testo.\\
 Per capire quale cliente è stato selezionato dall'utente viene effettuato una comparazione del valore di \lstinline{selectedIndex} e \lstinline{index}.
+
+\begin{figure}[!h] 
+    \centering 
+    \includegraphics[width=0.3\columnwidth]{screenshot/15-wc1}
+    \hfill
+    \includegraphics[width=0.3\columnwidth]{screenshot/32-wm1} 
+    \caption{Wizard Screen 1 - Creazione e Modifica}
+    \label{fig:w1}
+\end{figure}
 
 \subsection{Wizard Screen 2}
 \label{subsec:wizard-screen-2}
@@ -878,7 +1015,7 @@ Per capire quale cliente è stato selezionato dall'utente viene effettuato una c
             % - showWizardPage3
 
 Schermata inerente al secondo \emph{step} per la creazione/modifica di una \emph{Meeting Note}. \\
-Prima della renderizzazione dell'aspetto grafico viene effettuata l'inizializzazione della variabile di stato \lstinline{selectedDate} che assume il valore della data della \emph{Meeting Note} passata in input se l'utente sta modificando, altrimenti viene inizializzato di \emph{deafult} con la data corrente. \\
+Prima della renderizzazione dell'aspetto grafico viene effettuata l'inizializzazione della variabile di stato \lstinline{selectedDate} che assume il valore della data della \emph{Meeting Note} passata in input se l'utente sta modificando, altrimenti viene inizializzato di \emph{deafult} con la data corrente (figura \ref{fig:w2}). \\
 Per la definizione dell'aspetto grafico questa schermata implementa \lstinline{WizardScreen} (sezione \ref{subsec:screens-template}) e il suo contenuto è strutturato come segue:
 \begin{itemize}
     \item \lstinline{WizardHeader}, imposta il titolo della schermata (sezione \ref{subsec:screens-template});
@@ -887,6 +1024,15 @@ Per la definizione dell'aspetto grafico questa schermata implementa \lstinline{W
     \item \lstinline{OutlinedButton}\cite{site:outline-button}, pulsante che si occupa di renderizzare alla schermata precedente del \gls{wizard}\glsoccur.
 \end{itemize}
 In questa schermata non è presente alcun \lstinline{Provider} in quanto non è necessario effettuare alcuna richiesta al \gls{backend}\glsoccur, poichè si tratta solamente di effettuare una selezione della data.
+
+\begin{figure}[!h] 
+    \centering 
+    \includegraphics[width=0.3\columnwidth]{screenshot/19-wc2}
+    \hfill
+    \includegraphics[width=0.3\columnwidth]{screenshot/33-wm2} 
+    \caption{Wizard Screen 2 - Creazione e Modifica}
+    \label{fig:w2}
+\end{figure}
 
 
 \subsection{Wizard Screen 3}
@@ -950,6 +1096,17 @@ Il metodo privato \lstinline{onConfirmation} si occupa di mostrare all'utente un
 Per differenziare il caso di creazione a quello di modifica si utilizza lo stesso approccio descritto nella sezione \ref{subsubsec:wizard-page-1}, ovvero si verifica se l'oggetto \lstinline{MeetingNote} passato in input è vuoto, in tal caso l'utente sta creando una nuova \emph{Meeting Note}, altrimenti sta modificando una \emph{Meeting Note} esistente, di conseguenza viene invocato la chiamata opportuna. \\
 Prima della gestione degli esiti possibili della richiesta viene effettuato un controllo sullo stato della connessione ad internet attraverso il \lstinline{NetworkAwareProvider} (sezione \ref{subsec:network-handler}), in caso di assenza di connessione viene mostrato un \lstinline{WarningAlert} (sezione \ref{subsec:warning-alert}) con il relativo messaggio di errore. \\
 Infine durante l'elaborazione della richiesta viene mostrato una finestra di dialogo mostrando all'utente che l'operazione è in corso.
+
+\begin{figure}[!h] 
+    \centering 
+    \includegraphics[width=0.3\columnwidth]{screenshot/20-wc3}
+    \hfill
+    \includegraphics[width=0.3\columnwidth]{screenshot/34-wm3} 
+    \caption{Wizard Screen 1 - Creazione e Modifica}
+    \label{fig:w3}
+\end{figure}
+
+\newpage
 
 \section{Styles}
 \label{sec:styles}
@@ -1109,6 +1266,24 @@ Mentre la classe \lstinline{SecureStorage} ha lo scopo di gestire le credenziali
     \item \lstinline{removeAll}, elimina tutte le credenziali di accesso, invocando i metodi \lstinline{removeUsername} e \lstinline{removePassword};
     \item \lstinline{saveAll}, salva e cifra le credenziali di accesso, invocando i metodi \lstinline{setUsername} e \lstinline{setPassword}.
 \end{itemize}
+
+\subsection{Show alert}
+\label{subsec:show-alert}
+
+In questo file sono presenti dei metodi publici che si occupano di visulizzare all'utente delle finestre di dialogo o \emph{snackbar}\cite{site:snackbar} per mostrare messaggi di errore o di conferma (figura \ref{fig:snackbar}). \\
+È stato implementato un metodo che funge da base e quindi personalizzabile per la visualizzazione delle finestre di dialogo discusse nella sezione \ref{subsec:alert-dialogs}. \\
+In aggiunta è presente un metodo per visualizzare una \emph{snackbar}, la quale può essere personalizzata in base al messaggio da mostrare e al colore di sfondo.
+
+\begin{figure}[!h] 
+    \centering 
+    \includegraphics[width=0.3\columnwidth]{screenshot/3-success_snackbar} 
+    \hfill
+    \includegraphics[width=0.3\columnwidth]{screenshot/40-error_snackbar}
+    \caption{Esempi di \emph{snackbar}}
+    \label{fig:snackbar}
+\end{figure}
+
+\newpage
 
 \subsection{Speech to text}
 \label{subsec:speech-to-text}
