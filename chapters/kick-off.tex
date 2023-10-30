@@ -48,20 +48,20 @@ Si prevede lo svolgimento dei seguenti obiettivi:
 \begin{itemize}
     \item \textbf{Obbligatori}
     \begin{itemize}
-        \item \textbf{O01}: implementare un meccanismo di autenticazione attraverso delle chiamate all'\gls{apig}\glsoccur della piattaforma \emph{RiskAPP};
-        \item \textbf{O02}: richiamare, attraverso richieste \gls{httpg}\glsoccur, le \gls{apig}\glsoccur per ottenere i dati necessari da visualizzare;
-        \item \textbf{O03}: creazione delle \gls{meetingnote}\glsoccur;
-        \item \textbf{O04}: compilazione del contenuto delle \gls{meetingnote}\glsoccur in maniera testuale e vocale;
-        \item \textbf{O05}: sviluppo della \gls{uig}\glsoccur grafica dell'applicazione;
+        \item \textbf{O01} \label{O01}: implementare un meccanismo di autenticazione attraverso delle chiamate all'\gls{apig}\glsoccur della piattaforma \emph{RiskAPP};
+        \item \textbf{O02} \label{O02}: richiamare, attraverso richieste \gls{httpg}\glsoccur, le \gls{apig}\glsoccur per ottenere i dati necessari da visualizzare;
+        \item \textbf{O03} \label{O03}: creazione delle \gls{meetingnote}\glsoccur;
+        \item \textbf{O04} \label{O04}: compilazione del contenuto delle \gls{meetingnote}\glsoccur in maniera testuale e vocale;
+        \item \textbf{O05} \label{O05}: sviluppo della \gls{uig}\glsoccur grafica dell'applicazione;
     \end{itemize}
     \item \textbf{Desiderabili}
     \begin{itemize}
-        \item \textbf{D01}: integrazione di \gls{openai}\glsoccur per la creazione automatica delle \gls{meetingnote}\glsoccur;
-        \item \textbf{D02}: \gls{deploy}\glsoccur dell'applicazione sulle piattaforme \emph{Android} e \emph{iOS};
+        \item \textbf{D01} \label{D01}: integrazione di \gls{openai}\glsoccur per la creazione automatica delle \gls{meetingnote}\glsoccur;
+        \item \textbf{D02} \label{D02}: \gls{deploy}\glsoccur dell'applicazione sulle piattaforme \emph{Android} e \emph{iOS};
     \end{itemize}
     \item \textbf{Facoltativi}
     \begin{itemize}
-        \item \textbf{F01}: implementazione dei test per la verifica e validazione dell'applicazione;
+        \item \textbf{F01} \label{F01}: implementazione dei test per la verifica e validazione dell'applicazione;
     \end{itemize}
 \end{itemize}
 
@@ -73,7 +73,7 @@ Di seguito viene riportata la pianificazione delle attività da svolgere durante
 \subsection{Pianificazione iniziale}
 \label{subsec:pianificazione-iniziale}
 
-Pianificazione iniziale definita anteriormente al periodo di stage e documentata nel documento \emph{Piano di Lavoro}.
+Pianificazione iniziale definita anteriormente al periodo di stage e documentata nel \emph{Piano di Lavoro}.
 
 \subsubsection{Prima settimana: 24/07/23 - 28/07/23 (40 ore)}
     \begin{itemize}
@@ -122,16 +122,13 @@ Pianificazione iniziale definita anteriormente al periodo di stage e documentata
         \item \Gls{deploy}\glsoccur dell'applicazione sulle piattaforme \emph{Android} e \emph{iOS} (\textbf{D02}).
     \end{itemize}
 
-% INSERT GANTT CHART
-\textbf{!! INSERIRE DIAGRAMMA DI GANTT !!}
-
 \subsection{Variazione della pianificazione}
 \label{subsec:variazione-pianificazione}
 
 Durante già la prima settimana di stage, si è  effettuato un cambiamento che ha portato ad una variazione della pianificazione iniziale, senza però compromettere il percorso di realizzazione del prodotto e il raggiungimento degli obiettivi fissati.\\
 Una prima motivazione di tale variazione è dettata da un consiglio del tutor aziendale di sviluppare un \gls{mockup}\glsoccur dell'applicazione, in modo da fornire un notevole aiuto nell'analisi dei requisiti e di conseguenza avere un'idea più chiara di come essa dovrà essere progettata e sviluppata.\\
 Inoltre un'altra motivazione, è stata la mia esperienza pregressa, da autodidatta, con il linguaggio \emph{Dart}\cite{site:dart} e il framework \emph{Flutter}\cite{site:flutter}, che mi ha permesso saltare parzialmente parte della fase formativa.\\
-Di seguito verranno riportate tali variazioni.
+Di seguito verranno riportate tali variazioni e l'effettivo svolgimento delle attività durante il periodo di stage, visualizzabile anche nel diagramma di Gantt in figura \ref{fig:gantt}.
 
 \subsubsection{Prima settimana: 24/07/23 - 28/07/23 (40 ore)}
     \begin{itemize}
@@ -184,15 +181,14 @@ Di seguito verranno riportate tali variazioni.
         \item Apportati miglioramenti e ottimizzazione del codice;
     \end{itemize}
 
-% INSERT GANTT CHART
-\textbf{!! INSERIRE DIAGRAMMA DI GANTT !!} \\
+È doveroso precisare che, nonostante la fase di progettazione sia avvenuta dopo la codifica della \gls{uig}\glsoccur dell'applicazione e non vicerversa, come previsto nella pianificazione iniziale, ma soprattutto dai principi dell'\gls{ingsw}\glsoccur, non si è andati a compromettere la fase di sviluppo, in quanto si è svolto, la codifica della \gls{uig}\glsoccur, con la consapevolezza di implementare un'architettura che si basasse sul \gls{patternarchitetturale}\glsoccur \Gls{mvcg}\glsoccur, per mantenere una separazione tra la logica di presentazione e la logica di business.
 
-È doveroso precisare che, nonostante la fase di progettazione sia avvenuta dopo la codifica della \gls{uig}\glsoccur dell'applicazione e non vicerversa, come previsto nella pianificazione iniziale, ma soprattutto dai principi dell'\gls{ingsw}\glsoccur, non si è andati a compromettere la fase di sviluppo, in quanto si è svolto, la codifica della \gls{uig}\glsoccur, con la consapevolezza di implementare un'architettura che si basasse sul \gls{patternarchitetturale}\glsoccur \Gls{mvcg}\glsoccur, per mantenere una separazione tra la logica di presentazione e la logica di business.\\
-
-\indent Il mancato soddisfascimento degli obbiettivi \emph{D02} e \emph{F01}, è stato dovuto, in generale, alla mancanza di tempo, in quanto, come si può notare dalla variazione di pianificazione, la fase di sviluppo è stata più lunga del previsto.\\
-Malgrado non sono stati progettati e scritti i test per la verifica e validazione dell'applicazione, si è comunque cercato di mantenere un codice pulito e ben strutturato, in modo da facilitare eventuali modifiche e manutenzioni future, anche se come garanzia di qualità non può considerarsi sufficiente.
-Si specifica, inoltre, che la verifica delle funzionalità  dell'applicazione è stata effettuata dal tutor aziendale o da altri colleghi, lungo tutto il periodo di sviluppo del progetto, fornendo un \emph{feedback} immediato, permettendo così di apportare eventuali modifiche e miglioramenti.\\
-Per quanto riguarda il \gls{deploy}\glsoccur, il principale motivo per cui non è stato effettuato, è da imputarsi al fatto che l'utenza a cui è rivolta l'applicazione è molto ristretta, risultava quindi superfluo e non necessario pubblicarla sulle piattaforme \emph{Google Play Store} e \emph{Apple App Store}. Tale decisione è stata presa dal tutor aziendale che ha ritenuto più opportuno pensare ad un modo alternativo per distribuire l'applicazione direttamente agli utenti finali. 
+\begin{figure}[!h] 
+    \centering 
+    \includegraphics[width=1.0\columnwidth]{gantt_stage} 
+    \caption{Diagramma di Gantt della ripartizione definitiva delle attività durante il periodo di stage}
+    \label{fig:gantt}
+\end{figure}
 
 \section{Motivazione della scelta}
 \label{sec:motivazione-scelta}
