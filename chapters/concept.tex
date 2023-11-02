@@ -20,13 +20,13 @@ In questa sezione vengono definiti gli \glspl{attore}\glsoccur che interagiscono
 \label{subsubsec:attori-secondari}
 
 \begin{itemize}
-    \item \textbf{\emph{RiskAPP API}}: sistema che fornisce le \gls{apig}\glsoccur del \emph{Tool Trattative} per l'interazione con il \gls{backend}\glsoccur dell'applicazione.
+    \item \textbf{RiskAPP API}: sistema che fornisce le \gls{apig}\glsoccur del \emph{Tool Trattative} per l'interazione con il \gls{backend}\glsoccur dell'applicazione.
 \end{itemize}
 
 \section{Token di autenticazione}
 \label{subsec:token-autenticazione}
 
-Per \emph{token} di autenticazione, del quale nel corso della sezione \ref{sec:usecase} si farà riferimento, si intende una stringa univoca che, una volta inserite e validate le credenziali, viene generata dal \gls{backend}\glsoccur e memorizzata dall'applicazione, il cui scopo è quello, oltre al mantenimento dell'accesso al proprio account, di effettuare le richieste \gls{httpg}\glsoccur.\\
+Per \emph{token} di autenticazione, del quale nel corso del documento si farà riferimento, si intende una stringa univoca che, una volta inserite e validate le credenziali, viene generata dal \gls{backend}\glsoccur e memorizzata dall'applicazione, il cui scopo è quello, oltre al mantenimento dell'accesso al proprio account, di effettuare le richieste \gls{httpg}\glsoccur.\\
 Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà effettuare nuovamente l'autenticazione per ottenerne uno nuovo.
 
 \section{Casi d'uso}
@@ -874,6 +874,8 @@ Per questioni di leggibilità, i diagrammi sono stati suddivisi in più parti, r
     \label{UC31}
 \end{usecase}
 
+\clearpage
+
 \section{Tracciamento dei requisiti}
 
 Da un'attenta analisi dei requisiti e dei casi d'uso effettuata sul progetto è stata stilata la tabella che traccia i requisiti.\\
@@ -914,9 +916,9 @@ RFN-3 \label{RFN-3} & Il sistema permette il riconoscimento biometrico per effet
 % INSERIRE RFN CHE SPECIFICA IL FALLIMENTO DELL'AUTENTICAZIONE (IN TEORIA CI SONO ALTRI CASI SIMILI, DA SPECIFICARE ANALOGAMENTE)
 RFN-4 \label{RFN-4} & Il sistema deve notificare l'utente in caso di inserimento di credenziali errate & \hyperref[UC04]{UC04} \\ % \hyperref[UC08.8]{UC08.8}
 \hline
-RFN-5 \label{RFN-5} & Il sistema deve notificare l'utente in caso in cui il sistema, ovvero \emph{RiskAPP API} non sia raggiungibile & \hyperref[UC04]{UC04} \\ %, \hyperref[UC06]{UC06}, \hyperref[UC07.6]{UC07.6}, \hyperref[UC08.8]{UC08.8}, \hyperref[UC09]{UC09}, \hyperref[UC13]{UC13}, \hyperref[UC14.6]{UC14.6}, \hyperref[UC17.3]{UC17.3}, \hyperref[UC20]{UC20}, \hyperref[UC22]{UC22}, \hyperref[UC31]{UC31} 
+RFN-5 \label{RFN-5} & Il sistema deve notificare l'utente in caso in cui il sistema, ovvero la piattaforma \emph{RiskAPP} non sia raggiungibile & \hyperref[UC04]{UC04} \\ %, \hyperref[UC06]{UC06}, \hyperref[UC07.6]{UC07.6}, \hyperref[UC08.8]{UC08.8}, \hyperref[UC09]{UC09}, \hyperref[UC13]{UC13}, \hyperref[UC14.6]{UC14.6}, \hyperref[UC17.3]{UC17.3}, \hyperref[UC20]{UC20}, \hyperref[UC22]{UC22}, \hyperref[UC31]{UC31} 
 \hline
-RFN-6 \label{RFN-6} & Il sistema deve permettere all'utente, in caso in cui il riconoscimento biometrico fallisce, di poter inserire le credenziali manualmente & \hyperref[UC04]{UC04} \\
+RFN-6 \label{RFN-6} & Il sistema deve permettere all'utente, in caso in cui il riconoscimento biometrico fallisca, di poter inserire le credenziali manualmente & \hyperref[UC04]{UC04} \\
 \hline
 RFN-7 \label{RFN-7} & Il sistema deve notificare l'utente in caso di connessione internet assente & \hyperref[UC04]{UC04} \\ %, \hyperref[UC06]{UC06}, \hyperref[UC07.6]{UC07.6}, \hyperref[UC08.8]{UC08.8}, \hyperref[UC09]{UC09}, \hyperref[UC13]{UC13}, \hyperref[UC14.6]{UC14.6}, \hyperref[UC17.3]{UC17.3}, \hyperref[UC20]{UC20}, \hyperref[UC22]{UC22}, \hyperref[UC31]{UC31} 
 \hline
@@ -986,7 +988,7 @@ RFN-33 \label{RFN-33} & Il sistema permette di ordinare la lista di \emph{Meetin
 \hline
 RFN-34 \label{RFN-34} & Il sistema permette di notificare l'utente se l'ordinamento della lista di \emph{Meeting Note} fallisce & \hyperref[UC13]{UC13} \\
 \hline
-RFN-35 \label{RFN-35} & Il sistema permette di visualizzare i dettagli (cliente, data, contenuto e autore) di una \emph{Meeting Note} selezionata & \hyperref[UC14]{UC14} \\
+RFN-35 \label{RFN-35} & Il sistema permette di visualizzare il contenuto integrale di una \emph{Meeting Note} selezionata & \hyperref[UC14]{UC14} \\
 \hline
 RFN-36 \label{RFN-36} & Il sistema permette di visualizzare l'identificativo del cliente di una \emph{Meeting Note} selezionata & \hyperref[UC14.1]{UC14.1} \\
 \hline
@@ -1065,7 +1067,7 @@ RFN-42 \label{RFN-42} & Il sistema permette di modificare una \emph{Meeting Note
     \hline
     RFN-61 \label{RFN-61} & Il sistema permette di selezionare il cliente per la creazione manuale di una \emph{Meeting Note} & \hyperref[UC18]{UC18} \\
     \hline
-    RFN-62 \label{RFN-62} & Il sistema permette di visualizzare la lista dei cliente per la selezione & \hyperref[UC19]{UC19} \\
+    RFN-62 \label{RFN-62} & Il sistema permette di visualizzare la lista dei clienti per la selezione & \hyperref[UC19]{UC19} \\
     \hline
     RFN-63 \label{RFN-63} & Il sistema permette di notificare l'utente in caso cui la visualizzazione della lista dei clienti fallisca & \hyperref[UC20]{UC20} \\
     \hline
@@ -1119,13 +1121,13 @@ Di seguito, che per questioni di leggibilità non stati inseriti nella tabella, 
 \hline\hline
 \textbf{Requisito} & \textbf{Descrizione} & \textbf{Fonte}\\
 \hline
-RQD-1 & Il sistema deve garantire il corretto funzionamento attraverso l'implementazione ed esecuzione di test & - \\
+RQD-1 & Il sistema deve garantire il corretto funzionamento attraverso l'implementazione ed esecuzione di test & \hyperref[F01]{F01} \\
 \hline
-RQN-2 & Il codice prodotto deve essere disponibile su \gls{github}\glsoccur, nella repository aziendale  & - \\
+RQN-2 & Il codice prodotto deve essere disponibile su \gls{github}\glsoccur, nella repository aziendale  & Azienda \\
 \hline
-RQN-3 & Il codice prodotto deve essere documentato & - \\
+RQN-3 & Il codice prodotto deve essere documentato & Azienda \\
 \hline
-RQN-4 & L'applicazione deve soddisfare la proprietà di \gls{responsivita}\glsoccur del \emph{layout} & - \\
+RQN-4 & L'applicazione deve soddisfare la proprietà di \gls{responsivita}\glsoccur del \emph{layout} & Azienda \\
 \hline
 \end{tabularx}
 \end{table}%
@@ -1137,21 +1139,21 @@ RQN-4 & L'applicazione deve soddisfare la proprietà di \gls{responsivita}\glsoc
 \hline\hline
 \textbf{Requisito} & \textbf{Descrizione} & \textbf{Fonte}\\
 \hline
-RVN-1 & Utilizzo del linguaggio \emph{dart}\cite per lo sviluppo dell'applicazione & - \\
+RVN-1 & Utilizzo del linguaggio \emph{dart}\cite{site:dart} per lo sviluppo dell'applicazione & Azienda \\
 \hline
-RVN-2 & Utilizzo di \emph{Flutter}\cite{site:flutter} per lo sviluppo dell'applicazione & - \\
+RVN-2 & Utilizzo di \emph{Flutter}\cite{site:flutter} per lo sviluppo dell'applicazione & Azienda \\
 \hline
-RVN-3 & Utilizzo delle \gls{apig}\glsoccur della piattaforma \emph{RiskAPP} per la comunicazione con il \gls{backend}\glsoccur & - \\
+RVN-3 & Utilizzo delle \gls{apig}\glsoccur della piattaforma \emph{RiskAPP} per la comunicazione con il \gls{backend}\glsoccur & Azienda \\
 \hline
-RVN-4 & Assicurare la compatibilità con gli \emph{smartphone} & - \\
+RVN-4 & Assicurare la compatibilità con gli \emph{smartphone} & Azienda \\
 \hline
-RVN-5 & Assicurare la compatibilità con la versione del sistema operativo \emph{Android} $\geq$ 5 & - \\
+RVN-5 & Assicurare la compatibilità con la versione del sistema operativo \emph{Android} $\geq$ 5 & \hyperref[RVN-2]{RVN-2} \\
 \hline
-RVN-6 & Assicurare la compatibilità con la versione del sistema operativo \emph{iOS} $\geq$ 11 & - \\
+RVN-6 & Assicurare la compatibilità con la versione del sistema operativo \emph{iOS} $\geq$ 11 & \hyperref[RVN-2]{RVN-2} \\
 \hline
-RVZ-7 & Eseguire il deploy dell'applicazione sui sistemi operativi \emph{Android} e \emph{iOS} & - \\
+RVZ-7 & Eseguire il deploy dell'applicazione sui sistemi operativi \emph{Android} e \emph{iOS} & \hyperref[D02]{D02} \\
 \hline
-RVN-8 & Per l'implementazione della dettatura vocale, utilizzare una librearia di terze parti opportuna & \hyperref[RFN-73]{RFN-73} \\
+RVN-8 & Per l'implementazione della dettatura vocale, utilizzare una libreria di terze parti opportuna & \hyperref[RFN-73]{RFN-73} \\
 \hline
 RVN-9 & Per l'implementazione del riconoscimento biometrico, utilizzare una librearia di terze parti opportuna & \hyperref[RFN-3]{RFN-3} \\
 \hline
@@ -1167,7 +1169,7 @@ RVN-14 & Assicurare la presenza di connessione ad internet per la comunicazione 
 \hline
 RVN-15 & Implementare una libreria di terze parti per effettuare le chiamate \gls{httpg}\glsoccur & \hyperref[RVN-3]{RVN-3} \\
 \hline
-RVN-16 & Tutte le \emph{Meeting Note} create devono essere salvate nel \emph{backend} & - \\
+RVN-16 & Tutte le \emph{Meeting Note} create devono essere salvate nel \emph{backend} & Azienda \\
 \hline
 \end{tabularx}
 \end{table}%

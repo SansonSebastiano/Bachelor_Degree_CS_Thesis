@@ -32,22 +32,21 @@ Per comprendere al meglio la peculiarità di \emph{Flutter} descritta nella sezi
     \item \textbf{Dart App}: codice sorgente sviluppato dall'utente, contenente i \emph{widget} per l'implementazione della \gls{uig}\glsoccur e la logica dell'applicazione.
 \end{itemize}
 
-Inoltre, essendo un \gls{framework}\glsoccur \gls{open-source}\glsoccur, è possibile utilizzare librerie di terze parti, sviluppate dalla community, per aggiungere funzionalità all'applicazione, come ad esempio librerie per la gestione dello stato dell'applicazione, librerie per la gestione delle richieste HTTP, ecc.
+Inoltre, essendo un \gls{framework}\glsoccur \gls{open-source}\glsoccur, è possibile utilizzare librerie di terze parti, sviluppate dalla \emph{community}, per aggiungere funzionalità all'applicazione, come ad esempio librerie per la gestione dello stato dell'applicazione, librerie per la gestione delle richieste HTTP, ecc.
 
 \begin{figure}[!h] 
     \centering 
     \includegraphics[width=0.4\columnwidth]{images/flutter-app-anatomy.png} 
-    \caption{Struttura di un'applicazione in \emph{Flutter}.}
+    \caption{Struttura di un'applicazione\cite{site:flutter-architecture} in \emph{Flutter}.}
     \label{fig:architettura-flutter}
 \end{figure}
+
+\newpage
 
 Lo stato posseduto dai \lstinline{StatefulWidget} (vedi sezione \ref{subsec:flutter}) può essere considerato come \emph{ephemeral} (ing. effimero) o \emph{app state} (ing. stato dell'applicazione). \\
 \emph{Ephemeral} è uno stato che può essere opportunamente confinato all'interno di un singolo \emph{widget} e gestito attraverso la primitiva \lstinline{setState()}, che permette di definire come aggiornarlo.\\
 Mentre \emph{app state} è uno stato che viene condiviso tra più \emph{widget} e per la sua gestione, più complessa utilizzando solamente la primitiva sopra citata, esistono diverse librerie di terze parti, ciascuna con le proprie peculiarità a seconda del caso d'uso.\\
-\indent La problematica di come gestire lo stato dell'applicazione è definito in gergo \emph{state management}\cite{site:flutter-state-mgmt}, e dopo un'attenta analisi delle librerie disponibili, si è scelto di utilizzare \emph{Riverpod}\cite{site:riverpod}.
-
-\newpage
-
+La problematica di come gestire lo stato dell'applicazione è definito in gergo \emph{state management}\cite{site:flutter-state-mgmt}, e dopo un'attenta analisi delle librerie disponibili, si è scelto di utilizzare \emph{Riverpod}\cite{site:riverpod}.
 \subsection{Riverpod}
 \label{subsec:riverpod}
 
@@ -63,7 +62,7 @@ Ne esistono di varie tipologie, per le quali si rimanda alla documentazione uffi
 \subsection{Architettura dell'applicazione}
 \label{subsec:architettura-app}
 
-Per l'architettura dell'applicazione si è scelto di utilizzare un \emph{pattern} architetturale basato su \gls{mvcg}\glsoccur, che permette di separare la logica dell'applicazione dalla sua rappresentazione grafica, in modo da rendere più semplice la manutenzione e l'aggiunta di nuove funzionalità.\\
+Per l'architettura dell'applicazione si è scelto di utilizzare un \emph{pattern} architetturale basato su \gls{mvcg}\glsoccur\cite{site:app-architecture}, che permette di separare la logica dell'applicazione dalla sua rappresentazione grafica, in modo da rendere più semplice la manutenzione e l'aggiunta di nuove funzionalità.\\
 Nel dettaglio l'applicazione è composta da quattro livelli:
 \begin{itemize}
     \item \textbf{Data Layer}: contiene le classi che si occupano di recuperare i dati dal server, attraverso richieste \gls{httpg}\glsoccur, e di convertirli in oggetti rappresentati nel \emph{domain layer};
@@ -71,7 +70,7 @@ Nel dettaglio l'applicazione è composta da quattro livelli:
     \item \textbf{Application Layer}: contiene le classi che si occupano di gestire la logica dell'applicazione;
     \item \textbf{Presentation Layer}: contiene le classi che si occupano di gestire l'interfaccia, ovvero di eseguire il rendering dei \emph{widget} e di gestire gli eventi generati dall'utente.
 \end{itemize}
-Questa architettura permette inoltre di avere la possibilità di definire eventualmente più sorgenti da cui recuperare i dati senza dover modificare il codice relativo ai livelli superiori, in quanto è sufficiente modificare il \emph{data layer}\cite{site:app-architecture}.
+Questa architettura permette inoltre di avere la possibilità di definire eventualmente più sorgenti da cui recuperare i dati senza dover modificare il codice relativo ai livelli superiori, in quanto è sufficiente modificare il \emph{data layer}.
 
 \section{Struttura del progetto}
 \label{sec:struttura-progetto}
@@ -80,7 +79,10 @@ Un altro aspettato importante da considerare per la realizzazione di un progetto
 Dopo opportune ricerche ed analisi, si è scelto di adottare, tra le due alternative disponibili, la struttura \emph{layer first}, che prevede di organizzare i file e le cartelle in base al livello a cui appartengono, in modo da rendere più semplice la manutenzione e l'aggiunta di nuove funzionalità.\\
 \emph{Feature first}, l'altra alternativa, organizza invece i file e le cartelle, mantendendo la separazione tra i livelli, in base alle funzionalità che l'applicazione offre.\\
 Il motivo principale per cui la scelta non è ricaduta su quest'ultima è che, nonostante sia quella che garantisca un'organizzazione e manutenzione del codice migliore, risulta essere più complessa da implementare in quanto adatta per progetti di dimensione e complessità maggiore.\\
-Di seguito verranno illustrati entrambi gli approcci, in modo da poterli confrontare e comprendere meglio le loro differenze\cite{site:project-structure}.\\
+Di seguito verranno illustrati entrambi gli approcci, in modo da poterli confrontare e comprendere meglio le loro differenze\cite{site:project-structure}.
+
+\newpage
+
 \begin{multicols}{2}
     \begin{verbatim}
         // LAYER FIRST
@@ -185,4 +187,4 @@ Il concetto centrale di \emph{Flutter} è quello dei \emph{widget}, oggetti che 
 Per testare l'applicazione su dispositivi \emph{Android} e \emph{iOS} è stato utilizzato rispettivamente \emph{Android Studio}\cite{site:android-studio} e \emph{Xcode}\cite{site:xcode}, che forniscono degli emulatori per le rispettive piattaforme.\\
 
 A completare l'ambiente di sviluppo, l'azienda mi ha fornito l'accesso alle \gls{apig}\glsoccur del \gls{backend}\glsoccur della piattaforma \emph{RiskAPP} attraverso lo \emph{Swagger}\cite{site:swagger}, strumento che, tra le altre cose, consente di consultare la documentazione delle \gls{apig}\glsoccur e di testarle attraverso un'interfaccia grafica \emph{web}.\\
-Si specifica che per lo sviluppo dell'applicazione, l'utilizzo di tali \gls{apig} è stato svolto su un \emph{server} di collaudo.
+Si specifica che per lo sviluppo dell'applicazione, l'utilizzo di tali \gls{apig}\glsoccur è stato svolto su un \emph{server} di collaudo.

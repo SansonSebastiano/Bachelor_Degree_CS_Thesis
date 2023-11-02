@@ -6,23 +6,25 @@
 Seguendo quanto descritto nel capitolo \ref{cap:progettazione}, si è proceduto con l'implementazione del prodotto software.\\
 Di seguito verrà illustratta l'effettiva struttura del progetto basata sull'approccio \emph{layer first} (sezione \ref{sec:struttura-progetto}), descrivendone poi la varie classi contenute nei file di ciascuna cartella. \\
 
-\begin{verbatim}
-    assets/
-    lib/
-        components/
-        constants/
-        data/
-            model/
-            service/
-        provider/
-        screens
-        styles/
-        utils/
-        main.dart
-\end{verbatim}
+\begin{center}
+    \begin{verbatim}
+        assets/
+        lib/
+            components/
+            constants/
+            data/
+                model/
+                service/
+            provider/
+            screens
+            styles/
+            utils/
+            main.dart
+    \end{verbatim}
+\end{center}
 
 L'architettura menzionata nella sezione \ref{subsec:architettura-app} è stata implementata nel seguente modo: il \emph{data layer} e \emph{domain layer} sono stati implementati rispettivamente in \lstinline{service} e \lstinline{model}, contenute all'interno della cartella \lstinline{data}, mentre l'\emph{application layer} è stato implementato nella cartella \lstinline{provider} e il \emph{presentation layer} nella cartella \lstinline{screens}.\\
-Le restanti invece sono servite come ausilio per l'implementazione delle funzionalità dei \emph{layer} sopracitati, come ad esempio \lstinline{components} per la creazione di \emph{widget} personalizzati e utilizzati dal \emph{presentation layer}.
+Le restanti cartelle invece sono servite come ausilio per l'implementazione delle funzionalità dei \emph{layer} sopracitati, come ad esempio \lstinline{components} per la creazione di \emph{widget} personalizzati e utilizzati dal \emph{presentation layer}.
 
 \section{Components}
 \label{sec:components}
@@ -39,7 +41,7 @@ Nel file denominato \lstinline{alert_dialogs.dart} sono stati implementati dei \
 \subsubsection*{CustomBaseAlertDialog}
 \label{subsubsec:custom-base-alert-dialog}
 
-È una classe che implementa un \lstinline{AlertDialog}\cite{site:alert-dialog} e ne definisce l'aspetto base, fissando alcuni elementi, come \lstinline{Text}\cite{site:text} per il titolo, \lstinline{Widget} per l'icona posta sotto il titolo, il suo colore e \gls{padding}\glsoccur.\\
+È una classe che implementa un \lstinline{AlertDialog}\cite{site:alert-dialog} e ne definisce l'aspetto base, fissando alcuni elementi: \lstinline{Text}\cite{site:text} per il titolo, \lstinline{Widget} per l'icona posta sottostante al titolo, il suo colore e \gls{padding}\glsoccur.\\
 Mentre è possibile scegliere se aggiungere o meno un testo descrittivo e dei pulsanti di conferma e/o annulla, in base al contesto dell'operazione.
 
 \subsubsection*{IconAlertDialog}
@@ -58,7 +60,7 @@ Lo scopo di questa classe è quella di essere utilizzata per mostrare un indicat
 \subsubsection*{WarningAlertDialog}
 \label{subsubsec:warning-alert-dialog}
 
-Personalizzazione di \lstinline{IconAlertDialog} dove si richiede, nel costruttore, di passare un'icona e il suo colore, un titolo, il contenuto del testo descrittivo, l'azione che deve compiere il bottone di conferma alla sua pressione e il suo stile grafico (sezione \ref{subsec:button-styles}), mentre il pulsante di annullamento è stato fissato.\\
+Personalizzazione di \lstinline{IconAlertDialog} (figura \ref{fig:warning-alert-dialog}) dove si richiede, nel costruttore, di passare un'icona e il suo colore, un titolo, il contenuto del testo descrittivo, l'azione che deve compiere il bottone di conferma alla sua pressione e il suo stile grafico (sezione \ref{subsec:button-styles}), mentre per il pulsante di annullamento, il suo comportamento e aspetto è stato fissato.\\
 Lo scopo di questa classe è quella di essere utilizzata per mostrare un messaggio di avvertimento all'utente riguardante una scelta e la sua conferma.
 
 \begin{figure}[!h] 
@@ -106,7 +108,7 @@ Classe che implementa \lstinline{AppBar}, personalizzandolo appositamente per la
 
 Nel file denominato \lstinline{biometric_switch.dart} è stato implementato un \lstinline{StatefulWidget} per costruire un componente in grado di permettere all'utente di abilitare il riconoscimento biometrico. \\
 Questo \emph{widget} è composto da un \lstinline{Switch}\cite{site:switch} e un \lstinline{Text}\cite{site:text} che rappresenta il testo descrittivo (figura \ref{fig:account-screen}).\\
-Inoltre ne viene definito l'aspetto e il comportamento attraverso la definizione di un \lstinline{State} che estende \lstinline{StatefulWidget} implementando il metodo \lstinline{build} per la costruzione del \emph{widget} e il metodo \lstinline{onChanged} per la gestione dell'evento di cambiamento di stato dello \lstinline{Switch}.\\
+Inoltre ne viene definito il comportamento attraverso la definizione di un \lstinline{State} che estende \lstinline{StatefulWidget} implementando il metodo \lstinline{build} per la costruzione del \emph{widget} e il metodo \lstinline{onChanged} per la gestione dell'evento di cambiamento di stato dello \lstinline{Switch}.\\
 Stato che è rappresentato da due variabili di tipo \lstinline{bool}, una che si occupa di gestire l'abilitazione del componente e l'altro che indica se nel dispositivo in cui viene eseguita l'applicazione è supportato il riconoscimento biometrico.\\
 La prima tra queste, ad ogni suo cambiamento di stato, viene salvata in locale attraverso una libreria di terze parti (di cui verrà discussa nella sezione \ref{subsec:shared-preferences}) per mantenere in memoria la preferenza dell'utente. \\
 Il caso in cui la seconda variabile menzionata precedentemente sia \lstinline{false}, dunque non vi è il supporto per il riconoscimento biometrico, si notifica l'utente di tale mancanza e si disabilita lo \lstinline{Switch}.
@@ -119,7 +121,7 @@ Nel file denominato \lstinline{date_picker.dart} sono stati implementati dei \em
 \subsubsection*{DateButton}
 \label{subsubsec:date-button}
 
-Questo componente estende \lstinline{StatelessWidget} e si occupa di costruire un bottone che visualizza la data, o un intervallo di date, selezionata/e dall'utente.\\
+Questo componente estende \lstinline{StatelessWidget} e si occupa di costruire un pulsante che visualizza la data, o un intervallo di date, selezionata/e dall'utente.\\
 Ha visibilità privata, poichè è stato creato per essere utilizzato esclusivamente all'interno dei \emph{widget} contenuti nello stesso file.\\
 È composto da un \lstinline{TextButton}\cite{site:text-button}, in cui viene definito l'aspetto grafico, e un \lstinline{Text} per visualizzare la data o un intervallo di date (figura \ref{fig:filter-panel}), passato attraverso il costruttore, insieme anche al comportamento del pulsante, definito attraverso il metodo \lstinline{onPressed}\cite{site:on-pressed}.
 
@@ -127,7 +129,7 @@ Ha visibilità privata, poichè è stato creato per essere utilizzato esclusivam
 \label{subsubsec:custom-date-range-picker}
 
 Questo componente estende \lstinline{StatefulWidget} e si occupa di costruire un \emph{widget} che permette all'utente di selezionare un intervallo di date.\\
-È composto da \lstinline{DateButton}, al quale il primo parametro che viene passato è l'intervallo di date da visualizzare, di default o selezionato dall'utente, precedentemente formattato da un metodo privato \lstinline{dateFormatter}: riceve in input la data iniziale e finale dell'intervallo (nel caso in cui si intenda selezionare un singolo giorno è sufficiente impostarne con esso entrambi i cambi) e restituisce una stringa che rappresenta l'intervallo di date formattato opportunamente.\\
+È composto da \lstinline{DateButton}, al quale il primo parametro che viene passato è l'intervallo di date da visualizzare, di default o selezionato dall'utente, precedentemente formattato da un metodo privato \lstinline{dateFormatter}: riceve in input la data iniziale e finale dell'intervallo (nel caso in cui si intenda selezionare un singolo giorno è sufficiente impostarne con esso entrambi i campi) e restituisce una stringa che rappresenta l'intervallo di date formattato opportunamente.\\
 Mentre come secondo parametro viene passato un altro metodo privato \lstinline{show} che si occupa di visualizzare il calendario e di consentire all'utente di seleziona un intervallo (figura \ref{fig:date-range-picker}). \\
 Inoltre è presente un metodo pubblico \lstinline{onDateRangeSelected} che si occupa di gestire l'evento di selezione dell'intervallo di date, aggiornando lo stato del \emph{widget}. \\
 Lo scopo di questo \emph{widget} è quello di fornire la possibilità all'utente di selezionare una singola data o intervallo di date per filtrare la lista di \emph{Meeting Note} e viene impiegato solamente all'interno del \lstinline{FilterPanel} (sezione \ref{subsec:filter-panel}).
@@ -189,7 +191,7 @@ Si specifica che tutti i dati necessari da visualizzare sono stati passati attra
 \label{subsubsec:meeting-note-title}
 
 Si tratta di un \emph{widget} che si occupa di disporre gli elementi che compongono il titolo di una 
-\emph{Meeting Note}, ovvero l'identificativo del cliente e la data dell'incontro, in modo tale che entrambi siano posizionati sulla stessa riga, con il primo che occupa la maggior parte dello spazio e il secondo che viene posizionato a destra.\\
+\emph{Meeting Note}, ovvero l'identificativo del cliente e la data dell'incontro, in modo tale che entrambi siano posizionati sulla stessa riga, con il primo che occupa la maggior parte dello spazio e il secondo che viene posizionato a destra (figura \ref{fig:meeting-note-card}).\\
 Inoltre è stato aggiunto un \lstinline{Divider}\cite{site:divider} che funge da separatore tra il titolo e il contenuto parziale della \emph{Meeting Note}, visualizzabile direttamente nella lista di \emph{Meeting Note}.
 
 \subsubsection*{MeetingNoteItem}
@@ -230,7 +232,7 @@ Inoltre sono stati definiti dei metodi che permettono di ottenere la categoria s
 \subsection{Recording Button}
 \label{subsec:recording-button}
 
-Nel file denominato \lstinline{recording_button.dart} è stato implementato un \lstinline{StatelessWidget} per costruire un componente in grado di permettere all'utente di attivare la dettatura vocale ( requisito \hyperref[RFN-73]{RFN-73}).\\
+Nel file denominato \lstinline{recording_button.dart} è stato implementato un \lstinline{StatelessWidget} per costruire un componente in grado di permettere all'utente di attivare la dettatura vocale.\\
 È composto da un \lstinline{Text}\cite{site:text} che esplicita all'utente lo scopo del pulsante, da un \lstinline{IconButton}\cite{site:icon-button} e da un \lstinline{AvatarGlow}\cite{site:avatar-glow} per rappresentare l'animazione che viene visualizzata quando la dettatura vocale è attiva.\\
 L'attivazione avviene in base al valore della variabile \lstinline{bool} \lstinline{isRecording} che viene passata attraverso il costruttore, come anche il comportamento del pulsante, definito attraverso il metodo \lstinline{onPressed}\cite{site:on-pressed}.
 
@@ -255,7 +257,7 @@ Nel file denominato \lstinline{screens_template.dart} sono stati implementati de
 
 Classe in cui viene definito la struttura e l'aspetto base che dovranno avere tutte le schermate dell'applicazione.\\
 È composto da un \lstinline{Scaffold}\cite{site:scaffold}, contenitore principale di tutti gli elementi grafici, in cui viene applicato il tema dell'applicazione (sezione \ref{subsec:app-theme}). \\
-Sono state definite poi varie proprietà di base dello \lstinline{Scaffold}, tra cui \lstinline{appBar} con \lstinline{CustomAppBar} (sezione \ref{subsubsec:custom-app-bar}) e un \lstinline{body}, passato per parametro del costruttore, in quanto ogni schermata ha il suo contenuto.\\
+Sono state definite poi varie sue proprietà di base, tra cui \lstinline{appBar} con \lstinline{CustomAppBar} (sezione \ref{subsubsec:custom-app-bar}) e un \lstinline{body}, passato per parametro del costruttore, in quanto ogni schermata ha il suo contenuto.\\
 È stata inoltre definita la proprietà \lstinline{bottomNavigationBar} che non viene utilizzata da tutte le schermate, ma vi è comunque la possibilità di implementarla nel caso cui si vogliano aggiungere dei pulsanti di navigazione nella parte inferiore della vista per avanzare o retrocedere tra le varie schermate dell'applicazione.\\
 Per abilitare tali pulsanti è sufficiente passare, a seconda delle necessità, un \emph{widget} \lstinline{forwardButton} per la progressione e/o \lstinline{backButton} per la retrocessione.
 
@@ -282,8 +284,8 @@ Classe che definisce l'aspetto grafico dell'\emph{header} del \gls{wizard}\glsoc
 \subsubsection*{WizardStepper}
 \label{subsubsec:wizard-stepper}
 
-Classe che è composta da tre \lstinline{Step} (sezione \ref{subsubsec:step}), il numero massimo di passi pensato per il \gls{wizard}\glsoccur, inoltre riceve in input il numero di passo corrente in modo da evidenziare a che punto l'utente si trova nella progressione.
-Si specifica che \lstinline{WizardStepper} è privato, è stato infatti creato con lo scopo di essere utilizzato esclusivamente all'interno di questo \emph{widget} (figura \ref{fig:wizard-stepper}).\\
+Classe che è composta da tre \lstinline{Step} (sezione \ref{subsubsec:step}), il numero massimo di passi pensato per il \gls{wizard}\glsoccur: riceve in input il numero di passo corrente in modo da evidenziare a che punto l'utente si trova nella progressione.
+Si specifica che \lstinline{WizardStepper} è privato, è stato infatti creato con lo scopo di essere utilizzato esclusivamente all'interno di \lstinline{WizardHeader} (figura \ref{fig:wizard-stepper}).\\
 
 \begin{figure}[!h] 
     \centering 
@@ -334,7 +336,7 @@ Viene impiegato nel \emph{widget} \lstinline{FilterPanel} (sezione \ref{subsec:f
 \label{subsec:text-box}
 
 Nel file denominato \lstinline{text_box.dart} è stato implementato un \lstinline{StatefulWidget} per costruire un componente in grado di permettere all'utente di inserire del testo.\\
-È composto da semplicemente un \lstinline{TextField}\cite{site:text-field} in cui viene personalizzato nell'aspetto grafico, è richiesto dal costruttore il passagio dell'altezza di questo componente, in modo da poterlo utilizzare in diverse situazioni, poi è necessatio passare un \lstinline{TextEditingController}\cite{site:text-editing-controller} e un metodo \lstinline{onChanged} che si occupa di gestire l'evento di cambiamento del testo inserito dall'utente.\\
+È composto da semplicemente un \lstinline{TextField}\cite{site:text-field} in cui viene personalizzato nell'aspetto grafico, è richiesto dal costruttore il passagio dell'altezza di questo componente, in modo da poterlo utilizzare in diverse situazioni, poi è necessario passare un \lstinline{TextEditingController}\cite{site:text-editing-controller} e un metodo \lstinline{onChanged} che si occupa di gestire l'evento di cambiamento del testo inserito dall'utente.\\
 Viene utilizzato per la creazione/modifica di una \emph{Meeting Note} e per la creazione automatica.
 
 \begin{figure}[!h] 
@@ -381,7 +383,7 @@ I casi in cui viene richiesto si faccia riferimento ai seguenti requisiti: \hype
 
 In questa cartella sono presenti file che contengono delle costanti utilizzate all'interno dell'applicazione.\\
 Le costanti sono incapsulate all'interno di classi, raggrupate in base al loro utilizzo, e sono state definite in maniera statica così da essere richiamate senza dover istanziare un oggetto.\\
-Lo scopo è quello di centralizzare tutte le costanti in un unico posto, in modo da poterle modificare facilmente e da poterle utilizzare in maniera uniforme all'interno dell'applicazione.
+Lo scopo è quello di centralizzare tutte le costanti, in modo da poterle modificare facilmente e da poterle utilizzare in maniera uniforme all'interno dell'applicazione.
 
 \subsection{App constants}
 \label{subsec:app-constants}
@@ -404,9 +406,9 @@ Questa cartella contiene due cartelle rappresentanti rispettivamente i \emph{dat
 \label{subsec:model}
 
 Sono contenuti i file che rappresentano il modello dei dati utilizzato all'interno dell'applicazione.\\
-Si specifica, per evitare rindondanze, che alcune classi in questione sono state implementate seguendo un \emph{pattern} specifico: oltre alla definizione degli attributi opportuni, ovvero quelli specificati, e che sono vincolanti, nelle \gls{apig}\glsoccur del \gls{backend}\glsoccur, sono presenti un costruttore \emph{factory}\cite{site:factory} \lstinline{fromJson}, come si intuisce si occupa di convertire da \gls{jsong}\glsoccur all'oggetto interessato, dei metodi che ritornano il valore di ciascun attributo e un metodo \lstinline{toString} che ritorna una stringa rappresentante un'istanza della classe.\\
+Si specifica, per evitare rindondanze, che alcune classi in questione sono state implementate seguendo un \emph{pattern} specifico: oltre alla definizione degli attributi opportuni, ovvero quelli specificati nelle \gls{apig}\glsoccur del \gls{backend}\glsoccur, sono presenti un costruttore \emph{factory}\cite{site:factory} \lstinline{fromJson}, come si intuisce si occupa di convertire da \gls{jsong}\glsoccur all'oggetto interessato, dei metodi che ritornano il valore di ciascun attributo e un metodo \lstinline{toString} che ritorna una stringa rappresentante un'istanza della classe.\\
 Quest'ultimo metodo è stato definito con il solo scopo di visualizzare il contenuto di un oggetto in fase di \emph{debugging}.
-Nel corso di questa sezione verrà specificato quando una classe è stata implementata seguendo tale \emph{pattern}, mentre per le altre verrà descritta nel dettaglio. \\
+Nel corso di questa sezione verrà specificato quando una classe è stata implementata seguendo tale \emph{pattern}, mentre per le altre verranno descritte nel dettaglio. \\
 Inoltre in quasi tutti i file è presente una classe, il cui nome termina con suffisso \lstinline{Response}, che estende \lstinline{BaseResponse} (sezione \ref{subsubsec:status-response}) e rappresenta l'esito di una richiesta \gls{httpg}\glsoccur fatta al \gls{backend}\glsoccur, nel caso in cui l'esito sia positivo contiene anche il valore da restituire.\\
 Infine, per ogni classe è sottinteso la presenza del costruttore con tutti gli attributi presenti. 
 
@@ -442,7 +444,7 @@ In questo file sono state definite tutte le classi necessari per gestire i dati 
 \label{par:raw-meeting-note}
 
 \noindent Classe che si occupa di incapsulare i dati di una \emph{Meeting Note} ricevuti da una chiamata al \gls{backend}\glsoccur, che però non sono ancora utilizzabili all'interno dell'applicazione, la quasi totalità degli attributi di tipo \lstinline{String} ed alcuni di essi dunque non sono del tipo opportuno per la loro elaborazione all'interno dell'applicazione.\\
-Gli attributi di tipo \lstinline{String} in questione sono:
+Gli attributi in questione sono:
 \begin{itemize}
     \item \lstinline{uuid}, utilizzato per l'identificazione di una \emph{Meeting Note};
     \item \lstinline{meetingDate}, la data dell'incontro;
@@ -481,7 +483,7 @@ La sua implementazione, molto semplice, consiste nei metodi per ottenere i valor
 \paragraph*{SmartCreationValue} ~ \\
 \label{par:smart-creation-value}
 
-\noindent Classe che si occupa di incapsulare i dati, risultati dell'elaborazione da parte di un algoritmo di \gls{ai}\glsoccur per la creazione automatica di una \emph{Meeting Note}, è composta dai seguenti attributi:
+\noindent Classe che si occupa di incapsulare i dati, risultati dell'elaborazione da parte di un algoritmo di \gls{iag}\glsoccur per la creazione automatica di una \emph{Meeting Note}, è composta dai seguenti attributi:
 \begin{itemize}
     \item \lstinline{customer} di tipo \lstinline{String}, il nome del \gls{cliente}\glsoccur elaborato dall'algoritmo;
     \item \lstinline{date} di tipo \lstinline{DateTime}, la data dell'incontro elaborato dall'algoritmo;
@@ -505,10 +507,10 @@ In questo file sono state definite tutte le classi necessarie per gestire i dati
 
 \noindent Classe che rappresenta il modello di un \gls{cliente} relativo ad una \emph{Meeting Note}, ed è composta dai seguenti attributi:
 \begin{itemize}
-    \item \lstinline{uuid}, di tipo \lstinline{String}, utilizzato per l'identificazione di un \gls{cliente};
-    \item \lstinline{name}, di tipo \lstinline{String}, il nome del \gls{cliente};
+    \item \lstinline{uuid}, di tipo \lstinline{String}, utilizzato per l'identificazione di un \gls{cliente}\glsoccur;
+    \item \lstinline{name}, di tipo \lstinline{String}, il nome del \gls{cliente}\glsoccur;
     \item \lstinline{vatNumber}, di tipo \lstinline{String}, il numero di partita IVA del \gls{cliente} ed è presente solo per i \emph{contraenti};
-    \item \lstinline{category}, di tipo \lstinline{ObjectCategory}, la categoria del \gls{cliente}.
+    \item \lstinline{category}, di tipo \lstinline{ObjectCategory}, la categoria del \gls{cliente}\glsoccur.
 \end{itemize}
 La sua implementazione è stata effettuata seguendo il \emph{pattern} nell'introduzione di questa sezione.
 
@@ -651,7 +653,7 @@ In questo file è definita una classe che estende \lstinline{BaseService} (class
 In questo file è definita una classe che estende \lstinline{BaseService} (classe discussa in precedenza) con la composizione di \lstinline{GetRequest}, \lstinline{PostRequest}, \lstinline{PatchRequest} e \lstinline{DeleteRequest} per definire i seguenti metodi:
 \begin{itemize}
     \item \lstinline{getMeetingNotes}, ritorna \lstinline{MeetingNoteResponse} (sezione \ref{subsec:model}) in seguito alla richiesta di ottenere la lista paginata delle \emph{Meeting Note}, per fare ciò è necessario passare obbligatoriamente il \emph{token} di autenticazione, \lstinline{pageSize} e \lstinline{pageNumber} che rappresentano rispettivamente la dimensione della pagina e il numero della pagina, opzionalmente è possibile passare anche un oggetto \lstinline{FilteringOptions} (sezione \ref{subsec:filtering}) che rappresenta le opzioni di filtraggio. \\
-    Nel dettaglio, ad ogni chiamata riceve la lista di \lstinline{RawMeetingNote} e la converte in una lista di \lstinline{MeetingNote} (sezione \ref{subsec:model});
+    Ad ogni chiamata riceve la lista di \lstinline{RawMeetingNote} e la converte in una lista di \lstinline{MeetingNote} (sezione \ref{subsec:model});
     \item \lstinline{postMeetingNote}, ritorna \lstinline{StatusResponse} in seguito alla richiesta di creare una \emph{Meeting Note}, per fare ciò è necessario passare il \emph{token} di autenticazione e un oggetto di tipo \lstinline{MeetingNote} (sezione \ref{subsec:model}), convertendo quest'ultimo in \gls{jsong}\glsoccur attraverso un metodo dedicato;
     \item \lstinline{patchMeetingNote}, ritorna \lstinline{StatusResponse} in seguito alla richiesta di modificare una \emph{Meeting Note}, per fare ciò è necessario passare il \emph{token} di autenticazione e un oggetto di tipo \lstinline{MeetingNote} (sezione \ref{subsec:model}), convertendo quest'ultimo in \gls{jsong}\glsoccur attraverso un metodo dedicato;
     \item \lstinline{deleteMeetingNote}, ritorna \lstinline{StatusResponse} in seguito alla richiesta di eliminare una \emph{Meeting Note}, per fare ciò è necessario passare il \emph{token} di autenticazione e l'\emph{uuid} della \emph{Meeting Note};
@@ -677,13 +679,13 @@ Si vuole infine precisare che, eccetto per \lstinline{AuthenticationHelper} (sez
 
 In questo file è definita la classe \lstinline{AuthenticationHelper} che si occupa di gestire la logica dell'autenticazione all'applicazione, in particolare espone i seguenti metodi:
 \begin{itemize}
-    \item \lstinline{verifyCredentials}, si occupa di verificare la validità delle credenziali, passate per parametro, inserite dall'utente;
-    \item \lstinline{authenticate}, verifica le credenziali dell'utente, avvalendosi del metodo \lstinline{verifyCredentials} e in caso di successo ritorna un \emph{token} di autenticazione attraverso l'oggetto \lstinline{AuthResponse} salvandolo poi in locale con l'ausilio della libreria \lstinline{shared_preferences}\cite{site:shared-preferences} (sezione \ref{subsec:shared-preferences});
+    \item \lstinline{verifyCredentials}, si occupa di verificare la validità delle credenziali, passate per parametro e inserite dall'utente;
+    \item \lstinline{authenticate}, verifica le credenziali dell'utente, avvalendosi del metodo \lstinline{verifyCredentials} e in caso di successo ritorna un \emph{token} di autenticazione attraverso l'oggetto \lstinline{AuthResponse} salvandolo poi in locale (sezione \ref{subsec:shared-preferences});
     \item \lstinline{logout}, si occupa di effettuare il \emph{logout} dall'applicazione, eliminando il \emph{token} di autenticazione salvato in locale e riportando l'utente alla schermata di \emph{login};
     \item \lstinline{isAuthenticated}, verifica se l'utente è autenticato, controllando se il \emph{token} di autenticazione è salvato in locale;
     \item \lstinline{isUnauthorized}, verifica se l'utente è autorizzato ad effettuare una chiamata \gls{httpg}\glsoccur, controllandone l'esito e in caso negativo effettua il \emph{logout} dall'applicazione, poichè significa che il \emph{token} di autenticazione è scaduto;
     \item \lstinline{isBiometricEnabled}, verifica se l'utente ha abilitato l'autenticazione biometrica all'interno dell'applicazione, controllando se il \emph{flag} è salvato in locale;
-    \item \lstinline{readCredentials}, si occupa di leggere le credenziali cifrate salvate in locale, attraverso la libreria \lstinline{FlutterSecureStorage}\cite{site:flutter-secure-storage}, restituendo un oggetto di tipo \lstinline{AuthArgs} (sezione \ref{subsec:model});
+    \item \lstinline{readCredentials}, si occupa di leggere le credenziali cifrate salvate in locale (sezione \ref{subsec:shared-preferences}), restituendo un oggetto di tipo \lstinline{AuthArgs} (sezione \ref{subsec:model});
     \item \lstinline{saveCredentials}, si occupa di salvare le credenziali cifrate in locale, ricevendo in input un oggetto di tipo \lstinline{AuthArgs} (sezione \ref{subsec:model});
     \item \lstinline{removeCredentials}, si occupa di eliminare le credenziali cifrate salvate in locale;
 \end{itemize}
@@ -737,7 +739,7 @@ In quest'ultimo caso vengono renderizzati i seguenti componenti (figura \ref{fig
     \item \lstinline{TextButton}\cite{site:text-button}, effettua il \emph{logout} dall'applicazione, alla sua pressione mostra un \lstinline{WarningAlertDialog} (sezione \ref{subsec:warning-alert}) informando l'utente dell'evento, che ne deve confermare o meno l'operazione;
     \item \lstinline{CircleAvatar}\cite{site:circle-avatar}, mostra l'immagine profilo dell'utente;
     \item \lstinline{AccountCard}, \emph{StatelessWidget} privato, creato appositamente con lo scopo di definire l'aspetto grafico per la visualizzazione del nome, cognome e la mail dell'utente;
-    \item \lstinline{BiometricOption}, \emph{StatefulWidget} privato che implementa \lstinline{BiometricSwitch} (sezione \ref{subsec:biometric-switch}), si ricorda che lo stato di questo componente è salvato in locale attraverso la libreria \lstinline{shared_preferences}\cite{site:shared-preferences} (sezione \ref{subsec:shared-preferences}); per la sua attivazione verrà richiesto all'utente di confermare l'operazione attraverso l'inserimento delle credenziali di autenticazione, anch'esse salvate in locale attraverso la libreria \lstinline{FlutterSecureStorage}\cite{site:flutter-secure-storage} (sezione \ref{subsec:shared-preferences}).
+    \item \lstinline{BiometricOption}, \emph{StatefulWidget} privato che implementa \lstinline{BiometricSwitch} (sezione \ref{subsec:biometric-switch}), si ricorda che lo stato di questo componente è salvato in locale (sezione \ref{subsec:shared-preferences}); per la sua attivazione verrà richiesto all'utente di confermare l'operazione attraverso l'inserimento delle credenziali di autenticazione, vengono poi cifrate e salvate in locale (sezione \ref{subsec:shared-preferences}).
 \end{itemize}
 
 \begin{figure}[!h] 
@@ -775,7 +777,6 @@ Altrimenti viene mostrato il contenuto della schermata servendosi del metodo pri
 \end{figure}
 
 \newpage
-
 \subsection{Login Screen}
 \label{subsec:login-screen}
 
@@ -794,7 +795,7 @@ Definisce semplicemente l'aspetto grafico della schermata (figura \ref{fig:login
 \subsection{Smart Creation Screen}
 \label{subsec:smart-creation-screen}
 
-Schermata che permette all'utente di creare una \emph{Meeting Note} in modo automatico e data la sua complessità, essa è stata suddivisa in tre classi, di seguito verranno descritte nel dettaglio. \\
+Schermata che permette all'utente di creare una \emph{Meeting Note} in modo automatico e data la sua complessità, essa è stata suddivisa in tre classi, di seguito verranno descritte nel dettaglio. 
 
 \subsubsection*{SmartCreationPage}
 \label{subsubsec:smart-creation-page}
@@ -834,7 +835,7 @@ Prima della renderizzazione dell'aspetto grafico viene effettuata l'inizializzaz
     \item \lstinline{selectedCategoryIndex}, \lstinline{int} che rappresenta l'indice della categoria del \gls{cliente}\glsoccur;
     \item \lstinline{initialValue}, \lstinline{String} che viene inzializzato con il nome del \gls{cliente}\glsoccur estratto dall'elaborazione del testo;
     \item \lstinline{debouncedSearch} (sezione \ref{subsec:debouncer}), si occupa di gestire la ricerca del \gls{cliente}\glsoccur attraverso il componente \lstinline{CustomAutocomplete};
-    \item \lstinline{selectedMeetingNoteObject}, \lstinline{MeetingNoteObject} che si occupa di gestire eventuali modifiche sulla ricerca dell'identificativo del cliente apportate dall'utente ;
+    \item \lstinline{selectedMeetingNoteObject}, \lstinline{MeetingNoteObject} che si occupa di gestire eventuali modifiche sulla ricerca dell'identificativo del cliente apportate dall'utente;
     \item \lstinline{isButtonEnabled}, \lstinline{bool} che abilita il pulsante di creazione se tutti i campi sono correttamente compilati;
     \item \lstinline{isNameFound}, \lstinline{bool} che indica se l'identificativo del \gls{cliente}\glsoccur, estratto dall'algoritmo sia stato trovato o meno;
     \item \lstinline{selectedDate}, \lstinline{DateTime} che rappresenta la data estratta dall'elaborazione del testo;
@@ -1231,7 +1232,7 @@ Le variabili di stato sono:
     \item \lstinline{dateRange}, \lstinline{DateTimeRange} che rappresenta l'intervallo di date;
     \item \lstinline{isChronologicalOrder}, \lstinline{bool} che indica se l'ordinamento deve avvenire in maniera cronologica o meno.
 \end{itemize}
-Inoltre sono presenti dei metodi per impostare il valore di ciasuna variabile di stato, inoltre è stato definito un metodo \lstinline{isNull} che restituisce \lstinline{false} se tutte le variabili di stato sono \lstinline{null}. \\
+Inoltre sono presenti dei metodi per impostare il valore di ciasuna variabile di stato, vi è poi presente un metodo \lstinline{isNull} che restituisce \lstinline{false} se tutte le variabili di stato sono \lstinline{null}. \\
 È stato creato poi un \emph{Provider} di tipo \lstinline{StateNotifierProvider}\cite{site:state-notifier-provider} per gestire lo stato di \lstinline{FilteringOptions} nella schermata principale dell'applicazione (sezione \ref{subsec:home-screen}).
 
 \subsection{Network handler}
@@ -1241,7 +1242,7 @@ In questo file è contenuto una enumerazione \lstinline{NetworkStatus} che rappr
 È presente la classe \lstinline{NetworkDetectorNotifier} in cui è stato implementato un costruttore che si occupa di inizializzare la variabile di stato \lstinline{networkStatus} con il valore \lstinline{notDetermined} e di aggiornarla quando avvengono dei cambiamenti. \\
 È stato creato poi \lstinline{networkAwareProvider} un \emph{provider} di tipo \lstinline{StateNotifierProvider}\cite{site:state-notifier-provider} per leggere lo stato della connessione ad internet a livello globale.
 
-\subsection{Shared preferences}
+\subsection{User preferences}
 \label{subsec:shared-preferences}
 
 In questo file vengono implemetate le librerie \lstinline{SharedPreferences}\cite{site:shared-preferences} e \lstinline{SecureStorage}\cite{site:flutter-secure-storage} per la memorizzazione di alcuni dati in locale, a supporto delle funzionalità di autenticazione e riconoscimento biometrico. \\
@@ -1310,21 +1311,16 @@ Il reindirizzamenton avviene attraverso \lstinline{InitApp}, uno \emph{Stateless
 Per la gestione della responsività dell'applicazione è stata utilizzata la libreria \lstinline{flutter_screenutil}\cite{site:screenutil} che si occupa di adattare le dimensioni degli elementi grafici in base a quelle dello schermo del dispositivo. \\
 In particolare è stato invocato \lstinline{ScreenUtilInit} per inizializzare la libreria, fissando il parametro \lstinline{designSize} con le dimensioni definite nel \gls{mockup}\glsoccur, in modo tale che la libreria possa mantenere le proporzioni degli elementi grafici. 
 
-\section{Usabilità}
-\label{sec:usability}
+% \section{Usabilità}
+% \label{sec:usability}
 
-% \section{Icona}
-% \label{sec:icon}
+% % \section{Icona}
+% % \label{sec:icon}
 
-\section{Ottimizzazioni per le performance}
-\label{sec:performance}
+% \section{Ottimizzazioni per le performance}
+% \label{sec:performance}
 
 
-
-% Listato delle varie classi principali implementate
-% Fai riferimento allo storico dei commits su GitHub
-
-% \section{Design Pattern utilizzati}
 \section{Doumentazione}
 \label{sec:documentation}
 
@@ -1355,7 +1351,7 @@ Insieme al codice sorgente dell'applicazione è stata consegnata anche una breve
 Per quanto riguarda il codice sorgente, è stato scritto un commento per ogni classe, metodo e variabile, in modo da rendere più chiara la lettura del codice.\\
 Lo standard seguito è quello proposto nella documentazione ufficiale di \emph{Dart}\cite{site:comment}. \\
 
-In particolare, per i commenti alle classi, è stato utilizzato il seguente formato, spiegando anche il significato e scopo delle variabili di stato:
+\noindent In particolare, per i commenti alle classi, è stato utilizzato il seguente formato, spiegando anche il significato e scopo delle variabili di stato:
 \begin{lstlisting}[language=Java, caption={Commento classe}, captionpos=b]
 /// Class encapsulating the authentication's params,
 /// given in input to the authentication request.
@@ -1370,7 +1366,7 @@ class AuthArgs {
 }
 \end{lstlisting}
 
-Per i commenti ai metodi, è stato utilizzato il medesimo formato utilizzato per i commenti alle classi, spiegando lo scopo del metodo, i parametri in input e il valore di ritorno:
+\noindent Per i commenti ai metodi, è stato utilizzato il medesimo formato utilizzato per i commenti alle classi, spiegando lo scopo del metodo, i parametri in input e il valore di ritorno:
 \begin{lstlisting}[language=Java, caption={Commento metodo}, captionpos=b]
 /// Authenticate the user with the given authentication [args]
 /// retrieving the token and saving it in the local storage if the authentication request is successful.
