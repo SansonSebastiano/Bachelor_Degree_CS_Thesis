@@ -1,13 +1,13 @@
 \chapter{Il progetto di stage}
 \label{cap:descrizione-stage}
 
-\intro{Nel seguente capitolo viene descritto nel dettaglio il progetto tra cui: gli obiettivi richiesti e la pianificazione del lavoro per la sua realizzazione. Infine viene motivata la scelta di tale progetto.}
+\intro{In questo capitolo viene descritto nel dettaglio il progetto includendo gli obiettivi richiesti e la pianificazione del lavoro per la sua realizzazione. Infine viene motivata la scelta di tale progetto.}
 
 \section{Descrizione del progetto}
 \label{sec:descrizione-progetto}
 
-Lo scopo del progetto stage è quello di sviluppare un'applicazione \gls{crossplatform}\glsoccur per la gestione di \gls{meetingnote}\glsoccur e relativa documentazione.
-Nello specifico deve fornire le seguenti funzionalità:
+Lo scopo del progetto di stage è quello di sviluppare un'applicazione \gls{crossplatform}\glsoccur per la gestione di \gls{meetingnote}\glsoccur e relativa documentazione.
+Nello specifico, l'applicazione deve fornire le seguenti funzionalità:
 \begin{itemize}
     \item \textbf{creazione} di una \gls{meetingnote}\glsoccur, inserendo le informazioni richieste, essa può avvenire in due modi:
     \begin{itemize}
@@ -17,8 +17,8 @@ Nello specifico deve fornire le seguenti funzionalità:
     \item possibilità di \textbf{modificare} una \gls{meetingnote}\glsoccur già creata, attraverso un \gls{wizard}\glsoccur di modifica, analogo a quello di creazione;
     \item possibilità di \textbf{eliminare} una \gls{meetingnote}\glsoccur dalla lista di quelle create;
     \item \textbf{visualizzazione} di una lista di \gls{meetingnote}\glsoccur, con la possibilità di filtrarla per \gls{cliente}\glsoccur, data e ordine di creazione (dalla più recente o meno recente), inoltre, per ciascuna, è possibile visualizzarne in dettaglio il contenuto;
-    \item integrazione con il sistema di \textbf{autenticazione} della piattaforma \emph{RiskAPP}, che può avvenire in due modalità differenti:
-    \item \begin{itemize}
+    \item integrazione con il sistema di \textbf{autenticazione} della piattaforma \emph{RiskAPP}, essa può avvenire in due modalità differenti:
+    \begin{itemize}
         \item inserimento \textbf{manuale} delle credenziali;
         \item tramite \textbf{\gls{riconoscimentobiometrico}}\glsoccur.
     \end{itemize}
@@ -79,11 +79,11 @@ Pianificazione iniziale definita anteriormente al periodo di stage e documentata
     \begin{itemize}
         \item Incontro con il tutor aziendale per la presentazione dettagliata del progetto e comprensione dei requisiti richiesti;
         \item Visione del \emph{Tool trattative} e delle \gls{apig}\glsoccur, per la comprensione del contesto applicativo;
-        \item Formazione sulle tecnologie e strumenti da utilizzare: \emph{Dart}\cite{site:dart}.
+        \item Formazione sulle tecnologie e strumenti da utilizzare: \emph{Dart} \cite{site:dart}.
     \end{itemize}
 \subsubsection{Seconda settimana: 31/07/23 - 04/08/23 (40 ore)}
     \begin{itemize}
-        \item Formazione sulle tecnologie e strumenti da utilizzare: \emph{Figma}\cite{site:figma} e \emph{Flutter}\cite{site:flutter}.
+        \item Formazione sulle tecnologie e strumenti da utilizzare: \emph{Figma} \cite{site:figma} e \emph{Flutter} \cite{site:flutter}.
     \end{itemize}
 \subsubsection{Terza settimana: 07/08/23 - 11/08/23 (40 ore)}
     \begin{itemize}
@@ -94,7 +94,7 @@ Pianificazione iniziale definita anteriormente al periodo di stage e documentata
     \end{itemize}
 \subsubsection{Quarta settimana: 14/08/23 - 18/08/23 (32 ore)}
     \begin{itemize}
-        \item Inizio sviluppo UI dell'applicazione (\textbf{O05});
+        \item Inizio sviluppo dell'interfaccia utente (\gls{uig}\glsoccur) dell'applicazione (\textbf{O05});
         \item Implementazione del meccanismo di autenticazione (\textbf{O01});
         \item Chiamate alle \gls{apig}\glsoccur per ottenere i dati necessari da visualizzare (\textbf{O02});
         \item Stesura dei test per le funzionalità implementate (\textbf{F01}).
@@ -107,12 +107,12 @@ Pianificazione iniziale definita anteriormente al periodo di stage e documentata
     \end{itemize}
 \subsubsection{Sesta settimana: 28/08/23 - 01/09/23 (40 ore)}
     \begin{itemize}
-        \item Continuazione sviluppo UI dell'applicazione (\textbf{O05});
+        \item Continuazione sviluppo \gls{uig}\glsoccur dell'applicazione (\textbf{O05});
         \item Integrazione di \gls{openai}\glsoccur per la creazione automatica delle \gls{meetingnote}\glsoccur (\textbf{D01}).
     \end{itemize}
 \subsubsection{Settima settimana: 04/09/23 - 08/09/23 (40 ore)}
     \begin{itemize}
-        \item Completamento dello sviluppo UI dell'applicazione (\textbf{O05});
+        \item Completamento dello sviluppo \gls{uig}\glsoccur dell'applicazione (\textbf{O05});
         \item Stesura dei test per le funzionalità implementate (\textbf{F01}).
     \end{itemize} 
 \subsubsection{Ottava settimana: 11/09/23 - 15/09/23 (40 ore)}
@@ -125,23 +125,23 @@ Pianificazione iniziale definita anteriormente al periodo di stage e documentata
 \subsection{Variazione della pianificazione}
 \label{subsec:variazione-pianificazione}
 
-Durante già la prima settimana di stage, si è  effettuato un cambiamento che ha portato ad una variazione della pianificazione iniziale, senza però compromettere il percorso di realizzazione del prodotto e il raggiungimento degli obiettivi fissati.\\
+Durante la prima settimana di stage, si è  effettuato un cambiamento che ha portato ad una variazione della pianificazione iniziale, senza però compromettere il percorso di realizzazione del prodotto e il raggiungimento degli obiettivi fissati.\\
 Una prima motivazione di tale variazione è dettata da un consiglio del tutor aziendale di sviluppare un \gls{mockup}\glsoccur dell'applicazione, in modo da fornire un notevole aiuto nell'analisi dei requisiti e di conseguenza avere un'idea più chiara di come essa dovrà essere progettata e sviluppata.\\
-Inoltre un'altra motivazione, è stata la mia esperienza pregressa, da autodidatta, con il linguaggio \emph{Dart}\cite{site:dart} e il framework \emph{Flutter}\cite{site:flutter}, che mi ha permesso saltare parzialmente parte della fase formativa.\\
-Di seguito verranno riportate tali variazioni e l'effettivo svolgimento delle attività durante il periodo di stage, visualizzabile anche nel diagramma di Gantt in figura \ref{fig:gantt}.
+Inoltre un'altra motivazione, è stata la mia esperienza pregressa, da autodidatta, con il linguaggio \emph{Dart} \cite{site:dart} e il framework \emph{Flutter} \cite{site:flutter}, che mi ha permesso saltare parzialmente parte della fase formativa.\\
+Di seguito verranno riportate tali variazioni e l'effettivo svolgimento delle attività durante il periodo di stage, visualizzabile anche nel diagramma di Gantt in Figura \ref{fig:gantt}.
 
 \subsubsection{Prima settimana: 24/07/23 - 28/07/23 (40 ore)}
     \begin{itemize}
         \item Incontro con il tutor aziendale per la presentazione dettagliata del progetto e comprensione dei requisiti richiesti;
         \item Visione del \emph{Tool trattative} e delle \gls{apig}\glsoccur, per la comprensione del contesto applicativo;
-        \item Formazione sulle tecnologie e strumenti da utilizzare: \emph{Figma}\cite{site:figma}.
+        \item Formazione sulle tecnologie e strumenti da utilizzare: \emph{Figma} \cite{site:figma}.
         \item Realizzazione del \gls{mockup}\glsoccur dell'applicazione.
         \item Iniziata la fase di analisi dei requisiti dell'applicazione;
     \end{itemize}
 \subsubsection{Seconda settimana: 31/07/23 - 04/08/23 (40 ore)}
     \begin{itemize}
         \item Completamento della fase di analisi dei requisiti dell'applicazione;
-        \item Formazione sulle tecnologie e strumenti da utilizzare: \emph{Dart}\cite{site:dart} e \emph{Flutter}\cite{site:flutter};
+        \item Formazione sulle tecnologie e strumenti da utilizzare: \emph{Dart} \cite{site:dart} e \emph{Flutter} \cite{site:flutter};
         \item Iniziato sviluppo  della \gls{uig}\glsoccur dell'applicazione (\textbf{O05}).
     \end{itemize}
 \subsubsection{Terza settimana: 07/08/23 - 11/08/23 (40 ore)}
@@ -181,7 +181,7 @@ Di seguito verranno riportate tali variazioni e l'effettivo svolgimento delle at
         \item Apportati miglioramenti e ottimizzazione del codice;
     \end{itemize}
 
-È doveroso precisare che, nonostante la fase di progettazione sia avvenuta dopo la codifica della \gls{uig}\glsoccur dell'applicazione e non vicerversa, come previsto nella pianificazione iniziale, ma soprattutto dai principi dell'\gls{ingsw}\glsoccur, non si è andati a compromettere la fase di sviluppo, in quanto si è svolto, la codifica della \gls{uig}\glsoccur, con la consapevolezza di implementare un'architettura che si basasse sul \gls{patternarchitetturale}\glsoccur \Gls{mvcg}\glsoccur, per mantenere una separazione tra la logica di presentazione e la logica di business.
+È doveroso precisare che, nonostante la fase di progettazione sia avvenuta dopo la codifica della \gls{uig}\glsoccur dell'applicazione e non vicerversa, come previsto nella pianificazione iniziale, ma soprattutto dai principi dell'\gls{ingsw}\glsoccur, non si è andati a compromettere la fase di sviluppo, in quanto la codifica della \gls{uig}\glsoccur si è svolta con la consapevolezza di implementare un'architettura che si basasse sul \gls{patternarchitetturale}\glsoccur \Gls{mvcg}\glsoccur, per mantenere una separazione tra la logica di presentazione e la logica di business.
 
 \begin{figure}[!h] 
     \centering 
@@ -193,5 +193,5 @@ Di seguito verranno riportate tali variazioni e l'effettivo svolgimento delle at
 \section{Motivazione della scelta}
 \label{sec:motivazione-scelta}
 
-La scelta di tale progetto è stata dettata da varie motivazioni, tra le quali alcune lo sono di base anche se la decisione fosse stata ricaduta su un qualsiasi altro progetto: ovvero la possibilità di mettersi in gioco e cercare di applicare le conoscenze acquisite durante il percorso di studi, in un contesto più professionale e reale. \\
+La scelta di tale progetto è stata dettata da varie motivazioni, alcune indipendenti da esso, ovvero la possibilità di mettersi in gioco e cercare di applicare le conoscenze acquisite durante il percorso di studi, in un contesto più professionale e reale. \\
 Inoltre, come menzionato in precedenza, la mia esperienza pregressa con le tecnologie impiegate, mi ha semplificato la decisione, in quanto avere avuto la possibilità di utilizzarle per sviluppare un progetto in un contesto lavorativo è stato stimolante e gratificante, nonostante mi abbia anche permesso di saltare parzialmente la fase formativa, è stata comunque necessaria per approfondire le conoscenze e acquisirne di nuove.

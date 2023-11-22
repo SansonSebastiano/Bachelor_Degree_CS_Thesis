@@ -39,7 +39,7 @@ Per questioni di leggibilità, i diagrammi sono stati suddivisi in più parti, r
 \begin{figure}[!h] 
     \centering 
     \includegraphics[width=1.0\columnwidth]{usecase/1-uc} 
-    \caption{Use Case - Login}
+    \caption{Use Case - Autenticazione}
     \label{fig:uc-login}
 \end{figure}
 
@@ -414,8 +414,6 @@ Per questioni di leggibilità, i diagrammi sono stati suddivisi in più parti, r
     \label{UC14}
 \end{usecase}
 
-\newpage
-
 \begin{figure}[!h] 
     \centering 
     \includegraphics[width=1.0\columnwidth]{usecase/6-uc} 
@@ -494,8 +492,6 @@ Per questioni di leggibilità, i diagrammi sono stati suddivisi in più parti, r
     \label{UC14.7}
 \end{usecase}
 
-\newpage
-
 \begin{figure}[!h] 
     \centering 
     \includegraphics[width=1.0\columnwidth]{usecase/7-uc} 
@@ -529,8 +525,6 @@ Per questioni di leggibilità, i diagrammi sono stati suddivisi in più parti, r
     \usecaseimg{\ref{fig:uc-meetingnote-create}}
     \label{UC17}
 \end{usecase}
-
-\newpage
 
 \begin{figure}[!h] 
     \centering 
@@ -677,14 +671,12 @@ Per questioni di leggibilità, i diagrammi sono stati suddivisi in più parti, r
 
 \begin{usecase}{17.5}{Annulla creazione automatica}
     \usecasemainactors{Utente autenticato}
-    \usecasepre{L'utente é in fase di creazione automatica di una \gls{meetingnote}\glsoccur}
+    \usecasepre{L'utente è in fase di creazione automatica di una \gls{meetingnote}\glsoccur}
     \usecasedesc{L'utente annulla la creazione automatica di una \gls{meetingnote}\glsoccur.}
     \usecasepost{Non è stata creata una nuova \gls{meetingnote}\glsoccur}
     \usecaseimg{\ref{fig:uc-meetingnote-create-automatic}}
     \label{UC17.5}
 \end{usecase}
-
-\newpage
 
 \begin{figure}[!h] 
     \centering 
@@ -692,6 +684,8 @@ Per questioni di leggibilità, i diagrammi sono stati suddivisi in più parti, r
     \caption{Use Case - Creazione manuale (\hyperref[UC16]{UC16}) e Modifica (\hyperref[UC14.7]{UC14.7}) di una Meeting Note}
     \label{fig:uc-meetingnote-create-manual}
 \end{figure}
+
+\newpage
 
 \noindent Per la creazione manuale (\hyperref[UC16]{UC16}) e modifica (\hyperref[UC14.7]{UC14.7}) di una \gls{meetingnote}\glsoccur sono stati individuati i seguenti \glspl{usecase}\glsoccur, che sono in comune tra le due funzionalità sopra citate, in quanto condividono la stessa sequenza di azioni, e dunque di attori principali, secondari, precondizioni e postcondizioni.
 
@@ -730,6 +724,8 @@ Per questioni di leggibilità, i diagrammi sono stati suddivisi in più parti, r
     \usecaseimg{\ref{fig:uc-meetingnote-create-manual}}
     \label{UC20}
 \end{usecase}
+
+\newpage
 
 \begin{usecase}{21}{Ricerca cliente per identificativo}
     \usecasemainactors{Utente autenticato}
@@ -784,8 +780,6 @@ Per questioni di leggibilità, i diagrammi sono stati suddivisi in più parti, r
     \usecaseimg{\ref{fig:uc-meetingnote-create-manual}}
     \label{UC25}
 \end{usecase}
-
-\newpage
 
 \begin{figure}[!h] 
     \centering 
@@ -874,8 +868,6 @@ Per questioni di leggibilità, i diagrammi sono stati suddivisi in più parti, r
     \label{UC31}
 \end{usecase}
 
-\clearpage
-
 \section{Tracciamento dei requisiti}
 
 Da un'attenta analisi dei requisiti e dei casi d'uso effettuata sul progetto è stata stilata la tabella che traccia i requisiti.\\
@@ -893,12 +885,10 @@ Il codice dei requisiti è così strutturato R(F/Q/V)(N/D/O) dove:
 
 Di seguito sono riportate le tabelle che raccolgono, per tipologia, i requisiti individuati.\\
 \begin{itemize}
-    \item \textbf{Requisiti funzionali}: descrivono le funzionalità offerte dal prodotto software. Si faccia riferimento alle tabelle \ref{tab:requisiti-funzionali-1}, \ref{tab:requisiti-funzionali-2}, \ref{tab:requisiti-funzionali-3}, \ref{tab:requisiti-funzionali-4};
-    \item \textbf{Requisiti qualitativi}: descrivono le caratteristiche qualitative che il prodotto software deve possedere. Si faccia riferimento alla tabella \ref{tab:requisiti-qualitativi};
-    \item \textbf{Requisiti di vincolo}: descrivono i vincoli che il prodotto software deve rispettare. Si faccia riferimento alla tabella \ref{tab:requisiti-vincolo}.
+    \item \textbf{Requisiti funzionali}: descrivono le funzionalità offerte dal prodotto software. Si faccia riferimento alle Tabelle \ref{tab:requisiti-funzionali-1}, \ref{tab:requisiti-funzionali-2}, \ref{tab:requisiti-funzionali-3}, \ref{tab:requisiti-funzionali-4};
+    \item \textbf{Requisiti qualitativi}: descrivono le caratteristiche qualitative che il prodotto software deve possedere. Si faccia riferimento alla Tabella \ref{tab:requisiti-qualitativi};
+    \item \textbf{Requisiti di vincolo}: descrivono i vincoli che il prodotto software deve rispettare. Si faccia riferimento alla Tabella \ref{tab:requisiti-vincolo}.
 \end{itemize}
-
-\clearpage
 
 \begin{table}%
 \caption{Tabella del tracciamento dei requisti funzionali - 1}
@@ -1139,9 +1129,9 @@ RQN-4 & L'applicazione deve soddisfare la proprietà di \gls{responsivita}\glsoc
 \hline\hline
 \textbf{Requisito} & \textbf{Descrizione} & \textbf{Fonte}\\
 \hline
-RVN-1 & Utilizzo del linguaggio \emph{dart}\cite{site:dart} per lo sviluppo dell'applicazione & Azienda \\
+RVN-1 & Utilizzo del linguaggio \emph{dart} \cite{site:dart} per lo sviluppo dell'applicazione & Azienda \\
 \hline
-RVN-2 & Utilizzo di \emph{Flutter}\cite{site:flutter} per lo sviluppo dell'applicazione & Azienda \\
+RVN-2 & Utilizzo di \emph{Flutter} \cite{site:flutter} per lo sviluppo dell'applicazione & Azienda \\
 \hline
 RVN-3 & Utilizzo delle \gls{apig}\glsoccur della piattaforma \emph{RiskAPP} per la comunicazione con il \gls{backend}\glsoccur & Azienda \\
 \hline
