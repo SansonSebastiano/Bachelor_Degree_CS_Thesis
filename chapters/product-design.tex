@@ -18,7 +18,8 @@ Si specifica che nel corso della fase di implementazione sono state apportate de
 \subsection{Architettura Flutter}
 \label{subsec:architettura-flutter}
 
-Per comprendere al meglio la peculiarità di \emph{Flutter}, descritto nella Sezione \ref{subsec:flutter}, è necessario analizzare l'architettura \cite{site:flutter-architecture} delle applicazioni realizzate con esso, che sono composte dagli elementi illustrati nella Figura \ref{fig:architettura-flutter}, tra i quali, i principali sono descritti di seguito:
+\emph{Flutter} è un \gls{framework}\glsoccur, ovvero una piattaforma che fornisce una struttura, una serie di strumenti e librerie, che agevola lo sviluppo di applicazioni \emph{cross-platform}, significa che possono essere eseguite su più sistemi operativi, come \emph{Android}, \emph{iOS}, per dispositivi \emph{mobile} e \emph{MacOS}, \emph{Linux} e \emph{Windows} per dispositivi \emph{desktop}.\\
+Per comprendere al meglio la peculiarità di \emph{Flutter}, descritto più in dettaglio nella Sezione \ref{subsec:flutter}, è necessario analizzarne l'architettura \cite{site:flutter-architecture} delle applicazioni realizzate con esso, che sono composte dagli elementi illustrati nella Figura \ref{fig:architettura-flutter}, tra i quali, i principali sono descritti di seguito:
 \begin{itemize}
     \item \textbf{Embedder}: fornisce un punto d'ingresso con il sistema operativo ospitante per accedere ai servizi forniti da esso. Questo consente dunque l'esecuzione dell'applicazione su diverse piattaforme e la possibilità di utilizzare librerie per accedere a funzionalità esclusive di determinati sistemi operativi, oppure viceversa, integrare il codice \emph{Flutter} in un'applicazione nativa già esistente;
     \item \textbf{Flutter engine}: è il componente centrale che fornisce l'implementazione di basso livello dell'\gls{apig}\glsoccur principale di \emph{Flutter}, inclusa la grafica, il layout di testo, operazioni di \emph{I/O}, rete, ecc.;
@@ -32,7 +33,7 @@ Per comprendere al meglio la peculiarità di \emph{Flutter}, descritto nella Sez
     \item \textbf{Dart App}: codice sorgente sviluppato dall'utente, contenente i \emph{widget} per l'implementazione della \gls{uig}\glsoccur e la logica dell'applicazione.
 \end{itemize}
 
-Inoltre, essendo un \gls{framework}\glsoccur \gls{open-source}\glsoccur, è possibile utilizzare librerie di terze parti, sviluppate dalla \emph{community}, per aggiungere funzionalità all'applicazione, come ad esempio librerie per la gestione dello stato dell'applicazione, librerie per la gestione delle richieste HTTP, ecc. \\
+Inoltre, essendo \emph{Flutter} \gls{open-source}\glsoccur: il suo codice sorgente è pubblico e quindi visibile ed estendibile da qualsiasi sviluppatore; è possibile utilizzare librerie di terze parti, sviluppate dalla \emph{community}, per aggiungere funzionalità all'applicazione, come ad esempio librerie per la gestione dello stato dell'applicazione, per la gestione delle richieste HTTP, ecc. \\
 
 \begin{figure}[!h] 
     \centering 
@@ -138,7 +139,7 @@ Di fatto per questo progetto si è reso necessario l'installazione di alcune est
 \subsection*{Flutter}
 \label{subsec:flutter}
 
-\emph{Flutter} \cite{site:flutter} è un \gls{framework}\glsoccur che consente di sviluppare applicazioni native per diverse piattaforme, come Android, iOS, web e desktop, utilizzando un unico linguaggio di programmazione, riducendo i tempi e i costi di produzione, senza compromettere le prestazioni dell'applicazione.\\
+\emph{Flutter} \cite{site:flutter} è un \gls{framework}\glsoccur che consente di sviluppare applicazioni native per diverse piattaforme, utilizzando un unico linguaggio di programmazione, riducendo i tempi e i costi di produzione, senza compromettere le prestazioni dell'applicazione.\\
 Il concetto centrale di \emph{Flutter} è quello dei \emph{widget}, oggetti che descrivono come deve essere visualizzata una parte dell'interfaccia grafica. Questi possono essere di due tipi:
 \begin{itemize}
     \item \textbf{StatelessWidget}: non hanno uno stato interno, ovvero non cambiano nel tempo, e sono definiti da un insieme di proprietà, chiamate \emph{proprietà immutabili}, che vengono passate al costruttore del \emph{widget};
@@ -150,6 +151,15 @@ Il concetto centrale di \emph{Flutter} è quello dei \emph{widget}, oggetti che 
 
 \emph{StarUML} \cite{site:staruml} è uno strumento di modellazione per sistemi software che sono sviluppati secondo il paradigma \emph{orientato agli oggetti}, attraverso la creazione di diagrammi \gls{umlg}\glsoccur.\\
 È stato utilizzato per la realizzazione dei casi d'uso (vedi Sezione \ref{sec:usecase}) e dei diagrammi delle classi.
+
+\subsection*{OpenAI API}
+\label{subsec:openai-api}
+
+Sono \gls{apig}\glsoccur rilasciate da \emph{OpenAI} \cite{site:openai} per fornire accesso a modelli di \gls{iag}\glsoccur, che possono essere utilizzati per diversi scopi, come ad esempio la generazione di testo, codice, immagini, ecc.\\
+
+\noindent In particolare per questo progetto è stata addestrata e utilizzata per effettuare elaborazione del testo: a partire da un testo in input, digitato dall'utente, il modello deve essere in grado di estrapolare e restituire le informazioni rilevanti per la creazione di una \gls{meetingnote}\glsoccur, ovvero il nome del cliente, la data e il contenuto dell'incontro.\\
+Tale implementazione è stata effettuata dal tutor esterno, il quale ha successivamente integrato tale funzionalità nel \gls{backend}\glsoccur della piattaforma \emph{RiskAPP}.\\
+Per l'integrazione di tale servizio nell'applicazione, è stato sufficiente effettuare una richiesta \gls{httpg}\glsoccur al \gls{backend}\glsoccur, come descritto nelle Sezioni \ref{subsubsec:meeting-note-service} e \ref{subsec:meeting-note-provider}.
 
 \subsection*{Emulatori Android e iOS}
 \label{subsec:emulatori}
