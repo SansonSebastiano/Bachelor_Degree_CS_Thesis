@@ -73,7 +73,7 @@ Di seguito viene riportata la pianificazione delle attività da svolgere durante
 \subsection{Pianificazione iniziale}
 \label{subsec:pianificazione-iniziale}
 
-Pianificazione iniziale definita anteriormente al periodo di stage e documentata nel \emph{Piano di Lavoro}.
+In questa sezione viene riportata la pianificazione iniziale, definita anteriormente al periodo di stage e documentata nel \emph{Piano di Lavoro}, e il preventivo della durata delle attività, nella Tabella \ref{tab:preventivo-ore} , espresso in ore, che si prevede di impiegare per la realizzazione del progetto di stage. \\
 
 \subsubsection{Prima settimana: 24/07/23 - 28/07/23 (40 ore)}
     \begin{itemize}
@@ -92,7 +92,7 @@ Pianificazione iniziale definita anteriormente al periodo di stage e documentata
         \item Fase di progettazione dell'applicazione e realizzazione del diagramma UML delle classi;
         \item Stesura della documentazione relativa alle attività di analisi dei requisiti e progettazione.
     \end{itemize}
-\subsubsection{Quarta settimana: 14/08/23 - 18/08/23 (32 ore)}
+\subsubsection{Quarta settimana: 14/08/23 - 18/08/23 (40 ore)}
     \begin{itemize}
         \item Inizio sviluppo dell'interfaccia utente (\gls{uig}\glsoccur) dell'applicazione (\textbf{O05});
         \item Implementazione del meccanismo di autenticazione (\textbf{O01});
@@ -122,13 +122,65 @@ Pianificazione iniziale definita anteriormente al periodo di stage e documentata
         \item \Gls{deploy}\glsoccur dell'applicazione sulle piattaforme \emph{Android} e \emph{iOS} (\textbf{D02}).
     \end{itemize}
 
-\subsection{Variazione della pianificazione}
+    \begin{table}
+        \centering
+        \begin{tabularx}{\textwidth}{|c|X|}
+            \hline
+            \textbf{Ore pianificate} & \textbf{Descrizione dell'attività} \\\hline
+            
+            \textbf{80} & \textbf{Formazione sulle tecnologie} \\	 
+            \hline
+            
+            \textbf{40} & \textbf{Definizione architettura di riferimento e relativa documentazione} \\ \hdashline 
+            \multirow{3}{0cm}\\ 
+            \textit{12} & 
+            \textit{Analisi del problema e del dominio applicativo} \\
+            \textit{22} & 
+            \textit{Progettazione della piattaforma e relativi test} \\
+            \textit{6} & 
+            \textit{Stesura documentazione relativa ad analisi e progettazione} \\
+            \hline
+            
+    
+            \textbf{160} & \textbf{Sviluppo}  \\ \hdashline 
+            \multirow{5}{0cm}\\ 
+            \textit{26} & 
+            \textit{Implementazione del meccanismo di autenticazione e integrazione con il sistema preesistente per il prelevamento dei dati da visualizzare nell'applicazione} \\
+            \textit{34} & 
+            \textit{Implementazione delle funzionalità di creazione e compilazione (testuale e vocale) delle meeting-note} \\
+            \textit{28} & 
+            \textit{Integrazione del servizio OpenAI} \\
+            \textit{40} & 
+            \textit{Attività di testing} \\
+            \textit{32} & 
+            \textit{Sviluppo UI} \\
+            \hline
+            
+            \textbf{40} & \textbf{Verifica e Validazione finale}  \\ \hdashline 
+            \multirow{3}{0cm}\\ 
+            \textit{24} & 
+            \textit{Esecuzione dei test per la verifica e collaudo dell'applicazione} \\
+            \textit{8} & 
+            \textit{Stesura documentazione finale} \\
+            \textit{8} & 
+            \textit{Deploy dell'applicazione} \\
+            \hline
+            
+            \textbf{Totale ore} & \multicolumn{1}{|c|}{\textbf{320}} \\ 
+            \hline
+            
+        \end{tabularx}
+        \caption{Preventivo della durata delle attività}
+        \label{tab:preventivo-ore}
+    \end{table}
+
+\subsection{Variazioni nella pianificazione}
 \label{subsec:variazione-pianificazione}
 
-Durante la prima settimana di stage, si è  effettuato un cambiamento che ha portato ad una variazione della pianificazione iniziale, senza però compromettere il percorso di realizzazione del prodotto e il raggiungimento degli obiettivi fissati.\\
-Una prima motivazione di tale variazione è dettata da un consiglio del tutor aziendale di sviluppare un \gls{mockup}\glsoccur dell'applicazione, in modo da fornire un notevole aiuto nell'analisi dei requisiti e di conseguenza avere un'idea più chiara di come essa dovrà essere progettata e sviluppata.\\
+Durante la prima settimana di stage, si è  effettuato un cambiamento che ha portato a delle variazioni nella pianificazione iniziale, senza però compromettere il percorso di realizzazione del prodotto e il raggiungimento degli obiettivi fissati.\\
+Una prima motivazione di tali variazioni è dettata da un consiglio del tutor aziendale di sviluppare un \gls{mockup}\glsoccur dell'applicazione, in modo da fornire un notevole aiuto nell'analisi dei requisiti e di conseguenza avere un'idea più chiara di come essa dovrà essere progettata e sviluppata.\\
 Inoltre un'altra motivazione, è stata la mia esperienza pregressa, da autodidatta, con il linguaggio \emph{Dart} \cite{site:dart} e il framework \emph{Flutter} \cite{site:flutter}, che mi ha permesso saltare parzialmente parte della fase formativa.\\
-Di seguito verranno riportate tali variazioni e l'effettivo svolgimento delle attività durante il periodo di stage, visualizzabile anche nel diagramma di Gantt in Figura \ref{fig:gantt}.
+Di seguito verranno riportate tali variazioni e dunque l'effettivo svolgimento delle attività durante il periodo di stage, il cui consultivo delle ore è riportato nella Sezione \ref{sec:consultivo-attivita}, visualizzabile anche nel diagramma di Gantt in Figura \ref{fig:gantt}.
 
 \subsubsection{Prima settimana: 24/07/23 - 28/07/23 (40 ore)}
     \begin{itemize}
@@ -147,7 +199,7 @@ Di seguito verranno riportate tali variazioni e l'effettivo svolgimento delle at
 \subsubsection{Terza settimana: 07/08/23 - 11/08/23 (40 ore)}
     \begin{itemize}
         \item Completamento dello sviluppo della \gls{uig}\glsoccur dell'applicazione (\textbf{O05});
-        \item Fase di progettazione dell'applicazione, ricerca e scelta del \gls{patternarchitetturale}\glsoccur e realizzazione del diagramma UML delle classi;
+        \item Fase di progettazione dell'applicazione: ricerca e scelta del \gls{patternarchitetturale}\glsoccur e realizzazione del diagramma UML delle classi;
         \item Iniziato lo sviluppo del meccanismo di autenticazione: inserimento manuale delle credenziali (\textbf{O01});
     \end{itemize}
 \subsubsection{Quarta settimana: 14/08/23 - 18/08/23 (32 ore)}

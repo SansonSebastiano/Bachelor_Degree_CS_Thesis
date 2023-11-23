@@ -6,7 +6,7 @@
 \section{Obiettivi raggiunti}
 \label{sec:raggiungimento-obiettivi}
 
-La Tabella \ref{tab:obbiettivi-raggiunti} illustra gli obiettivi raggiunti durante al termine del tirocinio.
+La Tabella \ref{tab:obbiettivi-raggiunti} illustra gli obiettivi raggiunti al termine del tirocinio.
 
 \begin{table}
     \centering
@@ -22,28 +22,81 @@ La Tabella \ref{tab:obbiettivi-raggiunti} illustra gli obiettivi raggiunti duran
         \hyperref[D02]{D02}                & Obbligatorio      & Non soddisfatto    \\ \hline
         \hyperref[F01]{F01}                & Obbligatorio      & Non soddisfatto    \\ \hline
     \end{tabular}%
-\caption{Tabella con gli obbiettivi raggiunti}
+\caption{Tabella con gli obiettivi raggiunti}
 \label{tab:obbiettivi-raggiunti}
 \end{table}
 
-\noindent Il mancato soddisfascimento degli obbiettivi \emph{D02} e \emph{F01}, è stato dovuto, in generale, alla mancanza di tempo, in quanto, come si può notare dalla variazione di pianificazione (sezione \ref{subsec:variazione-pianificazione}), la fase di sviluppo è stata più lunga del previsto.\\
+\noindent Il mancato soddisfascimento degli obbiettivi \emph{D02} e \emph{F01}, è stato dovuto, in generale, alla mancanza di tempo, in quanto, come si può notare dalla variazione di pianificazione (Sezione \ref{subsec:variazione-pianificazione}), la fase di sviluppo è stata più lunga del previsto.\\
 Malgrado non siano stati progettati e scritti i test per la verifica e validazione dell'applicazione, si è comunque cercato di mantenere un codice pulito e ben strutturato, in modo da facilitare eventuali modifiche e manutenzioni future, anche se come garanzia di qualità non può considerarsi sufficiente.
 Si specifica, inoltre, che la verifica delle funzionalità dell'applicazione è stata effettuata dal tutor aziendale o da altri colleghi, lungo tutto il periodo di sviluppo del progetto, fornendo un \emph{feedback} immediato, permettendo così di apportare eventuali modifiche correttive e miglioramenti.\\
-Per quanto riguarda il \gls{deploy}\glsoccur, il principale motivo per cui non è stato effettuato, è da imputarsi al fatto che l'utenza a cui è rivolta l'applicazione è molto ristretta, risultava quindi superfluo e non necessario pubblicarla sulle piattaforme \emph{Google Play Store} e \emph{Apple App Store}. Tale decisione è stata presa dal tutor aziendale che ha ritenuto più opportuno pensare ad un modo alternativo per distribuire l'applicazione direttamente agli utenti finali.\\
-La Tabella \ref{tab:ore-pianificate-effettive} evidenzia la differenza tra le ore pianificate (presenti nel documento \emph{Piano di lavoro}) ed effettive per ogni attività del tirocinio.
+Per quanto riguarda il \gls{deploy}\glsoccur, il principale motivo per cui non è stato effettuato, è da imputarsi al fatto che l'utenza a cui è rivolta l'applicazione è molto ristretta, risultava quindi superfluo e non necessario pubblicarla sulle piattaforme \emph{Google Play Store} e \emph{Apple App Store}. Tale decisione è stata presa dal tutor aziendale che ha ritenuto più opportuno pensare ad un modo alternativo per distribuire l'applicazione direttamente agli utenti finali.
+
+\section{Consultivo delle attività}
+\label{sec:consultivo-attivita}
+
+Sulla base di quanto descritto nella Sezione \ref{sec:raggiungimento-obiettivi}, la Tabella \ref{tab:consultivo-ore} riporta la differenza tra le ore pianificate (presenti nel documento \emph{Piano di lavoro}) ed effettive per ogni attività del tirocinio.
 
 \begin{table}
     \centering
-    \begin{tabular}{|l|l|l|}
+    \begin{tabularx}{\textwidth}{|c|c|X|}
         \hline
-        \textbf{Attività} & \textbf{Ore pianificate} & \textbf{Ore effettive} \\ \hline
-        Formazione sulle tecnologie adottate                & 80      & 60    \\ \hline
-        Definizione architettura di riferimento e relativa documentazione                & 40      & 40    \\ \hline
-        Sviluppo                & 160      & 200    \\ \hline
-        Verifica e validazione                & 40      & 20    \\ \hline
-    \end{tabular}%
-\caption{Consutivo della durata delle attività}
-\label{tab:ore-pianificate-effettive}
+        \textbf{Ore effettive} & \textbf{Ore pianificate} & \textbf{Descrizione dell'attività} \\\hline
+        
+        \textbf{70} & \textbf{80} & \textbf{Formazione sulle tecnologie} \\	 
+        \hline
+        
+        \textbf{40} & \textbf{40} & \textbf{Definizione architettura di riferimento e relativa documentazione} \\ \hdashline 
+        \multirow{3}{0cm}\\ 
+        \textit{14} &
+        \textit{12} & 
+        \textit{Analisi del problema e del dominio applicativo} \\
+        \textit{20} &
+        \textit{22} & 
+        \textit{Progettazione della piattaforma e relativi test} \\
+        \textit{6} &
+        \textit{6} & 
+        \textit{Stesura documentazione relativa ad analisi e progettazione} \\
+        \hline
+        
+
+        \textbf{192} & \textbf{160} & \textbf{Sviluppo}  \\ \hdashline 
+        \multirow{5}{0cm}\\ 
+        \textit{40} &
+        \textit{26} & 
+        \textit{Implementazione del meccanismo di autenticazione e integrazione con il sistema preesistente per il prelevamento dei dati da visualizzare nell'applicazione} \\
+        \textit{40} &
+        \textit{34} & 
+        \textit{Implementazione delle funzionalità di creazione e compilazione (testuale e vocale) delle meeting-note} \\
+        \textit{40} &
+        \textit{28} & 
+        \textit{Integrazione del servizio OpenAI} \\
+        \textit{24} &
+        \textit{40} & 
+        \textit{Attività di testing} \\
+        \textit{48} &
+        \textit{32} & 
+        \textit{Sviluppo UI} \\
+        \hline
+        
+        \textbf{10} & \textbf{40} & \textbf{Verifica e Validazione finale}  \\ \hdashline 
+        \multirow{3}{0cm}\\ 
+        \textit{0} &
+        \textit{24} & 
+        \textit{Esecuzione dei test per la verifica e collaudo dell'applicazione} \\
+        \textit{10} &
+        \textit{8} & 
+        \textit{Stesura documentazione finale} \\
+        \textit{0} &
+        \textit{8} & 
+        \textit{Deploy dell'applicazione} \\
+        \hline
+        
+        \textbf{Totale ore} & \multicolumn{1}{|X|}{\textbf{312}} \\ 
+        \hline
+        
+    \end{tabularx}
+    \caption{Consultivo della durata delle attività}
+    \label{tab:consultivo-ore}
 \end{table}
 
 \section{Valutazione personale}
