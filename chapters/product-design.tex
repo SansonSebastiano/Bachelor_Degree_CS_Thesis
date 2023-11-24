@@ -71,7 +71,7 @@ Nel dettaglio l'applicazione è composta da quattro livelli:
 \end{itemize}
 Questa architettura permette inoltre di avere la possibilità di definire eventualmente più sorgenti da cui recuperare i dati senza dover modificare il codice relativo ai livelli superiori, in quanto è sufficiente modificare il \emph{data layer}.
 
-\section{Struttura del progetto}
+\section{Scelta della struttura del progetto}
 \label{sec:struttura-progetto}
 % Struttura del progetto: cartelle, file, ecc. -> LAYER FIRST
 Un altro aspetto importante da considerare per la realizzazione di un progetto software è la sua struttura, ovvero come organizzare i file e le cartelle che lo compongono.\\
@@ -155,11 +155,12 @@ Il concetto centrale di \emph{Flutter} è quello dei \emph{widget}, oggetti che 
 \subsection*{OpenAI API}
 \label{subsec:openai-api}
 
-Sono \gls{apig}\glsoccur rilasciate da \emph{OpenAI} \cite{site:openai} per fornire accesso a modelli di \gls{iag}\glsoccur, che possono essere utilizzati per diversi scopi, come ad esempio la generazione di testo, codice, immagini, ecc.\\
+Le \gls{apig}\glsoccur rilasciate da \emph{OpenAI} \cite{site:openai} provvedono l'accesso a modelli di \gls{iag}\glsoccur, che permettono agli sviluppatori di integrare un sistema intelligente nelle applicazioni.\\ 
+Queste \gls{apig}\glsoccur sono state progettate per fornire un'interfaccia generica, ovvero che possono essere utilizzati per diversi scopi, come ad esempio la generazione di testo, codice, immagini, ecc.\\
 
-\noindent In particolare per questo progetto è stata addestrata e utilizzata per effettuare elaborazione del testo: a partire da un testo in input, digitato dall'utente, il modello deve essere in grado di estrapolare e restituire le informazioni rilevanti per la creazione di una \gls{meetingnote}\glsoccur, ovvero il nome del cliente, la data e il contenuto dell'incontro.\\
-Tale implementazione è stata effettuata dal tutor esterno, il quale ha successivamente integrato tale funzionalità nel \gls{backend}\glsoccur della piattaforma \emph{RiskAPP}.\\
-Per l'integrazione di tale servizio nell'applicazione, è stato sufficiente effettuare una richiesta \gls{httpg}\glsoccur al \gls{backend}\glsoccur, come descritto nelle Sezioni \ref{subsubsec:meeting-note-service} e \ref{subsec:meeting-note-provider}.
+\noindent In particolare per questo progetto è stato addestrato e utilizzato un modello per effettuare elaborazione del testo: a partire da un testo in input, digitato dall'utente, il modello deve essere in grado di estrapolare e restituire le informazioni rilevanti per la creazione di una \gls{meetingnote}\glsoccur, ovvero il nome del cliente, la data e il contenuto dell'incontro.\\
+L'implementazione è stata effettuata dal tutor esterno, il quale ha successivamente integrato tale funzionalità nel \gls{backend}\glsoccur della piattaforma \emph{RiskAPP}.\\
+Per l'integrazione di tale servizio nell'applicazione, è stato sufficiente effettuare una richiesta \gls{httpg}\glsoccur al \gls{backend}\glsoccur, come descritto nelle Sezioni \ref{par:smart-creation-value} e \ref{subsec:meeting-note-provider}.
 
 \subsection*{Emulatori Android e iOS}
 \label{subsec:emulatori}
