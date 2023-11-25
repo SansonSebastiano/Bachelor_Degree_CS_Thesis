@@ -44,8 +44,16 @@
 \input{config/variables}
 
 \makeglossaries
-\input{appendix/glossary-entries.tex}
+\setglossarypreamble[main]{
+    \vspace{10pt}
+    \noindent
+    Questo glossario contiene le definizioni dei termini tecnici, degli acronimi e delle abbreviazioni utilizzati nel documento.\\
+    Per la definizione della maggioranza di questi termini, è stata utilizzata un'unica fonte di riferimento: \textit{Wikipedia} \cite{site:wikipedia}.\\
+    Per i restanti termini, verranno indicate, per ciascuno, le fonti di riferimento.
+    \vspace{10pt}
+}
 
+\input{appendix/glossary-entries.tex}
 
 \bibliography{appendix/bibliography}
 
