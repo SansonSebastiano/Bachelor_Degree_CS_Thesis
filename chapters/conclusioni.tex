@@ -51,15 +51,31 @@ La Tabella \ref{tab:obbiettivi-raggiunti} illustra gli obiettivi raggiunti al te
 \end{table}
 
 \noindent Il mancato soddisfascimento degli obiettivi \emph{D02} e \emph{F01}, ovvero il \emph{deploy} e la stesura dei test per la verifica e validazione dell'applicazione, è stato causato principalmente dalla mancanza di tempo. \\
-Come evidenziato dal reale svolgimento delle attività (Sezione \ref{subsec:variazione-pianificazione}), la fase di sviluppo è stata più lunga del previsto.\\
+Come evidenziato dal reale svolgimento delle attività (Sezione \ref{sec:consultivo-attivita}), la fase di sviluppo è stata più lunga del previsto.\\
 Malgrado non siano stati progettati e scritti i test per la verifica e validazione dell'applicazione, si è comunque cercato di mantenere un codice pulito e ben strutturato, in modo da facilitare eventuali modifiche e manutenzioni future, anche se come garanzia di qualità non può considerarsi sufficiente.
 Si specifica, inoltre, che la verifica delle funzionalità dell'applicazione è stata effettuata dal tutor aziendale o da altri colleghi, lungo tutto il periodo di sviluppo del progetto, fornendo un \emph{feedback} immediato, permettendo così di apportare eventuali modifiche correttive e miglioramenti.\\
 Per quanto riguarda il \gls{deploy}\glsoccur, il principale motivo per cui non è stato effettuato, è da imputarsi al fatto che l'utenza a cui è rivolta l'applicazione è molto ristretta, risultava quindi superfluo e non necessario pubblicarla sulle piattaforme \emph{Google Play Store} e \emph{Apple App Store}. Tale decisione è stata presa dal tutor aziendale che ha ritenuto più opportuno pensare ad un modo alternativo per distribuire l'applicazione direttamente agli utenti finali.
 
+\newpage
+
 \section{Consuntivo delle attività}
 \label{sec:consultivo-attivita}
 
-Sulla base di quanto descritto nella Sezione \ref{sec:raggiungimento-obiettivi}, la Tabella \ref{tab:consultivo-ore} riporta la differenza tra le ore pianificate (presenti nel documento \emph{Piano di lavoro}) ed effettive per ogni attività del tirocinio.
+% Sulla base di quanto descritto nella Sezione \ref{sec:raggiungimento-obiettivi}, la Tabella \ref{tab:consultivo-ore} riporta la differenza tra le ore pianificate (presenti nel documento \emph{Piano di lavoro}) ed effettive per ogni attività del tirocinio. \\
+
+Durante la prima settimana di stage, la pianificazione iniziale non è stata rispettata sin da subito, dunque la reale ripartizione delle attività ha subito delle differenze, questo però non ha compromesso negativamente in alcun modo il percorso di realizzazione del prodotto e il raggiungimento degli obiettivi fissati.\\
+Una prima motivazione di tali variazioni è dettata da un consiglio del tutor aziendale, ovvero quello di sviluppare un \gls{mockup}\glsoccur dell'applicazione, in modo da fornire una notevole agevolazione nell'analisi dei requisiti e di conseguenza avere un'idea più chiara di come essa dovrà essere progettata e sviluppata.\\
+Un'altra motivazione, è stata la mia esperienza pregressa, da autodidatta, con il linguaggio \emph{Dart} \cite{site:dart} e il framework \emph{Flutter} \cite{site:flutter}, che mi ha permesso di saltare parzialmente parte della fase formativa.\\
+Tali variazioni, corrispondenti dunque all'effettivo svolgimento delle attività, sono visualizzabili nel diagramma di Gantt in Figura \ref{fig:gantt}, il cui consuntivo delle ore corrispondente è riportato nella Tabella \ref{tab:consultivo-ore}.
+
+\begin{figure}[!h] 
+    \centering 
+    \includegraphics[width=1.0\columnwidth]{gantt_stage} 
+    \caption{Diagramma di Gantt della ripartizione definitiva delle attività durante il periodo di stage}
+    \label{fig:gantt}
+\end{figure}
+
+È doveroso precisare che, nonostante la fase di progettazione sia avvenuta dopo la codifica della \gls{uig}\glsoccur dell'applicazione e non vicerversa, come previsto nella pianificazione iniziale, ma soprattutto dai principi dell'\gls{ingsw}\glsoccur, non si è andati a compromettere la fase di sviluppo, in quanto la codifica della \gls{uig}\glsoccur si è svolta con la consapevolezza di implementare un'architettura che si basasse sul \gls{patternarchitetturale}\glsoccur \Gls{mvcg}\glsoccur, per mantenere una separazione tra la logica di presentazione e la logica di business.
 
 \begin{table}
     \centering
@@ -116,7 +132,7 @@ Sulla base di quanto descritto nella Sezione \ref{sec:raggiungimento-obiettivi},
         \textit{Deploy dell'applicazione} \\
         \hline
         
-        \textbf{Totale ore} & \multicolumn{1}{|X|}{\textbf{312}} \\ 
+        \textbf{312} & \multicolumn{2}{|c|}{\textbf{Totale ore}} \\ 
         \hline
         
     \end{tabularx}
@@ -131,4 +147,4 @@ Il tirocinio è stato un'esperienza molto formativa, in quanto mi ha permesso di
 Come già menzionato in precedenza, nonostante la mia familiarità con alcune delle tecnologie adottate, ho avuto modo di approfondirle e di imparare nuovi concetti, soprattutto per quanto riguarda il \emph{framework} \emph{Flutter}.\\
 Inoltre, per la prima volta ho avuto modo di lavorare ad un progetto in maniera più professionale, seguendo anche alcuni principi affrontati durante il corso di \emph{Ingegneria del Software}, come ad esempio la pianificazione della fase di sviluppo, fissando delle \gls{milestone}\glsoccur, mantenendo traccia dei progressi per il raggiungimento degli obiettivi del progetto, e la documentazione del codice, in modo da rendere più facile la comprensione e la manutenzione del codice.\\  
 L'azienda mi ha lasciato molta autonomia durante lo sviluppo del progetto e mi ha fornito un \emph{feedback} costante, permettendomi di migliorare e di imparare nuove cose. \\
-In conclusione, ritengo che il tirocinio sia stato un'esperienza molto positiva, che mi ha permesso di crescere sia dal punto di vista professionale che personale.
+In conclusione, ritengo che il tirocinio sia stato un'esperienza molto positiva, che mi ha permesso di crescere sia dal punto di vista professionale che personale. 
