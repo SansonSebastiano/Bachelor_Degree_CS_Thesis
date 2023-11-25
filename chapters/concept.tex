@@ -63,6 +63,8 @@ Per questioni di leggibilità, i diagrammi sono stati suddivisi in più parti, r
     \label{UC02}
 \end{usecase}
 
+\newpage
+
 \begin{usecase}{03}{Riconoscimento biometrico}
     \usecasemainactors{Utente non autenticato}
     \usecasepre{L'utente non è ancora autenticato nel sistema}
@@ -79,9 +81,8 @@ Per questioni di leggibilità, i diagrammi sono stati suddivisi in più parti, r
     \usecasedesc{L'autenticazione fallisce e l'utente viene informato dell'errore; le motivazioni possono essere le seguenti:
         \begin{itemize}
             \item le credenziali inserite non sono corrette;
-            \item il sistema non è raggiungibile;
-            \item il \gls{riconoscimentobiometrico}\glsoccur è fallito;
-            \item connessione ad internet assente.
+            \item il sistema non è raggiungibile o connessione ad internet assente;
+            \item il \gls{riconoscimentobiometrico}\glsoccur è fallito.
         \end{itemize}}
     \usecasepost{L'utente non è autenticato nel sistema}
     \usecaseimg{\ref{fig:uc-login}}
@@ -121,6 +122,8 @@ Per questioni di leggibilità, i diagrammi sono stati suddivisi in più parti, r
     \usecaseimg{\ref{fig:uc-meetingnote-list-details}}
     \label{UC05.1}
 \end{usecase}
+
+\clearpage
 
 \begin{usecase}{05.2}{Visualizzazione data della Meeting Note}
     \usecasemainactors{Utente autenticato}
