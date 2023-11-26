@@ -75,7 +75,12 @@ Tali variazioni, corrispondenti dunque all'effettivo svolgimento delle attività
     \label{fig:gantt}
 \end{figure}
 
-È doveroso precisare che, nonostante la fase di progettazione sia avvenuta dopo la codifica della \gls{uig}\glsoccur dell'applicazione e non vicerversa, come previsto nella pianificazione iniziale, ma soprattutto dai principi dell'\gls{ingsw}\glsoccur, non si è andati a compromettere la fase di sviluppo, in quanto la codifica della \gls{uig}\glsoccur si è svolta con la consapevolezza di implementare un'architettura che si basasse sul \gls{patternarchitetturale}\glsoccur \Gls{mvcg}\glsoccur, per mantenere una separazione tra la logica di presentazione e la logica di business.
+È doveroso precisare che, nonostante la fase di progettazione sia avvenuta dopo la codifica della \gls{uig}\glsoccur dell'applicazione e non vicerversa, come previsto nella pianificazione iniziale, ma soprattutto dai principi dell'\gls{ingsw}\glsoccur, non si è andati a compromettere la fase di sviluppo, in quanto la codifica della \gls{uig}\glsoccur si è svolta con la consapevolezza di implementare un'architettura che si basasse sul \gls{patternarchitetturale}\glsoccur \Gls{mvcg}\glsoccur, per mantenere una separazione tra la logica di presentazione e la logica di business.\\
+
+Infine, per quanto l'attività di \emph{Integrazione del servizio OpenAI per automatizzare la creazione di Meeting Note}, è stato addestrato e utilizzato un modello per effettuare elaborazione del testo: a partire da un testo in input, digitato dall'utente, tale modello deve essere in grado di estrapolare e restituire le informazioni rilevanti per la creazione di una \gls{meetingnote}\glsoccur, ovvero il nome del cliente, la data e il contenuto dell'incontro.\\
+L'implementazione di tale modello è stata effettuata dal tutor aziendale, il quale ha successivamente integrato questa funzionalità nel \gls{backend}\glsoccur della piattaforma \emph{RiskAPP}.\\
+Per l'integrazione di tale servizio nell'applicazione, si è reso sufficiente effettuare una richiesta \gls{httpg}\glsoccur al \gls{backend}\glsoccur, come descritto nelle Sezioni \ref{par:smart-creation-value} e \ref{subsec:meeting-note-provider}. \\
+Dunque, le ore effettive per questa attività sono da intendersi come il tempo impiegato per l'integrazione del servizio, presente nel \gls{backend}\glsoccur, nell'applicazione e non per l'implementazione del modello.\\
 
 \begin{table}
     \centering
@@ -107,10 +112,10 @@ Tali variazioni, corrispondenti dunque all'effettivo svolgimento delle attività
         \textit{Implementazione del meccanismo di autenticazione e integrazione con il sistema preesistente per il prelevamento dei dati da visualizzare nell'applicazione} \\
         \textit{40} &
         \textit{34} & 
-        \textit{Implementazione delle funzionalità di creazione e compilazione (testuale e vocale) delle meeting-note} \\
+        \textit{Implementazione delle funzionalità di creazione e compilazione (testuale e vocale) di Meeting Note} \\
         \textit{40} &
         \textit{28} & 
-        \textit{Integrazione del servizio OpenAI} \\
+        \textit{Integrazione del servizio OpenAI, per la creazione automatica di Meeting Note} \\
         \textit{24} &
         \textit{40} & 
         \textit{Attività di testing} \\

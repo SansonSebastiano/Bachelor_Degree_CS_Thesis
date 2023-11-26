@@ -152,16 +152,6 @@ Il concetto centrale di \emph{Flutter} è quello dei \emph{widget}, oggetti che 
 \emph{StarUML} \cite{site:staruml} è uno strumento che permette di modellare sistemi software, sviluppati secondo il paradigma \emph{orientato agli oggetti}, attraverso la creazione di diagrammi \gls{umlg}\glsoccur.\\
 È stato utilizzato per la realizzazione dei casi d'uso (vedi Sezione \ref{sec:usecase}) e dei diagrammi delle classi.
 
-\subsection*{OpenAI API}
-\label{subsec:openai-api}
-
-Le \gls{apig}\glsoccur rilasciate da \emph{OpenAI} \cite{site:openai} provvedono l'accesso a modelli di \gls{iag}\glsoccur, permettendo agli sviluppatori di integrare un sistema dotato di intelligenza artificiale nelle applicazioni.\\ 
-Queste \gls{apig}\glsoccur sono state progettate per fornire un'interfaccia generica, ovvero che possono essere utilizzati per diversi scopi, come ad esempio la generazione di testo, codice, immagini, ecc.\\
-
-\noindent In particolare per questo progetto è stato addestrato e utilizzato un modello per effettuare elaborazione del testo: a partire da un testo in input, digitato dall'utente, tale modello deve essere in grado di estrapolare e restituire le informazioni rilevanti per la creazione di una \gls{meetingnote}\glsoccur, ovvero il nome del cliente, la data e il contenuto dell'incontro.\\
-L'implementazione è stata effettuata dal tutor esterno, il quale ha successivamente integrato tale funzionalità nel \gls{backend}\glsoccur della piattaforma \emph{RiskAPP}.\\
-Per l'integrazione di tale servizio nell'applicazione, è stato sufficiente effettuare una richiesta \gls{httpg}\glsoccur al \gls{backend}\glsoccur, come descritto nelle Sezioni \ref{par:smart-creation-value} e \ref{subsec:meeting-note-provider}.
-
 \subsection*{Emulatori Android e iOS}
 \label{subsec:emulatori}
 
