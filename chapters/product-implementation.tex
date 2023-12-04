@@ -7,7 +7,7 @@
 \label{sec:struttura-progetto-impl}
 
 Seguendo quanto descritto nel capitolo \ref{cap:progettazione}, si è proceduto con l'implementazione del prodotto software.\\
-Nella Figura \ref{fig:real-project-structure} verrà illustratta l'effettiva struttura del progetto basata sull'approccio \emph{layer first} (vedi Sezione \ref{sec:struttura-progetto}), descrivendone poi, nel corso del capitolo, la varie classi contenute nei file di ciascuna cartella. \\
+Nella Figura \ref{fig:real-project-structure} verrà illustrata l'effettiva struttura del progetto basata sull'approccio \emph{layer first} (vedi Sezione \ref{sec:struttura-progetto}), descrivendone poi, nel corso del capitolo, la varie classi contenute nei file di ciascuna cartella. \\
 
 \begin{figure}[!h] 
     \centering 
@@ -24,7 +24,7 @@ Le restanti cartelle invece sono servite come ausilio per l'implementazione dell
 
 In questa cartella sono raccolti tutti i \emph{widget} personalizzati, utilizzati dalle schermate presenti in \emph{screens} (vedi Sezione \ref{sec:screens}).\\
 Di seguito verranno descritti i vari \emph{widget} implementati, suddivisi in base alla loro funzionalità.\\
-Si specifica inoltre che la maggior parte di questi abbiano una visibilità pubblica, in quanto devono essere utilizzati dalle schermate, mentre alcuni hanno una visibilità privata, poichè sono stati creati per essere utilizzati esclusivamente all'interno di altri \emph{widget}, contenuti nel medesimo file.
+Si specifica inoltre che la maggior parte di essi ha una visibilità pubblica, poiché devono essere utilizzati dalle schermate. Tuttavia, alcuni hanno una visibilità privata, in quanto sono stati creati per essere utilizzati esclusivamente all'interno di altri \emph{widget} contenuti nello stesso file.
 
 \subsection{Alert Dialogs}
 \label{subsec:alert-dialogs}
@@ -123,7 +123,7 @@ Questo \emph{widget} è composto da un \lstinline{Switch} \cite{site:switch} e u
 Inoltre ne viene definito il comportamento attraverso la classe \lstinline{State}, che estende \lstinline{StatefulWidget}, implementando il metodo \lstinline{build} per la costruzione del \emph{widget} e il metodo \lstinline{onChanged} per la gestione dell'evento di cambiamento di stato dello \lstinline{Switch}.\\
 Stato che è rappresentato da due variabili di tipo \lstinline{bool}, una che si occupa di gestire l'abilitazione del componente e l'altro che indica se nel dispositivo in cui viene eseguita l'applicazione è supportato il riconoscimento biometrico.\\
 La prima tra queste variabili, ad ogni suo cambiamento di stato, viene salvata in locale attraverso una libreria di terze parti (di cui verrà discussa nella Sezione \ref{subsec:shared-preferences}) per mantenere in memoria la preferenza dell'utente. \\
-Il caso in cui la seconda variabile, menzionata precedentemente, sia \lstinline{false}, dunque non vi è il supporto per il riconoscimento biometrico, si notifica l'utente di tale mancanza e si disabilita lo \lstinline{Switch}.
+Il caso in cui la seconda variabile, sia \lstinline{false}, indica dunque l'assenza del supporto per il riconoscimento biometrico, si notifica l'utente di tale mancanza e si disabilita lo \lstinline{Switch}.
 
 \begin{figure}[!h] 
     \centering 
@@ -427,7 +427,7 @@ Questa cartella contiene due cartelle, ciascuna rappresentante il \emph{data lay
 \label{subsec:model}
 
 In questa cartella sono contenuti i file che rappresentano il modello dei dati utilizzato all'interno dell'applicazione.\\
-Si specifica, per evitare rindondanze, che alcune classi in questione sono state implementate seguendo un \emph{pattern} specifico: oltre alla definizione degli attributi opportuni, ovvero quelli specificati nelle \gls{apig}\glsoccur del \gls{backend}\glsoccur, sono presenti un costruttore \emph{factory} \cite{site:factory} \lstinline{fromJson}, come si intuisce si occupa di convertire da \gls{jsong}\glsoccur all'oggetto interessato, dei metodi che ritornano il valore di ciascun attributo e un metodo \lstinline{toString} che ritorna una stringa rappresentante un'istanza della classe.\\
+Si specifica, per evitare ridondanze, che alcune classi in questione sono state implementate seguendo un \emph{pattern} specifico: oltre alla definizione degli attributi opportuni, ovvero quelli specificati nelle \gls{apig}\glsoccur del \gls{backend}\glsoccur, sono presenti un costruttore \emph{factory} \cite{site:factory} \lstinline{fromJson}, come si intuisce si occupa di convertire da \gls{jsong}\glsoccur all'oggetto interessato, dei metodi che ritornano il valore di ciascun attributo e un metodo \lstinline{toString} che ritorna una stringa rappresentante un'istanza della classe.\\
 Quest'ultimo metodo è stato definito con il solo scopo di visualizzare il contenuto di un oggetto in fase di \emph{debugging}.
 Nel corso di questa Sezione verrà specificato quando una classe è stata implementata seguendo tale \emph{pattern}, mentre per le altre verranno descritte nel dettaglio. \\
 Inoltre in quasi tutti i file è presente una classe, il cui nome termina con suffisso \lstinline{Response}, che estende \lstinline{BaseResponse} (vedi Sezione \ref{subsubsec:status-response}) e rappresenta l'esito di una richiesta \gls{httpg}\glsoccur fatta al \gls{backend}\glsoccur, nel caso in cui l'esito sia positivo contiene anche il valore da restituire.\\
@@ -837,7 +837,7 @@ Per la definizione dell'aspetto grafico, questa schermata implementa \lstinline{
     \item \lstinline{ElevatedButton} \cite{site:elevated-button}, componente che si occupa di avviare l'elaborazione del testo inserito dall'utente.
 \end{itemize}
 Nel dettaglio, quest'ultima operazione viene effettuata servendosi di \lstinline{meetingNoteProvider}per effettuare l'elaborazione e di \lstinline{authProvider} per autorizzare la richiesta attraverso il metodo \lstinline{isUnauthorized}, inoltre viene mostrato un \lstinline{CircularProgressIndicator} \cite{site:circular-progress-indicator} per indicare che la richiesta è in corso. \\
-Al termine dell'elaborazione, con i tre possibili esiti (i medesimi illustrati nella Sezione \ref{subsubsec:status-response})e, in caso di successo viene mostrato \lstinline{ConfirmCreationPopup} attraverso una modale che appare dal basso.
+Al termine dell'elaborazione, con i tre possibili esiti (i medesimi illustrati nella Sezione \ref{subsubsec:status-response}) e, in caso di successo viene mostrato \lstinline{ConfirmCreationPopup} attraverso una modale che appare dal basso.
 
 \begin{figure}[!h] 
     \centering 
@@ -1112,9 +1112,9 @@ Per la definizione dell'aspetto grafico, questa schermata implementa \lstinline{
     \item \lstinline{OutlinedButton} \cite{site:outline-button}, pulsante che si occupa di reindirizzare alla schermata precedente del \gls{wizard}\glsoccur;
     \item \lstinline{ElevatedButton} \cite{site:elevated-button}, pulsante che si occupa di confermare la creazione/modifica della \emph{Meeting Note} richiamando il metodo \lstinline{onConfirmation}.
 \end{itemize}
-Il metodo privato \lstinline{onConfirmation} si occupa di mostrare all'utente una finestra di dialogo attraverso la quale si chiede all'utente di confermare la creazione della \emph{Meeting Note} e in caso affermativo viene effettuata la richiesta al \gls{backend}\glsoccur attraverso \lstinline{meetingNoteProvider} (vedi Sezione \ref{subsec:meeting-note-provider}), controllandone l'autorizzazione con \lstinline{authProvider} e gestendo i vari esiti della richiesta (i medesimi illustrati nella Sezione \ref{subsec:model},  paragrafo \emph{Status Response}). \\
+Il metodo privato \lstinline{onConfirmation} si occupa di mostrare all'utente una finestra di dialogo, la quale chiede all'utente di confermare la creazione della \emph{Meeting Note} e in caso affermativo viene effettuata la richiesta al \gls{backend}\glsoccur attraverso \lstinline{meetingNoteProvider} (vedi Sezione \ref{subsec:meeting-note-provider}), controllandone l'autorizzazione con \lstinline{authProvider} e gestendo i vari esiti della richiesta (i medesimi illustrati nella Sezione \ref{subsec:model},  paragrafo \emph{Status Response}). \\
 Per differenziare il caso di creazione a quello di modifica si utilizza lo stesso approccio descritto nella Sezione \ref{subsubsec:wizard-page-1}, ovvero si verifica se l'oggetto \lstinline{MeetingNote} passato in input è vuoto, in tal caso l'utente sta creando una nuova \emph{Meeting Note}, altrimenti sta modificando una \emph{Meeting Note} esistente, di conseguenza viene invocato la chiamata opportuna. \\
-Prima della gestione degli esiti possibili della richiesta viene effettuato un controllo sullo stato della connessione ad internet attraverso il \lstinline{NetworkAwareProvider} (vedi Sezione \ref{subsec:network-handler}), in caso di assenza di connessione viene mostrato un \lstinline{WarningAlert} (vedi Sezione \ref{subsec:warning-alert}) con il relativo messaggio di errore. \\
+Prima della gestione degli esiti possibili della richiesta, viene effettuato un controllo sullo stato della connessione ad internet attraverso il \lstinline{NetworkAwareProvider} (vedi Sezione \ref{subsec:network-handler}), in caso di assenza di connessione viene mostrato un \lstinline{WarningAlert} (vedi Sezione \ref{subsec:warning-alert}) con il relativo messaggio di errore. \\
 Infine, durante l'elaborazione della richiesta, viene mostrata una finestra di dialogo che indica all'utente che l'operazione è in corso.
 
 \begin{figure}[!h] 

@@ -6,7 +6,7 @@
 \section{Mockup}
 \label{sec:mockup}
 
-Il primo passo per la progettazione dell'applicazione, è stato quello di realizzare un \gls{mockup}\glsoccur, con lo scopo di definirne il più dettagliatamente possibile l'interfaccia grafica: il numero di viste necessarie, la loro struttura, i componenti grafici e la loro disposizione, la \emph{palette} dei colori, come l'utente interagirà con l'applicazione e come questa dovrà rispondere a tali interazioni, simulabili attraverso un prototipo. Infatti, per l'implementazione della \gls{uig}\glsoccur, si è rivelato essere di notevole utilità, in quanto ha reso più semplice e veloce la realizzazione di quest'ultima, avendo compreso a priori come questa dovesse essere strutturata.\\
+Il primo passo per la progettazione dell'applicazione è stato quello di realizzare un \gls{mockup}\glsoccur, con lo scopo di definirne il più dettagliatamente possibile l'interfaccia grafica: il numero di viste necessarie, la loro struttura, i componenti grafici e la loro disposizione, la \emph{palette} dei colori, come l'utente interagirà con l'applicazione e come questa dovrà rispondere a tali interazioni, simulabili attraverso un prototipo. Infatti, per l'implementazione della \gls{uig}\glsoccur, si è rivelato essere di notevole utilità, in quanto ha reso più semplice e veloce la realizzazione di quest'ultima, avendo compreso a priori come questa dovesse essere strutturata.\\
 Inoltre, il \gls{mockup} è stato utilizzato per definire le funzionalità che l'applicazione deve offrire, in modo da avere un'idea più chiara di come queste debbano essere implementate, ed infine, è stato indispensabile per la fase di \emph{analisi dei requisiti}.\\ 
 Si specifica che nel corso della fase di implementazione sono state apportate delle modifiche all'interfaccia grafica per migliorarne l'usabilità, mantenendo però invariata la struttura generale dell'applicazione e prestando particolare attenzione all'esperienza utente, in modo da rendere l'utilizzo dell'applicazione, in mobilità, il più semplice e intuitivo possibile.
 
@@ -18,12 +18,13 @@ Si specifica che nel corso della fase di implementazione sono state apportate de
 \subsection{Architettura Flutter}
 \label{subsec:architettura-flutter}
 
-\emph{Flutter} è un \gls{framework}\glsoccur che fornisce una struttura, una serie di strumenti e librerie, che agevola lo sviluppo di applicazioni \emph{cross-platform}, ovvero che possono essere eseguite su più sistemi operativi, come \emph{Android}, \emph{iOS}, per dispositivi \emph{mobile} e \emph{MacOS}, \emph{Linux} e \emph{Windows} per dispositivi \emph{desktop}.\\
-Per comprendere al meglio questa peculiarità di \emph{Flutter}, è necessario analizzarne l'architettura \cite{site:flutter-architecture} delle applicazioni realizzate con esso, che sono composte dagli elementi illustrati nella Figura \ref{fig:architettura-flutter}, tra i quali, i principali sono descritti di seguito:
+\emph{Flutter} è un \gls{framework}\glsoccur che fornisce una struttura completa, comprensiva di una serie di strumenti e librerie, facilitando lo sviluppo di applicazioni \emph{cross-platform}.
+Queste applicazioni sono progettate per essere eseguite su vari sistemi operativi, tra cui \emph{Android}, \emph{iOS}, per dispositivi \emph{mobile} e \emph{MacOS}, \emph{Linux} e \emph{Windows} per dispositivi \emph{desktop}.\\
+Per comprendere al meglio questa peculiarità di \emph{Flutter}, è necessario analizzare l'architettura \cite{site:flutter-architecture} delle applicazioni realizzate con esso, che sono composte dagli elementi illustrati nella Figura \ref{fig:architettura-flutter}, tra i quali, i principali sono descritti di seguito:
 \begin{itemize}
     \item \textbf{Embedder}: fornisce un punto d'ingresso con il sistema operativo ospitante per accedere ai servizi forniti da esso. Questo consente dunque l'esecuzione dell'applicazione su diverse piattaforme e la possibilità di utilizzare librerie per accedere a funzionalità esclusive di determinati sistemi operativi, oppure viceversa, integrare il codice \emph{Flutter} in un'applicazione nativa già esistente;
     \item \textbf{Flutter engine}: è il componente centrale che fornisce l'implementazione a basso livello dell'\gls{apig}\glsoccur principale di \emph{Flutter}, includendo la grafica, il layout di testo, operazioni di \emph{I/O}, rete, ecc.;
-    \item \textbf{Flutter framework}: componente con il quale lo sviluppatore interagisce attraverso un insieme di librerie, che partendo dal basso sono:
+    \item \textbf{Flutter framework}: componente con il quale lo sviluppatore interagisce attraverso un insieme di librerie che, partendo dal basso, sono:
     \begin{itemize}
         \item \textbf{foundation}: fornisce un'astrazione delle funzionalità di animazione, grafica e \gls{gesture}\glsoccur;
         \item \textbf{rendering}: fornisce un'astrazione per gestire il layout. Con questo livello è possibile costruire un albero di oggetti renderizzabili.
@@ -33,7 +34,8 @@ Per comprendere al meglio questa peculiarità di \emph{Flutter}, è necessario a
     \item \textbf{Dart App}: codice sorgente sviluppato dall'utente, contenente i \emph{widget} per l'implementazione della \gls{uig}\glsoccur e la logica dell'applicazione.
 \end{itemize}
 
-Inoltre, essendo \emph{Flutter} \gls{open-source}\glsoccur: il suo codice sorgente è pubblico e quindi visibile ed estendibile da qualsiasi sviluppatore; è possibile utilizzare librerie di terze parti, sviluppate dalla \emph{community}, per aggiungere funzionalità all'applicazione, come ad esempio librerie per la gestione dello stato dell'applicazione, per la gestione delle richieste HTTP, ecc. \\
+Inoltre, essendo \emph{Flutter} \gls{open-source}\glsoccur, il suo codice sorgente è pubblico e quindi visibile ed estendibile da qualsiasi sviluppatore. \\
+È possibile utilizzare librerie di terze parti, sviluppate dalla \emph{community}, per aggiungere funzionalità all'applicazione, come ad esempio librerie per la gestione dello stato dell'applicazione, per la gestione delle richieste HTTP, ecc. \\
 
 \begin{figure}[!h] 
     \centering 
@@ -50,7 +52,7 @@ La problematica di come gestire lo stato dell'applicazione è definito in gergo 
 \label{subsec:riverpod}
 
 \emph{Riverpod} semplifica notevolmente lo \emph{state management} e si basa su un concetto evoluto da \emph{Provider} \cite{site:provider}, libreria da cui deriva.\\
-A differenza di \lstinline{InheritedWidget} \cite{site:inheritw} che permette di condividere lo stato tra più \emph{widget}, \emph{Riverpod}, che ne è una reimplementazione, fornisce \emph{providers} che sono indipendenti dai \emph{widget}, in quanto una volta dichiarato il \lstinline{ProviderScope} a livello globale, possono essere letti ovunque, a condizione che la classe richiamante venga estesa con \lstinline{ConsumerWidget} o \lstinline{ConsumerStatefulWidget} \cite{site:reading-provider}. \\
+A differenza di \lstinline{InheritedWidget} \cite{site:inheritw}, che permette di condividere lo stato tra più \emph{widget}, \emph{Riverpod}, che ne è una reimplementazione, fornisce \emph{providers} che sono indipendenti dai \emph{widget}, in quanto una volta dichiarato il \lstinline{ProviderScope} a livello globale, possono essere letti ovunque, a condizione che la classe richiamante venga estesa con \lstinline{ConsumerWidget} o \lstinline{ConsumerStatefulWidget} \cite{site:reading-provider}. \\
 Da questo ne consegue che si evita di aggiornare l'interfaccia grafica, ovvero di richiamare il metodo \lstinline{build()} di un \emph{widget} quando non è necessario, poichè è un'operazione costosa.\\
 Di \emph{provider} ne esistono varie tipologie, per le quali si rimanda alla documentazione ufficiale \cite{site:riverpod}, ma quelle implementate in questo progetto sono:
 \begin{itemize}
@@ -115,7 +117,7 @@ Di seguito viene descritto l'ambiente di sviluppo e data una panoramica delle te
 \label{subsec:git}
 
 \emph{Git} \cite{site:git} è un sistema di controllo di versione, finalizzato al tracciamento del codice sorgente e delle sue modifiche, inoltre ne permette la condivisione e dunque la collaborazione tra più sviluppatori.\\
-Inoltre è possibile, in caso di errori, poter ripristinare una versione precedente del codice sorgente.
+Inoltre è possibile, in caso di errori, ripristinare una versione precedente del codice sorgente.
 
 \subsection*{GitHub}
 \label{subsec:github}
@@ -158,5 +160,6 @@ Il concetto centrale di \emph{Flutter} è quello dei \emph{widget}, oggetti che 
 Per effettuare i test dell'applicazione su dispositivi \emph{Android} e \emph{iOS}, è stato utilizzato rispettivamente \emph{Android Studio} \cite{site:android-studio} e \emph{Xcode} \cite{site:xcode}, che forniscono degli emulatori per le rispettive piattaforme.\\
 
 \subsection*{API della piattaforma RiskAPP}
-A completare l'ambiente di sviluppo, l'azienda mi ha fornito l'accesso alle \gls{apig}\glsoccur del \gls{backend}\glsoccur, della piattaforma \emph{RiskAPP}, attraverso lo \emph{Swagger} \cite{site:swagger}, strumento che, tra le altre cose, consente di consultare la documentazione delle \gls{apig}\glsoccur e di testarle attraverso un'interfaccia grafica \emph{web}.\\
+A completare l'ambiente di sviluppo, ci sono le \gls{apig}\glsoccur del \gls{backend}\glsoccur, della piattaforma \emph{RiskAPP}.\\
+È possibile accedervi attraverso lo \emph{Swagger} \cite{site:swagger}, strumento che, tra le altre cose, consente di consultare la documentazione delle \gls{apig}\glsoccur e di testarle attraverso un'interfaccia grafica \emph{web}.\\
 Si specifica che, per lo sviluppo dell'applicazione, l'utilizzo di tali \gls{apig}\glsoccur è stato svolto su un \emph{server} di collaudo.
