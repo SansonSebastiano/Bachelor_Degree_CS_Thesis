@@ -26,14 +26,14 @@ In questa sezione vengono definiti gli \glspl{attore}\glsoccur che interagiscono
 \section{Token di autenticazione}
 \label{subsec:token-autenticazione}
 
-Per \emph{token} di autenticazione, del quale nel corso del documento si farà riferimento, si intende una stringa univoca che, una volta inserite e validate le credenziali, viene generata dal \gls{backend}\glsoccur e memorizzata dall'applicazione, il cui scopo è quello, oltre al mantenimento dell'accesso al proprio account, di effettuare le richieste \gls{httpg}\glsoccur.\\
-Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà effettuare nuovamente l'autenticazione per ottenerne uno nuovo.
+Per \emph{token} di autenticazione, del quale nel corso del documento si farà riferimento, si intende una stringa univoca che, una volta inserite e validate le credenziali, viene generata dal \gls{backend}\glsoccur e memorizzata dall'applicazione, il cui scopo è quello, oltre al mantenimento dell'accesso al proprio account, di autenticare le richieste \gls{httpg}\glsoccur.\\
+Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà effettuare nuovamente l'accesso per ottenerne uno nuovo.
 
 \section{Casi d'uso}
 \label{sec:usecase}
 
 Per lo studio dei \glspl{usecase}\glsoccur del prodotto sono stati creati degli appositi diagrammi che illustrano le interazioni tra gli \glspl{attore}\glsoccur e il sistema.\\
-Ciascun \gls{usecase}\glsoccur viene fornito con una descrizione che ne riporta le informazioni principali, come attori coinvolti, pre e post condizioni, scenario principale ed eventuali scenari secondari.\\
+Ciascun \gls{usecase}\glsoccur viene fornito con una descrizione che ne riporta le informazioni principali: attori coinvolti, pre e post condizioni, scenario principale ed eventuali scenari secondari.\\
 Per questioni di leggibilità, i diagrammi sono stati suddivisi in più parti, raggruppando i \glspl{usecase}\glsoccur che costituiscono una macro-funzionalità oppure specificano in dettaglio un \gls{usecase}\glsoccur del sistema.
 
 \begin{figure}[!h] 
@@ -303,7 +303,7 @@ Per questioni di leggibilità, i diagrammi sono stati suddivisi in più parti, r
 \begin{usecase}{08.5}{Logout}
     \usecasemainactors{Utente autenticato}
     \usecasepre{L'utente visualizza i propri dati personali}
-    \usecasedesc{L'utente vuole effetuare il logout.}
+    \usecasedesc{L'utente vuole effettuare il logout.}
     \usecasepost{L'utente non è più autenticato al sistema}
     \usecaseimg{\ref{fig:uc-user}}
     \label{UC08.5}
@@ -630,7 +630,7 @@ Per questioni di leggibilità, i diagrammi sono stati suddivisi in più parti, r
     \usecasemainactors{Utente autenticato}
     \usecasepre{L'utente visualizza la categoria del \gls{cliente}\glsoccur estrapolato}
     \usecasedesc{L'utente modifica la categoria del \gls{cliente}\glsoccur}
-    \usecasepost{La categoria del \gls{cliente}\glsoccur è stato modificato}
+    \usecasepost{La categoria del \gls{cliente}\glsoccur è stata modificata}
     \usecaseimg{\ref{fig:uc-meetingnote-create-automatic-result}}
     \label{15.4.5}
 \end{usecase}
@@ -893,7 +893,7 @@ Di seguito sono riportate le tabelle che raccolgono, per tipologia, i requisiti 
     \item \textbf{Requisiti di vincolo}: descrivono i vincoli che il prodotto software deve rispettare. Si faccia riferimento alla Tabella \ref{tab:requisiti-vincolo}.
 \end{itemize}
 
-\noindent Nelle tabelle relative ai requisiti funzionali, alcuni di questi requisiti coinvolgono più \glspl{usecase}\glsoccur, la motivazione risiede nel fatto che essi ne modellano un comportamento comune, nello specifico si tratta di casi in cui vengono descritti scenari alternativi per la gestione di eccezioni.\\
+\noindent Nelle tabelle relative ai requisiti funzionali, alcuni di questi coinvolgono più \glspl{usecase}\glsoccur, la motivazione risiede nel fatto che essi ne modellano un comportamento comune, nello specifico si tratta di casi in cui vengono descritti scenari alternativi per la gestione di eccezioni.\\
 Di seguito sono elencati, insieme ai relativi requisiti, i \gls{usecase}\glsoccur che, per questioni di leggibilità, non sono stai inseriti nelle tabelle:
 \begin{itemize}
     \item \textbf{\hyperref[RFN-4]{RFN-4 }}: \hyperref[UC08.8]{UC08.8};
@@ -904,7 +904,7 @@ Di seguito sono elencati, insieme ai relativi requisiti, i \gls{usecase}\glsoccu
 \end{itemize}
 
 \begin{table}%
-\caption{Tabella del tracciamento dei requisti funzionali - 1}
+\caption{Tabella del tracciamento dei requisiti funzionali - 1}
 \label{tab:requisiti-funzionali-1}
 \begin{tabularx}{\textwidth}{lXl}
 \hline\hline
@@ -959,7 +959,7 @@ RFN-21 \label{RFN-21} & Il sistema permette di visualizzare i dati personali del
 \clearpage
 
 \begin{table}%
-\caption{Tabella del tracciamento dei requisti funzionali - 2}
+\caption{Tabella del tracciamento dei requisiti funzionali - 2}
 \label{tab:requisiti-funzionali-2}
 \begin{tabularx}{\textwidth}{lXl}
 \hline\hline
@@ -1014,7 +1014,7 @@ RFN-42 \label{RFN-42} & Il sistema permette di modificare una \emph{Meeting Note
 \clearpage
 
 \begin{table}%
-    \caption{Tabella del tracciamento dei requisti funzionali - 3}
+    \caption{Tabella del tracciamento dei requisiti funzionali - 3}
     \label{tab:requisiti-funzionali-3}
     \begin{tabularx}{\textwidth}{lXl}
     \hline\hline
@@ -1062,7 +1062,7 @@ RFN-42 \label{RFN-42} & Il sistema permette di modificare una \emph{Meeting Note
 \clearpage
 
 \begin{table}%
-    \caption{Tabella del tracciamento dei requisti funzionali - 4}
+    \caption{Tabella del tracciamento dei requisiti funzionali - 4}
     \label{tab:requisiti-funzionali-4}
     \begin{tabularx}{\textwidth}{lXl}
     \hline\hline
@@ -1144,7 +1144,7 @@ RVZ-7 & Eseguire il deploy dell'applicazione sui sistemi operativi \emph{Android
 \hline
 RVN-8 & Per l'implementazione della dettatura vocale, utilizzare una libreria di terze parti opportuna & \hyperref[RFN-73]{RFN-73} \\
 \hline
-RVN-9 & Per l'implementazione del riconoscimento biometrico, utilizzare una librearia di terze parti opportuna & \hyperref[RFN-3]{RFN-3} \\
+RVN-9 & Per l'implementazione del riconoscimento biometrico, utilizzare una libreria di terze parti opportuna & \hyperref[RFN-3]{RFN-3} \\
 \hline
 RVN-10 & Assicurare il salvataggio del token di autenticazione nella memoria locale del dispositivo & \hyperref[RFN-1]{RFN-1} \\
 \hline
