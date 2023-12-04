@@ -34,7 +34,7 @@ Si specifica inoltre che ha una durata di 4 ore, dopo le quali l'utente dovrà e
 
 Per lo studio dei \glspl{usecase}\glsoccur del prodotto sono stati creati degli appositi diagrammi che illustrano le interazioni tra gli \glspl{attore}\glsoccur e il sistema.\\
 Ciascun \gls{usecase}\glsoccur viene fornito con una descrizione che ne riporta le informazioni principali, come attori coinvolti, pre e post condizioni, scenario principale ed eventuali scenari secondari.\\
-Per questioni di leggibilità, i diagrammi sono stati suddivisi in più parti, raggrupando i \glspl{usecase}\glsoccur che costituiscono una macro-funzionalità oppure specificano in dettaglio un \gls{usecase}\glsoccur del sistema.
+Per questioni di leggibilità, i diagrammi sono stati suddivisi in più parti, raggruppando i \glspl{usecase}\glsoccur che costituiscono una macro-funzionalità oppure specificano in dettaglio un \gls{usecase}\glsoccur del sistema.
 
 \begin{figure}[!h] 
     \centering 
@@ -893,6 +893,16 @@ Di seguito sono riportate le tabelle che raccolgono, per tipologia, i requisiti 
     \item \textbf{Requisiti di vincolo}: descrivono i vincoli che il prodotto software deve rispettare. Si faccia riferimento alla Tabella \ref{tab:requisiti-vincolo}.
 \end{itemize}
 
+\noindent Nelle tabelle relative ai requisiti funzionali, alcuni di questi requisiti coinvolgono più \glspl{usecase}\glsoccur, la motivazione risiede nel fatto che essi ne modellano un comportamento comune, nello specifico si tratta di casi in cui vengono descritti scenari alternativi per la gestione di eccezioni.\\
+Di seguito sono elencati, insieme ai relativi requisiti, i \gls{usecase}\glsoccur che, per questioni di leggibilità, non sono stai inseriti nelle tabelle:
+\begin{itemize}
+    \item \textbf{\hyperref[RFN-4]{RFN-4 }}: \hyperref[UC08.8]{UC08.8};
+    \item \textbf{\hyperref[RFN-5]{RFN-5 }}: \hyperref[UC06]{UC06}, \hyperref[UC07.6]{UC07.6}, \hyperref[UC08.8]{UC08.8}, \hyperref[UC09]{UC09}, \hyperref[UC13]{UC13}, \hyperref[UC14.6]{UC14.6}, \hyperref[UC17.3]{UC17.3}, \hyperref[UC20]{UC20}, \hyperref[UC22]{UC22}, \hyperref[UC31]{UC31};
+    \item \textbf{\hyperref[RFN-7]{RFN-7}}: \hyperref[UC06]{UC06}, \hyperref[UC07.6]{UC07.6}, \hyperref[UC08.8]{UC08.8}, \hyperref[UC09]{UC09}, \hyperref[UC13]{UC13}, \hyperref[UC14.6]{UC14.6}, \hyperref[UC17.3]{UC17.3}, \hyperref[UC20]{UC20}, \hyperref[UC22]{UC22}, \hyperref[UC31]{UC31};
+    \item \textbf{\hyperref[RFN-13]{RFN-13}}: \hyperref[UC07.6]{UC07.6}, \hyperref[UC08.8]{UC08.8}, \hyperref[UC09]{UC09}, \hyperref[UC13]{UC13}, \hyperref[UC14.6]{UC14.6}, \hyperref[UC17.3]{UC17.3}, \hyperref[UC20]{UC20}, \hyperref[UC22]{UC22}, \hyperref[UC31]{UC31};
+    \item \textbf{\hyperref[RFN-64]{RFN-64}}: \hyperref[UC22]{UC22}.
+\end{itemize}
+
 \begin{table}%
 \caption{Tabella del tracciamento dei requisti funzionali - 1}
 \label{tab:requisiti-funzionali-1}
@@ -1092,20 +1102,6 @@ RFN-42 \label{RFN-42} & Il sistema permette di modificare una \emph{Meeting Note
     \hline
 \end{tabularx}
 \end{table}
-
-\clearpage
-
-\noindent Nelle precedenti tabelle, sono presenti alcuni requisiti funzionali che coinvolgono più \glspl{usecase}\glsoccur, la motivazione risiede nel fatto che essi ne modellano un comportamento comune, nello specifico si trattano di casi in cui vengono descritti scenari alternativi per la gestione di eccezioni.\\
-Di seguito, che per questioni di leggibilità non stati inseriti nella tabella, verranno elencati tali \gls{usecase}\glsoccur e i corrispettivi requisiti:
-\begin{itemize}
-    \item \textbf{\hyperref[RFN-4]{RFN-4 }}: \hyperref[UC08.8]{UC08.8};
-    \item \textbf{\hyperref[RFN-5]{RFN-5 }}: \hyperref[UC06]{UC06}, \hyperref[UC07.6]{UC07.6}, \hyperref[UC08.8]{UC08.8}, \hyperref[UC09]{UC09}, \hyperref[UC13]{UC13}, \hyperref[UC14.6]{UC14.6}, \hyperref[UC17.3]{UC17.3}, \hyperref[UC20]{UC20}, \hyperref[UC22]{UC22}, \hyperref[UC31]{UC31};
-    \item \textbf{\hyperref[RFN-7]{RFN-7}}: \hyperref[UC06]{UC06}, \hyperref[UC07.6]{UC07.6}, \hyperref[UC08.8]{UC08.8}, \hyperref[UC09]{UC09}, \hyperref[UC13]{UC13}, \hyperref[UC14.6]{UC14.6}, \hyperref[UC17.3]{UC17.3}, \hyperref[UC20]{UC20}, \hyperref[UC22]{UC22}, \hyperref[UC31]{UC31};
-    \item \textbf{\hyperref[RFN-13]{RFN-13}}: \hyperref[UC07.6]{UC07.6}, \hyperref[UC08.8]{UC08.8}, \hyperref[UC09]{UC09}, \hyperref[UC13]{UC13}, \hyperref[UC14.6]{UC14.6}, \hyperref[UC17.3]{UC17.3}, \hyperref[UC20]{UC20}, \hyperref[UC22]{UC22}, \hyperref[UC31]{UC31};
-    \item \textbf{\hyperref[RFN-64]{RFN-64}}: \hyperref[UC22]{UC22}.
-\end{itemize}
-
-\clearpage
 
 \begin{table}%
 \caption{Tabella del tracciamento dei requisiti qualitativi}

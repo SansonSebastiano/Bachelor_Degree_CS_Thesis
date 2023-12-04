@@ -92,7 +92,7 @@ Di seguito verranno elencate le classi definite in tale file, comprese di una de
 
 Classe che implementa \lstinline{AppBar}, \cite{site:app-bar} definendone il colore di background, applicato dal tema dell'applicazione (vedi Sezione \ref{subsec:app-theme}), e il titolo, in cui si tratta dell'applicazione di un'immagine vettoriale contenuta nella cartella \lstinline{assets} la quale rappresenta il logo dell'azienda.\\
 Infine è possibile scegliere se aggiungere o meno un'icona, che rappresenta il pulsante di accesso alla schermata dell'account utente (Figura \ref{fig:custom-app-bar}).\\
-La motivazione di quest'ultima scelta è a causa del fatto che questa personalizzazione dell'\lstinline{AppBar} viene utilizzata per la quasi totalità delle viste, anche in quella dell'account utente, dove non si rende necessaria l'icona menzionata precedentemente poichè ci si trova già in tale vista.
+La motivazione di quest'ultima scelta è il fatto che questa personalizzazione dell'\lstinline{AppBar} viene utilizzata per la quasi totalità delle viste, anche in quella dell'account utente, dove non si rende necessaria l'icona menzionata precedentemente poichè ci si trova già in tale vista.
 
 \begin{figure}[!h] 
     \centering 
@@ -199,7 +199,7 @@ Il pulsante di conferma è disabilitato fintanto che non vengono inserite entram
 Successivamente attraverso l'ausilio di \lstinline{authProvider} (vedi Sezione \ref{subsec:authentication-provider}) viene effettuata la richiesta di autenticazione, che in caso di successo porta alla schermata principale dell'applicazione, salvando il \emph{token} di autenticazione ricevuto (vedi Sezione \ref{subsec:shared-preferences}), altrimenti viene mostrato un messaggio di errore.\\ 
 Mentre nel secondo caso, si effettua un controllo per verificare se l'utente in precedenza aveva abilitato tale funzionalità, in caso affermativo viene eseguito il riconoscimento biometrico (vedi Sezione \ref{subsec:biometric-auth}), altrimenti si prosegue con l'inserimento manuale delle credenziali.\\
 L'operazione e l'esito dell'autenticazione attraverso il riconoscimento biometrico, che avviene sempre attraverso \lstinline{authProvider}, è simile a quello descritto per l'autenticazione manuale, con la differenza che quest'ultimo metodo preleva le credenziali dalla memoria locale, precedentemente salvate dall'operazione di abilitazione del riconoscimento biometrico da parte dell'utente (vedi Sezione \ref{subsec:biometric-switch}). \\
-Inoltre è presente una variabile di stato \lstinline{isVerification} che se impostata a \lstinline{true} indica che questa \emph{form} viene impiegata come verifica delle credenziali per confermare l'abilitazione del riconscimento biometrico (vedi Sezione \ref{subsec:account-screen}).
+Inoltre è presente una variabile di stato \lstinline{isVerification} che se impostata a \lstinline{true} indica che questa \emph{form} viene impiegata come verifica delle credenziali per confermare l'abilitazione del riconoscimento biometrico (vedi Sezione \ref{subsec:account-screen}).
 
 \subsection{Meeting Note Card}
 \label{subsec:meeting-note-card}
@@ -338,7 +338,7 @@ Di seguito verranno elencate le classi definite in tale file, comprese di una de
 \subsubsection*{CustomSearchBar}
 \label{subsubsec:custom-search-bar}
 
-Classe che implementa una \lstinline{SearchBar} \cite{site:search-bar} in cui viene definito pressochè solo l'aspetto grafico in quanto attraverso il costruttore è obbligatorio passare un \lstinline{TextEditingController}\cite{site:text-editing-controller}, si occupa di gestire il testo inserito dall'utente, e un metodo \lstinline{onChanged} che gestisce l'evento di cambiamento del testo inserito dall'utente, mentre è opzionale passare il colore del \emph{background} del componente. \\
+Classe che implementa una \lstinline{SearchBar} \cite{site:search-bar} in cui viene definito pressoché solo l'aspetto grafico in quanto attraverso il costruttore è obbligatorio passare un \lstinline{TextEditingController}\cite{site:text-editing-controller}, si occupa di gestire il testo inserito dall'utente, e un metodo \lstinline{onChanged} che gestisce l'evento di cambiamento del testo inserito dall'utente, mentre è opzionale passare il colore del \emph{background} del componente. \\
 Lo scopo è quello di fornire all'utente la possibilità di effettuare una ricerca all'interno della lista dei clienti (questo componente, essendo integrato nella schermata discussa nella Sezione \ref{subsec:wizard-screen-1}, è visibile in Figura \ref{fig:w1}).
 
 \subsubsection*{CustomAutocomplete}
@@ -346,7 +346,7 @@ Lo scopo è quello di fornire all'utente la possibilità di effettuare una ricer
 
 Classe che implementa \lstinline{Autocomplete} \cite{site:autocomplete} (Figura \ref{fig:autocomplete}), consente di fornire dei suggerimenti per l'autocompletamento nella ricerca, in cui viene anche qui definito solo l'aspetto grafico. \\
 Attraverso il costruttore si rende necessario passare dei metodi fondamentali: \lstinline{optionsBuilder}fornisce i suggerimenti per l'autocompletamento, \lstinline{displayStringForOption} definisce quale attributo dell'oggetto suggerito visualizzare, mentre \lstinline{onSelected} si occupa di gestire l'evento di selezione di un suggerimento.\\
-Viene impiegato nel \emph{widget} \lstinline{FilterPanel} (vedi Sezione \ref{subsec:filter-panel}) per fornire all'utente la possibilità di ricercare un cliente e nella scherma di conferma per la creazione automatica di una \emph{Meeting Note} (vedi Sezione \ref{subsec:smart-creation-screen})
+Viene impiegato nel \emph{widget} \lstinline{FilterPanel} (vedi Sezione \ref{subsec:filter-panel}) per fornire all'utente la possibilità di ricercare un cliente e nella schermata di conferma per la creazione automatica di una \emph{Meeting Note} (vedi Sezione \ref{subsec:smart-creation-screen})
 
 \begin{figure}[!h] 
     \centering 
@@ -359,7 +359,7 @@ Viene impiegato nel \emph{widget} \lstinline{FilterPanel} (vedi Sezione \ref{sub
 \label{subsec:text-box}
 
 Nel file denominato \lstinline{text_box.dart} è stato implementato un \lstinline{StatefulWidget} per costruire un componente in grado di permettere all'utente di inserire del testo.\\
-È composto da semplicemente un \lstinline{TextField} \cite{site:text-field} in cui viene personalizzato nell'aspetto grafico, è richiesto dal costruttore il passagio dell'altezza di questo componente, in modo da poterlo utilizzare in diverse situazioni, poi è necessario passare un \lstinline{TextEditingController} \cite{site:text-editing-controller} e un metodo \lstinline{onChanged} che si occupa di gestire l'evento di cambiamento del testo inserito dall'utente.\\
+È composto da semplicemente un \lstinline{TextField} \cite{site:text-field} in cui viene personalizzato nell'aspetto grafico, è richiesto dal costruttore il passaggio dell'altezza di questo componente, in modo da poterlo utilizzare in diverse situazioni, poi è necessario passare un \lstinline{TextEditingController} \cite{site:text-editing-controller} e un metodo \lstinline{onChanged} che si occupa di gestire l'evento di cambiamento del testo inserito dall'utente.\\
 Viene utilizzato per la creazione/modifica di una \emph{Meeting Note} e per la creazione automatica.
 
 \begin{figure}[!h] 
@@ -383,8 +383,6 @@ Viene impiegato nel \lstinline{FilterPanel} (vedi Sezione \ref{subsec:filter-pan
     \caption{\emph{ToggleButtons}}
     \label{fig:toggle-button}
 \end{figure}
-
-\clearpage
 
 \subsection{Warning Alert}
 \label{subsec:warning-alert}
@@ -541,7 +539,7 @@ La sua implementazione è stata effettuata seguendo il \emph{pattern} definito n
 \paragraph*{PaginatedObject} ~ \\
 \label{par:paginated-object}
 
-\noindent Dalle specifiche dell'\gls{apig}\glsoccur, solamente i clienti di tipo \emph{broker} e \emph{contraente} vengono resituiti in modo paginato, per questo motivo è stata definita questa classe, che rappresenta un \emph{wrapper} di una lista di \lstinline{MeetingNoteObject} e di due altri attributi di tipo \lstinline{String}, che rappresentano rispettivamente il \emph{link} alla pagina precedente e successiva.\\
+\noindent Dalle specifiche dell'\gls{apig}\glsoccur, solamente i clienti di tipo \emph{broker} e \emph{contraente} vengono restituiti in modo paginato, per questo motivo è stata definita questa classe, che rappresenta un \emph{wrapper} di una lista di \lstinline{MeetingNoteObject} e di due altri attributi di tipo \lstinline{String}, che rappresentano rispettivamente il \emph{link} alla pagina precedente e successiva.\\
 La sua implementazione è stata effettuata seguendo il \emph{pattern} definito nell'introduzione di questa Sezione.
 
 \paragraph*{ObjectValue} ~ \\
@@ -612,7 +610,7 @@ La sua implementazione è stata effettuata seguendo il \emph{pattern} definito n
 \subsection{Services}
 \label{subsec:services}
 
-In questa Sezione verranno discusse le classi che si occupano di effettuare le richieste \gls{httpg}\glsoccur al \gls{backend}\glsoccur attraverso le \gls{apig}\glsoccur, per evitare rindondanze, ogni servizio, eccetto \lstinline{BaseService}, gestisce le eventuali eccezioni in caso una chiamata non vada a buon fine.
+In questa Sezione verranno discusse le classi che si occupano di effettuare le richieste \gls{httpg}\glsoccur al \gls{backend}\glsoccur attraverso le \gls{apig}\glsoccur, per evitare ridondanze, ogni servizio, eccetto \lstinline{BaseService}, gestisce le eventuali eccezioni in caso una chiamata non vada a buon fine.
 
 \subsubsection*{Authentication Service}
 \label{subsubsec:authentication-service}
@@ -628,12 +626,12 @@ In questo file sono state definite tutte le classi necessarie per fornire un'ast
 \paragraph*{BaseService} ~ \\
 \label{par:base-service}
 
-\noindent Classe astratta che si occupa di fornire un'interfaccia per gestire le chiamate \gls{httpg}\glsoccur e provede a definire i metodi fondamentali per effettuare una richiesta:
+\noindent Classe astratta che si occupa di fornire un'interfaccia per gestire le chiamate \gls{httpg}\glsoccur e provvede a definire i metodi fondamentali per effettuare una richiesta:
 \begin{itemize}
     \item \lstinline{getUrl}, che si occupa di restituire l'\gls{urig}\glsoccur della risorsa data una stringa in input;
     \item \lstinline{handleResponse}, invocata per ogni tipologia di richiesta, che si occupa di determinare se essa è avvenuta con successo o meno, in caso di quest'ultimo viene lanciata un'eccezione.
 \end{itemize}
-Le seguenti classi, che sono di tipo \lstinline{mixin} \cite{site:mixins}, aggiungono funzionalità alla classe \lstinline{BaseService}: ogni classe \lstinline{mixin} si occupa di fornire un implementazione per una chiamata \gls{httpg}\glsoccur specifica. \\
+Le seguenti classi, che sono di tipo \lstinline{mixin} \cite{site:mixins}, aggiungono funzionalità alla classe \lstinline{BaseService}: ogni classe \lstinline{mixin} si occupa di fornire un'implementazione per una chiamata \gls{httpg}\glsoccur specifica. \\
 Successivamente, quando verranno utilizzate, la classe in questione dovrà estendere \lstinline{BaseService} e includere alcune di queste classi \lstinline{mixin}, in modo da aggiungere ad un servizio le chiamate necessarie.\\
 Di seguito verranno descritte tali classi, per ciascuna si specificheranno i parametri necessari per la configurazione dell'\emph{header} o del \emph{body} della richiesta, a seconda delle necessità. \\
 
@@ -711,7 +709,7 @@ In questo file è definita la classe \lstinline{AuthenticationHelper} che si occ
     \item \lstinline{isBiometricEnabled}, verifica se l'utente ha abilitato l'autenticazione biometrica all'interno dell'applicazione, controllando se il \emph{flag} è salvato in locale;
     \item \lstinline{readCredentials}, si occupa di leggere le credenziali cifrate salvate in locale (vedi Sezione \ref{subsec:shared-preferences}), restituendo un oggetto di tipo \lstinline{AuthArgs} (vedi Sezione \ref{subsec:model});
     \item \lstinline{saveCredentials}, si occupa di salvare le credenziali cifrate in locale, ricevendo in input un oggetto di tipo \lstinline{AuthArgs} (vedi Sezione \ref{subsec:model});
-    \item \lstinline{removeCredentials}, si occupa di eliminare le credenziali cifrate salvate in locale;
+    \item \lstinline{removeCredentials}, si occupa di eliminare le credenziali cifrate salvate in locale.
 \end{itemize}
 
 \subsection{Meeting Note Object Provider}
@@ -733,7 +731,7 @@ In questo file è definita la classe \lstinline{MeetingNoteHelper}, si occupa di
     \item \lstinline{createMeetingNote}, si occupa di memorizzare la \emph{Meeting Note} creata e passata in input come oggetto di tipo \lstinline{MeetingNote} nel \gls{backend}\glsoccur, restituendo un oggetto di tipo \lstinline{StatusResponse} in quanto è sufficiente ritornare l'esito della richiesta;
     \item \lstinline{deleteMeetingNote}, si occupa di eliminare la \emph{Meeting Note} passata in input lo \lstinline{uuid} come parametro, restituendo un oggetto di tipo \lstinline{StatusResponse} in quanto è sufficiente ritornare l'esito della richiesta;
     \item \lstinline{modifyMeetingNote}, si occupa di modificare la \emph{Meeting Note} passata in input come oggetto di tipo \lstinline{MeetingNote}, restituendo un oggetto di tipo \lstinline{StatusResponse} in quanto è sufficiente ritornare l'esito della richiesta;
-    \item \lstinline{smartCreation}, si occupa della creazione du una \emph{Meeting Note} in modo automatico, passando in input il testo da elaborare, restituendo un oggetto di tipo \lstinline{SmartCreationResponse}.
+    \item \lstinline{smartCreation}, si occupa della creazione di \emph{Meeting Note} in modo automatico, passando in input il testo da elaborare, restituendo un oggetto di tipo \lstinline{SmartCreationResponse}.
 \end{itemize}
 
 \subsection{User Provider}
@@ -1147,7 +1145,7 @@ Di seguito verrà illustrato nel dettaglio il contenuto di ogni file.
 
 \lstinline{AppColors} è una classe in cui viene ridefinita la \emph{palette} colori utilizzata nell'applicazione, in particolare:
 \begin{itemize}
-    \item \lstinline{primary}, rappresenta il colore primario, applicato ai compomenti principali dell'applicazione (es. pulsanti, icone, ecc.);
+    \item \lstinline{primary}, rappresenta il colore primario, applicato ai componenti principali dell'applicazione (es. pulsanti, icone, ecc.);
     \item \lstinline{secondary}, rappresenta il colore secondario dell'applicazione, applicato ai componenti secondari (es. \emph{filter chips} \cite{site:chips});
     \item \lstinline{error}, rappresenta il colore da applicare nelle eccezioni (es. validazione dei campi);
     \item \lstinline{surface}, rappresenta il colore di sfondo per una categoria di componenti (es. \emph{card} \cite{site:card});
@@ -1217,7 +1215,7 @@ Gli stili di testo \cite{site:text-theme} in questione sono:
 
 \lstinline{AppTheme} è una classe che si occupa di ridefinire il tema dell'applicazione, richiamando per ciascuna delle proprietà di \lstinline{ThemeData} \cite{site:theme-data-class} le classi precedentemente descritte. \\
 I colori precedentemente configurati sono stati richiamati nella proprietà \lstinline{colorScheme}, mentre lo stile dei testi in \lstinline{textTheme}. \\
-Nelle proprietà \lstinline{elevatedButtonTheme} e \lstinline{outlinedButtonTheme} sono stati richiamati rispettivamente le configurazione grafiche illustrate in precedenza.\\
+Nelle proprietà \lstinline{elevatedButtonTheme} e \lstinline{outlinedButtonTheme} sono stati richiamati rispettivamente le configurazioni grafiche illustrate in precedenza.\\
 Infine è stato impostato \emph{ad hoc} lo stile grafico del \lstinline{floatingActionButton} \cite{site:fab}.
 
 \section{Utils}
@@ -1253,7 +1251,7 @@ Le variabili di stato sono:
     \item \lstinline{dateRange}, \lstinline{DateTimeRange} che rappresenta l'intervallo di date;
     \item \lstinline{isChronologicalOrder}, \lstinline{bool} che indica se l'ordinamento deve avvenire in maniera cronologica o meno.
 \end{itemize}
-Inoltre sono presenti, dei metodi per impostare il valore di ciasuna variabile di stato e un metodo \lstinline{isNull} che restituisce \lstinline{false} se tutte le variabili di stato sono \lstinline{null}. \\
+Inoltre sono presenti, dei metodi per impostare il valore di ciascuna variabile di stato e un metodo \lstinline{isNull} che restituisce \lstinline{false} se tutte le variabili di stato sono \lstinline{null}. \\
 È stato creato poi un \emph{Provider}, di tipo \lstinline{StateNotifierProvider} \cite{site:state-notifier-provider}, per gestire lo stato di \lstinline{FilteringOptions} nella schermata principale dell'applicazione (vedi Sezione \ref{subsec:home-screen}).
 
 \subsection{Network handler}
@@ -1292,7 +1290,7 @@ Mentre la classe \lstinline{SecureStorage} ha lo scopo di gestire le credenziali
 \subsection{Show alert}
 \label{subsec:show-alert}
 
-Nel file \lstinline{show_alert.dart} sono presenti dei metodi publici che si occupano di visualizzare all'utente delle finestre di dialogo o \emph{snackbar} \cite{site:snackbar}, per mostrare messaggi di errore o di conferma (Figura \ref{fig:snackbar}). \\
+Nel file \lstinline{show_alert.dart} sono presenti dei metodi pubblici che si occupano di visualizzare all'utente delle finestre di dialogo o \emph{snackbar} \cite{site:snackbar}, per mostrare messaggi di errore o di conferma (Figura \ref{fig:snackbar}). \\
 È stato implementato un metodo, che funge da base e quindi personalizzabile, per la visualizzazione delle finestre di dialogo discusse nella Sezione \ref{subsec:alert-dialogs}. \\
 In aggiunta è presente un metodo per visualizzare una \emph{snackbar}, la quale può essere personalizzata in base al messaggio da mostrare e al colore di sfondo.
 
@@ -1322,7 +1320,7 @@ In essa sono stati definiti i seguenti metodi:
 
 Il file \lstinline{main.dart} è il punto di ingresso dell'applicazione, in particolare è presente la funzione \lstinline{main} che si occupa di inizializzare l'applicazione, fissando l'orientamento dello schermo a \lstinline{portraitUp} e dichiarando il \lstinline{ProviderScope}. \\
 Richiama poi \lstinline{MyApp}, un \emph{ConsumerWidget}, e come prima cosa controlla se è salvato in memoria il \emph{token} di autenticazione attraverso \lstinline{authProvider} (vedi Sezione \ref{subsec:authentication-provider}) e decidere se rimandare alla schermata di autenticazione o alla schermata principale dell'applicazione. \\
-Il reindirizzamento avviene attraverso \lstinline{InitApp}, un \emph{StatelessWidget}, invocando \lstinline{ScreenUtilInit}(vedi Sezione \ref{sec:responsivity}), fissando inoltre il parametro \lstinline{supportedLocales} a \lstinline{const Locale('it', 'IT')}, in modo tale che l'applicazione imposti automaticamente alcuni \emph{widget} come il calendario e la data nel formatto corretto e infine viene impostato il tema dell'applicazione (discusso precedentemente).
+Il reindirizzamento avviene attraverso \lstinline{InitApp}, un \emph{StatelessWidget}, invocando \lstinline{ScreenUtilInit}(vedi Sezione \ref{sec:responsivity}), fissando inoltre il parametro \lstinline{supportedLocales} a \lstinline{const Locale('it', 'IT')}, in modo tale che l'applicazione imposti automaticamente alcuni \emph{widget} come il calendario e la data nel formato corretto e infine viene impostato il tema dell'applicazione (discusso precedentemente).
 
 \section{Responsività}
 \label{sec:responsivity}
@@ -1370,9 +1368,7 @@ Insieme al codice sorgente dell'applicazione, è stata consegnata anche una brev
 Per quanto riguarda il codice sorgente, è stato scritto un commento per ogni classe, metodo e variabile, in modo da rendere più chiara la lettura del codice.\\
 Lo standard seguito è quello proposto nella documentazione ufficiale di \emph{Dart} \cite{site:comment}. \\
 
-\noindent In particolare, per i commenti alle classi, è stato utilizzato il formato, illustrato nel Listing \ref{lst:class-comment}, spiegando anche il significato e scopo delle variabili di stato.
-
-\newpage
+\noindent In particolare, per i commenti alle classi, è stato utilizzato il formato, illustrato nel Listing \ref{lst:class-comment}, spiegando anche il significato e scopo delle variabili di stato. \\
 
 \begin{lstlisting}[language=Java, caption={Commento classe}, captionpos=b, label={lst:class-comment}]
 /// Class encapsulating the authentication's params,
@@ -1389,6 +1385,8 @@ class AuthArgs {
 \end{lstlisting}
 
 \noindent Per i commenti ai metodi, è stato utilizzato il medesimo formato utilizzato per i commenti alle classi, illustrato nel Listing \ref{lst:method-comment}, spiegando lo scopo del metodo, dei parametri in input e il valore di ritorno. \\
+
+\newpage
 
 \begin{lstlisting}[language=Java, caption={Commento metodo}, captionpos=b, label={lst:method-comment}]
 /// Authenticate the user with the given authentication [args]
