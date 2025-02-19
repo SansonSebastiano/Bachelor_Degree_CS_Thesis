@@ -8,4 +8,4 @@ The internship project consists of the design and creation of a mobile applicati
 The purpose of these notes is to keep track of all the negotiations of an insurance company.
 
 There are many objectives to be achieved. Among the mandatory ones are the development of the user interface and basic functions: login, creation, modification, deletion and display of notes.
-While, among the optional objectives are the automation of the creation process, the implementation of tests for verification and validation and finally the deployment of the application on the platforms and iOS.
+While, among the optional objectives are the automation of the creation process, the implementation of tests for verification and validation and finally the deployment of the application on the all platforms.
